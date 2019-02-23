@@ -1,5 +1,5 @@
 # Stage 1
-FROM node:latest-alpine as react-build
+FROM node:11.10.0-alpine as react-build
 WORKDIR /app
 COPY . ./
 RUN yarn
