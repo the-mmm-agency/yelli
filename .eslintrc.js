@@ -201,7 +201,7 @@ module.exports = {
     },
     'import/resolver': {
       webpack: {
-        config: 'config/webpack.config.base.js'
+        config: 'config/webpack.config.js'
       }
     }
   }

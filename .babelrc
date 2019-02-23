@@ -1,0 +1,70 @@
+{
+  "presets": [
+    [
+      "@babel/preset-env",
+      {
+        "useBuiltIns": "entry",
+        "modules": false,
+        "targets": {
+          "browsers": ["last 2 versions", "safari >= 7"]
+        }
+      }
+    ],
+    "@babel/preset-react"
+  ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime",
+      {
+        "regenerator": true
+      }
+    ],
+    "react-hot-loader/babel",
+    "react-loadable/babel",
+    "graphql-tag",
+    "module:fast-async",
+    "@babel/plugin-syntax-dynamic-import",
+    "@babel/plugin-syntax-import-meta",
+    "@babel/plugin-transform-destructuring",
+    "@babel/plugin-proposal-object-rest-spread",
+    [
+      "@babel/plugin-proposal-class-properties",
+      {
+        "loose": false
+      }
+    ]
+  ],
+  "env": {
+    "production": {
+      "plugins": [
+        "@babel/plugin-transform-react-constant-elements",
+        "transform-react-remove-prop-types",
+        "transform-remove-console",
+        [
+          "transform-imports",
+          {
+            "@material-ui/core": {
+              "transform": "@material-ui/core/${member}",
+              "preventFullImport": true
+            },
+            "@material-ui/icons": {
+              "transform": "@material-ui/icons/${member}",
+              "preventFullImport": true
+            }
+          }
+        ]
+      ]
+    },
+    "development": {
+      "plugins": ["console", "console-source"]
+    },
+    "test": {
+      "plugins": [
+        "@babel/transform-modules-commonjs",
+        "@babel/plugin-syntax-jsx",
+        "dynamic-import-node"
+      ],
+      "sourceMaps": "inline"
+    }
+  }
+}

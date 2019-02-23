@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "checkJs": false,
+    "experimentalDecorators": true,
+    "jsx": "react",
+    "lib": ["dom", "es2018"],
+    "noEmit": true,
+    "paths": {
+      "*": ["src/*"]
+    },
+    "target": "es2018"
+  },
+  "include": ["src/**/*"]
+}
