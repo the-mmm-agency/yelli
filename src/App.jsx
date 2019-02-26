@@ -7,6 +7,7 @@ import ApolloClient from 'apollo-boost';
 import Loadable from 'react-loadable';
 import React from 'react';
 
+import { GlobalStateProvider } from 'state';
 import CenterProgress from 'Components/CenterProgress';
 import CreateApp from 'Containers/CreateApp';
 import Header from 'Containers/Header';
@@ -36,23 +37,29 @@ const client = new ApolloClient({
 
 const App = () => (
   <ApolloProvider client={client}>
-    <ThemeProvider theme={LightTheme}>
-      <Router>
-        <CssBaseline />
-        <div style={{ display: 'flex' }}>
-          <Header />
-          <CreateApp />
-          <div style={{ display: 'flex', flexGrow: 1, marginTop: 64 }}>
-            <Route component={Home} exact path="/" />
-            <Route component={LoadableCategory} exact path="/category/:name" />
-            <Route
-              component={LoadableInfo}
-              path={['/app/:id', '/category/app/:id']}
-            />
+    <GlobalStateProvider>
+      <ThemeProvider theme={LightTheme}>
+        <Router>
+          <CssBaseline />
+          <div style={{ display: 'flex' }}>
+            <Header />
+            <CreateApp />
+            <div style={{ display: 'flex', flexGrow: 1, marginTop: 64 }}>
+              <Route component={Home} exact path="/" />
+              <Route
+                component={LoadableCategory}
+                exact
+                path="/category/:name"
+              />
+              <Route
+                component={LoadableInfo}
+                path={['/app/:id', '/category/app/:id']}
+              />
+            </div>
           </div>
-        </div>
-      </Router>
-    </ThemeProvider>
+        </Router>
+      </ThemeProvider>
+    </GlobalStateProvider>
   </ApolloProvider>
 );
 

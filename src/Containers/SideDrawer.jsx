@@ -13,12 +13,14 @@ import {
   ListItemText
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
 import React from 'react';
 import classNames from 'classnames';
 
+import { dispatch, useGlobalState } from 'state';
 import Categories from 'Containers/Categories';
 import StyledLink from 'Components/StyledLink';
+
+const close = () => dispatch({ type: 'closeDrawer' });
 
 export const drawerWidth = 240;
 
@@ -52,8 +54,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SideDrawer = ({ isOpen, toggle }) => {
+const SideDrawer = () => {
   const classes = useStyles();
+  const [isOpen] = useGlobalState('drawer');
   return (
     <Drawer
       classes={{
@@ -66,12 +69,12 @@ const SideDrawer = ({ isOpen, toggle }) => {
         [classes.drawerOpen]: isOpen,
         [classes.drawerClose]: !isOpen
       })}
-      onClose={() => toggle(false)}
+      onClose={close}
       open={isOpen}
       variant="permanent"
     >
       <div className={classes.toolbar}>
-        <IconButton onClick={() => toggle(false)}>
+        <IconButton onClick={close}>
           <ChevronLeftIcon />
         </IconButton>
       </div>
@@ -98,11 +101,6 @@ const SideDrawer = ({ isOpen, toggle }) => {
       <Categories />
     </Drawer>
   );
-};
-
-SideDrawer.propTypes = {
-  isOpen: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired
 };
 
 export default SideDrawer;

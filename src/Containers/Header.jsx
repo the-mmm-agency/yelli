@@ -8,14 +8,17 @@ import {
 import { Menu as MenuIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useQuery } from 'react-apollo-hooks';
-import { useToggle } from 'react-use';
 import React from 'react';
 import classNames from 'classnames';
 import gql from 'graphql-tag';
 
-import Login from 'Containers/Login';
+import { dispatch, useGlobalState } from 'state';
+import Auth from 'Containers/Auth';
 import SideDrawer, { drawerWidth } from 'Containers/SideDrawer';
 import UserMenu from 'Containers/UserMenu';
+
+const openAuth = () => dispatch({ type: 'openAuth' });
+const openDrawer = () => dispatch({ type: 'openDrawer' });
 
 const GET_NAME = gql`
   query currentName {
@@ -58,15 +61,14 @@ const useStyles = makeStyles(theme => ({
 
 const Header = () => {
   const classes = useStyles();
-  const [drawerOpen, drawerToggle] = useToggle(false);
-  const [loginOn, loginToggle] = useToggle(false);
+  const [drawer] = useGlobalState('drawer');
   const { data, loading } = useQuery(GET_NAME);
 
   return (
     <React.Fragment>
       <AppBar
         className={classNames(classes.appBar, {
-          [classes.appBarShift]: drawerOpen
+          [classes.appBarShift]: drawer
         })}
         position="fixed"
       >
@@ -74,10 +76,10 @@ const Header = () => {
           <IconButton
             aria-label="Menu"
             className={classNames(classes.menuButton, {
-              [classes.hide]: drawerOpen
+              [classes.hide]: drawer
             })}
             color="inherit"
-            onClick={() => drawerToggle()}
+            onClick={openDrawer}
           >
             <MenuIcon />
           </IconButton>
@@ -87,14 +89,14 @@ const Header = () => {
           {!loading && data.me ? (
             <UserMenu name={data.me.name} />
           ) : (
-            <Button color="inherit" onClick={() => loginToggle(true)}>
+            <Button color="inherit" onClick={openAuth}>
               Login
             </Button>
           )}
         </Toolbar>
       </AppBar>
-      <SideDrawer isOpen={drawerOpen} toggle={drawerToggle} />
-      <Login isOpen={loginOn} onClose={() => loginToggle(false)} />
+      <SideDrawer />
+      <Auth />
     </React.Fragment>
   );
 };

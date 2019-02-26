@@ -5,13 +5,15 @@ import {
   ShoppingBasket,
   Audiotrack,
   Map,
-  Fastfood
+  Fastfood,
+  VideogameAsset
 } from '@material-ui/icons';
 import PropTypes from 'prop-types';
 import React from 'react';
 
 const Icons = {
   Food: Fastfood,
+  Games: VideogameAsset,
   Lifestyle: Favorite,
   Music: Audiotrack,
   Shopping: ShoppingBasket,

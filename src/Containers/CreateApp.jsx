@@ -103,7 +103,13 @@ const CreateApp = () => {
         >
           <AddIcon />
         </Fab>
-        <Modal onClose={() => setOpen(false)} open={isOpen}>
+        <Modal
+          classes={{
+            root: classes.flex
+          }}
+          onClose={() => setOpen(false)}
+          open={isOpen}
+        >
           <Paper className={classes.paper}>
             <Grid container direction="column">
               <Grid item>

@@ -26,36 +26,39 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const LOGIN = gql`
-  mutation login($email: String!, $password: String!) {
+const SIGNUP = gql`
+  mutation signup($email: String!, $name: String, $password: String!) {
     login(email: $email, password: $password) {
       token
     }
   }
 `;
 
-const Login = () => {
+const Signup = () => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
+  const [verifyPassword, setVerifyPassword] = useState('');
+  const [showVerifyPassword, setShowVerifyPassword] = useState(false);
   const [loading, setLoading] = useState(false);
-  const login = useMutation(LOGIN, {
+  const login = useMutation(SIGNUP, {
     update: (_, mutationResult) => {
       localStorage.setItem('token', mutationResult.data.login.token);
       window.location.reload();
     },
-    variables: { email, password }
+    variables: { email, name, password }
   });
   return (
     <Grid container direction="column">
       <Grid item>
         <TextField
-          className={classes.margin}
           fullWidth
           label="Email"
           margin="normal"
           onChange={event => setEmail(event.target.value)}
+          required
           type="email"
           value={email}
           variant="outlined"
@@ -64,6 +67,22 @@ const Login = () => {
       <Grid item>
         <TextField
           fullWidth
+          label="Name"
+          margin="normal"
+          onChange={event => setName(event.target.value)}
+          required
+          type="text"
+          value={name}
+          variant="outlined"
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          error={password !== verifyPassword}
+          fullWidth
+          helperText={
+            password !== verifyPassword ? 'The passwords do not match' : null
+          }
           InputProps={{
             endAdornment: (
               <InputAdornment position="end">
@@ -79,8 +98,33 @@ const Login = () => {
           label="Password"
           margin="normal"
           onChange={event => setPassword(event.target.value)}
+          required
           type={showPassword ? 'text' : 'password'}
           value={password}
+          variant="outlined"
+        />
+      </Grid>
+      <Grid item>
+        <TextField
+          fullWidth
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="Toggle verify password visibility"
+                  onClick={() => setShowVerifyPassword(!showPassword)}
+                >
+                  {showVerifyPassword ? <VisibilityOff /> : <Visibility />}
+                </IconButton>
+              </InputAdornment>
+            )
+          }}
+          label="Verfiy Password"
+          margin="normal"
+          onChange={event => setVerifyPassword(event.target.value)}
+          required
+          type={showVerifyPassword ? 'text' : 'password'}
+          value={verifyPassword}
           variant="outlined"
         />
       </Grid>
@@ -95,7 +139,7 @@ const Login = () => {
           }}
           variant="outlined"
         >
-          Login
+          Sign Up
         </Button>
         {loading && (
           <CircularProgress className={classes.buttonProgress} size={24} />
@@ -105,4 +149,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Signup;
