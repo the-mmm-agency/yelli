@@ -36,7 +36,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.leavingScreen,
       easing: theme.transitions.easing.sharp
     }),
-    width: theme.spacing.unit * 7
+    width: theme.spacing(7)
   },
   drawerOpen: {
     transition: theme.transitions.create('width', {
@@ -80,7 +80,7 @@ const SideDrawer = () => {
       </div>
       <Divider />
       <List>
-        <StyledLink to="/">
+        <StyledLink href="/">
           <ListItem button>
             <ListItemIcon>
               <HomeIcon />
@@ -88,7 +88,7 @@ const SideDrawer = () => {
             <ListItemText>Home</ListItemText>
           </ListItem>
         </StyledLink>
-        <StyledLink to="/search">
+        <StyledLink href="/search">
           <ListItem button>
             <ListItemIcon>
               <SearchIcon />

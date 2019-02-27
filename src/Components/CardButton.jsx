@@ -17,6 +17,9 @@ const useStyles = makeStyles(theme => ({
     borderWidth: 1,
     boxShadow: 'none',
     color: theme.palette.text.primary,
+    display: 'flex',
+    flexDirection: 'column',
+    height: 300,
     transition: theme.transitions.create('box-shadow, transform')
   },
   root: {

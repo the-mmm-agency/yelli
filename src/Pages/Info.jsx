@@ -1,12 +1,21 @@
 import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
+import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
-import useReactRouter from 'use-react-router';
 
 import { setIcons } from 'Util/SetIcons';
 import CenterProgress from 'Components/CenterProgress';
+
+export default mount({
+  '/:id': route({
+    async getView(request) {
+      return <Info id={request.params.id} />;
+    }
+  })
+});
 
 const useStyles = makeStyles(theme => ({
   description: {
@@ -38,13 +47,7 @@ const GET_APP = gql`
   }
 `;
 
-const Info = () => {
-  const {
-    match: {
-      params: { id }
-    }
-  } = useReactRouter();
-
+const Info = ({ id }) => {
   const classes = useStyles();
   const { data, error, loading } = useQuery(GET_APP, {
     variables: { id }
@@ -82,4 +85,6 @@ const Info = () => {
   );
 };
 
-export default Info;
+Info.propTypes = {
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+};

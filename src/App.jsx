@@ -1,28 +1,17 @@
 import { ApolloProvider } from 'react-apollo-hooks';
 import { CssBaseline } from '@material-ui/core';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { Router, View } from 'react-navi';
 import { ThemeProvider } from '@material-ui/styles';
 import { hot } from 'react-hot-loader/root';
 import ApolloClient from 'apollo-boost';
-import Loadable from 'react-loadable';
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import { GlobalStateProvider } from 'state';
 import CenterProgress from 'Components/CenterProgress';
 import CreateApp from 'Containers/CreateApp';
 import Header from 'Containers/Header';
-import Home from 'Pages/Home';
 import LightTheme from 'Themes/LightTheme';
-
-const LoadableInfo = Loadable({
-  loader: () => import('Pages/Info'),
-  loading: CenterProgress
-});
-
-const LoadableCategory = Loadable({
-  loader: () => import('Pages/Category'),
-  loading: CenterProgress
-});
+import routes from 'Routes';
 
 const client = new ApolloClient({
   request: async operation => {
@@ -39,22 +28,15 @@ const App = () => (
   <ApolloProvider client={client}>
     <GlobalStateProvider>
       <ThemeProvider theme={LightTheme}>
-        <Router>
+        <Router routes={routes}>
           <CssBaseline />
           <div style={{ display: 'flex' }}>
             <Header />
             <CreateApp />
             <div style={{ display: 'flex', flexGrow: 1, marginTop: 64 }}>
-              <Route component={Home} exact path="/" />
-              <Route
-                component={LoadableCategory}
-                exact
-                path="/category/:name"
-              />
-              <Route
-                component={LoadableInfo}
-                path={['/app/:id', '/category/app/:id']}
-              />
+              <Suspense fallback={CenterProgress}>
+                <View />
+              </Suspense>
             </div>
           </div>
         </Router>

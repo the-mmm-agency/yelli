@@ -24,7 +24,7 @@ const Categories = () => {
     <List>
       {data.categories.map(category => {
         return (
-          <StyledLink key={category.id} to={`/category/${category.name}`}>
+          <StyledLink key={category.id} href={`/category/${category.name}`}>
             <ListItem button>
               <ListItemIcon>
                 <CategoryIcon name={category.name} />

@@ -52,20 +52,21 @@ const useStyles = makeStyles(theme => ({
   fab: {
     bottom: theme.spacing(1),
     position: 'absolute',
-    right: theme.spacing(1)
+    right: theme.spacing(1),
+    zIndex: theme.zIndex.drawer
   },
   flex: {
     display: 'flex'
   },
   margin: {
-    margin: theme.spacing.unit
+    margin: theme.spacing(1)
   },
   paper: {
     boxShadow: theme.shadows[5],
     margin: 'auto',
     marginTop: '25%',
     outline: 'none',
-    padding: theme.spacing.unit * 4,
+    padding: theme.spacing(4),
     width: 'fit-content'
   },
   wrapper: {
@@ -136,11 +137,7 @@ const CreateApp = () => {
                 />
               </Grid>
               <Grid item>
-                <CategoriesSelect
-                  classes={classes}
-                  setValue={setCategory}
-                  value={category}
-                />
+                <CategoriesSelect setValue={setCategory} value={category} />
               </Grid>
               <Grid item>
                 <TextField

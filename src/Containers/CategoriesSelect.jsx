@@ -5,10 +5,10 @@ import {
   MenuItem,
   TextField
 } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
-import classNames from 'classnames';
 import gql from 'graphql-tag';
 
 import CategoryIcon from 'Components/CategoryIcon';
@@ -22,8 +22,22 @@ const GET_CATEGORIES = gql`
   }
 `;
 
-const CategoriesSelect = ({ classes, setValue, value }) => {
+const useStyles = makeStyles(theme => ({
+  icon: {
+    marginTop: 2
+  },
+  root: {
+    margin: theme.spacing(1)
+  },
+  selectMenu: {
+    display: 'flex',
+    padding: '14.5px 14px'
+  }
+}));
+
+const CategoriesSelect = ({ setValue, value }) => {
   const { data, loading } = useQuery(GET_CATEGORIES);
+  const classes = useStyles();
 
   if (loading) {
     return (
@@ -41,14 +55,14 @@ const CategoriesSelect = ({ classes, setValue, value }) => {
 
   return (
     <TextField
-      className={classNames(classes.margin, classes.flex)}
+      className={classes.root}
       fullWidth
       label="Category"
       onChange={event => setValue(event.target.value)}
       select
       SelectProps={{
         classes: {
-          selectMenu: classes.flex
+          selectMenu: classes.selectMenu
         }
       }}
       value={value}
@@ -56,7 +70,7 @@ const CategoriesSelect = ({ classes, setValue, value }) => {
     >
       {data.categories.map(category => (
         <MenuItem key={category.id} value={category.name}>
-          <ListItemIcon>
+          <ListItemIcon className={classes.icon}>
             <CategoryIcon name={category.name} />
           </ListItemIcon>
           <ListItemText
@@ -71,7 +85,6 @@ const CategoriesSelect = ({ classes, setValue, value }) => {
 };
 
 CategoriesSelect.propTypes = {
-  classes: PropTypes.object.isRequired,
   setValue: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired
 };

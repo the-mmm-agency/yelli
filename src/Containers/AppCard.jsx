@@ -25,13 +25,31 @@ const GET_APP = gql`
 
 const useStyles = makeStyles(theme => ({
   button: {
-    display: 'flex',
-    width: '20vw'
+    display: 'flex'
+  },
+  card: {
+    height: 300
+  },
+  category: {
+    [theme.breakpoints.down('sm')]: {
+      fontSize: `calc(${theme.typography.body2.fontSize} - 1.2rem + 2.2vw)`
+    }
   },
   icon: {
-    height: 'auto',
+    display: 'flex',
+    height: '70%',
+    margin: 'auto',
     marginTop: '5%',
-    maxWidth: '80%'
+    maxWidth: '70%',
+    objectFit: 'contain'
+  },
+  name: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: `calc(${theme.typography.h6.fontSize} - 1.2rem + 2.2vw)`
+    }
+  },
+  root: {
+    maxHeight: theme.spacing(10)
   },
   spacer: {
     height: theme.spacing(1)
@@ -46,8 +64,11 @@ const AppCard = ({ id }) => {
 
   if (loading) {
     return (
-      <Grid item xs={3}>
-        <CardButton ButtonProps={{ className: classes.button }}>
+      <Grid className={classes.root} item xs="auto">
+        <CardButton
+          ButtonProps={{ className: classes.button }}
+          CardProps={{ className: classes.card }}
+        >
           <Skeleton circle height="16vw" width="16vw" />
           <CardContent>
             <Skeleton height="calc(1.5rem * 1.33)" width="16vw" />
@@ -67,15 +88,17 @@ const AppCard = ({ id }) => {
   const { name, icons, category } = data.app;
 
   return (
-    <Grid item xs={3}>
-      <StyledLink to={`/app/${id}`}>
+    <Grid item lg={2} md={3} sm={4} xl={1} xs={12}>
+      <StyledLink href={`/app/${id}`}>
         <CardButton className={classes.button}>
           <img alt={name} className={classes.icon} srcSet={setIcons(icons)} />
           <CardContent>
-            <Typography gutterBottom variant="h5">
+            <Typography className={classes.name} gutterBottom variant="h6">
               {name}
             </Typography>
-            <Typography color="textSecondary">{category.name}</Typography>
+            <Typography className={classes.category} color="textSecondary">
+              {category.name}
+            </Typography>
           </CardContent>
         </CardButton>
       </StyledLink>
