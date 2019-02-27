@@ -9,8 +9,8 @@
     "@material-ui/styles": "^4.0.0-alpha.0",
     "@material-ui/system": "^4.0.0-alpha.0",
     "@svgr/webpack": "^4.1.0",
-    "apollo-boost": "^0.1.28",
-    "apollo-client": "^2.4.13",
+    "apollo-boost": "^0.3.0",
+    "apollo-client": "^2.5.0",
     "classnames": "^2.2.6",
     "graphql": "^14.1.1",
     "graphql-anywhere": "^4.2.0",
@@ -125,5 +125,8 @@
     "webpack-manifest-plugin": "2.0.4",
     "webpackbar": "^3.1.5",
     "workbox-webpack-plugin": "3.6.3"
+  },
+  "resolutions": {
+    "graphql-anywhere": "4.1.0"
   }
 }
