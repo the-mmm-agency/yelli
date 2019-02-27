@@ -1,12 +1,11 @@
 # Stage 1
 FROM node:11.10.0-alpine as react-build
 
-ARG NODE_ENV=production
-ENV NODE_ENV $NODE_ENV
-
 WORKDIR /app
 COPY . ./
 RUN yarn
+ARG NODE_ENV=production
+ENV NODE_ENV $NODE_ENV
 RUN yarn build
 
 # Stage 2 - the production environment
