@@ -22,6 +22,7 @@ const Home = () => {
   if (error) {
     return `Error! ${error.message}`;
   }
+  console.log(data);
 
   return (
     <Grid alignContent="space-between" container>

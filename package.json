@@ -2,6 +2,7 @@
   "name": "yelli",
   "version": "0.1.0",
   "private": true,
+  "homepage": "http://yelli.com",
   "dependencies": {
     "@hot-loader/react-dom": "npm:@hot-loader/react-dom",
     "@material-ui/core": "^4.0.0-alpha.0",
@@ -24,6 +25,7 @@
     "jss-nested": "^6.0.1",
     "jss-plugin-camel-case": "^10.0.0-alpha.7",
     "jss-plugin-default-unit": "^10.0.0-alpha.7",
+    "jss-plugin-expand": "^10.0.0-alpha.7",
     "jss-plugin-global": "^10.0.0-alpha.7",
     "jss-plugin-nested": "^10.0.0-alpha.7",
     "jss-plugin-props-sort": "^10.0.0-alpha.7",
@@ -112,6 +114,7 @@
     "prettier": "^1.16.4",
     "react-dev-utils": "^7.0.3",
     "react-hot-loader": "^4.6.5",
+    "react-jss-hmr": "^1.0.0",
     "react-loadable": "^5.5.0",
     "react-local": "^0.0.1",
     "resolve": "1.10.0",

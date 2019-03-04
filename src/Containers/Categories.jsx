@@ -7,7 +7,7 @@ import CategoryIcon from 'Components/CategoryIcon';
 import StyledLink from 'Components/StyledLink';
 
 const GET_CATEGORIES = gql`
-  {
+  query categories {
     categories {
       name
       id
@@ -20,6 +20,7 @@ const Categories = () => {
   if (loading) {
     return null;
   }
+  console.log(data);
   return (
     <List>
       {data.categories.map(category => {

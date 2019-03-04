@@ -1,18 +1,9 @@
-import {
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Grid,
-  TextField
-} from '@material-ui/core';
+import { Grid, TextField } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
-import { useQuery } from 'react-apollo-hooks';
 import React, { useState } from 'react';
-import gql from 'graphql-tag';
 
-import { setIcons } from 'Util/SetIcons';
-import CenterProgress from 'Components/CenterProgress';
+import SearchList from 'Containers/SearchList';
 
 export default mount({
   '/': route({
@@ -22,43 +13,17 @@ export default mount({
   })
 });
 
-const SEARCH_APPS = gql`
-  query searchApps($searchString: String) {
-    apps(where: { name_contains: $searchString }) {
-      id
-      name
-      icons
-      category {
-        name
-      }
-    }
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(4)
   }
-`;
+}));
 
-const Search = () => {
+const Search = React.memo(() => {
+  const classes = useStyles();
   const [searchString, setSearchString] = useState('');
-  const { data, loading } = useQuery(SEARCH_APPS, {
-    variables: {
-      searchString
-    }
-  });
-
-  if (loading) {
-    return (
-      <Grid container direction="column">
-        <TextField
-          fullWidth
-          label="Search"
-          onChange={event => setSearchString(event.target.value)}
-          placeholder="Enter Search"
-          value={searchString}
-        />
-        <CenterProgress />
-      </Grid>
-    );
-  }
   return (
-    <Grid container direction="column">
+    <Grid className={classes.root} container direction="column">
       <TextField
         fullWidth
         label="Search"
@@ -66,22 +31,7 @@ const Search = () => {
         placeholder="Enter Search"
         value={searchString}
       />
-      {data && (
-        <List>
-          {data.apps.map(app => (
-            <ListItem key={app.id}>
-              <ListItemIcon>
-                <img
-                  alt={app.name}
-                  srcSet={setIcons(app.icons)}
-                  style={{ width: 30, height: 30 }}
-                />
-              </ListItemIcon>
-              <ListItemText primary={app.name} secondary={app.category.name} />
-            </ListItem>
-          ))}
-        </List>
-      )}
+      <SearchList searchString={searchString} />
     </Grid>
   );
-};
+});
