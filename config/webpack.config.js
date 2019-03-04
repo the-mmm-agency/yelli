@@ -245,6 +245,7 @@ module.exports = function(webpackEnv) {
               )
             },
             {
+              handler: 'networkFirst',
               options: {
                 cacheName: 'api',
                 cacheableResponse: {
@@ -254,7 +255,6 @@ module.exports = function(webpackEnv) {
                   maxEntries: 5,
                   maxAgeSeconds: 60
                 },
-                handler: 'networkFirst',
                 networkTimeoutSeconds: 10
               },
               urlPattern: new RegExp('http://35.202.214.231:4000/')
