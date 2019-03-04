@@ -228,7 +228,7 @@ module.exports = function(webpackEnv) {
           ],
           runtimeCaching: [
             {
-              handler: 'StaleWhileRevalidate',
+              handler: 'staleWhileRevalidate',
               options: {
                 cacheName: 'images',
                 cacheableResponse: {
