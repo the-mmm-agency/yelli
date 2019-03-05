@@ -61,13 +61,13 @@ const AppCard = ({ id }) => {
 
   if (loading) {
     return (
-      <Grid item xs="auto">
+      <Grid item lg={2} md={3} xl={1} xs={4}>
         <CardButton className={classes.button}>
-          <Skeleton circle height="16vw" width="80%" />
+          <Skeleton circle height="14vw" width="14vw" />
           <CardContent>
-            <Skeleton height="calc(1.5rem * 1.33)" width="16vw" />
+            <Skeleton height="calc(1.5rem * 1.33)" width="14vw" />
             <div className={classes.spacer} />
-            <Skeleton height={typography.fontSize} width="16vw" />
+            <Skeleton height={typography.fontSize} width="14vw" />
             <div className={classes.spacer} />
           </CardContent>
         </CardButton>

@@ -7,6 +7,7 @@ import gql from 'graphql-tag';
 
 import { setIcons } from 'Util/SetIcons';
 import CenterProgress from 'Components/CenterProgress';
+import StyledLink from 'Components/StyledLink';
 
 const SEARCH_APPS = gql`
   query searchApps($searchString: String) {
@@ -43,16 +44,18 @@ const SearchList = ({ searchString }) => {
   return (
     <List className={classes.root}>
       {data.apps.map(app => (
-        <ListItem key={app.id} button className={classes.nested} divider>
-          <ListItemIcon>
-            <img
-              alt={app.name}
-              className={classes.icon}
-              srcSet={setIcons(app.icons)}
-            />
-          </ListItemIcon>
-          <ListItemText primary={app.name} secondary={app.category.name} />
-        </ListItem>
+        <StyledLink key={app.id} href={`/app/${app.id}`}>
+          <ListItem button className={classes.nested} divider>
+            <ListItemIcon>
+              <img
+                alt={app.name}
+                className={classes.icon}
+                srcSet={setIcons(app.icons)}
+              />
+            </ListItemIcon>
+            <ListItemText primary={app.name} secondary={app.category.name} />
+          </ListItem>
+        </StyledLink>
       ))}
     </List>
   );

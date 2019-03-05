@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Fade, Grid } from '@material-ui/core';
 import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
@@ -25,11 +25,13 @@ const Home = () => {
   console.log(data);
 
   return (
-    <Grid alignContent="space-between" container spacing={4}>
-      {data.apps.map(app => (
-        <AppCard key={app.id} id={app.id} />
-      ))}
-    </Grid>
+    <Fade appear in>
+      <Grid alignContent="space-between" container spacing={4}>
+        {data.apps.map(app => (
+          <AppCard key={app.id} id={app.id} />
+        ))}
+      </Grid>
+    </Fade>
   );
 };
 

@@ -1,4 +1,4 @@
-import { Grid } from '@material-ui/core';
+import { Fade, Grid } from '@material-ui/core';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
@@ -36,11 +36,13 @@ const Category = ({ name }) => {
   }
 
   return (
-    <Grid alignContent="space-between" container>
-      {data.apps.map(app => (
-        <AppCard key={app.id} id={app.id} />
-      ))}
-    </Grid>
+    <Fade appear in>
+      <Grid alignContent="space-between" container spacing={4}>
+        {data.apps.map(app => (
+          <AppCard key={app.id} id={app.id} />
+        ))}
+      </Grid>
+    </Fade>
   );
 };
 

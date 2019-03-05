@@ -1,4 +1,4 @@
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Fade, Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
@@ -60,28 +60,30 @@ const Info = ({ id }) => {
   }
   const { name, url, icons, category, description } = data.app;
   return (
-    <Grid className={classes.root} container>
-      <Grid className={classes.margin} item md={1} sm={2} xs={3}>
-        <img
-          alt={name}
-          className={classes.icon}
-          src={icons[0].src.mediaLink}
-          srcSet={setIcons(icons)}
-        />
+    <Fade appear in>
+      <Grid className={classes.root} container>
+        <Grid className={classes.margin} item md={1} sm={2} xs={3}>
+          <img
+            alt={name}
+            className={classes.icon}
+            src={icons[0].src.mediaLink}
+            srcSet={setIcons(icons)}
+          />
+        </Grid>
+        <Grid item md={10} sm={8} xs={5}>
+          <Typography variant="h6">{name}</Typography>
+          <Typography color="textSecondary" gutterBottom>
+            {category.name}
+          </Typography>
+          <Button href={url} variant="outlined">
+            Launch App
+          </Button>
+        </Grid>
+        <Grid className={classes.description} item>
+          <Typography paragraph>{description}</Typography>
+        </Grid>
       </Grid>
-      <Grid item md={10} sm={8} xs={5}>
-        <Typography variant="h6">{name}</Typography>
-        <Typography color="textSecondary" gutterBottom>
-          {category.name}
-        </Typography>
-        <Button href={url} variant="outlined">
-          Launch App
-        </Button>
-      </Grid>
-      <Grid className={classes.description} item>
-        <Typography paragraph>{description}</Typography>
-      </Grid>
-    </Grid>
+    </Fade>
   );
 };
 
