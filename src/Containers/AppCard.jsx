@@ -31,14 +31,14 @@ const useStyles = makeStyles(theme => ({
   card: {
     margin: 'auto'
   },
-  name: {
-    [theme.breakpoints.down('md')]: {
-      fontSize: theme.typography.body1.fontSize
-    }
-  },
   category: {
     [theme.breakpoints.down('md')]: {
       fontSize: theme.typography.body2.fontSize
+    }
+  },
+  name: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: theme.typography.body1.fontSize
     }
   },
   icon: {
