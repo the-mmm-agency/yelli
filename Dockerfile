@@ -3,8 +3,8 @@ FROM node:11.10.0-alpine as react-build
 
 WORKDIR /app
 COPY . ./
-ENV NODE_ENV production
 RUN yarn
+ENV NODE_ENV production
 RUN yarn build
 
 # Stage 2 - the production environment

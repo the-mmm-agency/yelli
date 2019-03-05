@@ -42,7 +42,7 @@ const SearchList = ({ searchString }) => {
     return <CenterProgress />;
   }
   return (
-    <List className={classes.root}>
+    <List>
       {data.apps.map(app => (
         <StyledLink key={app.id} href={`/app/${app.id}`}>
           <ListItem button className={classes.nested} divider>
