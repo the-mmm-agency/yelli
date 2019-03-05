@@ -220,6 +220,7 @@ module.exports = function(webpackEnv) {
         new WorkboxWebpackPlugin.GenerateSW({
           clientsClaim: true,
           exclude: [/\.map$/, /asset-manifest\.json$/],
+          directoryIndex: '/index.html',
           importWorkboxFrom: 'cdn',
           navigateFallback: `${publicUrl}/index.html`,
           navigateFallbackBlacklist: [
