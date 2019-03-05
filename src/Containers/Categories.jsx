@@ -1,10 +1,10 @@
-import { List, ListItemIcon, ListItem, ListItemText } from '@material-ui/core';
+import { List, ListItemIcon, ListItemText } from '@material-ui/core';
 import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
 
 import CategoryIcon from 'Components/CategoryIcon';
-import StyledLink from 'Components/StyledLink';
+import NavLink from 'Components/NavLink';
 
 const GET_CATEGORIES = gql`
   query categories {
@@ -24,14 +24,17 @@ const Categories = () => {
     <List>
       {data.categories.map(category => {
         return (
-          <StyledLink key={category.id} href={`/category/${category.name}`}>
-            <ListItem button>
-              <ListItemIcon>
-                <CategoryIcon name={category.name} />
-              </ListItemIcon>
-              <ListItemText primary={category.name} />
-            </ListItem>
-          </StyledLink>
+          <NavLink key={category.id} href={`/category/${category.name}`}>
+            <ListItemIcon style={{ color: 'inherit' }}>
+              <CategoryIcon name={category.name} />
+            </ListItemIcon>
+            <ListItemText
+              primary={category.name}
+              primaryTypographyProps={{
+                color: 'inherit'
+              }}
+            />
+          </NavLink>
         );
       })}
     </List>
