@@ -20,7 +20,6 @@ const Categories = () => {
   if (loading) {
     return null;
   }
-  console.log(data);
   return (
     <List>
       {data.categories.map(category => {

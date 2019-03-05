@@ -6,7 +6,7 @@ import gql from 'graphql-tag';
 
 const useStyles = makeStyles(theme => ({
   buttonProgress: {
-    color: theme.palette.primary,
+    color: theme.palette.primary.main,
     left: '50%',
     marginLeft: -12,
     marginTop: -12,

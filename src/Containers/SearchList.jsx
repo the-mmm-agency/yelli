@@ -28,9 +28,6 @@ const useStyles = makeStyles(theme => ({
   },
   nested: {
     padding: theme.spacing(4)
-  },
-  root: {
-    backgroundColor: theme.palette.background.paper
   }
 }));
 const SearchList = ({ searchString }) => {

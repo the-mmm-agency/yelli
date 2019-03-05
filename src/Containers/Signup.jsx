@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
 
 const SIGNUP = gql`
   mutation signup($email: String!, $name: String, $password: String!) {
-    login(email: $email, password: $password) {
+    signup(email: $email, name: $name, password: $password) {
       token
     }
   }

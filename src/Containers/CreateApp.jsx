@@ -1,4 +1,3 @@
-import { Add as AddIcon } from '@material-ui/icons';
 import {
   CircularProgress,
   Fab,
@@ -6,8 +5,10 @@ import {
   Grid,
   Modal,
   Paper,
-  TextField
+  TextField,
+  Tooltip
 } from '@material-ui/core';
+import { Create as CreateIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useQuery, useMutation } from 'react-apollo-hooks';
 import React, { useState } from 'react';
@@ -50,9 +51,9 @@ const useStyles = makeStyles(theme => ({
     top: '50%'
   },
   fab: {
-    bottom: theme.spacing(1),
+    bottom: theme.spacing(2),
     position: 'absolute',
-    right: theme.spacing(1),
+    right: theme.spacing(3),
     zIndex: theme.zIndex.drawer
   },
   flex: {
@@ -95,15 +96,16 @@ const CreateApp = () => {
   }
   if (data.me && (data.me.role === 'ADMIN' || data.me.role === 'EDITOR')) {
     return (
-      <React.Fragment>
-        <Fab
-          aria-label="Create App"
-          className={classes.fab}
-          color="primary"
-          onClick={() => setOpen(true)}
-        >
-          <AddIcon />
-        </Fab>
+      <>
+        <Tooltip aria-label="Create App" placement="top" title="Create App">
+          <Fab
+            className={classes.fab}
+            color="primary"
+            onClick={() => setOpen(true)}
+          >
+            <CreateIcon />
+          </Fab>
+        </Tooltip>
         <Modal
           classes={{
             root: classes.flex
@@ -174,7 +176,7 @@ const CreateApp = () => {
             </Grid>
           </Paper>
         </Modal>
-      </React.Fragment>
+      </>
     );
   }
   return null;

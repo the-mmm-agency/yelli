@@ -1,15 +1,24 @@
 import { createMuiTheme } from '@material-ui/core/styles';
-import indigo from '@material-ui/core/colors/indigo';
-import pink from '@material-ui/core/colors/pink';
-import red from '@material-ui/core/colors/red';
+import { darken, lighten } from '@material-ui/core/styles/colorManipulator';
+import teal from '@material-ui/core/colors/teal';
 
 const LightTheme = createMuiTheme({
   palette: {
     contrastThreshold: 3,
-    error: red,
-    primary: indigo,
-    secondary: pink,
+    primary: {
+      dark: darken('#ea533f', 0.12),
+      light: lighten('#ea533f', 0.12),
+      main: '#ea533f'
+    },
+    secondary: {
+      dark: teal[900],
+      light: teal[500],
+      main: teal[700]
+    },
     tonalOffset: 0.2
+  },
+  typography: {
+    fontFamily: '"Roboto Condensed", "Helvetica", "Arial", sans-serif'
   }
 });
 

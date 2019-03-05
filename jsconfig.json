@@ -2,15 +2,19 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "checkJs": false,
+    "checkJs": true,
     "experimentalDecorators": true,
+    "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["dom", "es2018"],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
     "noEmit": true,
     "paths": {
-      "*": ["src/*"]
+      "*": ["./src/*"]
     },
-    "target": "es2018"
+    "target": "esnext"
   },
-  "include": ["src/**/*"]
+  "include": ["src"]
 }

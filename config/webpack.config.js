@@ -236,8 +236,7 @@ module.exports = function(webpackEnv) {
                 },
                 expiration: {
                   maxAgeSeconds: 30 * 24 * 60 * 60,
-                  maxEntries: 50,
-                  purgeOnQuotaError: true
+                  maxEntries: 50
                 }
               },
               urlPattern: new RegExp(

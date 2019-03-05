@@ -93,7 +93,12 @@ const AppCard = ({ id }) => {
         <CardButton className={classes.button}>
           <img alt={name} className={classes.icon} srcSet={setIcons(icons)} />
           <CardContent>
-            <Typography className={classes.name} gutterBottom variant="h6">
+            <Typography
+              className={classes.name}
+              color="inherit"
+              gutterBottom
+              variant="h6"
+            >
               {name}
             </Typography>
             <Typography className={classes.category} color="textSecondary">

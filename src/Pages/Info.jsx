@@ -61,7 +61,7 @@ const Info = ({ id }) => {
   const { name, url, icons, category, description } = data.app;
   return (
     <Grid className={classes.root} container>
-      <Grid className={classes.margin} item xs={1}>
+      <Grid className={classes.margin} item md={1} sm={2} xs={3}>
         <img
           alt={name}
           className={classes.icon}
@@ -69,7 +69,7 @@ const Info = ({ id }) => {
           srcSet={setIcons(icons)}
         />
       </Grid>
-      <Grid item xs={10}>
+      <Grid item md={10} sm={8} xs={5}>
         <Typography variant="h6">{name}</Typography>
         <Typography color="textSecondary" gutterBottom>
           {category.name}
