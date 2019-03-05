@@ -25,7 +25,7 @@ const Home = () => {
   console.log(data);
 
   return (
-    <Grid alignContent="space-between" container>
+    <Grid alignContent="space-between" container spacing={4}>
       {data.apps.map(app => (
         <AppCard key={app.id} id={app.id} />
       ))}

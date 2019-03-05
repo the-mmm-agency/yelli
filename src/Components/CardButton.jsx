@@ -7,10 +7,8 @@ import classNames from 'classnames';
 const useStyles = makeStyles(theme => ({
   card: {
     '&:hover': {
-      borderColor: 'transparent',
-      boxShadow: theme.shadows[5],
-      color: theme.palette.primary.main,
-      transform: 'translate(0px, -4px)'
+      boxShadow: theme.shadows[1],
+      color: theme.palette.primary.main
     },
     borderColor: theme.palette.divider,
     borderStyle: 'solid',
@@ -19,12 +17,16 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.text.primary,
     display: 'flex',
     flexDirection: 'column',
-    height: 300,
-    transition: theme.transitions.create('box-shadow, transform')
+    transition: theme.transitions.create(
+      ['box-shadow', 'border-color', 'color'],
+      {
+        duration: theme.transitions.duration.short,
+        easing: theme.transitions.easing.sharp
+      }
+    )
   },
   root: {
-    ...theme.shape,
-    margin: `${theme.spacing(2)}px !important`
+    ...theme.shape
   }
 }));
 

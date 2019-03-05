@@ -1,8 +1,10 @@
-import { AppBar, Button, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
+
+import Logo from '../logo.png';
 
 import { dispatch } from 'state';
 import UserMenu from 'Containers/UserMenu';
@@ -19,10 +21,15 @@ const GET_NAME = gql`
 
 const useStyles = makeStyles(theme => ({
   appBar: {
+    borderBottomColor: theme.palette.divider,
+    borderBottomStyle: 'solid',
+    borderBottomWidth: 1,
+    boxShadow: 'none',
     zIndex: theme.zIndex.drawer + 1
   },
-  grow: {
-    flexGrow: 1
+  logo: {
+    height: 64,
+    marginRight: 'auto'
   }
 }));
 
@@ -31,11 +38,9 @@ const Header = () => {
   const { data, loading } = useQuery(GET_NAME);
 
   return (
-    <AppBar className={classes.appBar} color="primary" position="fixed">
+    <AppBar className={classes.appBar} color="default" position="fixed">
       <Toolbar>
-        <Typography className={classes.grow} color="inherit" variant="h6">
-          Yelli
-        </Typography>
+        <img alt="Yelli" className={classes.logo} src={Logo} />
         {!loading && data.me ? (
           <UserMenu name={data.me.name} />
         ) : (

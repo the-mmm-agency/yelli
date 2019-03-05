@@ -7,7 +7,10 @@ import {
   ListItem,
   ListItemText
 } from '@material-ui/core';
-import { Home as HomeIcon, Search as SearchIcon } from '@material-ui/icons';
+import {
+  HomeOutlined as HomeIcon,
+  Search as SearchIcon
+} from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 

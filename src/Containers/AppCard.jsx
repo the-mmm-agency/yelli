@@ -25,31 +25,28 @@ const GET_APP = gql`
 
 const useStyles = makeStyles(theme => ({
   button: {
-    display: 'flex'
+    display: 'flex',
+    width: '100%'
   },
   card: {
-    height: 300
+    margin: 'auto'
+  },
+  name: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: theme.typography.body1.fontSize
+    }
   },
   category: {
-    [theme.breakpoints.down('sm')]: {
-      fontSize: `calc(${theme.typography.body2.fontSize} - 1.2rem + 2.2vw)`
+    [theme.breakpoints.down('md')]: {
+      fontSize: theme.typography.body2.fontSize
     }
   },
   icon: {
     display: 'flex',
-    height: '70%',
     margin: 'auto',
-    marginTop: '5%',
-    maxWidth: '70%',
-    objectFit: 'contain'
-  },
-  name: {
-    [theme.breakpoints.down('md')]: {
-      fontSize: `calc(${theme.typography.h6.fontSize} - 1.2rem + 2.2vw)`
-    }
-  },
-  root: {
-    maxHeight: theme.spacing(10)
+    marginTop: '10%',
+    objectFit: 'contain',
+    width: '60%'
   },
   spacer: {
     height: theme.spacing(1)
@@ -64,12 +61,9 @@ const AppCard = ({ id }) => {
 
   if (loading) {
     return (
-      <Grid className={classes.root} item xs="auto">
-        <CardButton
-          ButtonProps={{ className: classes.button }}
-          CardProps={{ className: classes.card }}
-        >
-          <Skeleton circle height="16vw" width="16vw" />
+      <Grid item xs="auto">
+        <CardButton className={classes.button}>
+          <Skeleton circle height="16vw" width="80%" />
           <CardContent>
             <Skeleton height="calc(1.5rem * 1.33)" width="16vw" />
             <div className={classes.spacer} />
@@ -88,7 +82,7 @@ const AppCard = ({ id }) => {
   const { name, icons, category } = data.app;
 
   return (
-    <Grid item lg={2} md={3} sm={4} xl={1} xs={12}>
+    <Grid item lg={2} md={3} xl={1} xs={4}>
       <StyledLink href={`/app/${id}`}>
         <CardButton className={classes.button}>
           <img alt={name} className={classes.icon} srcSet={setIcons(icons)} />

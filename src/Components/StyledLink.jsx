@@ -8,7 +8,9 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.main
   },
   root: {
-    textDecoration: 'none'
+    display: 'flex',
+    textDecoration: 'none',
+    width: '100%'
   }
 }));
 
