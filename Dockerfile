@@ -5,6 +5,7 @@ WORKDIR /app
 COPY . ./
 RUN yarn
 ENV NODE_ENV production
+ENV PUBLIC_URL http://yelli.com
 RUN yarn build
 
 # Stage 2 - the production environment
