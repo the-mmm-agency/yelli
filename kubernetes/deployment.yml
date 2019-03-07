@@ -25,21 +25,12 @@ spec:
         ports:
         - containerPort: 443
         - containerPort: 80
-        livenessProbe:
-          httpGet:
-            path: /index.html
-            port: 80
         volumeMounts:
           - mountPath: /etc/nginx/ssl
             name: secret-volume
-          - mountPath: /etc/nginx/conf.d
-            name: configmap-volume
       restartPolicy: Always
       volumes:
       - name: secret-volume
         secret:
           secretName: nginx-certs-keys
-      - name: configmap-volume
-        configMap:
-          name: nginxconfigmap
           
