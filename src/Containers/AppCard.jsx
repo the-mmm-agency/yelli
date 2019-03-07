@@ -36,17 +36,17 @@ const useStyles = makeStyles(theme => ({
       fontSize: theme.typography.body2.fontSize
     }
   },
-  name: {
-    [theme.breakpoints.down('md')]: {
-      fontSize: theme.typography.body1.fontSize
-    }
-  },
   icon: {
     display: 'flex',
     margin: 'auto',
     marginTop: '10%',
     objectFit: 'contain',
     width: '60%'
+  },
+  name: {
+    [theme.breakpoints.down('md')]: {
+      fontSize: theme.typography.body1.fontSize
+    }
   },
   spacer: {
     height: theme.spacing(1)

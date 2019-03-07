@@ -1,0 +1,45 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: yelli
+  namespace: default
+  labels:
+    app: yelli
+    stage: production
+    name: yelli
+spec:
+  replicas: 3
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: yelli
+        name: yelli
+        stage: production
+    spec:
+      containers:
+      - name: yelli
+        image: us.gcr.io/yelli-232214/yelli:0664f70
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 443
+        - containerPort: 80
+        livenessProbe:
+          httpGet:
+            path: /index.html
+            port: 80
+        volumeMounts:
+          - mountPath: /etc/nginx/ssl
+            name: secret-volume
+          - mountPath: /etc/nginx/conf.d
+            name: configmap-volume
+      restartPolicy: Always
+      volumes:
+      - name: secret-volume
+        secret:
+          secretName: nginx-certs-keys
+      - name: configmap-volume
+        configMap:
+          name: nginxconfigmap
+          
