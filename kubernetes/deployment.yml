@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: yelli
-        image: us.gcr.io/yelli-232214/yelli:0664f70
+        image: us.gcr.io/yelli-232214/yelli:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 443
