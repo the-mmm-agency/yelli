@@ -26,10 +26,15 @@ spec:
         - containerPort: 443
         - containerPort: 80
         volumeMounts:
+          - mountPath: /etc/nginx
+            name: configmap-volume
           - mountPath: /etc/nginx/ssl
             name: secret-volume
       restartPolicy: Always
       volumes:
+      - name: configmap-volume
+        configMap:
+          name: yelli-configmap
       - name: secret-volume
         secret:
           secretName: nginx-certs-keys
