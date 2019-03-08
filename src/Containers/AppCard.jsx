@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
     }
   },
   icon: {
+    borderRadius: 15,
     display: 'flex',
     margin: 'auto',
     marginTop: '10%',

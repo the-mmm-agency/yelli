@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: 'auto'
   },
   icon: {
+    borderRadius: 15,
     filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
     height: theme.spacing(14),
     margin: theme.spacing(2),
@@ -32,6 +33,9 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     height: theme.spacing(15),
     margin: theme.spacing(1)
+  },
+  name: {
+    fontWeight: 700
   }
 }));
 
@@ -74,7 +78,9 @@ const Info = ({ id }) => {
             />
           </Grid>
           <Grid className={classes.item} item xs="auto">
-            <Typography variant="h6">{name}</Typography>
+            <Typography className={classes.name} variant="h6">
+              {name}
+            </Typography>
             <Typography color="textSecondary" gutterBottom>
               {category.name}
             </Typography>
@@ -90,9 +96,7 @@ const Info = ({ id }) => {
           </Grid>
         </Grid>
         <Grid item>
-          <Typography className={classes.description} paragraph>
-            {description}
-          </Typography>
+          <Typography paragraph>{description}</Typography>
         </Grid>
       </Grid>
     </Fade>
