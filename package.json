@@ -44,7 +44,8 @@
     "react-navi": "^0.11.6",
     "react-use": "^5.3.0",
     "recompose": "^0.30.0",
-    "typeface-lato": "^0.0.54"
+    "typeface-roboto": "^0.0.54",
+    "typeface-roboto-condensed": "^0.0.54"
   },
   "scripts": {
     "start": "node scripts/start.js",

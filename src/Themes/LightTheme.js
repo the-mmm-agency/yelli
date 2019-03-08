@@ -4,10 +4,6 @@ import teal from '@material-ui/core/colors/teal';
 
 const LightTheme = createMuiTheme({
   palette: {
-    background: {
-      default: '#f5f5f5',
-      paper: '#fafafa'
-    },
     contrastThreshold: 3,
     primary: {
       dark: darken('#ea533f', 0.12),
@@ -25,7 +21,12 @@ const LightTheme = createMuiTheme({
     borderRadius: 8
   },
   typography: {
-    fontFamily: '"Lato", "Arial", sans-serif',
+    body1: {
+      fontFamily: '"Roboto Condensed", "Arial", sans-serif'
+    },
+    body2: {
+      fontFamily: '"Roboto Condensed", "Arial", sans-serif'
+    },
     fontSize: 14
   }
 });
