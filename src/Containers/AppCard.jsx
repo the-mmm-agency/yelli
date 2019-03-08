@@ -1,10 +1,8 @@
 import { Grid, CardContent, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { typography } from '@material-ui/system';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Skeleton from 'react-loading-skeleton';
 import gql from 'graphql-tag';
 
 import { setIcons } from 'Util/SetIcons';
@@ -42,7 +40,7 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto',
     marginTop: '10%',
     objectFit: 'contain',
-    width: '60%'
+    width: '72%'
   },
   name: {
     [theme.breakpoints.down('md')]: {
@@ -61,19 +59,7 @@ const AppCard = ({ id }) => {
   });
 
   if (loading) {
-    return (
-      <Grid item lg={2} md={3} xl={1} xs={4}>
-        <CardButton className={classes.button}>
-          <Skeleton circle height="14vw" width="14vw" />
-          <CardContent>
-            <Skeleton height="calc(1.5rem * 1.33)" width="14vw" />
-            <div className={classes.spacer} />
-            <Skeleton height={typography.fontSize} width="14vw" />
-            <div className={classes.spacer} />
-          </CardContent>
-        </CardButton>
-      </Grid>
-    );
+    return null;
   }
 
   if (error) {
@@ -83,15 +69,17 @@ const AppCard = ({ id }) => {
   const { name, icons, category } = data.app;
 
   return (
-    <Grid item lg={2} md={3} xl={1} xs={4}>
+    <Grid className={classes.root} item lg={2} md={3} xl={1} xs={4}>
       <StyledLink href={`/app/${id}`}>
         <CardButton className={classes.button}>
           <img alt={name} className={classes.icon} srcSet={setIcons(icons)} />
           <CardContent>
-            <Typography color="inherit" gutterBottom>
+            <Typography color="inherit" gutterBottom noWrap>
               {name}
             </Typography>
-            <Typography color="textSecondary">{category.name}</Typography>
+            <Typography color="textSecondary" noWrap>
+              {category.name}
+            </Typography>
           </CardContent>
         </CardButton>
       </StyledLink>

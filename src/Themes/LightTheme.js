@@ -26,7 +26,7 @@ const LightTheme = createMuiTheme({
   },
   typography: {
     fontFamily: '"Lato", "Arial", sans-serif',
-    fontSize: 16
+    fontSize: 14
   }
 });
 

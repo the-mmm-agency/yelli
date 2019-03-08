@@ -26,7 +26,7 @@ const Home = () => {
 
   return (
     <Fade appear in>
-      <Grid alignContent="space-between" container spacing={4}>
+      <Grid alignContent="space-between" container spacing={2}>
         {data.apps.map(app => (
           <AppCard key={app.id} id={app.id} />
         ))}

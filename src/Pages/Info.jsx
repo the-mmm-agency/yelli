@@ -21,6 +21,10 @@ const useStyles = makeStyles(theme => ({
   button: {
     marginTop: 'auto'
   },
+  description: {
+    fontSize: theme.typography.body1.fontSize,
+    fontWeight: 500
+  },
   icon: {
     borderRadius: 15,
     filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
@@ -96,7 +100,9 @@ const Info = ({ id }) => {
           </Grid>
         </Grid>
         <Grid item>
-          <Typography paragraph>{description}</Typography>
+          <Typography className={classes.description} paragraph>
+            {description}
+          </Typography>
         </Grid>
       </Grid>
     </Fade>
