@@ -87,17 +87,10 @@ const AppCard = ({ id }) => {
         <CardButton className={classes.button}>
           <img alt={name} className={classes.icon} srcSet={setIcons(icons)} />
           <CardContent>
-            <Typography
-              className={classes.name}
-              color="inherit"
-              gutterBottom
-              variant="h6"
-            >
+            <Typography color="inherit" gutterBottom>
               {name}
             </Typography>
-            <Typography className={classes.category} color="textSecondary">
-              {category.name}
-            </Typography>
+            <Typography color="textSecondary">{category.name}</Typography>
           </CardContent>
         </CardButton>
       </StyledLink>
