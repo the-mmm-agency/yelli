@@ -8,7 +8,6 @@ const PnpWebpackPlugin = require('pnp-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CaseSensitivePathsPlugin = require('case-sensitive-paths-webpack-plugin');
 const InlineChunkHtmlPlugin = require('react-dev-utils/InlineChunkHtmlPlugin');
-const PreloadPlugin = require('preload-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -352,15 +351,6 @@ module.exports = function(webpackEnv) {
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
         }),
-      new PreloadPlugin({
-        rel: 'prefetch',
-        as(entry) {
-          if (/\.css$/.test(entry)) return 'style';
-          if (/\.woff$/.test(entry)) return 'font';
-          if (/\.png$/.test(entry)) return 'image';
-          return 'script';
-        }
-      }),
       new ManifestPlugin({
         fileName: 'asset-manifest.json',
         publicPath
