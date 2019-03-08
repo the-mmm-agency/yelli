@@ -39,7 +39,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     margin: theme.spacing(2),
     objectFit: 'contain',
-    width: `calc(100% - ${theme.spacing(4)}`
+    width: `calc(100% - ${theme.spacing(4)})`
   },
   name: {
     [theme.breakpoints.down('md')]: {
