@@ -12,4 +12,4 @@ FROM nginx:alpine
 COPY --from=react-build /app/build /usr/share/nginx/html
 EXPOSE 80
 EXPOSE 443
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["nginx", "-c", "/config/nginx.conf", "-g", "daemon off;"]
