@@ -37,10 +37,9 @@ const useStyles = makeStyles(theme => ({
   icon: {
     borderRadius: 15,
     display: 'flex',
-    margin: 'auto',
-    marginTop: '10%',
+    margin: theme.spacing(2),
     objectFit: 'contain',
-    width: '72%'
+    width: `calc(100% - ${theme.spacing(4)}`
   },
   name: {
     [theme.breakpoints.down('md')]: {
