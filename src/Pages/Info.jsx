@@ -19,19 +19,18 @@ export default mount({
 
 const useStyles = makeStyles(theme => ({
   button: {
-    marginTop: 'auto',
-    width: 160
+    marginTop: 'auto'
   },
   icon: {
     filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
-    height: theme.spacing(16),
+    height: theme.spacing(14),
     margin: theme.spacing(2),
-    width: theme.spacing(16)
+    width: theme.spacing(14)
   },
   item: {
     display: 'flex',
     flexDirection: 'column',
-    height: theme.spacing(17),
+    height: theme.spacing(15),
     margin: theme.spacing(1)
   }
 }));
@@ -83,14 +82,17 @@ const Info = ({ id }) => {
               className={classes.button}
               color="primary"
               href={url}
-              variant="outlined"
+              size="small"
+              variant="contained"
             >
               Launch App
             </Button>
           </Grid>
         </Grid>
         <Grid item>
-          <Typography paragraph>{description}</Typography>
+          <Typography className={classes.description} paragraph>
+            {description}
+          </Typography>
         </Grid>
       </Grid>
     </Fade>
