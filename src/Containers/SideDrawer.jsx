@@ -1,5 +1,4 @@
 import {
-  Divider,
   Drawer,
   List,
   Hidden,
@@ -62,7 +61,6 @@ const SideDrawer = () => {
             </ListItemText>
           </NavLink>
         </List>
-        <Divider />
         <Categories />
       </Drawer>
     </Hidden>

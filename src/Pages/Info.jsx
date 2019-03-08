@@ -36,7 +36,8 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     height: theme.spacing(15),
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
+    marginTop: 10
   },
   name: {
     fontWeight: 700

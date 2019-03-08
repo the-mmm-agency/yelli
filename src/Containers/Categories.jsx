@@ -1,4 +1,9 @@
-import { List, ListItemIcon, ListItemText } from '@material-ui/core';
+import {
+  List,
+  ListSubheader,
+  ListItemIcon,
+  ListItemText
+} from '@material-ui/core';
 import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
@@ -21,7 +26,7 @@ const Categories = () => {
     return null;
   }
   return (
-    <List>
+    <List subheader={<ListSubheader>Categories</ListSubheader>}>
       {data.categories.map(category => {
         return (
           <NavLink key={category.id} href={`/category/${category.name}`}>
