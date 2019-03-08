@@ -18,7 +18,7 @@ const LightTheme = createMuiTheme({
     tonalOffset: 0.2
   },
   typography: {
-    fontFamily: '"Pragati Narrow", "Arial", sans-serif',
+    fontFamily: '"Lato", "Arial", sans-serif',
     fontSize: 14
   }
 });

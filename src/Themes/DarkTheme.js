@@ -19,7 +19,7 @@ const LightTheme = createMuiTheme({
     type: 'dark'
   },
   typography: {
-    fontFamily: '"Pragati Narrow", "Arial", sans-serif',
+    fontFamily: '"Lato", "Arial", sans-serif',
     fontSize: 14
   }
 });

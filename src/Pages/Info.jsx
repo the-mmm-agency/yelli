@@ -18,18 +18,25 @@ export default mount({
 });
 
 const useStyles = makeStyles(theme => ({
+  button: {
+    width: 160
+  },
   description: {
     margin: theme.spacing.unit * 2
   },
   icon: {
     filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
-    height: '100%'
+    height: 100,
+    margin: theme.spacing(1),
+    width: 100
+  },
+  item: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 108
   },
   margin: {
-    marginRight: theme.spacing.unit * 3
-  },
-  root: {
-    padding: theme.spacing.unit * 4
+    marginRight: theme.spacing(4)
   }
 }));
 
@@ -61,7 +68,7 @@ const Info = ({ id }) => {
   const { name, url, icons, category, description } = data.app;
   return (
     <Fade appear in>
-      <Grid className={classes.root} container>
+      <Grid container>
         <Grid className={classes.margin} item md={1} sm={2} xs={3}>
           <img
             alt={name}
@@ -70,12 +77,17 @@ const Info = ({ id }) => {
             srcSet={setIcons(icons)}
           />
         </Grid>
-        <Grid item md={10} sm={8} xs={5}>
+        <Grid className={classes.item} item md={10} sm={8} xs={5}>
           <Typography variant="h6">{name}</Typography>
           <Typography color="textSecondary" gutterBottom>
             {category.name}
           </Typography>
-          <Button href={url} variant="outlined">
+          <Button
+            className={classes.button}
+            color="primary"
+            href={url}
+            variant="outlined"
+          >
             Launch App
           </Button>
         </Grid>
