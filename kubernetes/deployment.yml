@@ -20,22 +20,22 @@ spec:
     spec:
       containers:
       - name: yelli
-        image: us.gcr.io/yelli-232214/yelli:latest
+        image: us.gcr.io/yelli-232214/yelli:2fbb884
         imagePullPolicy: Always
         ports:
         - containerPort: 443
         - containerPort: 80
         volumeMounts:
           - mountPath: /etc/nginx
-            name: configmap-volume
-          - mountPath: /etc/nginx/ssl
-            name: secret-volume
+            name: nginx
+          - mountPath: /certs
+            name: ssl
       restartPolicy: Always
       volumes:
-      - name: configmap-volume
+      - name: nginx
         configMap:
           name: yelli-configmap
-      - name: secret-volume
+      - name: ssl
         secret:
           secretName: nginx-certs-keys
           
