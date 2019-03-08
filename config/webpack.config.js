@@ -168,20 +168,25 @@ module.exports = function(webpackEnv) {
         })
       ],
       splitChunks: {
-        vendor: {
-          name: 'vendor',
-          chunks: 'all',
-          test: /node_modules/,
-          priority: 20
+        chunks: 'all',
+        maxInitialRequests: 'infinity',
+        minSize: 0,
+        cacheGroups: {
+          vendor: {
+            name: 'vendor',
+            chunks: 'all',
+            test: /node_modules/,
+            priority: 20
+          }
+        },
+        common: {
+          name: 'common',
+          minChunks: 2,
+          chunks: 'async',
+          priority: 10,
+          reuseExistingChunk: true,
+          enforce: true
         }
-      },
-      common: {
-        name: 'common',
-        minChunks: 2,
-        chunks: 'async',
-        priority: 10,
-        reuseExistingChunk: true,
-        enforce: true
       },
       runtimeChunk: true
     },
