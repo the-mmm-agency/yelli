@@ -30,27 +30,24 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CardButton = ({
-  children,
-  className: classNameProp,
-  CardProps,
-  ButtonProps
-}) => {
-  const classes = useStyles();
-  return (
-    <ButtonBase
-      classes={{ root: classNames(classes.root, classNameProp) }}
-      {...ButtonProps}
-    >
-      <Card
-        classes={{ root: classes.card, ...CardProps.classes }}
-        {...CardProps}
+const CardButton = React.memo(
+  ({ children, className: classNameProp, CardProps, ButtonProps }) => {
+    const classes = useStyles();
+    return (
+      <ButtonBase
+        classes={{ root: classNames(classes.root, classNameProp) }}
+        {...ButtonProps}
       >
-        {children}
-      </Card>
-    </ButtonBase>
-  );
-};
+        <Card
+          classes={{ root: classes.card, ...CardProps.classes }}
+          {...CardProps}
+        >
+          {children}
+        </Card>
+      </ButtonBase>
+    );
+  }
+);
 
 CardButton.defaultProps = {
   ButtonProps: {},

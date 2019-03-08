@@ -12,7 +12,7 @@ const useStyles = makeStyles({
   }
 });
 
-const CenterProgress = () => {
+const CenterProgress = React.memo(() => {
   const classes = useStyles();
   return (
     <Grid alignContent="center" className={classes.root} container>
@@ -21,6 +21,6 @@ const CenterProgress = () => {
       </Grid>
     </Grid>
   );
-};
+});
 
 export default CenterProgress;

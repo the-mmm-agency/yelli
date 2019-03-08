@@ -14,7 +14,7 @@ const GET_APPS = gql`
   }
 `;
 
-const Home = () => {
+const Home = React.memo(() => {
   const { data, error, loading } = useQuery(GET_APPS);
   if (loading) {
     return <CenterProgress />;
@@ -33,6 +33,6 @@ const Home = () => {
       </Grid>
     </Fade>
   );
-};
+});
 
 export default Home;

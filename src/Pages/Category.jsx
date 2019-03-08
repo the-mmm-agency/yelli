@@ -24,7 +24,7 @@ const GET_APPS = gql`
   }
 `;
 
-const Category = ({ name }) => {
+const Category = React.memo(({ name }) => {
   const { data, error, loading } = useQuery(GET_APPS, {
     variables: { name }
   });
@@ -44,7 +44,7 @@ const Category = ({ name }) => {
       </Grid>
     </Fade>
   );
-};
+});
 
 Category.propTypes = {
   name: PropTypes.string.isRequired

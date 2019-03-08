@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Auth = () => {
+const Auth = React.memo(() => {
   const classes = useStyles();
   const [isOpen] = useGlobalState('auth');
   const [page, setPage] = useState('login');
@@ -47,6 +47,6 @@ const Auth = () => {
       </Paper>
     </Modal>
   );
-};
+});
 
 export default Auth;

@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar
 }));
 
-const SideDrawer = () => {
+const SideDrawer = React.memo(() => {
   const classes = useStyles();
   return (
     <Hidden smDown>
@@ -65,6 +65,6 @@ const SideDrawer = () => {
       </Drawer>
     </Hidden>
   );
-};
+});
 
 export default SideDrawer;

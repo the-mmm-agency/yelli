@@ -26,7 +26,7 @@ const FORGOT = gql`
   }
 `;
 
-const Forgot = () => {
+const Forgot = React.memo(() => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);
@@ -69,6 +69,6 @@ const Forgot = () => {
       </Grid>
     </Grid>
   );
-};
+});
 
 export default Forgot;

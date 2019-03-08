@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Header = () => {
+const Header = React.memo(() => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_NAME);
 
@@ -51,6 +51,6 @@ const Header = () => {
       </Toolbar>
     </AppBar>
   );
-};
+});
 
 export default Header;

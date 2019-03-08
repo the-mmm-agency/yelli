@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const NavLink = ({ children, href, LinkProps, ListItemProps }) => {
+const NavLink = React.memo(({ children, href, LinkProps, ListItemProps }) => {
   const classes = useStyles();
   return (
     <Link
@@ -56,7 +56,7 @@ const NavLink = ({ children, href, LinkProps, ListItemProps }) => {
       </ListItem>
     </Link>
   );
-};
+});
 
 NavLink.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),

@@ -31,7 +31,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(4)
   }
 }));
-const SearchList = ({ searchString }) => {
+
+const SearchList = React.memo(({ searchString }) => {
   const classes = useStyles();
   const { data, loading } = useQuery(SEARCH_APPS, {
     variables: {
@@ -59,7 +60,7 @@ const SearchList = ({ searchString }) => {
       ))}
     </List>
   );
-};
+});
 
 SearchList.propTypes = {
   searchString: PropTypes.string

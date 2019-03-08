@@ -14,14 +14,14 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const StyledLink = ({ children, ...props }) => {
+const StyledLink = React.memo(({ children, ...props }) => {
   const classes = useStyles();
   return (
     <Link activeClassName={classes.active} className={classes.root} {...props}>
       {children}
     </Link>
   );
-};
+});
 
 StyledLink.propTypes = {
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node])

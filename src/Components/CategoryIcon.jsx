@@ -22,10 +22,10 @@ const Icons = {
   Travel: MapOutlined
 };
 
-const CategoryIcon = ({ name }) => {
+const CategoryIcon = React.memo(({ name }) => {
   const Icon = Icons[name];
   return <Icon />;
-};
+});
 
 CategoryIcon.propTypes = {
   name: PropTypes.string.isRequired

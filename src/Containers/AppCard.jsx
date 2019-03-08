@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AppCard = ({ id }) => {
+const AppCard = React.memo(({ id }) => {
   const classes = useStyles();
   const { data, error, loading } = useQuery(GET_APP, {
     variables: { id }
@@ -85,7 +85,7 @@ const AppCard = ({ id }) => {
       </StyledLink>
     </Grid>
   );
-};
+});
 
 AppCard.propTypes = {
   id: PropTypes.string.isRequired
