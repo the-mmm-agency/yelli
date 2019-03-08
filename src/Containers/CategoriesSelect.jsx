@@ -9,18 +9,9 @@ import { makeStyles } from '@material-ui/styles';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
-import gql from 'graphql-tag';
 
 import CategoryIcon from 'Components/CategoryIcon';
-
-const GET_CATEGORIES = gql`
-  query categories {
-    categories {
-      name
-      id
-    }
-  }
-`;
+import GET_CATEGORIES from 'Graphql/GetCategories.gql';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -42,7 +33,6 @@ const CategoriesSelect = ({ setValue, value }) => {
   if (loading) {
     return (
       <TextField
-        className={classes.margin}
         fullWidth
         InputProps={{
           endAdornment: <CircularProgress />

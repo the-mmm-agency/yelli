@@ -22,7 +22,6 @@ const Home = React.memo(() => {
   if (error) {
     return `Error! ${error.message}`;
   }
-  console.log(data);
 
   return (
     <Fade appear in>

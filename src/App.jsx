@@ -1,4 +1,4 @@
-import { CssBaseline } from '@material-ui/core';
+import { CssBaseline, Hidden } from '@material-ui/core';
 import { Router, View } from 'react-navi';
 import { hot } from 'react-hot-loader/root';
 import { makeStyles } from '@material-ui/styles';
@@ -8,6 +8,7 @@ import Auth from 'Containers/Auth';
 import CenterProgress from 'Components/CenterProgress';
 import CreateApp from 'Containers/CreateApp';
 import Header from 'Containers/Header';
+import Navigation from 'Containers/Navigation';
 import SideDrawer from 'Containers/SideDrawer';
 import routes from 'Routes';
 
@@ -30,7 +31,9 @@ const App = () => {
       <Router routes={routes}>
         <Header />
         <CreateApp />
-        <SideDrawer />
+        <Hidden smDown>
+          <SideDrawer />
+        </Hidden>
         <Auth />
         <main className={classes.content}>
           <div className={classes.toolbar} />
@@ -38,6 +41,9 @@ const App = () => {
             <View />
           </Suspense>
         </main>
+        <Hidden smUp>
+          <Navigation />
+        </Hidden>
       </Router>
     </div>
   );

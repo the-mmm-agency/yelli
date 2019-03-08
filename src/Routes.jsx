@@ -9,6 +9,7 @@ const routes = mount({
     view: <Home />
   }),
   '/app': lazy(() => import('Pages/Info')),
+  '/categories': lazy(() => import('Pages/Categories')),
   '/category': lazy(() => import('Pages/Category')),
   '/search': lazy(() => import('Pages/Search'))
 });
