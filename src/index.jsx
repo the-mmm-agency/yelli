@@ -1,4 +1,5 @@
 import './bootstrap';
+import 'typeface-lato';
 import { ApolloProvider } from 'react-apollo-hooks';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import ApolloClient from 'apollo-boost';
