@@ -58,7 +58,7 @@ const GET_APP = gql`
   }
 `;
 
-const Info = ({ id }) => {
+const Info = React.memo(({ id }) => {
   const classes = useStyles();
   const { data, error, loading } = useQuery(GET_APP, {
     variables: { id }
@@ -108,7 +108,7 @@ const Info = ({ id }) => {
       </Grid>
     </Fade>
   );
-};
+});
 
 Info.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
