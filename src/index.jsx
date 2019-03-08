@@ -18,7 +18,7 @@ const client = new ApolloClient({
       }
     });
   },
-  uri: 'https://35.202.83.14'
+  uri: 'https://api.yelli.com'
 });
 
 ReactDOM.render(
