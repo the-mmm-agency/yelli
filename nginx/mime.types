@@ -1,0 +1,29 @@
+types {
+  application/atom+xml                  atom;
+  application/json                      json map topojson;
+  application/ld+json                   jsonld;
+  application/rss+xml                   rss;
+  application/geo+json                  geojson;
+  application/xml                       xml;
+  application/rdf+xml                   rdf;
+  text/javascript                       js mjs;
+  application/manifest+json             webmanifest;
+  application/x-web-app-manifest+json   webapp;
+  text/cache-manifest                   appcache;
+  image/gif                             gif;
+  image/jpeg                            jpeg jpg;
+  image/png                             png;
+  image/svg+xml                         svg svgz;
+  image/vnd.wap.wbmp                    wbmp;
+  image/webp                            webp;
+  image/x-icon                          cur ico;
+  font/woff                             woff;
+  font/woff2                            woff2;
+  application/vnd.ms-fontobject         eot;
+  font/ttf                              ttf;
+  font/collection                       ttc;
+  font/otf                              otf;
+  text/css                              css;
+  text/html                             htm html shtml;
+  text/plain                            txt;
+}
