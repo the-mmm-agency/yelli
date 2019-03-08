@@ -1,36 +1,56 @@
-import { Fade, Grid } from '@material-ui/core';
-import { useQuery } from 'react-apollo-hooks';
+import { Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import React from 'react';
-import gql from 'graphql-tag';
 
-import AppCard from 'Containers/AppCard';
-import CenterProgress from 'Components/CenterProgress';
+import FeaturedApps from 'Containers/FeaturedApps';
+import NewApps from 'Containers/NewApps';
+import TopApps from 'Containers/TopApps';
 
-const GET_APPS = gql`
-  query apps {
-    apps {
-      id
-    }
+const useStyles = makeStyles(theme => ({
+  header: {
+    marginLeft: theme.spacing(3)
+  },
+  list: {
+    '-webkit-scroll-snap-type': 'mandatory',
+    '-webkit-overflow-scrolling': 'touch',
+    '-webkit-scroll-snap-points-x': 'repeat(100%)',
+    'scroll-snap-points-x': 'repeat(100%)',
+    scrollSnapType: 'x mandatory',
+    listStyle: 'none',
+    overflowX: 'scroll',
+    overflowY: 'hidden',
+    whiteSpace: 'nowrap',
+    padding: '0 15px 20px 35px',
+    margin: '0px -20px'
+  },
+  root: {
+    overflowX: 'hidden'
   }
-`;
+}));
 
 const Home = React.memo(() => {
-  const { data, error, loading } = useQuery(GET_APPS);
-  if (loading) {
-    return <CenterProgress />;
-  }
-  if (error) {
-    return `Error! ${error.message}`;
-  }
-
+  const classes = useStyles();
   return (
-    <Fade appear in>
-      <Grid alignContent="space-between" container spacing={2}>
-        {data.apps.map(app => (
-          <AppCard key={app.id} id={app.id} />
-        ))}
+    <Grid className={classes.root} container>
+      <Typography className={classes.header} variant="h6">
+        Featured Apps
+      </Typography>
+      <Grid className={classes.list} container spacing={2} wrap="nowrap">
+        <FeaturedApps />
       </Grid>
-    </Fade>
+      <Typography className={classes.header} variant="h6">
+        Top Apps
+      </Typography>
+      <Grid className={classes.list} container spacing={2} wrap="nowrap">
+        <TopApps />
+      </Grid>
+      <Typography className={classes.header} variant="h6">
+        New Apps
+      </Typography>
+      <Grid className={classes.list} container spacing={2} wrap="nowrap">
+        <NewApps />
+      </Grid>
+    </Grid>
   );
 });
 

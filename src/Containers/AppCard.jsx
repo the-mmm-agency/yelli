@@ -39,7 +39,10 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     margin: theme.spacing(2),
     objectFit: 'contain',
-    width: `calc(100% - ${theme.spacing(4)}px)`
+    width: 116
+  },
+  name: {
+    maxWidth: 116
   },
   spacer: {
     height: theme.spacing(1)
@@ -73,7 +76,12 @@ const AppCard = React.memo(({ id }) => {
             srcSet={setIcons(icons)}
           />
           <CardContent>
-            <Typography color="inherit" gutterBottom noWrap>
+            <Typography
+              className={classes.name}
+              color="inherit"
+              gutterBottom
+              noWrap
+            >
               {name}
             </Typography>
             <Typography color="textSecondary" noWrap>

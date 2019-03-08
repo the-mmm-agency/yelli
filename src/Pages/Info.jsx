@@ -1,4 +1,4 @@
-import { Fade, Grid, Typography, Button } from '@material-ui/core';
+import { Divider, Fade, Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
   description: {
     fontSize: theme.typography.body1.fontSize
   },
+  divider: {
+    width: '100%'
+  },
   icon: {
     borderRadius: 15,
     filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
@@ -37,6 +40,22 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(15),
     margin: theme.spacing(1),
     marginTop: 10
+  },
+  screenshot: {
+    borderRadius: 15,
+    width: '100%'
+  },
+  screenshots: {
+    '-webkit-overflow-scrolling': 'touch',
+    [theme.breakpoints.up('md')]: {
+      height: 'auto',
+      margin: theme.spacing(2)
+    },
+    height: '355px',
+    margin: theme.spacing(2),
+    overflowX: 'scroll',
+    overflowY: 'hidden',
+    whiteSpace: 'nowrap'
   }
 }));
 
@@ -49,6 +68,7 @@ const GET_APP = gql`
       }
       icons
       description
+      screenshots
       url
     }
   }
@@ -65,7 +85,7 @@ const Info = React.memo(({ id }) => {
   if (error) {
     return `Error! ${error.message}`;
   }
-  const { name, url, icons, category, description } = data.app;
+  const { name, url, icons, category, description, screenshots } = data.app;
   return (
     <Fade appear in>
       <Grid container spacing={4}>
@@ -99,6 +119,18 @@ const Info = React.memo(({ id }) => {
           <Typography className={classes.description} paragraph>
             {description}
           </Typography>
+        </Grid>
+        <Divider className={classes.divider} />
+        <Grid className={classes.screenshots} container item spacing={2}>
+          {screenshots.map(screenshot => (
+            <Grid key={screenshot.id} item xs={3}>
+              <img
+                alt={name}
+                className={classes.screenshot}
+                src={screenshot.mediaLink}
+              />
+            </Grid>
+          ))}
         </Grid>
       </Grid>
     </Fade>

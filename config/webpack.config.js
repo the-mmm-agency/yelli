@@ -223,7 +223,7 @@ module.exports = function(webpackEnv) {
           include: paths.appSrc
         },
         {
-          test: /\.svg$/i,
+          test: /\.svg$/,
           use: '@svgr/webpack?-prettier,-svgo![path]'
         },
         {

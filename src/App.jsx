@@ -15,6 +15,7 @@ import routes from 'Routes';
 const useStyles = makeStyles(theme => ({
   content: {
     flexGrow: 1,
+    overflowX: 'hidden',
     padding: theme.spacing(3)
   },
   root: {

@@ -1,4 +1,5 @@
+/* eslint-disable eqeqeq */
 export const setIcons = icons =>
-  icons
-    .reverse()
-    .map(icon => `${icon.src.mediaLink} ${icon.sizes.replace(/x\d+/g, 'w')}`);
+  icons.map(
+    icon => `${icon.src.mediaLink} ${icon.sizes.replace(/x\d+/g, 'w')}`
+  );
