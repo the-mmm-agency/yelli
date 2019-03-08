@@ -124,7 +124,7 @@ module.exports = {
     'react/no-unescaped-entities': 'off',
     'react/no-unused-prop-types': 'warn',
     'react/no-unused-state': 'warn',
-    'react/prefer-stateless-function': 'off',
+    'react/prefer-stateless-function': 'warn',
     'react/prop-types': 'error',
     'react/require-default-props': 'off',
     'react/require-render-return': 'error',
@@ -152,7 +152,7 @@ module.exports = {
         }
       }
     ],
-    'react/sort-prop-types': 'warn',
+    'react/sort-prop-types': 'off',
     'react/style-prop-object': 'error',
 
     // https://github.com/marudor/eslint-plugin-sort-imports-es6-autofix
