@@ -19,24 +19,20 @@ export default mount({
 
 const useStyles = makeStyles(theme => ({
   button: {
+    marginTop: 'auto',
     width: 160
-  },
-  description: {
-    margin: theme.spacing.unit * 2
   },
   icon: {
     filter: 'drop-shadow(0px 2px 4px rgba(0,0,0,0.1))',
-    height: 100,
-    margin: theme.spacing(1),
-    width: 100
+    height: theme.spacing(16),
+    margin: theme.spacing(2),
+    width: theme.spacing(16)
   },
   item: {
     display: 'flex',
     flexDirection: 'column',
-    height: 108
-  },
-  margin: {
-    marginRight: theme.spacing(4)
+    height: theme.spacing(17),
+    margin: theme.spacing(1)
   }
 }));
 
@@ -68,30 +64,32 @@ const Info = ({ id }) => {
   const { name, url, icons, category, description } = data.app;
   return (
     <Fade appear in>
-      <Grid container>
-        <Grid className={classes.margin} item md={1} sm={2} xs={3}>
-          <img
-            alt={name}
-            className={classes.icon}
-            src={icons[0].src.mediaLink}
-            srcSet={setIcons(icons)}
-          />
+      <Grid container spacing={4}>
+        <Grid container>
+          <Grid item xs="auto">
+            <img
+              alt={name}
+              className={classes.icon}
+              src={icons[0].src.mediaLink}
+              srcSet={setIcons(icons)}
+            />
+          </Grid>
+          <Grid className={classes.item} item xs="auto">
+            <Typography variant="h6">{name}</Typography>
+            <Typography color="textSecondary" gutterBottom>
+              {category.name}
+            </Typography>
+            <Button
+              className={classes.button}
+              color="primary"
+              href={url}
+              variant="outlined"
+            >
+              Launch App
+            </Button>
+          </Grid>
         </Grid>
-        <Grid className={classes.item} item md={10} sm={8} xs={5}>
-          <Typography variant="h6">{name}</Typography>
-          <Typography color="textSecondary" gutterBottom>
-            {category.name}
-          </Typography>
-          <Button
-            className={classes.button}
-            color="primary"
-            href={url}
-            variant="outlined"
-          >
-            Launch App
-          </Button>
-        </Grid>
-        <Grid className={classes.description} item>
+        <Grid item>
           <Typography paragraph>{description}</Typography>
         </Grid>
       </Grid>
