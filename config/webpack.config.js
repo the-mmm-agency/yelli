@@ -329,15 +329,6 @@ module.exports = function(webpackEnv) {
             : undefined
         )
       ),
-      new PreloadPlugin({
-        rel: 'preload',
-        as(entry) {
-          if (/\.css$/.test(entry)) return 'style';
-          if (/\.woff$/.test(entry)) return 'font';
-          if (/\.png$/.test(entry)) return 'image';
-          return 'script';
-        }
-      }),
       isEnvProduction &&
         shouldInlineRuntimeChunk &&
         new InlineChunkHtmlPlugin(HtmlWebpackPlugin, [/runtime~.+[.]js/]),
@@ -353,6 +344,15 @@ module.exports = function(webpackEnv) {
           filename: 'static/css/[name].[contenthash:8].css',
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
         }),
+      new PreloadPlugin({
+        rel: 'preload',
+        as(entry) {
+          if (/\.css$/.test(entry)) return 'style';
+          if (/\.woff$/.test(entry)) return 'font';
+          if (/\.png$/.test(entry)) return 'image';
+          return 'script';
+        }
+      }),
       new ManifestPlugin({
         fileName: 'asset-manifest.json',
         publicPath
