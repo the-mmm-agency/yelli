@@ -2,7 +2,9 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
+    <title>Yelli</title>
     <link rel="manifest" href="%PUBLIC_URL%/yelli.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <meta property="og:title" content="Yelli" />
     <meta property="og:description" content="A directory for progressive web apps" />
     <meta property="og:image" content="%PUBLIC_URL%/icons/android-chrome-512x512" />
@@ -23,7 +25,6 @@
     <meta name="msapplication-TileColor" content="#ea533f" />
     <meta name="msapplication-TileImage" content="%PUBLIC_URL%/icons/mstile-144x144.png" />
     <meta name="msapplication-config" content="%PUBLIC_URL%/icons/browserconfig.xml" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
     <link rel="apple-touch-icon" sizes="180x180" href="%PUBLIC_URL%/icons/apple-touch-icon.png" />
     <link rel="mask-icon" href="%PUBLIC_URL%/icons/safari-pinned-tab.svg" color="#ea533f" />
     <link rel="shortcut icon" href="%PUBLIC_URL%/icons/favicon.ico" />
@@ -33,10 +34,9 @@
     <link rel="preconnect" href="https://www.googleapis.com" />
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
     <link rel="preload" as="style" href="https://fonts.googleapis.com/css?family=Roboto%20Condensed:400,500,700">
-    <title>Yelli</title>
   </head>
   <body
-    style="text-rendering: optimizeLegibility; -webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: greyscale; font-smoothing: antialiased"
+    style="text-rendering: optimizeLegibility; -webkit-font-smoothing: subpixel-antialiased; -moz-osx-font-smoothing: greyscale; font-smoothing: antialiased; min-width: 100vw;"
   >
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
