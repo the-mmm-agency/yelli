@@ -60,7 +60,11 @@ CardButton.defaultProps = {
 CardButton.propTypes = {
   ButtonProps: PropTypes.object,
   CardProps: PropTypes.object,
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.node,
+    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.node]))
+  ]),
   className: PropTypes.string
 };
 
