@@ -61,6 +61,9 @@ data:
       ssl_stapling_verify on;
       resolver 1.1.1.1 1.0.0.1 8.8.8.8 8.8.4.4 208.67.222.222 208.67.220.220 valid=60s;
       resolver_timeout 2s;
+      
+      types_hash_max_size 2048;
+
       server {
         server_name yelli.com;
         listen 80 default_server;
