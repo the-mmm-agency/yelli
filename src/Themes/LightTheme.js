@@ -21,6 +21,9 @@ const LightTheme = createMuiTheme({
     },
     tonalOffset: 0.2
   },
+  shape: {
+    borderRadius: 8
+  },
   typography: {
     fontFamily: '"Lato", "Arial", sans-serif',
     fontSize: 16
