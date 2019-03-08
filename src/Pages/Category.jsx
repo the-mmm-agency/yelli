@@ -37,7 +37,12 @@ const Category = React.memo(({ name }) => {
 
   return (
     <Fade appear in>
-      <Grid alignContent="space-between" container spacing={4}>
+      <Grid
+        alignContent="space-between"
+        container
+        style={{ padding: 16 }}
+        spacing={4}
+      >
         {data.apps.map(app => (
           <AppCard key={app.id} id={app.id} />
         ))}
