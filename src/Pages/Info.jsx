@@ -78,6 +78,7 @@ const Info = React.memo(({ id }) => {
             <img
               alt={name}
               className={classes.icon}
+              sizes="112px"
               src={icons[0].src.mediaLink}
               srcSet={setIcons(icons)}
             />

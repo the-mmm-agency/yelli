@@ -72,7 +72,12 @@ const AppCard = React.memo(({ id }) => {
     <Grid className={classes.root} item lg={2} md={3} xl={1} xs={4}>
       <StyledLink href={`/app/${id}`}>
         <CardButton className={classes.button}>
-          <img alt={name} className={classes.icon} srcSet={setIcons(icons)} />
+          <img
+            alt={name}
+            className={classes.icon}
+            sizes="20vw"
+            srcSet={setIcons(icons)}
+          />
           <CardContent>
             <Typography color="inherit" gutterBottom noWrap>
               {name}
