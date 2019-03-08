@@ -169,8 +169,6 @@ module.exports = function(webpackEnv) {
       ],
       splitChunks: {
         chunks: 'all',
-        maxInitialRequests: 'infinity',
-        minSize: 0,
         cacheGroups: {
           vendor: {
             name: 'vendor',
