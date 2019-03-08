@@ -41,11 +41,6 @@ const useStyles = makeStyles(theme => ({
     objectFit: 'contain',
     width: `calc(100% - ${theme.spacing(4)})`
   },
-  name: {
-    [theme.breakpoints.down('md')]: {
-      fontSize: theme.typography.body1.fontSize
-    }
-  },
   spacer: {
     height: theme.spacing(1)
   }
@@ -68,7 +63,7 @@ const AppCard = React.memo(({ id }) => {
   const { name, icons, category } = data.app;
 
   return (
-    <Grid className={classes.root} item lg={2} md={3} xl={1} xs={4}>
+    <Grid item lg={2} md={3} xl={1} xs={4}>
       <StyledLink href={`/app/${id}`}>
         <CardButton className={classes.button}>
           <img
