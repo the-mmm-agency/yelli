@@ -41,6 +41,9 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(1),
     marginTop: 10
   },
+  root: {
+    padding: theme.spacing(2)
+  },
   screenshot: {
     borderRadius: 15,
     width: '100%'
@@ -88,7 +91,7 @@ const Info = React.memo(({ id }) => {
   const { name, url, icons, category, description, screenshots } = data.app;
   return (
     <Fade appear in>
-      <Grid container spacing={4}>
+      <Grid className={classes.root} container spacing={4}>
         <Grid container>
           <Grid item xs="auto">
             <img

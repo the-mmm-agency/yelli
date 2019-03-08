@@ -18,7 +18,7 @@ const GET_APP = gql`
   }
 `;
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   banner: {
     height: 200
   },
@@ -27,8 +27,13 @@ const useStyles = makeStyles({
   },
   card: {
     width: '100%'
+  },
+  root: {
+    [theme.breakpoints.down('md')]: {
+      minWidth: '80%'
+    }
   }
-});
+}));
 
 const FeaturedApp = React.memo(({ id }) => {
   const classes = useStyles();
@@ -48,7 +53,7 @@ const FeaturedApp = React.memo(({ id }) => {
     banner: { mediaLink }
   } = data.app;
   return (
-    <Grid item md={5} sm={12} xs={12}>
+    <Grid className={classes.root} item md={5} sm={12} xs={12}>
       <StyledLink href={`/app/${id}`}>
         <CardButton
           CardProps={{
