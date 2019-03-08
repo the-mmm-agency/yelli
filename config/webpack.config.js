@@ -345,7 +345,7 @@ module.exports = function(webpackEnv) {
           chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
         }),
       new PreloadPlugin({
-        rel: 'preload',
+        rel: 'prefetch',
         as(entry) {
           if (/\.css$/.test(entry)) return 'style';
           if (/\.woff$/.test(entry)) return 'font';
