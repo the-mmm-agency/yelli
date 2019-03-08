@@ -22,8 +22,7 @@ const useStyles = makeStyles(theme => ({
     marginTop: 'auto'
   },
   description: {
-    fontSize: theme.typography.body1.fontSize,
-    fontWeight: 500
+    fontSize: theme.typography.body1.fontSize
   },
   icon: {
     borderRadius: 15,
