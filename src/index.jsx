@@ -18,7 +18,7 @@ const client = new ApolloClient({
       }
     });
   },
-  uri: 'http://35.202.214.231:4000/'
+  uri: 'https://35.202.83.14'
 });
 
 ReactDOM.render(
