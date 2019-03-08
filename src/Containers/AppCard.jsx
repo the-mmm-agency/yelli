@@ -27,22 +27,37 @@ const useStyles = makeStyles(theme => ({
     width: '100%'
   },
   card: {
-    margin: 'auto'
+    padding: `${theme.spacing(1)}px ${theme.spacing(4)}px`
   },
   category: {
     [theme.breakpoints.down('md')]: {
       fontSize: theme.typography.body2.fontSize
     }
   },
-  icon: {
-    borderRadius: 15,
-    display: 'flex',
-    margin: theme.spacing(2),
-    objectFit: 'contain',
+  content: {
+    [theme.breakpoints.up('lg')]: {
+      width: 150
+    },
+    '&:last-child': {
+      padding: theme.spacing(1)
+    },
+    padding: 'none',
     width: 116
   },
-  name: {
-    maxWidth: 116
+  icon: {
+    [theme.breakpoints.down('sm')]: {
+      width: 80
+    },
+    [theme.breakpoints.up('lg')]: {
+      padding: theme.spacing(2),
+      width: 150
+    },
+    borderRadius: 15,
+    display: 'flex',
+    margin: 'auto',
+    objectFit: 'contain',
+    padding: theme.spacing(1),
+    width: 116
   },
   spacer: {
     height: theme.spacing(1)
@@ -66,22 +81,20 @@ const AppCard = React.memo(({ id }) => {
   const { name, icons, category } = data.app;
 
   return (
-    <Grid item lg={2} md={3} xl={1} xs={4}>
+    <Grid item xs="auto">
       <StyledLink href={`/app/${id}`}>
-        <CardButton className={classes.button}>
+        <CardButton
+          CardProps={{ className: classes.card }}
+          className={classes.button}
+        >
           <img
             alt={name}
             className={classes.icon}
             sizes="20vw"
             srcSet={setIcons(icons)}
           />
-          <CardContent>
-            <Typography
-              className={classes.name}
-              color="inherit"
-              gutterBottom
-              noWrap
-            >
+          <CardContent className={classes.content}>
+            <Typography color="inherit" gutterBottom noWrap>
               {name}
             </Typography>
             <Typography color="textSecondary" noWrap>
