@@ -349,6 +349,11 @@ module.exports = function(webpackEnv) {
       isEnvDevelopment && new CaseSensitivePathsPlugin(),
       isEnvDevelopment &&
         new WatchMissingNodeModulesPlugin(paths.appNodeModules),
+      isEnvProduction &&
+        new MiniCssExtractPlugin({
+          filename: 'static/css/[name].[contenthash:8].css',
+          chunkFilename: 'static/css/[name].[contenthash:8].chunk.css'
+        }),
       new ManifestPlugin({
         fileName: 'asset-manifest.json',
         publicPath
@@ -395,7 +400,7 @@ module.exports = function(webpackEnv) {
                 },
                 networkTimeoutSeconds: 10
               },
-              urlPattern: new RegExp('http://35.202.214.231:4000/')
+              urlPattern: new RegExp('https://api.yelli.com')
             }
           ],
           skipWaiting: true
