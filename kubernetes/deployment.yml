@@ -26,7 +26,7 @@ spec:
         - containerPort: 443
         - containerPort: 80
         volumeMounts:
-          - mountPath: /certs
+          - mountPath: /etc/nginx/ssl
             name: ssl
       restartPolicy: Always
       volumes:
