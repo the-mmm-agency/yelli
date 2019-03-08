@@ -38,9 +38,6 @@ const useStyles = makeStyles(theme => ({
     height: theme.spacing(15),
     margin: theme.spacing(1),
     marginTop: 10
-  },
-  name: {
-    fontWeight: 700
   }
 }));
 
@@ -84,9 +81,7 @@ const Info = React.memo(({ id }) => {
             />
           </Grid>
           <Grid className={classes.item} item xs="auto">
-            <Typography className={classes.name} variant="h6">
-              {name}
-            </Typography>
+            <Typography variant="h6">{name}</Typography>
             <Typography color="textSecondary" gutterBottom>
               {category.name}
             </Typography>

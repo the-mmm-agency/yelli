@@ -8,8 +8,7 @@ import React from 'react';
 const useStyles = makeStyles(theme => ({
   active: {
     backgroundColor: fade(theme.palette.primary.main, 0.24),
-    color: `${theme.palette.primary.dark} !important`,
-    fontWeight: 700
+    color: `${theme.palette.primary.dark} !important`
   },
   listItem: {
     '&:focus': {
