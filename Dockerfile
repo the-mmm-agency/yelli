@@ -9,7 +9,7 @@ RUN yarn build
 
 # Stage 2 - the production environment
 FROM nginx:alpine
-COPY --chown=www-data --from=react-build /app/build /usr/share/nginx/html
+COPY --from=react-build /app/build /usr/share/nginx/html
 COPY ./nginx /etc/nginx
 EXPOSE 80
 EXPOSE 443
