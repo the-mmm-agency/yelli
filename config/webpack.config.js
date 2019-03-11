@@ -268,9 +268,7 @@ module.exports = function(webpackEnv) {
                   maxEntries: 50
                 }
               },
-              urlPattern: new RegExp(
-                'https://www.googleapis.com/download/storage'
-              )
+              urlPattern: new RegExp('https://storage.googleapis.com')
             },
             {
               handler: 'networkFirst',
