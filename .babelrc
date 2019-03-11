@@ -20,7 +20,6 @@
       }
     ],
     "react-hot-loader/babel",
-    "react-loadable/babel",
     "graphql-tag",
     "module:fast-async",
     "@babel/plugin-syntax-dynamic-import",
