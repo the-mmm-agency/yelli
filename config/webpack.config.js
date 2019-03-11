@@ -283,7 +283,7 @@ module.exports = function(webpackEnv) {
                 },
                 networkTimeoutSeconds: 10
               },
-              urlPattern: new RegExp('https://api.yelli.com/*')
+              urlPattern: new RegExp('https://api.yelli.com/.*')
             }
           ],
           skipWaiting: true
