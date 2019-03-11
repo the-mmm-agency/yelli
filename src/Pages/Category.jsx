@@ -34,10 +34,9 @@ const useStyles = makeStyles(theme => ({
 
 const Category = React.memo(({ name }) => {
   const classes = useStyles();
-  const { data } = useQuery(GET_APPS, {
+  const { data, loading } = useQuery(GET_APPS, {
     variables: { name }
   });
-  const loading = true;
   if (loading) {
     return (
       <Grid
