@@ -1,6 +1,5 @@
 import { CssBaseline, Hidden } from '@material-ui/core';
 import { Router, View } from 'react-navi';
-import { hot } from 'react-hot-loader/root';
 import { makeStyles } from '@material-ui/styles';
 import React, { Suspense } from 'react';
 
@@ -50,4 +49,4 @@ const App = () => {
   );
 };
 
-export default hot(App);
+export default App;

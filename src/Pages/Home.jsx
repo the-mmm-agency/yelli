@@ -14,6 +14,7 @@ const useStyles = makeStyles(theme => ({
     '-webkit-overflow-scrolling': 'touch',
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
     '-webkit-scroll-snap-type': 'mandatory',
+    display: 'flex',
     listStyle: 'none',
     margin: '0px -20px',
     overflowX: 'scroll',
@@ -21,7 +22,8 @@ const useStyles = makeStyles(theme => ({
     padding: '0 15px 20px 35px',
     'scroll-snap-points-x': 'repeat(100%)',
     scrollSnapType: 'x mandatory',
-    whiteSpace: 'nowrap'
+    whiteSpace: 'nowrap',
+    width: '100%'
   },
   root: {
     overflowX: 'hidden'
@@ -35,21 +37,21 @@ const Home = React.memo(() => {
       <Typography className={classes.header} variant="h6">
         Featured Apps
       </Typography>
-      <Grid className={classes.list} container spacing={2} wrap="nowrap">
+      <ul className={classes.list}>
         <FeaturedApps />
-      </Grid>
+      </ul>
       <Typography className={classes.header} variant="h6">
         Top Apps
       </Typography>
-      <Grid className={classes.list} container spacing={2} wrap="nowrap">
+      <ul className={classes.list}>
         <TopApps />
-      </Grid>
+      </ul>
       <Typography className={classes.header} variant="h6">
         New Apps
       </Typography>
-      <Grid className={classes.list} container spacing={2} wrap="nowrap">
+      <ul className={classes.list}>
         <NewApps />
-      </Grid>
+      </ul>
     </Grid>
   );
 });

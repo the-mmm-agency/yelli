@@ -1,4 +1,4 @@
-import { Fade, Grid } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
@@ -6,8 +6,8 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
 
+import APP_CARD from 'Graphql/AppCard.gql';
 import AppCard from 'Containers/AppCard';
-import CenterProgress from 'Components/CenterProgress';
 
 export default mount({
   '/:name': route({
@@ -20,9 +20,10 @@ export default mount({
 const GET_APPS = gql`
   query category($name: String!) {
     apps(where: { category: { name: $name } }) {
-      id
+      ...AppCard
     }
   }
+  ${APP_CARD}
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -33,32 +34,50 @@ const useStyles = makeStyles(theme => ({
 
 const Category = React.memo(({ name }) => {
   const classes = useStyles();
-  const { data, error, loading } = useQuery(GET_APPS, {
+  const { data } = useQuery(GET_APPS, {
     variables: { name }
   });
+  const loading = true;
   if (loading) {
-    return <CenterProgress />;
-  }
-  if (error) {
-    return `Error! ${error.message}`;
-  }
-
-  return (
-    <Fade appear in>
+    return (
       <Grid
         alignContent="space-between"
         className={classes.root}
         container
         spacing={4}
       >
-        {data.apps.map(app => (
-          <AppCard key={app.id} id={app.id} />
-        ))}
+        <AppCard loading />
+        <AppCard loading />
+        <AppCard loading />
+        <AppCard loading />
+        <AppCard loading />
+        <AppCard loading />
+        <AppCard loading />
       </Grid>
-    </Fade>
+    );
+  }
+
+  return (
+    <Grid
+      alignContent="space-between"
+      className={classes.root}
+      container
+      spacing={4}
+    >
+      {data.apps.map(app => (
+        <AppCard
+          key={app.id}
+          category={app.category.name}
+          icon={app.icon}
+          id={app.id}
+          name={app.name}
+        />
+      ))}
+    </Grid>
   );
 });
 
 Category.propTypes = {
   name: PropTypes.string.isRequired
 };
+/*  */

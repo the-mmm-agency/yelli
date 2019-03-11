@@ -19,7 +19,6 @@
         "regenerator": true
       }
     ],
-    "react-hot-loader/babel",
     "graphql-tag",
     "module:fast-async",
     "@babel/plugin-syntax-dynamic-import",
