@@ -268,7 +268,7 @@ module.exports = function(webpackEnv) {
                   maxEntries: 50
                 }
               },
-              urlPattern: new RegExp('https://storage.googleapis.com')
+              urlPattern: new RegExp('https://storage.googleapis.com/.*')
             },
             {
               handler: 'networkFirst',
@@ -283,7 +283,7 @@ module.exports = function(webpackEnv) {
                 },
                 networkTimeoutSeconds: 10
               },
-              urlPattern: new RegExp('https://api.yelli.com')
+              urlPattern: new RegExp('https://api.yelli.com/*')
             }
           ],
           skipWaiting: true
