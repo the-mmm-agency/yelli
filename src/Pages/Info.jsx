@@ -132,17 +132,17 @@ const Info = React.memo(({ id }) => {
           <>
             <Grid item xs={3}>
               <div className={classes.screenshot}>
-                <Skeleton height={500} width="100%" />
+                <Skeleton height="35vw" width="100%" />
               </div>
             </Grid>
             <Grid item xs={3}>
               <div className={classes.screenshot}>
-                <Skeleton height={500} width="100%" />
+                <Skeleton height="35vw" width="100%" />
               </div>
             </Grid>
             <Grid item xs={3}>
               <div className={classes.screenshot}>
-                <Skeleton height={500} width="100%" />
+                <Skeleton height="35vw" width="100%" />
               </div>
             </Grid>
           </>
