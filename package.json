@@ -2,9 +2,6 @@
   "name": "yelli",
   "version": "0.1.0",
   "private": true,
-  "installConfig": {
-    "pnp": true
-  },
   "dependencies": {
     "@hot-loader/react-dom": "npm:@hot-loader/react-dom",
     "@material-ui/core": "^4.0.0-alpha.0",
