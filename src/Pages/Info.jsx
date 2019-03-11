@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
 
-import { setIcons } from 'Util/SetIcons';
 import CenterProgress from 'Components/CenterProgress';
 
 export default mount({
@@ -88,19 +87,13 @@ const Info = React.memo(({ id }) => {
   if (error) {
     return `Error! ${error.message}`;
   }
-  const { name, url, icons, category, description, screenshots } = data.app;
+  const { name, url, icon, category, description, screenshots } = data.app;
   return (
     <Fade appear in>
       <Grid className={classes.root} container spacing={4}>
         <Grid container>
           <Grid item xs="auto">
-            <img
-              alt={name}
-              className={classes.icon}
-              sizes="112px"
-              src={icons[0].src.mediaLink}
-              srcSet={setIcons(icons)}
-            />
+            <img alt={name} className={classes.icon} sizes="112px" src={icon} />
           </Grid>
           <Grid className={classes.item} item xs="auto">
             <Typography variant="h6">{name}</Typography>
@@ -126,12 +119,8 @@ const Info = React.memo(({ id }) => {
         <Divider className={classes.divider} />
         <Grid className={classes.screenshots} container item spacing={2}>
           {screenshots.map(screenshot => (
-            <Grid key={screenshot.id} item xs={3}>
-              <img
-                alt={name}
-                className={classes.screenshot}
-                src={screenshot.mediaLink}
-              />
+            <Grid key={screenshot} item xs={3}>
+              <img alt={name} className={classes.screenshot} src={screenshot} />
             </Grid>
           ))}
         </Grid>

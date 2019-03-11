@@ -14,7 +14,6 @@ const NEW_APPS = gql`
 
 const NewApps = () => {
   const { data } = useQuery(NEW_APPS);
-  console.log(data);
   return (
     <>
       {data.apps && data.apps.map(app => <AppCard key={app.id} id={app.id} />)}

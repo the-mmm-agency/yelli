@@ -1,5 +1,6 @@
 import { Fade, Grid, InputAdornment, TextField } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import React, { useState } from 'react';
 
@@ -13,11 +14,18 @@ export default mount({
   })
 });
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(2)
+  }
+}));
+
 const Search = React.memo(() => {
+  const classes = useStyles();
   const [searchString, setSearchString] = useState('');
   return (
     <Fade appear in>
-      <Grid container direction="column">
+      <Grid className={classes.root} container direction="column">
         <TextField
           fullWidth
           InputProps={{

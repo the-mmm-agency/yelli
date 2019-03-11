@@ -11,17 +11,17 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(3)
   },
   list: {
-    '-webkit-scroll-snap-type': 'mandatory',
     '-webkit-overflow-scrolling': 'touch',
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
-    'scroll-snap-points-x': 'repeat(100%)',
-    scrollSnapType: 'x mandatory',
+    '-webkit-scroll-snap-type': 'mandatory',
     listStyle: 'none',
+    margin: '0px -20px',
     overflowX: 'scroll',
     overflowY: 'hidden',
-    whiteSpace: 'nowrap',
     padding: '0 15px 20px 35px',
-    margin: '0px -20px'
+    'scroll-snap-points-x': 'repeat(100%)',
+    scrollSnapType: 'x mandatory',
+    whiteSpace: 'nowrap'
   },
   root: {
     overflowX: 'hidden'

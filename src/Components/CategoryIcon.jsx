@@ -15,17 +15,17 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 const Icons = {
+  Business: DomainOutlined,
+  Entertainment: StarOutlined,
   Food: FastfoodOutlined,
   Games: VideogameAssetOutlined,
   Lifestyle: FavoriteOutlined,
   Music: AudiotrackOutlined,
+  News: Newspaper,
   Shopping: ShoppingBasketOutlined,
   Social: FaceOutlined,
   Tools: BuildOutlined,
-  Travel: MapOutlined,
-  News: Newspaper,
-  Business: DomainOutlined,
-  Entertainment: StarOutlined
+  Travel: MapOutlined
 };
 
 const CategoryIcon = React.memo(({ name }) => {

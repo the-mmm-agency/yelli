@@ -1,4 +1,5 @@
 import { Fade, Grid } from '@material-ui/core';
+import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
@@ -24,7 +25,14 @@ const GET_APPS = gql`
   }
 `;
 
+const useStyles = makeStyles(theme => ({
+  root: {
+    padding: theme.spacing(2)
+  }
+}));
+
 const Category = React.memo(({ name }) => {
+  const classes = useStyles();
   const { data, error, loading } = useQuery(GET_APPS, {
     variables: { name }
   });
@@ -39,8 +47,8 @@ const Category = React.memo(({ name }) => {
     <Fade appear in>
       <Grid
         alignContent="space-between"
+        className={classes.root}
         container
-        style={{ padding: 16 }}
         spacing={4}
       >
         {data.apps.map(app => (

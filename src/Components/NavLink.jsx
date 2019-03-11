@@ -58,10 +58,10 @@ const NavLink = React.memo(({ children, href, LinkProps, ListItemProps }) => {
 });
 
 NavLink.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
-  href: PropTypes.string.isRequired,
   LinkProps: PropTypes.object,
-  ListItemProps: PropTypes.object
+  ListItemProps: PropTypes.object,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
+  href: PropTypes.string.isRequired
 };
 
 export default NavLink;

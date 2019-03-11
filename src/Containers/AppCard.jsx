@@ -5,7 +5,6 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
 
-import { setIcons } from 'Util/SetIcons';
 import CardButton from 'Components/CardButton';
 import StyledLink from 'Components/StyledLink';
 
@@ -16,7 +15,7 @@ const GET_APP = gql`
       category {
         name
       }
-      icons
+      icon
     }
   }
 `;
@@ -78,7 +77,7 @@ const AppCard = React.memo(({ id }) => {
     return `Error! ${error.message}`;
   }
 
-  const { name, icons, category } = data.app;
+  const { name, icon, category } = data.app;
 
   return (
     <Grid item xs="auto">
@@ -87,12 +86,7 @@ const AppCard = React.memo(({ id }) => {
           CardProps={{ className: classes.card }}
           className={classes.button}
         >
-          <img
-            alt={name}
-            className={classes.icon}
-            sizes="20vw"
-            srcSet={setIcons(icons)}
-          />
+          <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>
             <Typography color="inherit" gutterBottom noWrap>
               {name}

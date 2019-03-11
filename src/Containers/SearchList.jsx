@@ -5,16 +5,15 @@ import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
 
-import { setIcons } from 'Util/SetIcons';
 import CenterProgress from 'Components/CenterProgress';
 import StyledLink from 'Components/StyledLink';
 
 const SEARCH_APPS = gql`
   query searchApps($searchString: String) {
-    apps(where: { name_contains: $searchString }) {
+    apps(first: 10, where: { name_contains: $searchString }) {
       id
       name
-      icons
+      icon
       category {
         name
       }
@@ -48,11 +47,7 @@ const SearchList = React.memo(({ searchString }) => {
         <StyledLink key={app.id} href={`/app/${app.id}`}>
           <ListItem button className={classes.nested} divider>
             <ListItemIcon>
-              <img
-                alt={app.name}
-                className={classes.icon}
-                srcSet={setIcons(app.icons)}
-              />
+              <img alt={app.name} className={classes.icon} srcSet={app.icon} />
             </ListItemIcon>
             <ListItemText primary={app.name} secondary={app.category.name} />
           </ListItem>
