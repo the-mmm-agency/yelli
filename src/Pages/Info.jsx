@@ -68,7 +68,7 @@ const GET_APP = gql`
       category {
         name
       }
-      icons
+      icon
       description
       screenshots
       url
