@@ -3,6 +3,7 @@ import {
   CardMedia,
   CardActionArea,
   CardContent,
+  Fade,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -72,21 +73,23 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
   };
 
   return (
-    <Card className={classes.root} component="li">
-      <CardActionArea onClick={handleClick}>
-        <CardMedia className={classes.icon} image={icon}>
-          {loading && <Skeleton circle height="100%" width="100%" />}
-        </CardMedia>
-        <CardContent className={classes.content}>
-          <Typography color="inherit" noWrap>
-            {name}
-          </Typography>
-          <Typography color="textSecondary" noWrap>
-            {category}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
+    <Fade appear in>
+      <Card className={classes.root} component="li">
+        <CardActionArea onClick={handleClick}>
+          <CardMedia className={classes.icon} image={icon}>
+            {loading && <Skeleton circle height="100%" width="100%" />}
+          </CardMedia>
+          <CardContent className={classes.content}>
+            <Typography color="inherit" noWrap>
+              {name}
+            </Typography>
+            <Typography color="textSecondary" noWrap>
+              {category}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Fade>
   );
 });
 

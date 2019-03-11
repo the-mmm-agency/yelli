@@ -3,6 +3,7 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
+  Fade,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -54,19 +55,21 @@ const FeaturedAppCard = React.memo(
     };
 
     return (
-      <Card className={classes.root} component="li">
-        <CardActionArea onClick={handleClick}>
-          <CardMedia className={classes.banner} image={banner} />
-          <CardContent>
-            <Typography align="left" noWrap>
-              {name}
-            </Typography>
-            <Typography align="left" color="textSecondary" noWrap>
-              {description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
+      <Fade appear in>
+        <Card className={classes.root} component="li">
+          <CardActionArea onClick={handleClick}>
+            <CardMedia className={classes.banner} image={banner} />
+            <CardContent>
+              <Typography align="left" noWrap>
+                {name}
+              </Typography>
+              <Typography align="left" color="textSecondary" noWrap>
+                {description}
+              </Typography>
+            </CardContent>
+          </CardActionArea>
+        </Card>
+      </Fade>
     );
   }
 );
