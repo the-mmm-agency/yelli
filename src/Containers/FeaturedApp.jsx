@@ -47,11 +47,7 @@ const FeaturedApp = React.memo(({ id }) => {
   if (error) {
     return `Error! ${error.message}`;
   }
-  const {
-    name,
-    description,
-    banner: { mediaLink }
-  } = data.app;
+  const { name, description, banner } = data.app;
   return (
     <Grid className={classes.root} item md={5} sm={12} xs={12}>
       <StyledLink href={`/app/${id}`}>
@@ -61,7 +57,7 @@ const FeaturedApp = React.memo(({ id }) => {
           }}
           className={classes.button}
         >
-          <CardMedia className={classes.banner} image={mediaLink} />
+          <CardMedia className={classes.banner} image={banner} />
           <CardContent>
             <Typography align="left" noWrap>
               {name}
