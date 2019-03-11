@@ -1,5 +1,5 @@
 import { ApolloProvider } from 'react-apollo-hooks';
-import { MuiThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
 import ApolloClient from 'apollo-boost';
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -23,9 +23,9 @@ const client = new ApolloClient({
 ReactDOM.render(
   <ApolloProvider client={client}>
     <GlobalStateProvider>
-      <MuiThemeProvider theme={LightTheme}>
+      <ThemeProvider theme={LightTheme}>
         <App />
-      </MuiThemeProvider>
+      </ThemeProvider>
     </GlobalStateProvider>
   </ApolloProvider>,
   document.getElementById('root')
