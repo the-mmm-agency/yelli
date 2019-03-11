@@ -17,8 +17,11 @@ const useStyles = makeStyles(theme => ({
     width: '100%'
   },
   root: {
-    minWidth: 'calc(100% / 3 - 24px)',
-    marginRight: theme.spacing(2)
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 'calc(100% - 10px)'
+    },
+    marginRight: theme.spacing(2),
+    minWidth: 'calc(100% / 3 - 24px)'
   }
 }));
 

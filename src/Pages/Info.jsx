@@ -17,7 +17,8 @@ export default mount({
 
 const useStyles = makeStyles(theme => ({
   button: {
-    marginTop: 'auto'
+    marginTop: 'auto',
+    width: 128
   },
   description: {
     fontSize: theme.typography.body1.fontSize

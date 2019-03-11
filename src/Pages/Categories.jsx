@@ -19,7 +19,6 @@ export default mount({
 const Categories = React.memo(() => {
   const history = useHistory();
   const { data, loading } = useQuery(GET_CATEGORIES);
-  console.log(data);
   if (loading) {
     return <CenterProgress />;
   }
