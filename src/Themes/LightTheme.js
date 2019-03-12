@@ -57,7 +57,6 @@ const LightTheme = createMuiTheme({
     borderRadius: 8
   },
   typography: {
-    fontFamily: '"Metropolis", Arial, sans-serif',
     fontSize: 14
   }
 });
