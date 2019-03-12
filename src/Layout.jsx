@@ -66,7 +66,7 @@ const Layout = ({ children }) => {
       <CssBaseline />
       <Header />
       <CreateApp />
-      <Hidden smDown>
+      <Hidden xsDown>
         <SideDrawer />
       </Hidden>
       <Auth />

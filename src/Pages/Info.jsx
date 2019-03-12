@@ -44,13 +44,20 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   screenshot: {
+    [theme.breakpoints.down('sm')]: {
+      height: 355,
+      width: 200
+    },
     border: {
       color: theme.palette.divider,
       radius: 15,
       style: 'solid',
       width: 1
     },
-    width: '100%'
+    flexShrink: 0,
+    height: '45vw',
+    marginRight: theme.spacing(2),
+    width: '25vw'
   },
   screenshots: {
     '-webkit-overflow-scrolling': 'touch',
@@ -58,6 +65,7 @@ const useStyles = makeStyles(theme => ({
       height: 'auto',
       margin: theme.spacing(2)
     },
+    flexWrap: 'nowrap',
     margin: theme.spacing(2),
     overflowX: 'scroll',
     overflowY: 'hidden',
@@ -113,21 +121,15 @@ const Info = React.memo(({ id }) => {
         </Grid>
         <Divider className={classes.divider} />
         <Grid className={classes.screenshots} container item spacing={2}>
-          <Grid item xs={3}>
-            <div className={classes.screenshot}>
-              <Skeleton height="35vw" width="100%" />
-            </div>
-          </Grid>
-          <Grid item xs={3}>
-            <div className={classes.screenshot}>
-              <Skeleton height="35vw" width="100%" />
-            </div>
-          </Grid>
-          <Grid item xs={3}>
-            <div className={classes.screenshot}>
-              <Skeleton height="35vw" width="100%" />
-            </div>
-          </Grid>
+          <div className={classes.screenshot}>
+            <Skeleton height="100%" width="100%" />
+          </div>
+          <div className={classes.screenshot}>
+            <Skeleton height="100%" width="100%" />
+          </div>
+          <div className={classes.screenshot}>
+            <Skeleton height="100%" width="100%" />
+          </div>
         </Grid>
       </Grid>
     );
@@ -164,13 +166,12 @@ const Info = React.memo(({ id }) => {
       <Divider className={classes.divider} />
       <Grid className={classes.screenshots} container item spacing={2}>
         {screenshots.map(screenshot => (
-          <Grid key={screenshot} item xs={3}>
-            <img
-              alt={data.app.name}
-              className={classes.screenshot}
-              src={screenshot}
-            />
-          </Grid>
+          <img
+            key={screenshot}
+            alt={data.app.name}
+            className={classes.screenshot}
+            src={screenshot}
+          />
         ))}
       </Grid>
     </Grid>
