@@ -8,11 +8,9 @@ import Skeleton from 'react-loading-skeleton';
 import gql from 'graphql-tag';
 
 export default mount({
-  '/:id': route({
-    async getView(request) {
-      return <Info id={request.params.id} />;
-    }
-  })
+  '/:id': route(async req => ({
+    view: <Info id={req.params.id} />
+  }))
 });
 
 const useStyles = makeStyles(theme => ({
@@ -41,10 +39,16 @@ const useStyles = makeStyles(theme => ({
     marginTop: 10
   },
   root: {
+    backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(2)
   },
   screenshot: {
-    borderRadius: 15,
+    border: {
+      color: theme.palette.divider,
+      radius: 15,
+      style: 'solid',
+      width: 1
+    },
     width: '100%'
   },
   screenshots: {
@@ -53,7 +57,6 @@ const useStyles = makeStyles(theme => ({
       height: 'auto',
       margin: theme.spacing(2)
     },
-    height: '355px',
     margin: theme.spacing(2),
     overflowX: 'scroll',
     overflowY: 'hidden',
@@ -81,82 +84,92 @@ const Info = React.memo(({ id }) => {
   const { data, loading } = useQuery(GET_APP, {
     variables: { id }
   });
+  if (loading) {
+    return (
+      <Grid className={classes.root} container spacing={4}>
+        <Grid container>
+          <Grid item xs="auto">
+            <div className={classes.icon}>
+              <Skeleton circle height="100%" width="100%" />
+            </div>
+          </Grid>
+          <Grid className={classes.item} item xs="auto">
+            <Typography variant="h6">
+              <Skeleton />
+            </Typography>
+            <Typography color="textSecondary" gutterBottom>
+              <Skeleton />
+            </Typography>
+            <div className={classes.button}>
+              <Skeleton height={36} width={120} />
+            </div>
+          </Grid>
+        </Grid>
+        <Grid item xs={12}>
+          <Typography className={classes.description} paragraph>
+            <Skeleton width="30%" />
+          </Typography>
+        </Grid>
+        <Divider className={classes.divider} />
+        <Grid className={classes.screenshots} container item spacing={2}>
+          <Grid item xs={3}>
+            <div className={classes.screenshot}>
+              <Skeleton height="35vw" width="100%" />
+            </div>
+          </Grid>
+          <Grid item xs={3}>
+            <div className={classes.screenshot}>
+              <Skeleton height="35vw" width="100%" />
+            </div>
+          </Grid>
+          <Grid item xs={3}>
+            <div className={classes.screenshot}>
+              <Skeleton height="35vw" width="100%" />
+            </div>
+          </Grid>
+        </Grid>
+      </Grid>
+    );
+  }
+  const { name, category, description, icon, screenshots, url } = data.app;
   return (
     <Grid className={classes.root} container spacing={4}>
       <Grid container>
         <Grid item xs="auto">
-          {loading ? (
-            <div className={classes.icon}>
-              <Skeleton circle height="100%" width="100%" />
-            </div>
-          ) : (
-            <img
-              alt={data.app.name}
-              className={classes.icon}
-              src={data.app.icon}
-            />
-          )}
+          <img alt={name} className={classes.icon} src={icon} />
         </Grid>
         <Grid className={classes.item} item xs="auto">
-          <Typography variant="h6">
-            {loading ? <Skeleton /> : data.app.name}
-          </Typography>
+          <Typography variant="h6">{name}</Typography>
           <Typography color="textSecondary" gutterBottom>
-            {loading ? <Skeleton /> : data.app.category.name}
+            {category.name}
           </Typography>
-          {loading ? (
-            <div className={classes.button}>
-              <Skeleton height={36} width={120} />
-            </div>
-          ) : (
-            <Button
-              className={classes.button}
-              color="primary"
-              href={data.app.url}
-              size="small"
-              variant="contained"
-            >
-              Launch App
-            </Button>
-          )}
+          <Button
+            className={classes.button}
+            color="primary"
+            href={url}
+            size="small"
+            variant="contained"
+          >
+            Launch App
+          </Button>
         </Grid>
       </Grid>
       <Grid item xs={12}>
         <Typography className={classes.description} paragraph>
-          {loading ? <Skeleton width="30%" /> : data.app.description}
+          {description}
         </Typography>
       </Grid>
       <Divider className={classes.divider} />
       <Grid className={classes.screenshots} container item spacing={2}>
-        {loading ? (
-          <>
-            <Grid item xs={3}>
-              <div className={classes.screenshot}>
-                <Skeleton height="35vw" width="100%" />
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className={classes.screenshot}>
-                <Skeleton height="35vw" width="100%" />
-              </div>
-            </Grid>
-            <Grid item xs={3}>
-              <div className={classes.screenshot}>
-                <Skeleton height="35vw" width="100%" />
-              </div>
-            </Grid>
-          </>
-        ) : (
-          data.app.screenshots.map(screenshot => (
-            <Grid key={screenshot} item xs={3}>
-              <img
-                alt={data.app.name}
-                className={classes.screenshot}
-                src={screenshot}
-              />
-            </Grid>
-          ))
-        )}
+        {screenshots.map(screenshot => (
+          <Grid key={screenshot} item xs={3}>
+            <img
+              alt={data.app.name}
+              className={classes.screenshot}
+              src={screenshot}
+            />
+          </Grid>
+        ))}
       </Grid>
     </Grid>
   );

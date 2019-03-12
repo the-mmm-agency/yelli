@@ -18,9 +18,18 @@ const useStyles = makeStyles(theme => ({
     width: '100%'
   },
   root: {
+    '&:hover': {
+      boxShadow: theme.shadows[1]
+    },
     [theme.breakpoints.down('sm')]: {
       minWidth: 'calc(100% - 10px)'
     },
+    border: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1
+    },
+    boxShadow: 'none',
     marginRight: theme.spacing(2),
     minWidth: 'calc(100% / 3 - 24px)'
   }

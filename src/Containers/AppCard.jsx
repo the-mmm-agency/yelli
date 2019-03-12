@@ -41,7 +41,12 @@ const useStyles = makeStyles(theme => ({
     width: 128
   },
   root: {
-    margin: theme.spacing(1),
+    '&:hover': {
+      boxShadow: theme.shadows[1]
+    },
+    border: `1px solid ${theme.palette.divider}`,
+    boxShadow: 'none',
+    marginRight: theme.spacing(1),
     minWidth: 160
   }
 }));
@@ -94,11 +99,11 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
 });
 
 AppCard.propTypes = {
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string,
   category: PropTypes.string,
   icon: PropTypes.string,
-  loading: PropTypes.bool
+  id: PropTypes.string.isRequired,
+  loading: PropTypes.bool,
+  name: PropTypes.string
 };
 
 export default AppCard;

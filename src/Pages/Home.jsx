@@ -7,26 +7,59 @@ import NewApps from 'Containers/NewApps';
 import TopApps from 'Containers/TopApps';
 
 const useStyles = makeStyles(theme => ({
-  header: {
-    marginLeft: theme.spacing(3)
-  },
   list: {
+    [theme.breakpoints.up('sm')]: {
+      margin: {
+        bottom: -10,
+        left: -30,
+        right: -30
+      },
+      padding: {
+        bottom: 30,
+        left: 30,
+        right: 30
+      }
+    },
     '-webkit-overflow-scrolling': 'touch',
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
     '-webkit-scroll-snap-type': 'mandatory',
     display: 'flex',
     listStyle: 'none',
-    margin: '0px -20px',
+    margin: {
+      left: -20,
+      right: -20
+    },
     overflowX: 'scroll',
     overflowY: 'hidden',
-    padding: '0 15px 20px 35px',
+    padding: {
+      bottom: 20,
+      left: 20,
+      right: 15
+    },
     'scroll-snap-points-x': 'repeat(100%)',
     scrollSnapType: 'x mandatory',
     whiteSpace: 'nowrap',
     width: '100%'
   },
   root: {
-    overflowX: 'hidden'
+    overflowX: 'hidden',
+    paddingTop: theme.spacing(2)
+  },
+  section: {
+    [theme.breakpoints.up('sm')]: {
+      padding: {
+        bottom: 10,
+        left: 30,
+        right: 30
+      },
+      width: 'calc(100% + 60px)'
+    },
+    padding: {
+      left: 20,
+      right: 20,
+      top: 20
+    },
+    width: 'calc(100% + 40px)'
   }
 }));
 
@@ -34,24 +67,30 @@ const Home = React.memo(() => {
   const classes = useStyles();
   return (
     <Grid className={classes.root} container>
-      <Typography className={classes.header} variant="h6">
-        Featured Apps
-      </Typography>
-      <ul className={classes.list}>
-        <FeaturedApps />
-      </ul>
-      <Typography className={classes.header} variant="h6">
-        Top Apps
-      </Typography>
-      <ul className={classes.list}>
-        <TopApps />
-      </ul>
-      <Typography className={classes.header} variant="h6">
-        New Apps
-      </Typography>
-      <ul className={classes.list}>
-        <NewApps />
-      </ul>
+      <div className={classes.section}>
+        <Typography className={classes.header} gutterBottom variant="h6">
+          Featured Apps
+        </Typography>
+        <ul className={classes.list}>
+          <FeaturedApps />
+        </ul>
+      </div>
+      <div className={classes.section}>
+        <Typography className={classes.header} gutterBottom variant="h6">
+          Top Apps
+        </Typography>
+        <ul className={classes.list}>
+          <TopApps />
+        </ul>
+      </div>
+      <div className={classes.section}>
+        <Typography className={classes.header} gutterBottom variant="h6">
+          New Apps
+        </Typography>
+        <ul className={classes.list}>
+          <NewApps />
+        </ul>
+      </div>
     </Grid>
   );
 });

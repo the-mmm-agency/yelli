@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
     zIndex: 1000
   },
   drawerPaper: {
+    borderColor: theme.palette.background.default,
     width: drawerWidth
   },
   listIcon: {
@@ -42,7 +43,11 @@ const SideDrawer = React.memo(() => {
           <ListItemIcon className={classes.listIcon}>
             <HomeIcon />
           </ListItemIcon>
-          <ListItemText primaryTypographyProps={{ color: 'inherit' }}>
+          <ListItemText
+            primaryTypographyProps={{
+              color: 'inherit'
+            }}
+          >
             Home
           </ListItemText>
         </NavLink>

@@ -4,9 +4,9 @@ import {
   BottomNavigationAction
 } from '@material-ui/core';
 import {
-  HomeOutlined as HomeIcon,
-  SearchOutlined as SearchIcon,
-  CategoryOutlined as CategoryIcon
+  HomeTwoTone as HomeIcon,
+  SearchTwoTone as SearchIcon,
+  CategoryTwoTone as CategoryIcon
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';

@@ -6913,6 +6913,11 @@ react-app-polyfill@^0.2.1:
     raf "3.4.1"
     whatwg-fetch "3.0.0"
 
+react-busy-indicator@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/react-busy-indicator/-/react-busy-indicator-1.0.0.tgz#3369617f50fba61f4fc776355682c878e7c9eb66"
+  integrity sha512-/3OdsHYAqZ9LsrTyjeVu/70yjCfJXmr2qdHuO4hdJ3I92saspXxAGvZzm+Go9luHGlAiKVVh7LykK6tjaXfRQA==
+
 react-dev-utils@^7.0.3:
   version "7.0.5"
   resolved "https://registry.yarnpkg.com/react-dev-utils/-/react-dev-utils-7.0.5.tgz#cb95375d01ae71ca27b3c7616006ef7a77d14e8e"

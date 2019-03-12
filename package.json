@@ -37,6 +37,7 @@
     "react-apollo": "^2.4.1",
     "react-apollo-hooks": "^0.4.0",
     "react-app-polyfill": "^0.2.1",
+    "react-busy-indicator": "^1.0.0",
     "react-dom": "npm:@hot-loader/react-dom",
     "react-hooks-global-state": "^0.7.0",
     "react-loading-skeleton": "^1.0.0",

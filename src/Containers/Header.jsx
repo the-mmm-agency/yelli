@@ -21,7 +21,8 @@ const GET_NAME = gql`
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    borderBottomColor: theme.palette.divider,
+    backgroundColor: theme.palette.background.paper,
+    borderBottomColor: theme.palette.background.default,
     borderBottomStyle: 'solid',
     borderBottomWidth: 1,
     boxShadow: 'none',
@@ -29,7 +30,13 @@ const useStyles = makeStyles(theme => ({
   },
   logo: {
     height: 64,
-    marginRight: 'auto'
+    margin: 'auto'
+  },
+  logoContainer: {
+    borderRight: `1px solid ${theme.palette.background.default}`,
+    display: 'flex',
+    marginLeft: -24,
+    width: 240
   }
 }));
 
@@ -38,9 +45,11 @@ const Header = React.memo(() => {
   const { data, loading } = useQuery(GET_NAME);
 
   return (
-    <AppBar className={classes.appBar} color="default" position="fixed">
+    <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
-        <img alt="Yelli" className={classes.logo} src={Logo} />
+        <div className={classes.logoContainer}>
+          <img alt="Yelli" className={classes.logo} src={Logo} />
+        </div>
         {!loading && data.me ? (
           <UserMenu name={data.me.name} />
         ) : (

@@ -2,7 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "checkJs": true,
+    "checkJs": false,
     "experimentalDecorators": true,
     "esModuleInterop": true,
     "jsx": "react",
