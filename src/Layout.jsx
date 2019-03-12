@@ -12,9 +12,29 @@ import SideDrawer from 'Containers/SideDrawer';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
+    '*, body': {
+      scrollbarColor: 'rgba(50,50,50,0.5) transparent',
+      scrollbarWidth: 'thin'
+    },
     '::-moz-selection': {
       background: theme.palette.primary.main,
       color: '#fff'
+    },
+    '::-webkit-scrollbar': {
+      height: 6,
+      width: 6
+    },
+    '::-webkit-scrollbar-thumb': {
+      backgroundColor: 'rgba(50,50,50,0.5)'
+    },
+    '::-webkit-scrollbar-thumb:active': {
+      backgroundColor: 'rgba(30,30,30,1)'
+    },
+    '::-webkit-scrollbar-thumb:hover': {
+      backgroundColor: 'rgba(40,40,40,0.75)'
+    },
+    '::-webkit-scrollbar-track': {
+      backgroundColor: 'transparent'
     },
     '::selection': {
       background: theme.palette.primary.main,
