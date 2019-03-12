@@ -29,11 +29,20 @@ const useStyles = makeStyles(theme => ({
     zIndex: theme.zIndex.drawer + 1
   },
   logo: {
+    [theme.breakpoints.up('sm')]: {
+      margin: 'auto'
+    },
     height: 64,
-    margin: 'auto'
+    marginLeft: theme.spacing(2)
   },
   logoContainer: {
-    borderRight: `1px solid ${theme.palette.background.default}`,
+    [theme.breakpoints.up('sm')]: {
+      borderRight: {
+        color: theme.palette.background.default,
+        style: 'solid',
+        width: 1
+      }
+    },
     display: 'flex',
     marginLeft: -24,
     width: 240

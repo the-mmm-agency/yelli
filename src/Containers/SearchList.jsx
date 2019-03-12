@@ -1,13 +1,11 @@
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
-import { useHistory } from 'react-navi';
+import { List } from '@material-ui/core';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
 
 import APP_CARD from 'Graphql/AppCard.gql';
-import CenterProgress from 'Components/CenterProgress';
+import AppListItem from 'Containers/AppListItem';
 
 const SEARCH_APPS = gql`
   query searchApps($searchString: String) {
@@ -18,43 +16,31 @@ const SEARCH_APPS = gql`
   ${APP_CARD}
 `;
 
-const useStyles = makeStyles(theme => ({
-  icon: {
-    height: 40,
-    width: 40
-  },
-  nested: {
-    padding: theme.spacing(4)
-  }
-}));
-
 const SearchList = React.memo(({ searchString }) => {
-  const classes = useStyles();
-  const history = useHistory();
   const { data, loading } = useQuery(SEARCH_APPS, {
     variables: {
       searchString
     }
   });
   if (loading) {
-    return <CenterProgress />;
+    return (
+      <List>
+        <AppListItem loading />
+        <AppListItem loading />
+        <AppListItem loading />
+      </List>
+    );
   }
   return (
     <List>
       {data.apps.map(app => (
-        <ListItem
+        <AppListItem
           key={app.id}
-          button
-          divider
-          onClick={() => {
-            history.push(`/app/${app.id}`);
-          }}
-        >
-          <ListItemIcon>
-            <img alt={app.name} className={classes.icon} src={app.icon} />
-          </ListItemIcon>
-          <ListItemText primary={app.name} secondary={app.category.name} />
-        </ListItem>
+          category={app.category.name}
+          icon={app.icon}
+          id={app.id}
+          name={app.name}
+        />
       ))}
     </List>
   );
