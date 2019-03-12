@@ -1,14 +1,14 @@
 import {
   FaceOutlined,
   BuildOutlined,
-  FavoriteOutlined,
+  FavoriteBorderOutlined,
   ShoppingBasketOutlined,
   AudiotrackOutlined,
   MapOutlined,
   FastfoodOutlined,
   VideogameAssetOutlined,
   DomainOutlined,
-  StarOutlined
+  StarsOutlined
 } from '@material-ui/icons';
 import { ReactComponent as Newspaper } from '@mdi/svg/svg/newspaper.svg';
 import PropTypes from 'prop-types';
@@ -16,10 +16,10 @@ import React from 'react';
 
 const Icons = {
   Business: DomainOutlined,
-  Entertainment: StarOutlined,
+  Entertainment: StarsOutlined,
   Food: FastfoodOutlined,
   Games: VideogameAssetOutlined,
-  Lifestyle: FavoriteOutlined,
+  Lifestyle: FavoriteBorderOutlined,
   Music: AudiotrackOutlined,
   News: Newspaper,
   Shopping: ShoppingBasketOutlined,

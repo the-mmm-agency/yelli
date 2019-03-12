@@ -34,7 +34,13 @@ const useStyles = makeStyles(theme => ({
         'local("Metropolis Medium"), local("Metropolis-Medium"), url("fonts/Metropolis-Medium.woff2") format("woff2")'
     },
     body: {
-      '::selection': {
+      [theme.breakpoints.up('sm')]: {
+        '-webkit-user-select': 'auto'
+      },
+      '&:-moz-selection': {
+        background: theme.palette.primary.main
+      },
+      '&:selection': {
         background: theme.palette.primary.main
       },
       '-webkit-tap-highlight-color': 'transparent',

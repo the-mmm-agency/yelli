@@ -1,4 +1,5 @@
 import { Divider, Grid, Typography, Button } from '@material-ui/core';
+import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
@@ -150,6 +151,7 @@ const Info = React.memo(({ id }) => {
             size="small"
             variant="contained"
           >
+            <OpenIcon />
             Launch App
           </Button>
         </Grid>
