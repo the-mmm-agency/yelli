@@ -2,7 +2,6 @@ import { List } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
-import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
@@ -12,16 +11,16 @@ import AppCard from 'Containers/AppCard';
 import AppListItem from 'Containers/AppListItem';
 
 export default mount({
-  '/:name': route({
-    async getView(request) {
-      return <Category name={request.params.name} />;
+  '/': route({
+    async getView() {
+      return <New />;
     }
   })
 });
 
 const GET_APPS = gql`
-  query category($name: String!) {
-    apps(where: { category: { name: $name } }) {
+  query newApps {
+    apps(orderBy: createdAt_DESC) {
       ...AppCard
     }
   }
@@ -36,8 +35,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
-      flexWrap: 'wrap',
-      justifyContent: 'space-between',
       padding: {
         bottom: theme.spacing(3),
         left: theme.spacing(4),
@@ -49,13 +46,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Category = React.memo(({ name }) => {
+const New = React.memo(() => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
-  const { data, loading } = useQuery(GET_APPS, {
-    variables: { name }
-  });
+  const { data, loading } = useQuery(GET_APPS);
 
   const AppComponent = matches ? AppCard : AppListItem;
 
@@ -87,8 +82,3 @@ const Category = React.memo(({ name }) => {
     </List>
   );
 });
-
-Category.propTypes = {
-  name: PropTypes.string.isRequired
-};
-/*  */

@@ -11,7 +11,9 @@ const routes = mount({
   '/app': lazy(() => import('Pages/Info')),
   '/categories': lazy(() => import('Pages/Categories')),
   '/category': lazy(() => import('Pages/Category')),
-  '/search': lazy(() => import('Pages/Search'))
+  '/new': lazy(() => import('Pages/New')),
+  '/search': lazy(() => import('Pages/Search')),
+  '/toplist': lazy(() => import('Pages/TopList'))
 });
 
 export default routes;

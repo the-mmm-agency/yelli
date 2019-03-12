@@ -13,9 +13,15 @@ import { useCurrentRoute, useHistory } from 'react-navi';
 import React from 'react';
 
 const useStyles = makeStyles({
+  label: {
+    fontSize: '0.5rem'
+  },
   root: {
     bottom: 0,
     top: 'auto'
+  },
+  selected: {
+    fontSize: '0.65rem !important'
   }
 });
 
@@ -30,13 +36,20 @@ const Navigation = () => {
   return (
     <AppBar className={classes.root}>
       <BottomNavigation onChange={setValue} showLabels value={value}>
-        <BottomNavigationAction icon={<HomeIcon />} label="Home" value="/" />
         <BottomNavigationAction
+          classes={{ label: classes.label, selected: classes.selected }}
+          icon={<HomeIcon />}
+          label="Home"
+          value="/"
+        />
+        <BottomNavigationAction
+          classes={{ label: classes.label, selected: classes.selected }}
           icon={<CategoryIcon />}
           label="Categories"
           value="/categories/"
         />
         <BottomNavigationAction
+          classes={{ label: classes.label, selected: classes.selected }}
           icon={<SearchIcon />}
           label="Search"
           value="/search/"

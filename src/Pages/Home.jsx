@@ -1,5 +1,6 @@
-import { Grid, Typography } from '@material-ui/core';
+import { Grid, Typography, Button } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { useHistory } from 'react-navi';
 import React from 'react';
 
 import FeaturedApps from 'Containers/FeaturedApps';
@@ -7,6 +8,17 @@ import NewApps from 'Containers/NewApps';
 import TopApps from 'Containers/TopApps';
 
 const useStyles = makeStyles(theme => ({
+  button: {
+    fontSize: '0.675rem',
+    height: 35,
+    margin: {
+      bottom: theme.spacing(1),
+      left: 'auto',
+      right: theme.spacing(6),
+      top: 5
+    },
+    width: 116
+  },
   list: {
     [theme.breakpoints.up('sm')]: {
       margin: {
@@ -41,12 +53,17 @@ const useStyles = makeStyles(theme => ({
     whiteSpace: 'nowrap',
     width: '100%'
   },
+  header: {
+    display: 'flex'
+  },
   root: {
     overflowX: 'hidden',
     paddingTop: theme.spacing(2)
   },
   section: {
     [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      flexDirection: 'column',
       padding: {
         bottom: 10,
         left: 30,
@@ -65,10 +82,11 @@ const useStyles = makeStyles(theme => ({
 
 const Home = React.memo(() => {
   const classes = useStyles();
+  const history = useHistory();
   return (
     <Grid className={classes.root} container>
       <div className={classes.section}>
-        <Typography className={classes.header} gutterBottom variant="h6">
+        <Typography gutterBottom variant="h6">
           Featured Apps
         </Typography>
         <ul className={classes.list}>
@@ -76,17 +94,37 @@ const Home = React.memo(() => {
         </ul>
       </div>
       <div className={classes.section}>
-        <Typography className={classes.header} gutterBottom variant="h6">
-          Top Apps
-        </Typography>
+        <div className={classes.header}>
+          <Typography gutterBottom variant="h6">
+            Top Apps
+          </Typography>
+          <Button
+            className={classes.button}
+            color="primary"
+            onClick={() => history.push('/toplist')}
+            variant="outlined"
+          >
+            view more
+          </Button>
+        </div>
         <ul className={classes.list}>
           <TopApps />
         </ul>
       </div>
       <div className={classes.section}>
-        <Typography className={classes.header} gutterBottom variant="h6">
-          New Apps
-        </Typography>
+        <div className={classes.header}>
+          <Typography gutterBottom variant="h6">
+            New Apps
+          </Typography>
+          <Button
+            className={classes.button}
+            color="primary"
+            onClick={() => history.push('/new')}
+            variant="outlined"
+          >
+            view all
+          </Button>
+        </div>
         <ul className={classes.list}>
           <NewApps />
         </ul>

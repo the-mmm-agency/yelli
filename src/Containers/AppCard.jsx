@@ -50,6 +50,7 @@ const useStyles = makeStyles(theme => ({
       width: 1
     },
     boxShadow: 'none',
+    marginBottom: theme.spacing(2),
     marginRight: theme.spacing(2),
     minWidth: 160
   }
