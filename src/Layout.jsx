@@ -12,15 +12,17 @@ import SideDrawer from 'Containers/SideDrawer';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
+    '::-moz-selection': {
+      background: theme.palette.primary.main,
+      color: '#fff'
+    },
+    '::selection': {
+      background: theme.palette.primary.main,
+      color: '#fff'
+    },
     body: {
       [theme.breakpoints.up('sm')]: {
         '-webkit-user-select': 'auto'
-      },
-      '&:-moz-selection': {
-        background: theme.palette.primary.main
-      },
-      '&:selection': {
-        background: theme.palette.primary.main
       },
       '-webkit-tap-highlight-color': 'transparent',
       '-webkit-touch-callout': 'none',
