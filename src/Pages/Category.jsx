@@ -1,13 +1,15 @@
-import { Grid } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { List } from '@material-ui/core';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
 import gql from 'graphql-tag';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import APP_CARD from 'Graphql/AppCard.gql';
 import AppCard from 'Containers/AppCard';
+import AppListItem from 'Containers/AppListItem';
 
 export default mount({
   '/:name': route({
@@ -28,43 +30,51 @@ const GET_APPS = gql`
 
 const useStyles = makeStyles(theme => ({
   root: {
-    padding: theme.spacing(2)
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: theme.palette.background.paper,
+      marginBlockStart: 0
+    },
+    [theme.breakpoints.up('sm')]: {
+      display: 'flex',
+      padding: {
+        bottom: theme.spacing(3),
+        left: theme.spacing(4),
+        right: theme.spacing(4),
+        top: theme.spacing(3)
+      }
+    },
+    listStyle: 'none'
   }
 }));
 
 const Category = React.memo(({ name }) => {
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const { data, loading } = useQuery(GET_APPS, {
     variables: { name }
   });
+
+  const AppComponent = matches ? AppCard : AppListItem;
+
   if (loading) {
     return (
-      <Grid
-        alignContent="space-between"
-        className={classes.root}
-        container
-        spacing={4}
-      >
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-      </Grid>
+      <List className={classes.root}>
+        <AppComponent loading />
+        <AppComponent loading />
+        <AppComponent loading />
+        <AppComponent loading />
+        <AppComponent loading />
+        <AppComponent loading />
+        <AppComponent loading />
+      </List>
     );
   }
 
   return (
-    <Grid
-      alignContent="space-between"
-      className={classes.root}
-      container
-      spacing={4}
-    >
+    <List className={classes.root}>
       {data.apps.map(app => (
-        <AppCard
+        <AppComponent
           key={app.id}
           category={app.category.name}
           icon={app.icon}
@@ -72,7 +82,7 @@ const Category = React.memo(({ name }) => {
           name={app.name}
         />
       ))}
-    </Grid>
+    </List>
   );
 });
 
