@@ -12,30 +12,6 @@ import SideDrawer from 'Containers/SideDrawer';
 
 const useStyles = makeStyles(theme => ({
   '@global': {
-    '@font-face': {
-      fontDisplay: 'auto',
-      fontFamily: 'Metropolis',
-      fontStyle: 'normal',
-      fontWeight: 300,
-      src:
-        'local("Metropolis Thin"), local("Metropolis-Thin"), url("fonts/Metropolis-Thin.woff2") format("woff2")'
-    },
-    '@font-face': {
-      fontDisplay: 'auto',
-      fontFamily: 'Metropolis',
-      fontStyle: 'normal',
-      fontWeight: 400,
-      src:
-        'local("Metropolis Regular"), local("Metropolis-Regular"), url("fonts/Metropolis-Regular.woff2") format("woff2")'
-    },
-    '@font-face': {
-      fontDisplay: 'auto',
-      fontFamily: 'Metropolis',
-      fontStyle: 'normal',
-      fontWeight: 500,
-      src:
-        'local("Metropolis Medium"), local("Metropolis-Medium"), url("fonts/Metropolis-Medium.woff2") format("woff2")'
-    },
     body: {
       [theme.breakpoints.up('sm')]: {
         '-webkit-user-select': 'auto'
