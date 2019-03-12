@@ -1,4 +1,10 @@
-import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  Typography
+} from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useHistory } from 'react-navi';
@@ -22,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(2)
   },
   root: {
-    backgroundColor: theme.palette.background.paper
+    backgroundColor: theme.palette.background.paper,
+    padding: theme.spacing(2)
   }
 }));
 
@@ -32,89 +39,101 @@ const Categories = React.memo(() => {
   const history = useHistory();
   if (loading) {
     return (
-      <List className={classes.root}>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-        <ListItem className={classes.item} disableGutters divider>
-          <ListItemIcon>
-            <Skeleton circle height="1em" width="1em" />
-          </ListItemIcon>
-          <ListItemText primary={<Skeleton />} />
-        </ListItem>
-      </List>
+      <div className={classes.root}>
+        <Typography variant="h5">Categories</Typography>
+        <Typography color="textSecondary">
+          Browse progressive web apps by category
+        </Typography>
+        <List>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+          <ListItem className={classes.item} disableGutters divider>
+            <ListItemIcon>
+              <Skeleton circle height="1em" width="1em" />
+            </ListItemIcon>
+            <ListItemText primary={<Skeleton />} />
+          </ListItem>
+        </List>
+      </div>
     );
   }
 
   return (
-    <List className={classes.root}>
-      {data.categories.map(category => {
-        return (
-          <ListItem
-            key={category.id}
-            button
-            className={classes.item}
-            disableGutters
-            divider
-            onClick={() => history.push(`/category/${category.name}`)}
-          >
-            <ListItemIcon style={{ color: 'inherit' }}>
-              <CategoryIcon name={category.name} />
-            </ListItemIcon>
-            <ListItemText
-              primary={category.name}
-              primaryTypographyProps={{
-                color: 'inherit'
-              }}
-            />
-          </ListItem>
-        );
-      })}
-    </List>
+    <div className={classes.root}>
+      <Typography variant="h5">Categories</Typography>
+      <Typography color="textSecondary">
+        Browse progressive web apps by category
+      </Typography>
+      <List>
+        {data.categories.map(category => {
+          return (
+            <ListItem
+              key={category.id}
+              button
+              className={classes.item}
+              disableGutters
+              divider
+              onClick={() => history.push(`/category/${category.name}`)}
+            >
+              <ListItemIcon style={{ color: 'inherit' }}>
+                <CategoryIcon name={category.name} />
+              </ListItemIcon>
+              <ListItemText
+                primary={category.name}
+                primaryTypographyProps={{
+                  color: 'inherit'
+                }}
+              />
+            </ListItem>
+          );
+        })}
+      </List>
+    </div>
   );
 });
