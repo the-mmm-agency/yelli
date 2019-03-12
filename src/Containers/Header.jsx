@@ -4,7 +4,8 @@ import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
 
-import Logo from '../logo.png';
+import LogoGif from '../logo.gif';
+import LogoWebp from '../logo.webp';
 
 import { dispatch } from 'state';
 import UserMenu from 'Containers/UserMenu';
@@ -57,7 +58,11 @@ const Header = React.memo(() => {
     <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
         <div className={classes.logoContainer}>
-          <img alt="Yelli" className={classes.logo} src={Logo} />
+          <picture className={classes.logo}>
+            <source srcSet={LogoWebp} type="image/webp" />
+            <source srcSet={LogoGif} type="image/gif" />
+            <img alt="Yelli" className={classes.logo} src={LogoGif} />
+          </picture>
         </div>
         {!loading && data.me ? (
           <UserMenu name={data.me.name} />
