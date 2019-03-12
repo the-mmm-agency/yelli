@@ -21,17 +21,19 @@ const useStyles = makeStyles(theme => ({
       color: '#fff'
     },
     '::-webkit-scrollbar': {
-      height: 6,
-      width: 6
+      height: 12,
+      width: 12
     },
     '::-webkit-scrollbar-thumb': {
-      backgroundColor: 'rgba(50,50,50,0.5)'
+      backgroundColor: 'transparent'
     },
     '::-webkit-scrollbar-thumb:active': {
       backgroundColor: 'rgba(30,30,30,1)'
     },
     '::-webkit-scrollbar-thumb:hover': {
-      backgroundColor: 'rgba(40,40,40,0.75)'
+      backgroundColor: 'rgba(40,40,40,0.75)',
+      height: 16,
+      width: 16
     },
     '::-webkit-scrollbar-track': {
       backgroundColor: 'transparent'

@@ -44,7 +44,11 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       boxShadow: theme.shadows[1]
     },
-    border: `1px solid ${theme.palette.divider}`,
+    border: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1
+    },
     boxShadow: 'none',
     marginRight: theme.spacing(1),
     minWidth: 160
