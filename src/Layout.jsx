@@ -48,13 +48,12 @@ const useStyles = makeStyles(theme => ({
       },
       '-webkit-tap-highlight-color': 'transparent',
       '-webkit-touch-callout': 'none',
-      '-webkit-user-select': 'none',
-      'overflow-x': 'hidden'
+      '-webkit-user-select': 'none'
     }
   },
   content: {
     flexGrow: 1,
-    overflowX: 'hidden'
+    overflow: 'hidden'
   },
   root: {
     display: 'flex'

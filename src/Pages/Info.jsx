@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     fontSize: theme.typography.body1.fontSize
   },
   divider: {
+    [theme.breakpoints.down('sm')]: {
+      margin: theme.spacing(1)
+    },
     width: '100%'
   },
   icon: {
@@ -40,8 +43,16 @@ const useStyles = makeStyles(theme => ({
     marginTop: 10
   },
   root: {
+    [theme.breakpoints.down('sm')]: {
+      paddingTop: theme.spacing(4)
+    },
     backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2)
+    flexGrow: 1,
+    overflowY: 'hidden',
+    padding: {
+      left: theme.spacing(4),
+      top: theme.spacing(4)
+    }
   },
   screenshot: {
     [theme.breakpoints.down('sm')]: {

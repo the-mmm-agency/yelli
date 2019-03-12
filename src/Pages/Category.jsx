@@ -32,7 +32,7 @@ const useStyles = makeStyles(theme => ({
   root: {
     [theme.breakpoints.down('sm')]: {
       backgroundColor: theme.palette.background.paper,
-      marginBlockStart: 0
+      minHeight: '100vh'
     },
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
