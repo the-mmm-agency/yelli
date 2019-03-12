@@ -17,7 +17,7 @@ export default mount({
 const useStyles = makeStyles(theme => ({
   button: {
     marginTop: 'auto',
-    width: 128
+    width: 164
   },
   description: {
     fontSize: theme.typography.body1.fontSize
@@ -110,7 +110,7 @@ const Info = React.memo(({ id }) => {
               <Skeleton />
             </Typography>
             <div className={classes.button}>
-              <Skeleton height={36} width={120} />
+              <Skeleton height={36} width={164} />
             </div>
           </Grid>
         </Grid>
@@ -154,7 +154,7 @@ const Info = React.memo(({ id }) => {
             variant="contained"
           >
             <OpenIcon />
-            Launch App
+            &nbsp; Launch App
           </Button>
         </Grid>
       </Grid>

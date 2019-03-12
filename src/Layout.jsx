@@ -13,6 +13,7 @@ import SideDrawer from 'Containers/SideDrawer';
 const useStyles = makeStyles(theme => ({
   '@global': {
     '@font-face': {
+      fontDisplay: 'auto',
       fontFamily: 'Metropolis',
       fontStyle: 'normal',
       fontWeight: 300,
@@ -20,6 +21,7 @@ const useStyles = makeStyles(theme => ({
         'local("Metropolis Thin"), local("Metropolis-Thin"), url("fonts/Metropolis-Thin.woff2") format("woff2")'
     },
     '@font-face': {
+      fontDisplay: 'auto',
       fontFamily: 'Metropolis',
       fontStyle: 'normal',
       fontWeight: 400,
@@ -27,6 +29,7 @@ const useStyles = makeStyles(theme => ({
         'local("Metropolis Regular"), local("Metropolis-Regular"), url("fonts/Metropolis-Regular.woff2") format("woff2")'
     },
     '@font-face': {
+      fontDisplay: 'auto',
       fontFamily: 'Metropolis',
       fontStyle: 'normal',
       fontWeight: 500,
