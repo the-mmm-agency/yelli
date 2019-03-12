@@ -50,8 +50,10 @@ const useStyles = makeStyles(theme => ({
       width: 1
     },
     boxShadow: 'none',
+    flexGrow: 1,
     marginBottom: theme.spacing(2),
     marginRight: theme.spacing(2),
+    maxWidth: 'calc(100% / 6 - 16px)',
     minWidth: 160
   }
 }));

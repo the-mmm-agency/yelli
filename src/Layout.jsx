@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import React from 'react';
 
+import AppUpdate from 'Containers/AppUpdate';
 import Auth from 'Containers/Auth';
 import CreateApp from 'Containers/CreateApp';
 import Header from 'Containers/Header';
@@ -72,6 +73,7 @@ const Layout = ({ children }) => {
         <SideDrawer />
       </Hidden>
       <Auth />
+      <AppUpdate />
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {children}

@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 import expand from 'jss-plugin-expand';
 
 import * as serviceWorker from 'serviceWorker';
-import { GlobalStateProvider } from 'state';
+import { GlobalStateProvider, dispatch } from 'state';
 import App from 'App';
 import LightTheme from 'Themes/LightTheme';
 
@@ -39,7 +39,11 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.register();
+const notify = () => dispatch({ type: 'openUpdate' });
+
+serviceWorker.register({
+  onUpdate: async registration => {
+    registration.update();
+    notify();
+  }
+});

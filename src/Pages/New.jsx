@@ -35,6 +35,9 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
+      flexWrap: 'wrap',
+      justifyContent: 'space-between',
+      maxWidth: 'fit-content',
       padding: {
         bottom: theme.spacing(3),
         left: theme.spacing(4),

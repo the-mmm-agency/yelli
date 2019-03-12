@@ -38,6 +38,7 @@ const useStyles = makeStyles(theme => ({
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
+      maxWidth: 'fit-content',
       padding: {
         bottom: theme.spacing(3),
         left: theme.spacing(4),

@@ -13,15 +13,15 @@ export const { GlobalStateProvider, dispatch, useGlobalState } = createStore(
           ...state,
           auth: false
         };
-      case 'openDrawer':
+      case 'openUpdate':
         return {
           ...state,
-          drawer: true
+          update: true
         };
-      case 'closeDrawer':
+      case 'closeUpdate':
         return {
           ...state,
-          drawer: false
+          update: true
         };
       default:
         return state;
@@ -29,6 +29,6 @@ export const { GlobalStateProvider, dispatch, useGlobalState } = createStore(
   },
   {
     auth: false,
-    drawer: false
+    update: false
   }
 );
