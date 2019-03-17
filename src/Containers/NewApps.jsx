@@ -34,10 +34,10 @@ const NewApps = () => {
       {data.apps.map(app => (
         <AppCard
           key={app.id}
-          id={app.id}
-          name={app.name}
           category={app.category.name}
           icon={app.icon}
+          id={app.id}
+          name={app.name}
         />
       ))}
     </>

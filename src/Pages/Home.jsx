@@ -19,6 +19,9 @@ const useStyles = makeStyles(theme => ({
     },
     width: 116
   },
+  header: {
+    display: 'flex'
+  },
   list: {
     [theme.breakpoints.up('sm')]: {
       margin: {
@@ -52,9 +55,6 @@ const useStyles = makeStyles(theme => ({
     scrollSnapType: 'x mandatory',
     whiteSpace: 'nowrap',
     width: '100%'
-  },
-  header: {
-    display: 'flex'
   },
   root: {
     overflowX: 'hidden',
