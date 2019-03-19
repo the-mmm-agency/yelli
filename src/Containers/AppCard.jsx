@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   content: {
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: 100
+    },
     '&:last-child': {
       padding: theme.spacing(1)
     },

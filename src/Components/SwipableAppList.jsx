@@ -28,7 +28,7 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
         onChangeIndex={step => setActiveStep(step)}
         slideClassName={classes.slide}
         slideStyle={{ overflow: 'visible' }}
-        style={{ maxWidth: '100%' }}
+        style={{ maxWidth: '100%', marginBottom: -8 }}
       >
         {splitEvery(pageLength, apps).map(list => (
           <Grid
@@ -55,6 +55,7 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
           <IconButton
             disabled={activeStep === 0}
             onClick={() => setActiveStep(activeStep - 1)}
+            style={{ marginLeft: 'auto' }}
           >
             <KeyboardArrowLeft />
           </IconButton>
@@ -63,6 +64,7 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
           <IconButton
             disabled={activeStep === Math.ceil(apps.length / pageLength) - 1}
             onClick={() => setActiveStep(activeStep + 1)}
+            style={{ marginRight: 'auto' }}
           >
             <KeyboardArrowRight />
           </IconButton>
