@@ -12,7 +12,8 @@ const useStyles = makeStyles(theme => ({
     fontSize: '0.675rem',
     height: 35,
     margin: {
-      left: 'auto'
+      left: 'auto',
+      right: theme.spacing(3)
     },
     width: 116
   },
