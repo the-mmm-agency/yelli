@@ -12,49 +12,12 @@ const useStyles = makeStyles(theme => ({
     fontSize: '0.675rem',
     height: 35,
     margin: {
-      bottom: theme.spacing(1),
-      left: 'auto',
-      right: theme.spacing(6),
-      top: 5
+      left: 'auto'
     },
     width: 116
   },
   header: {
     display: 'flex'
-  },
-  list: {
-    [theme.breakpoints.up('sm')]: {
-      margin: {
-        bottom: -10,
-        left: -30,
-        right: -30
-      },
-      padding: {
-        bottom: 30,
-        left: 30,
-        right: 30
-      }
-    },
-    '-webkit-overflow-scrolling': 'touch',
-    '-webkit-scroll-snap-points-x': 'repeat(100%)',
-    '-webkit-scroll-snap-type': 'mandatory',
-    display: 'flex',
-    listStyle: 'none',
-    margin: {
-      left: -20,
-      right: -20
-    },
-    overflowX: 'scroll',
-    overflowY: 'hidden',
-    padding: {
-      bottom: 20,
-      left: 20,
-      right: 15
-    },
-    'scroll-snap-points-x': 'repeat(100%)',
-    scrollSnapType: 'x mandatory',
-    whiteSpace: 'nowrap',
-    width: '100%'
   },
   root: {
     overflowX: 'hidden',
@@ -89,9 +52,7 @@ const Home = React.memo(() => {
         <Typography gutterBottom variant="h6">
           Featured Apps
         </Typography>
-        <ul className={classes.list}>
-          <FeaturedApps />
-        </ul>
+        <FeaturedApps />
       </div>
       <div className={classes.section}>
         <div className={classes.header}>
@@ -107,9 +68,7 @@ const Home = React.memo(() => {
             view more
           </Button>
         </div>
-        <ul className={classes.list}>
-          <TopApps />
-        </ul>
+        <TopApps />
       </div>
       <div className={classes.section}>
         <div className={classes.header}>
@@ -125,9 +84,7 @@ const Home = React.memo(() => {
             view all
           </Button>
         </div>
-        <ul className={classes.list}>
-          <NewApps />
-        </ul>
+        <NewApps />
       </div>
     </Grid>
   );

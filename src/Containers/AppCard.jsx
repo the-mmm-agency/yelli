@@ -30,8 +30,9 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     [theme.breakpoints.down('sm')]: {
-      height: 80,
-      width: 80
+      height: 60,
+      padding: theme.spacing(1),
+      width: 60
     },
     borderRadius: 15,
     height: 128,
@@ -41,6 +42,10 @@ const useStyles = makeStyles(theme => ({
     width: 128
   },
   root: {
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: 'calc(100% / 3 - 16px)',
+      minWidth: 'calc(100% / 3 - 16px)'
+    },
     '&:hover': {
       boxShadow: theme.shadows[1]
     },
@@ -96,7 +101,7 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
               {name}
             </Typography>
             <Typography color="textSecondary" noWrap>
-              {category}
+              {category.name}
             </Typography>
           </CardContent>
         </CardActionArea>
@@ -106,7 +111,9 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
 });
 
 AppCard.propTypes = {
-  category: PropTypes.string,
+  category: PropTypes.shape({
+    name: PropTypes.string.isRequired
+  }).isRequired,
   icon: PropTypes.string,
   id: PropTypes.string.isRequired,
   loading: PropTypes.bool,
