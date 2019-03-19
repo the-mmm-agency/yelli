@@ -162,6 +162,7 @@ const Info = React.memo(({ id }) => {
             color="primary"
             href={url}
             size="small"
+            target="_blank"
             variant="contained"
           >
             <OpenIcon />
