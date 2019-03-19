@@ -1,5 +1,6 @@
 import { AppBar, Button, Toolbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
+import { useHistory } from 'react-navi';
 import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
@@ -33,6 +34,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.up('sm')]: {
       margin: 'auto'
     },
+    cursor: 'pointer',
     height: 64,
     marginLeft: theme.spacing(2)
   },
@@ -53,11 +55,15 @@ const useStyles = makeStyles(theme => ({
 const Header = React.memo(() => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_NAME);
+  const history = useHistory();
 
   return (
     <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
-        <div className={classes.logoContainer}>
+        <div
+          className={classes.logoContainer}
+          onClick={() => history.push('/')}
+        >
           <picture className={classes.logo}>
             <source srcSet={LogoWebp} type="image/webp" />
             <source srcSet={LogoGif} type="image/gif" />
