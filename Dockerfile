@@ -3,9 +3,9 @@ FROM node:11.10.0-alpine as react-build
 
 WORKDIR /app
 COPY . ./
-RUN yarn
+RUN npm ci
 ENV NODE_ENV production
-RUN yarn build
+RUN npm run build
 
 # Stage 2 - the production environment
 FROM nginx:alpine
