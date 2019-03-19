@@ -1,9 +1,9 @@
-import { List } from '@material-ui/core';
+import { Grid } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import gql from 'graphql-tag';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -38,7 +38,6 @@ const useStyles = makeStyles(theme => ({
       display: 'flex',
       flexWrap: 'wrap',
       justifyContent: 'space-between',
-      maxWidth: 'fit-content',
       padding: {
         bottom: theme.spacing(3),
         left: theme.spacing(4),
@@ -50,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Category = React.memo(({ name }) => {
+const Category = memo(({ name }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -62,7 +61,7 @@ const Category = React.memo(({ name }) => {
 
   if (loading) {
     return (
-      <List className={classes.root}>
+      <Grid className={classes.root} component="ul" container spacing={2}>
         <AppComponent loading />
         <AppComponent loading />
         <AppComponent loading />
@@ -70,12 +69,12 @@ const Category = React.memo(({ name }) => {
         <AppComponent loading />
         <AppComponent loading />
         <AppComponent loading />
-      </List>
+      </Grid>
     );
   }
 
   return (
-    <List className={classes.root}>
+    <Grid className={classes.root} component="ul" container spacing={2}>
       {data.apps.map(app => (
         <AppComponent
           key={app.id}
@@ -85,11 +84,10 @@ const Category = React.memo(({ name }) => {
           name={app.name}
         />
       ))}
-    </List>
+    </Grid>
   );
 });
 
 Category.propTypes = {
   name: PropTypes.string.isRequired
 };
-/*  */

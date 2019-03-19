@@ -23,12 +23,23 @@ export const { GlobalStateProvider, dispatch, useGlobalState } = createStore(
           ...state,
           update: true
         };
+      case 'openInstallPrompt':
+        return {
+          ...state,
+          installPrompt: true
+        };
+      case 'closeInstallPrompt':
+        return {
+          ...state,
+          installPrompt: false
+        };
       default:
         return state;
     }
   },
   {
     auth: false,
+    installPrompt: false,
     update: false
   }
 );

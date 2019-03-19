@@ -1,3 +1,7 @@
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'development'
+}
+
 module.exports = {
   extends: ['airbnb', 'prettier', 'prettier/react'],
   parser: 'babel-eslint',
@@ -21,7 +25,6 @@ module.exports = {
     'import',
     'jsx-a11y',
     'prettier',
-    'sort-imports-es6-autofix',
     'react',
     'unicorn'
   ],
@@ -154,15 +157,6 @@ module.exports = {
     ],
     'react/sort-prop-types': 'off',
     'react/style-prop-object': 'error',
-
-    // https://github.com/marudor/eslint-plugin-sort-imports-es6-autofix
-    'sort-imports-es6-autofix/sort-imports-es6': [
-      2,
-      {
-        ignoreCase: false,
-        ignoreMemberSort: true
-      }
-    ],
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     'unicorn/catch-error-name': [

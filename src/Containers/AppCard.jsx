@@ -1,9 +1,9 @@
 import {
+  Grid,
   Card,
   CardMedia,
   CardActionArea,
   CardContent,
-  Fade,
   Typography
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
@@ -13,39 +13,31 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
+  actionArea: {
+    display: 'flex',
+    flexDirection: 'column'
+  },
   category: {
     [theme.breakpoints.down('md')]: {
       fontSize: theme.typography.body2.fontSize
     }
   },
   content: {
-    [theme.breakpoints.up('lg')]: {
-      width: 150
-    },
     '&:last-child': {
       padding: theme.spacing(1)
     },
-    padding: 'none',
-    width: 116
+    padding: 'none'
   },
   icon: {
-    [theme.breakpoints.down('sm')]: {
-      height: 60,
-      padding: theme.spacing(1),
-      width: 60
-    },
     borderRadius: 15,
-    height: 128,
+    height: 'auto',
     margin: 'auto',
     marginTop: theme.spacing(1),
+    objectFit: 'contain',
     padding: theme.spacing(2),
-    width: 128
+    width: '70%'
   },
   root: {
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: 'calc(100% / 3 - 16px)',
-      minWidth: 'calc(100% / 3 - 16px)'
-    },
     '&:hover': {
       boxShadow: theme.shadows[1]
     },
@@ -54,12 +46,7 @@ const useStyles = makeStyles(theme => ({
       style: 'solid',
       width: 1
     },
-    boxShadow: 'none',
-    flexGrow: 1,
-    marginBottom: theme.spacing(2),
-    marginRight: theme.spacing(2),
-    maxWidth: 'calc(100% / 6 - 16px)',
-    minWidth: 160
+    boxShadow: 'none'
   }
 }));
 
@@ -90,12 +77,10 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
   };
 
   return (
-    <Fade appear in>
-      <Card className={classes.root} component="li">
-        <CardActionArea onClick={handleClick}>
-          <CardMedia className={classes.icon} image={icon}>
-            {loading && <Skeleton circle height="100%" width="100%" />}
-          </CardMedia>
+    <Grid item lg={4} md={3}>
+      <Card className={classes.root}>
+        <CardActionArea className={classes.actionArea} onClick={handleClick}>
+          <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>
             <Typography color="inherit" noWrap>
               {name}
@@ -106,7 +91,7 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
           </CardContent>
         </CardActionArea>
       </Card>
-    </Fade>
+    </Grid>
   );
 });
 

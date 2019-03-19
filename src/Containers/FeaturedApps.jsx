@@ -21,7 +21,7 @@ const FEATURED_APPS = gql`
 const FeaturedApps = memo(() => {
   const { data, loading } = useQuery(FEATURED_APPS);
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
+  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
   const pageLength = isSmall ? 1 : 3;
   if (loading) {
     return (
