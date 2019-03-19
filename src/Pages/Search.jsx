@@ -34,7 +34,7 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     backgroundColor: theme.palette.background.paper,
-    height: '100vw',
+    minHeight: '100vw',
     padding: theme.spacing(2)
   },
   search: {
