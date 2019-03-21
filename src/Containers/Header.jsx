@@ -35,7 +35,7 @@ const useStyles = makeStyles(theme => ({
     marginLeft: 'auto'
   },
   logo: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginLeft: theme.spacing(2)
     },
     cursor: 'pointer',
@@ -43,10 +43,10 @@ const useStyles = makeStyles(theme => ({
     margin: 'auto'
   },
   logoContainer: {
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down('md')]: {
       margin: 'auto'
     },
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       borderRight: {
         color: theme.palette.background.default,
         style: 'solid',
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   },
   name: {
     alignItems: 'center',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       marginLeft: theme.spacing(2)
     },
     display: 'flex',
@@ -83,7 +83,7 @@ const Header = React.memo(() => {
   return (
     <AppBar className={classes.appBar} position="fixed">
       <Toolbar>
-        <Hidden smUp>
+        <Hidden mdUp>
           {isHome ? (
             <div className={classes.spacer} />
           ) : (
