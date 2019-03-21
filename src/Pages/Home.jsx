@@ -24,7 +24,6 @@ const useStyles = makeStyles(theme => ({
     }
   },
   root: {
-    overflow: 'hidden',
     paddingTop: theme.spacing(3)
   },
   section: {

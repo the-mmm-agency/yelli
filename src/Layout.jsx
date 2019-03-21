@@ -44,17 +44,19 @@ const useStyles = makeStyles(theme => ({
       color: '#fff'
     },
     body: {
-      [theme.breakpoints.up('sm')]: {
-        '-webkit-user-select': 'auto'
-      },
       '-webkit-tap-highlight-color': 'transparent',
       '-webkit-touch-callout': 'none',
-      '-webkit-user-select': 'none'
+      '-webkit-user-select': 'none',
+      overflow: 'hidden',
+      [theme.breakpoints.up('sm')]: {
+        '-webkit-user-select': 'auto'
+      }
     }
   },
   content: {
     flexGrow: 1,
-    overflow: 'hidden'
+    height: '100vh',
+    overflow: 'auto'
   },
   root: {
     display: 'flex'

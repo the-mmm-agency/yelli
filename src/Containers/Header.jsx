@@ -24,11 +24,17 @@ const GET_NAME = gql`
 
 const useStyles = makeStyles(theme => ({
   appBar: {
-    backgroundColor: theme.palette.background.paper,
-    borderBottomColor: theme.palette.background.default,
-    borderBottomStyle: 'solid',
-    borderBottomWidth: 1,
+    backgroundColor:
+      window.scrollY > 1
+        ? 'rgba(255,255,255,0.8)'
+        : theme.palette.background.paper,
+    boderBottom: {
+      color: theme.palette.background.default,
+      style: 'solid',
+      width: 1
+    },
     boxShadow: 'none',
+    maxHeight: 'fit-content',
     zIndex: theme.zIndex.drawer + 1
   },
   login: {
@@ -81,7 +87,7 @@ const Header = React.memo(() => {
 
   console.log(route);
   return (
-    <AppBar className={classes.appBar} position="fixed">
+    <AppBar className={classes.appBar} position="absolute">
       <Toolbar>
         <Hidden mdUp>
           {isHome ? (

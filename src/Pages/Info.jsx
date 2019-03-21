@@ -21,13 +21,21 @@ const useStyles = makeStyles(theme => ({
     width: 164
   },
   description: {
-    fontSize: theme.typography.body1.fontSize
+    fontSize: theme.typography.body1.fontSize,
+    padding: {
+      right: theme.spacing(8)
+    }
   },
   divider: {
     [theme.breakpoints.down('sm')]: {
-      margin: theme.spacing(1)
+      margin: {
+        bottom: theme.spacing(1),
+        left: theme.spacing(-3),
+        top: theme.spacing(1)
+      }
     },
-    width: '100%'
+    marginLeft: theme.spacing(-3),
+    width: '120%'
   },
   icon: {
     borderRadius: 15,
