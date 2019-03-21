@@ -12,11 +12,10 @@ import AppCard from 'Containers/AppCard';
 import AppListItem from 'Containers/AppListItem';
 
 export default mount({
-  '/:name': route({
-    async getView(request) {
-      return <Category name={request.params.name} />;
-    }
-  })
+  '/:name': route(async req => ({
+    title: `Yelli - ${req.params.name}`,
+    view: <Category name={req.params.name} />
+  }))
 });
 
 const GET_APPS = gql`

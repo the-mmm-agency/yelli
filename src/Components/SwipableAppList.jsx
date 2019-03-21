@@ -8,7 +8,14 @@ import splitEvery from 'split-every';
 
 const useStyles = makeStyles(theme => ({
   list: {
-    padding: theme.spacing(1)
+    [theme.breakpoints.up('sm')]: {
+      bottom: theme.spacing(1),
+      top: theme.spacing(1)
+    },
+    padding: {
+      left: theme.spacing(1),
+      right: theme.spacing(1)
+    }
   },
   slide: {
     display: 'flex',
@@ -44,7 +51,6 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
             {list.map(app => {
               // eslint-disable-next-line no-param-reassign
               delete app.__typename;
-              console.log(app);
               return <AppComponent key={app.id} {...app} />;
             })}
           </Grid>
@@ -72,6 +78,7 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
         }
         position="static"
         steps={Math.ceil(apps.length / pageLength)}
+        style={{ marginTop: -8, padding: 0 }}
       />
     </Grid>
   );

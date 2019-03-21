@@ -8,11 +8,10 @@ import React, { useState } from 'react';
 import SearchList from 'Containers/SearchList';
 
 export default mount({
-  '/': route({
-    async getView() {
-      return <Search />;
-    }
-  })
+  '/': route(async () => ({
+    title: 'Yelli - Search',
+    view: <Search />
+  }))
 });
 
 const useStyles = makeStyles(theme => ({

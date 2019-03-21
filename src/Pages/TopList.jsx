@@ -9,11 +9,10 @@ import APP_CARD from 'Graphql/AppCard.gql';
 import AppListItem from 'Containers/AppListItem';
 
 export default mount({
-  '/': route({
-    async getView() {
-      return <TopList />;
-    }
-  })
+  '/': route(async () => ({
+    title: 'Yelli - Top Apps',
+    view: <TopList />
+  }))
 });
 
 const GET_APPS = gql`

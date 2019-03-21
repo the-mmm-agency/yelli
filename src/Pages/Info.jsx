@@ -9,8 +9,9 @@ import Skeleton from 'react-loading-skeleton';
 import gql from 'graphql-tag';
 
 export default mount({
-  '/:id': route(async req => ({
-    view: <Info id={req.params.id} />
+  '/:name': route(async req => ({
+    title: `Yelli - ${req.params.name}`,
+    view: <Info name={req.params.name} />
   }))
 });
 
@@ -48,7 +49,7 @@ const useStyles = makeStyles(theme => ({
     },
     backgroundColor: theme.palette.background.paper,
     flexGrow: 1,
-    overflowY: 'hidden',
+    overflow: 'hidden',
     padding: {
       left: theme.spacing(4),
       top: theme.spacing(4)
@@ -85,8 +86,8 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const GET_APP = gql`
-  query app($id: ID!) {
-    app(where: { id: $id }) {
+  query app($name: String!) {
+    app(where: { name: $name }) {
       name
       category {
         name
@@ -99,10 +100,10 @@ const GET_APP = gql`
   }
 `;
 
-const Info = React.memo(({ id }) => {
+const Info = React.memo(({ name }) => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_APP, {
-    variables: { id }
+    variables: { name }
   });
   if (loading) {
     return (
@@ -145,7 +146,7 @@ const Info = React.memo(({ id }) => {
       </Grid>
     );
   }
-  const { name, category, description, icon, screenshots, url } = data.app;
+  const { category, description, icon, screenshots, url } = data.app;
   return (
     <Grid className={classes.root} container spacing={4}>
       <Grid container>
@@ -191,5 +192,5 @@ const Info = React.memo(({ id }) => {
 });
 
 Info.propTypes = {
-  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired
+  name: PropTypes.string
 };

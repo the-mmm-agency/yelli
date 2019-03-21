@@ -8,11 +8,11 @@ import CategoryListItem from 'Containers/CategoryListItem';
 import GET_CATEGORIES from 'Graphql/GetCategories.gql';
 
 export default mount({
-  '/': route({
-    async getView() {
-      return <Categories />;
-    }
-  })
+  '/': route(async () => ({
+    name: 'Categories',
+    title: 'Categories - Yelli',
+    view: <Categories />
+  }))
 });
 
 const useStyles = makeStyles(theme => ({

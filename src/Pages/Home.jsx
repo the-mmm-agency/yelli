@@ -18,11 +18,14 @@ const useStyles = makeStyles(theme => ({
     width: 116
   },
   header: {
-    display: 'flex'
+    display: 'flex',
+    padding: {
+      left: theme.spacing(2)
+    }
   },
   root: {
-    overflowX: 'hidden',
-    paddingTop: theme.spacing(2)
+    overflow: 'hidden',
+    paddingTop: theme.spacing(3)
   },
   section: {
     [theme.breakpoints.up('sm')]: {
@@ -35,6 +38,12 @@ const useStyles = makeStyles(theme => ({
       },
       width: 'calc(100% + 60px)'
     },
+    borderBottom: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1
+    },
+    marginBottom: theme.spacing(2),
     padding: {
       left: 20,
       right: 20,
@@ -50,14 +59,16 @@ const Home = React.memo(() => {
   return (
     <Grid className={classes.root} container>
       <div className={classes.section}>
-        <Typography gutterBottom variant="h6">
-          Featured Apps
-        </Typography>
+        <div className={classes.header}>
+          <Typography component="h2" gutterBottom variant="h6">
+            Featured Apps
+          </Typography>
+        </div>
         <FeaturedApps />
       </div>
       <div className={classes.section}>
         <div className={classes.header}>
-          <Typography gutterBottom variant="h6">
+          <Typography component="h2" gutterBottom variant="h6">
             Top Apps
           </Typography>
           <Button
@@ -73,7 +84,7 @@ const Home = React.memo(() => {
       </div>
       <div className={classes.section}>
         <div className={classes.header}>
-          <Typography gutterBottom variant="h6">
+          <Typography component="h2" gutterBottom variant="h6">
             New Apps
           </Typography>
           <Button

@@ -24,10 +24,9 @@ const useStyles = makeStyles(theme => ({
     }
   },
   content: {
-    '&:last-child': {
-      paddingBottom: 0
-    },
+    maxWidth: '25vw',
     padding: {
+      bottom: theme.spacing(1),
       left: theme.spacing(1),
       right: theme.spacing(1)
     }
@@ -40,13 +39,17 @@ const useStyles = makeStyles(theme => ({
     padding: theme.spacing(1)
   },
   iconSkeleton: {
+    [theme.breakpoints.down('sm')]: {
+      height: 100,
+      width: 100
+    },
     height: 120,
     width: 120
   },
   root: {
     [theme.breakpoints.down('md')]: {
       maxWidth: `calc(100% / 2 - ${theme.spacing(1)}px)`,
-      width: `calc(100% / 3 - ${theme.spacing(1)}px`
+      width: `calc(100% / 3 - ${theme.spacing(1)}px)`
     },
     '&:hover': {
       boxShadow: theme.shadows[1]
@@ -61,19 +64,19 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
     flexGrow: 1,
     flexShrink: 0,
+    height: 'fit-content',
     margin: {
       bottom: theme.spacing(1),
       right: theme.spacing(1),
       top: theme.spacing(1)
     },
+    maxHeight: 'fit-content',
     maxWidth: `calc(100% / 5 - ${theme.spacing(1)}px)`,
-    minHeight: 'fit-content',
-    paddingBottom: theme.spacing(1),
     width: `calc(100% / 6 - ${theme.spacing(1)}px)`
   }
 }));
 
-const AppCard = React.memo(({ id, name, icon, category, loading }) => {
+const AppCard = React.memo(({ name, icon, category, loading }) => {
   const classes = useStyles();
 
   if (loading) {
@@ -97,7 +100,7 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/app/${id}`);
+    history.push(`/app/${name}`);
   };
 
   return (
@@ -121,10 +124,9 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
 
 AppCard.propTypes = {
   category: PropTypes.shape({
-    name: PropTypes.string.isRequired
-  }).isRequired,
+    name: PropTypes.string
+  }),
   icon: PropTypes.string,
-  id: PropTypes.string.isRequired,
   loading: PropTypes.bool,
   name: PropTypes.string
 };

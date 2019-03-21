@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AppListItem = ({ id, name, category, icon, loading }) => {
+const AppListItem = ({ name, category, icon, loading }) => {
   const classes = useStyles();
   if (loading) {
     return (
@@ -34,7 +34,7 @@ const AppListItem = ({ id, name, category, icon, loading }) => {
   }
   const history = useHistory();
   const handleClick = () => {
-    history.push(`/app/${id}`);
+    history.push(`/app/${name}`);
   };
   return (
     <ListItem
@@ -54,7 +54,6 @@ const AppListItem = ({ id, name, category, icon, loading }) => {
 AppListItem.propTypes = {
   category: PropTypes.string,
   icon: PropTypes.string,
-  id: PropTypes.string,
   loading: PropTypes.bool,
   name: PropTypes.string
 };

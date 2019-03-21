@@ -35,58 +35,55 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const FeaturedAppCard = React.memo(
-  ({ id, banner, name, description, loading }) => {
-    const classes = useStyles();
+const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
+  const classes = useStyles();
 
-    if (loading) {
-      return (
-        <Card className={classes.root} component="li">
-          <CardMedia className={classes.banner}>
-            <Skeleton height="100%" width="100%" />
-          </CardMedia>
-          <CardContent>
-            <Typography align="left" noWrap>
-              <Skeleton />
-            </Typography>
-            <Typography align="left" color="textSecondary" noWrap>
-              <Skeleton />
-            </Typography>
-          </CardContent>
-        </Card>
-      );
-    }
-
-    const history = useHistory();
-
-    const handleClick = () => {
-      history.push(`/app/${id}`);
-    };
-
+  if (loading) {
     return (
-      <Fade appear in>
-        <Card className={classes.root} component="li">
-          <CardActionArea onClick={handleClick}>
-            <CardMedia className={classes.banner} image={banner} />
-            <CardContent>
-              <Typography align="left" noWrap>
-                {name}
-              </Typography>
-              <Typography align="left" color="textSecondary" noWrap>
-                {description}
-              </Typography>
-            </CardContent>
-          </CardActionArea>
-        </Card>
-      </Fade>
+      <Card className={classes.root} component="li">
+        <CardMedia className={classes.banner}>
+          <Skeleton height="100%" width="100%" />
+        </CardMedia>
+        <CardContent>
+          <Typography align="left" noWrap>
+            <Skeleton />
+          </Typography>
+          <Typography align="left" color="textSecondary" noWrap>
+            <Skeleton />
+          </Typography>
+        </CardContent>
+      </Card>
     );
   }
-);
+
+  const history = useHistory();
+
+  const handleClick = () => {
+    history.push(`/app/${name}`);
+  };
+
+  return (
+    <Fade appear in>
+      <Card className={classes.root} component="li">
+        <CardActionArea onClick={handleClick}>
+          <CardMedia className={classes.banner} image={banner} />
+          <CardContent>
+            <Typography align="left" noWrap>
+              {name}
+            </Typography>
+            <Typography align="left" color="textSecondary" noWrap>
+              {description}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    </Fade>
+  );
+});
 
 FeaturedAppCard.propTypes = {
   banner: PropTypes.string,
   description: PropTypes.string,
-  id: PropTypes.string,
   loading: PropTypes.bool.isRequired,
   name: PropTypes.string
 };
