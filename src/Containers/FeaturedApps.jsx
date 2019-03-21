@@ -25,14 +25,17 @@ const FeaturedApps = memo(() => {
   const pageLength = isSmall ? 1 : 3;
   if (loading) {
     return (
-      <>
-        <FeaturedAppCard loading />
-        <FeaturedAppCard loading />
-        <FeaturedAppCard loading />
-        <FeaturedAppCard loading />
-        <FeaturedAppCard loading />
-        <FeaturedAppCard loading />
-      </>
+      <ul style={{ display: 'flex', listStyle: 'none' }}>
+        {isSmall ? (
+          <FeaturedAppCard loading />
+        ) : (
+          <>
+            <FeaturedAppCard loading />
+            <FeaturedAppCard loading />
+            <FeaturedAppCard loading />
+          </>
+        )}
+      </ul>
     );
   }
   return (

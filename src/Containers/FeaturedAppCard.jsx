@@ -84,11 +84,11 @@ const FeaturedAppCard = React.memo(
 );
 
 FeaturedAppCard.propTypes = {
-  id: PropTypes.string,
   banner: PropTypes.string,
-  name: PropTypes.string,
   description: PropTypes.string,
-  loading: PropTypes.bool.isRequired
+  id: PropTypes.string,
+  loading: PropTypes.bool.isRequired,
+  name: PropTypes.string
 };
 
 export default FeaturedAppCard;

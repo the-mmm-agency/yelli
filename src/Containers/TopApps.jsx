@@ -24,7 +24,7 @@ const TopApps = () => {
   const pageLength = isSmall ? 3 : 6;
   if (loading) {
     return (
-      <>
+      <div style={{ display: 'flex' }}>
         <AppCard loading />
         <AppCard loading />
         <AppCard loading />
@@ -32,7 +32,7 @@ const TopApps = () => {
         <AppCard loading />
         <AppCard loading />
         <AppCard loading />
-      </>
+      </div>
     );
   }
   return (

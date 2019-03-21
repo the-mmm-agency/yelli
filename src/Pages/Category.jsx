@@ -78,7 +78,7 @@ const Category = memo(({ name }) => {
       {data.apps.map(app => (
         <AppComponent
           key={app.id}
-          category={app.category.name}
+          category={app.category}
           icon={app.icon}
           id={app.id}
           name={app.name}

@@ -6,16 +6,16 @@ import React, { useState, memo } from 'react';
 import SwipeableViews from 'react-swipeable-views';
 import splitEvery from 'split-every';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   list: {
-    padding: 0
+    padding: theme.spacing(1)
   },
   slide: {
     display: 'flex',
     justifyContent: 'stretch',
     overflow: 'visible'
   }
-});
+}));
 
 const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
   const [activeStep, setActiveStep] = useState(0);
@@ -27,8 +27,10 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
         index={activeStep}
         onChangeIndex={step => setActiveStep(step)}
         slideClassName={classes.slide}
-        slideStyle={{ overflow: 'visible' }}
-        style={{ maxWidth: '100%', marginBottom: -8 }}
+        style={{
+          marginBottom: -8,
+          maxWidth: '100%'
+        }}
       >
         {splitEvery(pageLength, apps).map(list => (
           <Grid
@@ -37,7 +39,6 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
             component="ul"
             container
             item
-            spacing={2}
             wrap="nowrap"
           >
             {list.map(app => {

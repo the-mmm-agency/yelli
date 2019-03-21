@@ -1,5 +1,5 @@
 if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = 'development'
+  process.env.NODE_ENV = 'development';
 }
 
 module.exports = {
@@ -26,6 +26,7 @@ module.exports = {
     'jsx-a11y',
     'prettier',
     'react',
+    'sort-keys-fix',
     'unicorn'
   ],
   rules: {
@@ -50,9 +51,7 @@ module.exports = {
       }
     ],
     'no-underscore-dangle': 'off',
-    'sort-keys': ['warn', 'asc', { natural: true }],
     'sort-vars': 'warn',
-
 
     // https://github.com/benmosher/eslint-plugin-import
     'import/export': 'error',
@@ -99,15 +98,23 @@ module.exports = {
     'prettier/prettier': [
       'error',
       {
+        printWidth: 80,
         singleQuote: true
       }
     ],
 
     // https://github.com/yannickcr/eslint-plugin-react
-    'react/boolean-prop-naming': 'warn',
+    'react/boolean-prop-naming': [
+      'warn',
+      {
+        rule: '(^(is|has)[A-Z]([A-Za-z0-9]?)+|loading)',
+        message:
+          'It is better if your prop ({{ propName }}) matches this pattern: ({{ pattern }})'
+      }
+    ],
     'react/destructuring-assignment': 'off',
     'react/forbid-prop-types': 'off',
-    'react/jsx-boolean-value': 'off',
+    'react/jsx-boolean-value': 'error',
     'react/jsx-closing-bracket-location': ['warn', 'line-aligned'],
     'react/jsx-first-prop-new-line': ['warn', 'multiline'],
     'react/jsx-indent-props': ['warn', 2],
@@ -119,13 +126,13 @@ module.exports = {
     'react/jsx-sort-props': 'warn',
     'react/jsx-uses-react': 'error',
     'react/no-array-index-key': 'error',
-    'react/no-danger': 'off',
+    'react/no-danger': 'error',
     'react/no-did-mount-set-state': 'warn',
     'react/no-did-update-set-state': 'warn',
     'react/no-direct-mutation-state': 'warn',
     'react/no-find-dom-node': 'error',
-    'react/no-unescaped-entities': 'off',
-    'react/no-unused-prop-types': 'warn',
+    'react/no-unescaped-entities': 'error',
+    'react/no-unused-prop-types': 'error',
     'react/no-unused-state': 'warn',
     'react/prefer-stateless-function': 'warn',
     'react/prop-types': 'error',
@@ -155,8 +162,18 @@ module.exports = {
         }
       }
     ],
-    'react/sort-prop-types': 'off',
+    'react/sort-prop-types': [
+      'warn',
+      { ignoreCase: true, sortShapeProp: true }
+    ],
     'react/style-prop-object': 'error',
+
+    // https://github.com/leo-buneev/eslint-plugin-sort-keys-fix
+    'sort-keys-fix/sort-keys-fix': [
+      'warn',
+      'asc',
+      { caseSensitive: false, natural: true }
+    ],
 
     // https://github.com/sindresorhus/eslint-plugin-unicorn
     'unicorn/catch-error-name': [

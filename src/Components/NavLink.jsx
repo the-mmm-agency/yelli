@@ -28,8 +28,22 @@ const useStyles = makeStyles(theme => ({
     width: 'calc(100% - 16px)'
   },
   root: {
+    '&::-moz-focus-inner': {
+      borderStyle: 'none'
+    },
+    '-moz-appearance': 'none',
+    '-webkit-appearance': 'none',
+    border: 0,
+    borderRadius: 0,
     color: 'inherit',
-    textDecoration: 'none'
+    cursor: 'pointer',
+    margin: 0,
+    outline: 'none',
+    padding: 0,
+    textDecoration: 'none',
+    userSelect: 'none',
+    verticalAlign: 'middle',
+    WebkitTapHighlightColor: 'transparent'
   }
 }));
 
@@ -58,10 +72,10 @@ const NavLink = React.memo(({ children, href, LinkProps, ListItemProps }) => {
 });
 
 NavLink.propTypes = {
-  LinkProps: PropTypes.object,
-  ListItemProps: PropTypes.object,
   children: PropTypes.oneOfType([PropTypes.element, PropTypes.node]),
-  href: PropTypes.string.isRequired
+  href: PropTypes.string.isRequired,
+  LinkProps: PropTypes.object,
+  ListItemProps: PropTypes.object
 };
 
 export default NavLink;

@@ -50,8 +50,8 @@ const CategoryListItem = React.memo(({ name, loading }) => {
 });
 
 CategoryListItem.propTypes = {
-  name: PropTypes.string,
-  loading: PropTypes.bool
+  loading: PropTypes.bool,
+  name: PropTypes.string
 };
 
 export default CategoryListItem;

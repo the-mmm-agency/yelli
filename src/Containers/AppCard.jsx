@@ -1,11 +1,12 @@
+/* eslint-disable react/void-dom-elements-no-children */
 import {
-  Grid,
   Card,
-  CardMedia,
   CardActionArea,
   CardContent,
+  Fade,
   Typography
 } from '@material-ui/core';
+import classNames from 'classnames';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
@@ -23,23 +24,30 @@ const useStyles = makeStyles(theme => ({
     }
   },
   content: {
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: 100
-    },
     '&:last-child': {
-      padding: theme.spacing(1)
+      paddingBottom: 0
     },
-    padding: 'none'
+    padding: {
+      left: theme.spacing(1),
+      right: theme.spacing(1)
+    }
   },
   icon: {
     borderRadius: 15,
-    height: 'auto',
     margin: 'auto',
+    maxWidth: '100%',
     objectFit: 'contain',
-    padding: theme.spacing(1),
-    width: '95%'
+    padding: theme.spacing(1)
+  },
+  iconSkeleton: {
+    height: 120,
+    width: 120
   },
   root: {
+    [theme.breakpoints.down('md')]: {
+      maxWidth: `calc(100% / 2 - ${theme.spacing(1)}px)`,
+      width: `calc(100% / 3 - ${theme.spacing(1)}px`
+    },
     '&:hover': {
       boxShadow: theme.shadows[1]
     },
@@ -48,18 +56,32 @@ const useStyles = makeStyles(theme => ({
       style: 'solid',
       width: 1
     },
-    boxShadow: 'none'
+    boxShadow: 'none',
+    display: 'flex',
+    flexDirection: 'column',
+    flexGrow: 1,
+    flexShrink: 0,
+    margin: {
+      bottom: theme.spacing(1),
+      right: theme.spacing(1),
+      top: theme.spacing(1)
+    },
+    maxWidth: `calc(100% / 5 - ${theme.spacing(1)}px)`,
+    minHeight: 'fit-content',
+    paddingBottom: theme.spacing(1),
+    width: `calc(100% / 6 - ${theme.spacing(1)}px)`
   }
 }));
 
 const AppCard = React.memo(({ id, name, icon, category, loading }) => {
   const classes = useStyles();
+
   if (loading) {
     return (
       <Card className={classes.root} component="li">
-        <CardMedia className={classes.icon}>
-          <Skeleton circle height="100%" width="100%" />
-        </CardMedia>
+        <div className={classNames(classes.icon, classes.iconSkeleton)}>
+          <Skeleton height="100%" width="100%" />
+        </div>
         <CardContent className={classes.content}>
           <Typography color="inherit" noWrap>
             <Skeleton />
@@ -79,21 +101,21 @@ const AppCard = React.memo(({ id, name, icon, category, loading }) => {
   };
 
   return (
-    <Grid item lg={4} md={3}>
-      <Card className={classes.root}>
+    <Fade appear in>
+      <Card className={classes.root} component="li">
         <CardActionArea className={classes.actionArea} onClick={handleClick}>
           <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>
-            <Typography color="inherit" noWrap>
+            <Typography align="center" color="inherit" noWrap>
               {name}
             </Typography>
-            <Typography color="textSecondary" noWrap>
+            <Typography align="center" color="textSecondary" noWrap>
               {category.name}
             </Typography>
           </CardContent>
         </CardActionArea>
       </Card>
-    </Grid>
+    </Fade>
   );
 });
 

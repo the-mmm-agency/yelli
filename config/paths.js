@@ -66,24 +66,24 @@ const resolveModule = (resolveFn, filePath) => {
 
 // config after eject: we're in ./config/
 module.exports = {
-  dotenv: resolveApp('.env'),
-  appPath: resolveApp('.'),
   appBuild: resolveApp('build'),
-  appPublic: resolveApp('public'),
+  appHtml: resolveApp('public/index.html'),
   appIcon: resolveApp('public/icon.png'),
   appIconSmall: resolveApp('public/icon-small.png'),
-  appHtml: resolveApp('public/index.html'),
   appIndexJs: resolveModule(resolveApp, 'src/index'),
+  appNodeModules: resolveApp('node_modules'),
   appPackageJson: resolveApp('package.json'),
+  appPath: resolveApp('.'),
+  appPublic: resolveApp('public'),
   appSrc: resolveApp('src'),
   appTsConfig: resolveApp('tsconfig.json'),
+  dotenv: resolveApp('.env'),
   nodeModules: resolveApp('node_modules'),
-  yarnLockFile: resolveApp('yarn.lock'),
-  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
   proxySetup: resolveApp('src/setupProxy.js'),
-  appNodeModules: resolveApp('node_modules'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
-  servedPath: getServedPath(resolveApp('package.json'))
+  servedPath: getServedPath(resolveApp('package.json')),
+  testsSetup: resolveModule(resolveApp, 'src/setupTests'),
+  yarnLockFile: resolveApp('yarn.lock')
 };
 
 module.exports.moduleFileExtensions = moduleFileExtensions;

@@ -69,7 +69,7 @@ const Layout = ({ children }) => {
       <CssBaseline />
       <Header />
       <CreateApp />
-      <Hidden xsDown>
+      <Hidden smDown>
         <SideDrawer />
       </Hidden>
       <Auth />
@@ -77,11 +77,11 @@ const Layout = ({ children }) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         {children}
-        <Hidden smUp>
+        <Hidden mdUp>
           <div className={classes.toolbar} />
         </Hidden>
       </main>
-      <Hidden smUp>
+      <Hidden mdUp>
         <Navigation />
       </Hidden>
     </div>
