@@ -28,7 +28,10 @@ const AppListItem = ({ name, category, icon, loading }) => {
         <ListItemIcon>
           <Skeleton circle height={30} width={30} />
         </ListItemIcon>
-        <ListItemText primary={<Skeleton />} secondary={<Skeleton />} />
+        <ListItemText
+          primary={<Skeleton width="60vw" />}
+          secondary={<Skeleton width="40vw" />}
+        />
       </ListItem>
     );
   }
