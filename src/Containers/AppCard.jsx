@@ -35,10 +35,9 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 15,
     height: 'auto',
     margin: 'auto',
-    marginTop: theme.spacing(1),
     objectFit: 'contain',
-    padding: theme.spacing(2),
-    width: '70%'
+    padding: theme.spacing(1),
+    width: '95%'
   },
   root: {
     '&:hover': {
