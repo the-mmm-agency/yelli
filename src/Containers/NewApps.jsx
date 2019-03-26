@@ -1,8 +1,7 @@
 import { useQuery } from 'react-apollo-hooks';
-import { useTheme } from '@material-ui/styles';
 import React from 'react';
+import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import APP_CARD from 'Graphql/AppCard.gql';
 import AppCard from 'Containers/AppCard';
@@ -17,11 +16,8 @@ const NEW_APPS = gql`
   ${APP_CARD}
 `;
 
-const NewApps = () => {
+const NewApps = ({ pageLength }) => {
   const { data, loading } = useQuery(NEW_APPS);
-  const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('sm'));
-  const pageLength = isSmall ? 3 : 6;
   if (loading) {
     return (
       <div style={{ display: 'flex' }}>
@@ -42,6 +38,10 @@ const NewApps = () => {
       pageLength={pageLength}
     />
   );
+};
+
+NewApps.propTypes = {
+  pageLength: PropTypes.number.isRequired
 };
 
 export default NewApps;

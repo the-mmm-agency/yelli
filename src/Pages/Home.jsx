@@ -1,5 +1,6 @@
 import { Grid, Typography, Button } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import React from 'react';
 
@@ -52,9 +53,23 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const getPageLength = (isSm, isMd) => {
+  if (isMd) {
+    return 4;
+  }
+  if (isSm) {
+    return 3;
+  }
+  return 6;
+};
+
 const Home = React.memo(() => {
   const classes = useStyles();
   const history = useHistory();
+  const theme = useTheme();
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const pageLength = getPageLength(isSm, isMd);
   return (
     <Grid className={classes.root} container>
       <div className={classes.section}>
@@ -79,7 +94,7 @@ const Home = React.memo(() => {
             view more
           </Button>
         </div>
-        <TopApps />
+        <TopApps pageLength={pageLength} />
       </div>
       <div className={classes.section}>
         <div className={classes.header}>
@@ -95,7 +110,7 @@ const Home = React.memo(() => {
             view all
           </Button>
         </div>
-        <NewApps />
+        <NewApps pageLength={pageLength} />
       </div>
     </Grid>
   );

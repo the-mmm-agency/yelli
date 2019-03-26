@@ -50,9 +50,13 @@ const useStyles = makeStyles(theme => ({
     width: 120
   },
   root: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       maxWidth: `calc(100% / 2 - ${theme.spacing(1)}px)`,
       width: `calc(100% / 3 - ${theme.spacing(1)}px)`
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      maxWidth: `calc(100% / 3 - ${theme.spacing(1)}px)`,
+      width: `calc(100% / 4 - ${theme.spacing(1)}px)`
     },
     '&:hover': {
       boxShadow: theme.shadows[1]
