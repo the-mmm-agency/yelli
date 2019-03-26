@@ -18,15 +18,26 @@ const FEATURED_APPS = gql`
   }
 `;
 
+const getPageLength = (isSm, isMd) => {
+  if (isMd) {
+    return 2;
+  }
+  if (isSm) {
+    return 1;
+  }
+  return 3;
+};
+
 const FeaturedApps = memo(() => {
   const { data, loading } = useQuery(FEATURED_APPS);
   const theme = useTheme();
-  const isSmall = useMediaQuery(theme.breakpoints.down('md'));
-  const pageLength = isSmall ? 1 : 3;
+  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+  const isMd = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const pageLength = getPageLength(isSm, isMd);
   if (loading) {
     return (
       <ul style={{ display: 'flex', listStyle: 'none' }}>
-        {isSmall ? (
+        {isSm ? (
           <FeaturedAppCard loading />
         ) : (
           <>

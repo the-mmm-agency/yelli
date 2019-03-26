@@ -21,8 +21,11 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       boxShadow: theme.shadows[1]
     },
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 10px)'
+    },
+    [theme.breakpoints.between('sm', 'md')]: {
+      width: 'calc(50% - 10px)'
     },
     border: {
       color: theme.palette.divider,
