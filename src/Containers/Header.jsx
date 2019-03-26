@@ -1,6 +1,7 @@
 import { AppBar, Button, Hidden, Toolbar, Typography } from '@material-ui/core';
 import { KeyboardArrowLeft as BackIcon } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { useCurrentRoute, useHistory } from 'react-navi';
 import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
@@ -28,8 +29,8 @@ const useStyles = makeStyles(theme => ({
       window.scrollY > 1
         ? 'rgba(255,255,255,0.8)'
         : theme.palette.background.paper,
-    boderBottom: {
-      color: theme.palette.background.default,
+    borderBottom: {
+      color: theme.palette.divider,
       style: 'solid',
       width: 1
     },
@@ -54,7 +55,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('md')]: {
       borderRight: {
-        color: theme.palette.background.default,
+        color: theme.palette.divider,
         style: 'solid',
         width: 1
       }
@@ -84,8 +85,9 @@ const Header = React.memo(() => {
   const history = useHistory();
   const name = route.title ? route.title.replace('Yelli - ', '') : 'Yelli';
   const isHome = route.title === 'Yelli';
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
 
-  console.log(route);
   return (
     <AppBar className={classes.appBar} position="absolute">
       <Toolbar>
@@ -103,7 +105,7 @@ const Header = React.memo(() => {
           className={classes.logoContainer}
           onClick={() => history.push('/')}
         >
-          {isHome ? (
+          {isHome || matches ? (
             <picture className={classes.logo}>
               <source srcSet={LogoWebp} type="image/webp" />
               <source srcSet={LogoGif} type="image/gif" />
@@ -120,6 +122,18 @@ const Header = React.memo(() => {
             </Typography>
           )}
         </div>
+        <Hidden smDown>
+          {!isHome && (
+            <Typography
+              align="center"
+              className={classes.name}
+              component="h1"
+              variant="h5"
+            >
+              {name}
+            </Typography>
+          )}
+        </Hidden>
         {!loading && data.me ? (
           <UserMenu name={data.me.name} />
         ) : (

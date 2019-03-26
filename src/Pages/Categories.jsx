@@ -10,7 +10,7 @@ import GET_CATEGORIES from 'Graphql/GetCategories.gql';
 export default mount({
   '/': route(async () => ({
     name: 'Categories',
-    title: 'Categories - Yelli',
+    title: 'Yelli - Categories',
     view: <Categories />
   }))
 });

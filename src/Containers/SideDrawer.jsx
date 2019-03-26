@@ -18,7 +18,7 @@ const useStyles = makeStyles(theme => ({
     zIndex: 1000
   },
   drawerPaper: {
-    borderColor: theme.palette.background.default,
+    borderColor: theme.palette.divider,
     width: drawerWidth
   },
   listIcon: {

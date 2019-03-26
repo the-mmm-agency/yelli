@@ -5,11 +5,11 @@ import teal from '@material-ui/core/colors/teal';
 const LightTheme = createMuiTheme({
   palette: {
     background: {
-      default: '#f4f4f4',
+      default: '#ffffff',
       paper: '#ffffff'
     },
     contrastThreshold: 3,
-    divider: '#dadce0',
+    divider: '#ececec',
     primary: {
       dark: darken('#ea533f', 0.12),
       light: lighten('#ea533f', 0.12),
