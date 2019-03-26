@@ -13,6 +13,9 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
+  actionArea: {
+    background: theme.palette.background.paper
+  },
   banner: {
     height: 200,
     width: '100%'
@@ -68,7 +71,10 @@ const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
   return (
     <Fade appear in>
       <Card className={classes.root} component="li">
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea
+          classes={{ focusHighlight: classes.actionArea }}
+          onClick={handleClick}
+        >
           <CardMedia className={classes.banner} image={banner} />
           <CardContent>
             <Typography align="left" noWrap>

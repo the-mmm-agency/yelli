@@ -18,6 +18,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column'
   },
+  actionAreaFocusHighlight: {
+    background: theme.palette.background.paper
+  },
   category: {
     [theme.breakpoints.down('md')]: {
       fontSize: theme.typography.body2.fontSize
@@ -106,7 +109,11 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
   return (
     <Fade appear in>
       <Card className={classes.root} component="li">
-        <CardActionArea className={classes.actionArea} onClick={handleClick}>
+        <CardActionArea
+          classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
+          className={classes.actionArea}
+          onClick={handleClick}
+        >
           <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>
             <Typography align="center" color="inherit" noWrap>
