@@ -49,7 +49,7 @@ const AppListItem = ({ name, category, icon, loading }) => {
       <ListItemIcon>
         <img alt={name} className={classes.icon} src={icon} />
       </ListItemIcon>
-      <ListItemText primary={name} secondary={category.name} />
+      <ListItemText primary={name} secondary={category} />
     </ListItem>
   );
 };
