@@ -12,24 +12,18 @@ import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
 import React from 'react';
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   label: {
     fontSize: '0.5rem'
   },
   root: {
-    borderTop: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1
-    },
     bottom: 0,
-    boxShadow: 'none',
     top: 'auto'
   },
   selected: {
     fontSize: '0.65rem !important'
   }
-}));
+});
 
 const Navigation = () => {
   const route = useCurrentRoute();
