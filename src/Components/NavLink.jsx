@@ -20,13 +20,15 @@ const useStyles = makeStyles(theme => ({
       color: `${theme.palette.primary.main} !important`
     },
     backgroundColor: 'inherit',
-    borderRadius: '0 64px 64px 0',
+    borderRadius: 8,
     color: 'inherit',
+    marginLeft: theme.spacing(2),
+    marginTop: theme.spacing(1),
     transition: theme.transitions.create(['background-color', 'color'], {
       duration: theme.transitions.duration.standard,
       easing: theme.transitions.easing.sharp
     }),
-    width: 'calc(100% - 16px)'
+    width: `calc(100% - ${theme.spacing(4)}px)`
   },
   root: {
     '&::-moz-focus-inner': {
