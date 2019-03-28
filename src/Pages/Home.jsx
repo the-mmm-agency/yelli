@@ -25,6 +25,9 @@ const useStyles = makeStyles(theme => ({
       left: theme.spacing(3)
     }
   },
+  root: {
+    padding: 'none'
+  },
   section: {
     padding: {
       bottom: theme.spacing(3),
