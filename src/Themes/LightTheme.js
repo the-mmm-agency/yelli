@@ -26,7 +26,7 @@ const LightTheme = createMuiTheme({
     },
     text: {
       primary: '#202124',
-      secondary: fade('#202124', 0.7)
+      secondary: fade('#202124', 0.4)
     },
     tonalOffset: 0.2
   },

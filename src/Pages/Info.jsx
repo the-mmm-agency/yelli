@@ -23,6 +23,9 @@ const useStyles = makeStyles(theme => ({
   buttonLabel: {
     textTransform: 'capitalize'
   },
+  category: {
+    fontWeight: '500'
+  },
   description: {
     fontSize: theme.typography.body1.fontSize,
     padding: {
@@ -168,7 +171,13 @@ const Info = React.memo(({ name }) => {
           <Typography component="h1" variant="h6">
             {name}
           </Typography>
-          <Typography color="textSecondary" gutterBottom variant="subtitle2">
+          <Typography
+            className={classes.category}
+            color="textSecondary"
+            component="h2"
+            gutterBottom
+            variant="h6"
+          >
             {category.name}
           </Typography>
           <Button
