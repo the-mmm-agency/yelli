@@ -15,7 +15,6 @@ import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
-    maxWidth: 'fit-content',
     padding: theme.spacing(1)
   },
   actionAreaFocusHighlight: {
@@ -45,10 +44,11 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     [theme.breakpoints.between('xs', 'sm')]: {
-      maxWidth: `calc(100% / 4 - ${theme.spacing(1)}px)`,
-      width: `calc(100% / 4 - ${theme.spacing(1)}px)`
+      margin: 0,
+      maxWidth: `calc(100% / 4)`,
+      width: `calc(100% / 4)`
     },
-    [theme.breakpoints.between('md', 'lg')]: {
+    [theme.breakpoints.between('sm', 'md')]: {
       maxWidth: `calc(100% / 6 - ${theme.spacing(1)}px)`,
       width: `calc(100% / 6 - ${theme.spacing(1)}px)`
     },

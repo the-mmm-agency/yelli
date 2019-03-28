@@ -7,15 +7,10 @@ import splitEvery from 'split-every';
 const MobileStepper = lazy(() => import('@material-ui/core/MobileStepper'));
 const SwipeableViews = lazy(() => import('react-swipeable-views'));
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   list: {
-    [theme.breakpoints.up('sm')]: {
-      padding: theme.spacing(1)
-    },
-    padding: {
-      left: theme.spacing(1),
-      right: theme.spacing(1)
-    }
+    justifyContent: 'space-around',
+    padding: 0
   },
   slide: {
     display: 'flex',
@@ -25,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   stepper: {
     justifyContent: 'center'
   }
-}));
+});
 
 const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
   const [activeStep, setActiveStep] = useState(0);

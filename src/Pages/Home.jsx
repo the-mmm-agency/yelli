@@ -49,7 +49,7 @@ const Home = React.memo(() => {
   const history = useHistory();
   const theme = useTheme();
   const isSm = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
-  const isMd = useMediaQuery(theme.breakpoints.between('md', 'lg'));
+  const isMd = useMediaQuery(theme.breakpoints.between('sm', 'md'));
   const pageLength = getPageLength(isSm, isMd);
   return (
     <Grid className={classes.root} container>

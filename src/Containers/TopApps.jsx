@@ -9,7 +9,7 @@ import SwipableAppList from 'Components/SwipableAppList';
 
 const TOP_APPS = gql`
   query topApps {
-    apps(first: 6, orderBy: rank_DESC) {
+    apps(first: 8, orderBy: rank_DESC) {
       ...AppCard
     }
   }
