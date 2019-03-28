@@ -4,7 +4,7 @@ import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Skeleton from 'react-loading-skeleton';
 import gql from 'graphql-tag';
 
@@ -116,6 +116,9 @@ const GET_APP = gql`
 
 const Info = React.memo(({ name }) => {
   const classes = useStyles();
+  useEffect(() => {
+    window.scrollY = 0;
+  });
   const { data, loading } = useQuery(GET_APP, {
     variables: { name }
   });
