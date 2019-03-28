@@ -23,10 +23,9 @@ const useStyles = makeStyles(theme => ({
   },
   content: {
     padding: {
-      bottom: theme.spacing(1),
-      left: theme.spacing(1),
-      right: theme.spacing(1)
-    }
+      left: theme.spacing(1)
+    },
+    textOverflow: 'ellipsis'
   },
   icon: {
     borderRadius: 15,

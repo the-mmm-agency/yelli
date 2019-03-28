@@ -15,36 +15,23 @@ const useStyles = makeStyles(theme => ({
     margin: {
       left: 'auto',
       right: theme.spacing(3)
-    },
-    width: 116
+    }
+  },
+  divider: {
+    width: '100%'
   },
   header: {
     display: 'flex',
     padding: {
-      left: theme.spacing(2)
+      left: theme.spacing(3)
     }
   },
-  root: {
-    paddingTop: theme.spacing(3)
-  },
   section: {
-    [theme.breakpoints.up('sm')]: {
-      display: 'flex',
-      flexDirection: 'column',
-      padding: {
-        bottom: 10,
-        left: 30,
-        right: 30
-      },
-      width: 'calc(100% + 60px)'
-    },
-    marginBottom: theme.spacing(2),
     padding: {
-      left: 20,
-      right: 20,
-      top: 20
+      bottom: theme.spacing(3),
+      top: theme.spacing(3)
     },
-    width: 'calc(100% + 40px)'
+    width: '100%'
   }
 }));
 
@@ -75,7 +62,7 @@ const Home = React.memo(() => {
         </div>
         <FeaturedApps />
       </div>
-      <Divider />
+      <Divider className={classes.divider} />
       <div className={classes.section}>
         <div className={classes.header}>
           <Typography component="h2" gutterBottom variant="h6">
@@ -92,7 +79,7 @@ const Home = React.memo(() => {
         </div>
         <TopApps pageLength={pageLength} />
       </div>
-      <Divider />
+      <Divider className={classes.divider} />
       <div className={classes.section}>
         <div className={classes.header}>
           <Typography component="h2" gutterBottom variant="h6">
