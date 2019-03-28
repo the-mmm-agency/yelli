@@ -41,12 +41,8 @@ ReactDOM.render(
 );
 
 const notify = () => dispatch({ type: 'openUpdate' });
-const installPrompt = () => dispatch({ type: 'openInstallPrompt' });
 
 serviceWorker.register({
-  iosInstallPrompt: () => {
-    installPrompt();
-  },
   onUpdate: async registration => {
     registration.update();
     notify();
