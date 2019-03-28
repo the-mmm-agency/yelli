@@ -1,4 +1,4 @@
-import { AppBar, Button, Hidden, Toolbar, Typography } from '@material-ui/core';
+import { AppBar, Button, Hidden, Toolbar } from '@material-ui/core';
 import { KeyboardArrowLeft as BackIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
@@ -84,7 +84,6 @@ const Header = React.memo(() => {
   const { data, loading } = useQuery(GET_NAME);
   const route = useCurrentRoute();
   const history = useHistory();
-  const name = route.title ? route.title.replace('Yelli - ', '') : 'Yelli';
   const isHome = route.title === 'Yelli';
 
   return (
@@ -111,18 +110,6 @@ const Header = React.memo(() => {
               </picture>
             </div>
           </>
-        </Hidden>
-        <Hidden smDown>
-          {!isHome && (
-            <Typography
-              align="center"
-              className={classes.name}
-              component="h1"
-              variant="h5"
-            >
-              {name}
-            </Typography>
-          )}
         </Hidden>
         {!loading && data.me ? (
           <UserMenu name={data.me.name} />
