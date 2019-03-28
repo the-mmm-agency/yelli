@@ -364,14 +364,17 @@ module.exports = function(webpackEnv) {
         new WorkboxWebpackPlugin.GenerateSW({
           clientsClaim: true,
           directoryIndex: '/index.html',
-          exclude: [/\.map$/, /asset-manifest\.json$/],
+          exclude: [
+            /\.map$/,
+            /asset-manifest\.json$/,
+            /precache-manifest\..*.json$/
+          ],
           importWorkboxFrom: 'cdn',
           navigateFallback: `${publicUrl}/index.html`,
           navigateFallbackBlacklist: [
             new RegExp('^/_'),
             new RegExp('/[^/]+\\.[^/]+$')
           ],
-          precacheManifestFilename: 'precache-manifest.json',
           runtimeCaching: [
             {
               handler: 'staleWhileRevalidate',
