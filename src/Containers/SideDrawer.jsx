@@ -70,7 +70,7 @@ const SideDrawer = React.memo(() => {
           <img alt="Yelli" className={classes.logo} src={LogoGif} />
         </picture>
       </div>
-      <List>
+      <List dense>
         <NavLink href="/" LinkProps={{ exact: true }}>
           <ListItemIcon className={classes.listIcon}>
             <HomeIcon />

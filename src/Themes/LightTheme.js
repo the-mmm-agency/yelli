@@ -35,7 +35,10 @@ const LightTheme = createMuiTheme({
   },
   typography: {
     fontFamily: 'proxima-nova, sans-serif',
-    fontSize: 14
+    fontSize: 14,
+    h6: {
+      fontWeight: 600
+    }
   }
 });
 

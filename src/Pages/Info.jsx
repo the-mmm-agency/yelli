@@ -165,10 +165,10 @@ const Info = React.memo(({ name }) => {
           <img alt={name} className={classes.icon} src={icon} />
         </Grid>
         <Grid className={classes.item} item xs="auto">
-          <Typography component="h1" variant="h5">
+          <Typography component="h1" variant="h6">
             {name}
           </Typography>
-          <Typography color="textSecondary" gutterBottom>
+          <Typography color="textSecondary" gutterBottom variant="subtitle2">
             {category.name}
           </Typography>
           <Button
