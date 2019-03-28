@@ -36,7 +36,7 @@ const SearchList = React.memo(({ searchString }) => {
       {data.apps.map(app => (
         <AppListItem
           key={app.id}
-          category={app.category.name}
+          category={app.category}
           icon={app.icon}
           id={app.id}
           name={app.name}
