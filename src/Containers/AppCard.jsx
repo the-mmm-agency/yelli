@@ -14,6 +14,13 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
+  actionArea: {
+    maxWidth: 'fit-content',
+    padding: theme.spacing(1)
+  },
+  actionAreaFocusHighlight: {
+    ...theme.shape
+  },
   content: {
     padding: {
       bottom: theme.spacing(1),
@@ -23,10 +30,8 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     borderRadius: 15,
-    margin: 'auto',
     objectFit: 'contain',
-    padding: theme.spacing(1),
-    width: '90%'
+    width: '100%'
   },
   iconSkeleton: {
     [theme.breakpoints.down('sm')]: {
@@ -40,16 +45,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 500
   },
   root: {
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: `calc(100% / 2 - ${theme.spacing(1)}px)`,
-      width: `calc(100% / 3 - ${theme.spacing(1)}px)`
-    },
-    [theme.breakpoints.between('sm', 'md')]: {
-      maxWidth: `calc(100% / 3 - ${theme.spacing(1)}px)`,
+    [theme.breakpoints.between('xs', 'sm')]: {
+      maxWidth: `calc(100% / 4 - ${theme.spacing(1)}px)`,
       width: `calc(100% / 4 - ${theme.spacing(1)}px)`
     },
-    '&:hover': {
-      boxShadow: theme.shadows[1]
+    [theme.breakpoints.between('md', 'lg')]: {
+      maxWidth: `calc(100% / 6 - ${theme.spacing(1)}px)`,
+      width: `calc(100% / 6 - ${theme.spacing(1)}px)`
     },
     boxShadow: 'none',
     display: 'flex',
@@ -63,8 +65,8 @@ const useStyles = makeStyles(theme => ({
       top: theme.spacing(1)
     },
     maxHeight: 'fit-content',
-    maxWidth: `calc(100% / 5 - ${theme.spacing(1)}px)`,
-    width: `calc(100% / 6 - ${theme.spacing(1)}px)`
+    maxWidth: `calc(100% / 8 - ${theme.spacing(1)}px)`,
+    width: `calc(100% / 8 - ${theme.spacing(1)}px)`
   }
 }));
 
@@ -98,7 +100,11 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
   return (
     <Fade appear in>
       <Card className={classes.root} component="li">
-        <CardActionArea onClick={handleClick}>
+        <CardActionArea
+          classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
+          className={classes.actionArea}
+          onClick={handleClick}
+        >
           <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>
             <Typography

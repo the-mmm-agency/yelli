@@ -30,6 +30,11 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       boxShadow: theme.shadows[1]
     },
+    border: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1
+    },
     [theme.breakpoints.down('sm')]: {
       width: 'calc(100% - 10px)'
     },

@@ -9,7 +9,7 @@ import SwipableAppList from 'Components/SwipableAppList';
 
 const FEATURED_APPS = gql`
   query apps {
-    apps(where: { featured: true }) {
+    apps(first: 3, where: { featured: true }) {
       id
       name
       description

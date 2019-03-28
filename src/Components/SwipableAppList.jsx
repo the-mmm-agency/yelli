@@ -10,8 +10,7 @@ const SwipeableViews = lazy(() => import('react-swipeable-views'));
 const useStyles = makeStyles(theme => ({
   list: {
     [theme.breakpoints.up('sm')]: {
-      bottom: theme.spacing(1),
-      top: theme.spacing(1)
+      padding: theme.spacing(1)
     },
     padding: {
       left: theme.spacing(1),
@@ -22,6 +21,9 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     justifyContent: 'center',
     overflow: 'visible'
+  },
+  stepper: {
+    justifyContent: 'center'
   }
 }));
 
@@ -80,11 +82,9 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
       </SwipeableViews>
       <MobileStepper
         activeStep={activeStep}
+        className={classes.stepper}
         position="static"
         steps={Math.ceil(apps.length / pageLength)}
-        style={{
-          justifyContent: 'center'
-        }}
       />
     </Grid>
   );

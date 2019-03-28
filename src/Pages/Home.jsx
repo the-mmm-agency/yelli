@@ -50,20 +50,20 @@ const useStyles = makeStyles(theme => ({
 
 const getPageLength = (isSm, isMd) => {
   if (isMd) {
-    return 4;
+    return 6;
   }
   if (isSm) {
-    return 3;
+    return 4;
   }
-  return 6;
+  return 8;
 };
 
 const Home = React.memo(() => {
   const classes = useStyles();
   const history = useHistory();
   const theme = useTheme();
-  const isSm = useMediaQuery(theme.breakpoints.down('sm'));
-  const isMd = useMediaQuery(theme.breakpoints.between('sm', 'md'));
+  const isSm = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
+  const isMd = useMediaQuery(theme.breakpoints.between('md', 'lg'));
   const pageLength = getPageLength(isSm, isMd);
   return (
     <Grid className={classes.root} container>
