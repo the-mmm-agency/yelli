@@ -14,7 +14,7 @@ import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
-    background: theme.palette.background.paper
+    height: 200
   },
   banner: {
     height: 200,
