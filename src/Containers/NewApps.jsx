@@ -8,8 +8,8 @@ import AppCard from 'Containers/AppCard';
 import SwipableAppList from 'Components/SwipableAppList';
 
 const NEW_APPS = gql`
-  query apps {
-    apps(first: 10, orderBy: createdAt_DESC) {
+  query newApps {
+    apps(first: 6, orderBy: createdAt_DESC) {
       ...AppCard
     }
   }

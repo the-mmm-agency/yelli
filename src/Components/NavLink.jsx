@@ -8,7 +8,8 @@ import React from 'react';
 const useStyles = makeStyles(theme => ({
   active: {
     backgroundColor: fade(theme.palette.primary.main, 0.24),
-    color: `${theme.palette.primary.dark} !important`
+    color: `${theme.palette.primary.main} !important`,
+    fontWeight: '600 !important'
   },
   listItem: {
     '&:focus': {
@@ -37,6 +38,7 @@ const useStyles = makeStyles(theme => ({
     borderRadius: 0,
     color: 'inherit',
     cursor: 'pointer',
+    fontWeight: 500,
     margin: 0,
     outline: 'none',
     padding: 0,
@@ -63,6 +65,7 @@ const NavLink = React.memo(({ children, href, LinkProps, ListItemProps }) => {
           selected: classes.active
         }}
         className={classes.listItem}
+        dense
         {...ListItemProps}
       >
         {children}

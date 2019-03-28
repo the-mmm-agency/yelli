@@ -1,4 +1,4 @@
-import { Grid, Typography, Button } from '@material-ui/core';
+import { Divider, Grid, Typography, Button } from '@material-ui/core';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
@@ -38,11 +38,6 @@ const useStyles = makeStyles(theme => ({
       },
       width: 'calc(100% + 60px)'
     },
-    borderBottom: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1
-    },
     marginBottom: theme.spacing(2),
     padding: {
       left: 20,
@@ -80,6 +75,7 @@ const Home = React.memo(() => {
         </div>
         <FeaturedApps />
       </div>
+      <Divider />
       <div className={classes.section}>
         <div className={classes.header}>
           <Typography component="h2" gutterBottom variant="h6">
@@ -96,6 +92,7 @@ const Home = React.memo(() => {
         </div>
         <TopApps pageLength={pageLength} />
       </div>
+      <Divider />
       <div className={classes.section}>
         <div className={classes.header}>
           <Typography component="h2" gutterBottom variant="h6">

@@ -27,7 +27,10 @@ const CategoryList = React.memo(() => {
             <ListItemText
               primary={category.name}
               primaryTypographyProps={{
-                color: 'inherit'
+                color: 'inherit',
+                style: {
+                  fontWeight: 'inherit'
+                }
               }}
             />
           </NavLink>

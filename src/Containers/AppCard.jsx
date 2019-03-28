@@ -14,19 +14,8 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
-  actionArea: {
-    display: 'flex',
-    flexDirection: 'column'
-  },
-  actionAreaFocusHighlight: {
-    background: theme.palette.background.paper
-  },
-  category: {
-    [theme.breakpoints.down('md')]: {
-      fontSize: theme.typography.body2.fontSize
-    }
-  },
   content: {
+    alignSelf: 'flex-start',
     maxWidth: '25vw',
     padding: {
       bottom: theme.spacing(1),
@@ -49,6 +38,9 @@ const useStyles = makeStyles(theme => ({
     height: 120,
     width: 120
   },
+  name: {
+    fontWeight: 500
+  },
   root: {
     [theme.breakpoints.down('sm')]: {
       maxWidth: `calc(100% / 2 - ${theme.spacing(1)}px)`,
@@ -60,11 +52,6 @@ const useStyles = makeStyles(theme => ({
     },
     '&:hover': {
       boxShadow: theme.shadows[1]
-    },
-    border: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1
     },
     boxShadow: 'none',
     display: 'flex',
@@ -113,17 +100,24 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
   return (
     <Fade appear in>
       <Card className={classes.root} component="li">
-        <CardActionArea
-          classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
-          className={classes.actionArea}
-          onClick={handleClick}
-        >
+        <CardActionArea onClick={handleClick}>
           <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>
-            <Typography align="center" color="inherit" noWrap>
+            <Typography
+              align="left"
+              className={classes.name}
+              color="inherit"
+              noWrap
+              variant="body1"
+            >
               {name}
             </Typography>
-            <Typography align="center" color="textSecondary" noWrap>
+            <Typography
+              align="left"
+              color="textSecondary"
+              noWrap
+              variant="caption"
+            >
               {category.name}
             </Typography>
           </CardContent>

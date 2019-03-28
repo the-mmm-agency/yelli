@@ -17,8 +17,11 @@ export default mount({
 
 const useStyles = makeStyles(theme => ({
   button: {
-    marginTop: 'auto',
-    width: 164
+    borderRadius: 4,
+    marginTop: 'auto'
+  },
+  buttonLabel: {
+    textTransform: 'capitalize'
   },
   description: {
     fontSize: theme.typography.body1.fontSize,
@@ -162,19 +165,24 @@ const Info = React.memo(({ name }) => {
           <img alt={name} className={classes.icon} src={icon} />
         </Grid>
         <Grid className={classes.item} item xs="auto">
-          <Typography variant="h6">{name}</Typography>
+          <Typography component="h1" variant="h5">
+            {name}
+          </Typography>
           <Typography color="textSecondary" gutterBottom>
             {category.name}
           </Typography>
           <Button
+            classes={{
+              label: classes.buttonLabel
+            }}
             className={classes.button}
             color="primary"
             href={url}
             size="small"
             target="_blank"
-            variant="contained"
+            variant="outlined"
           >
-            <OpenIcon />
+            <OpenIcon fontSize="inherit" />
             &nbsp; Launch App
           </Button>
         </Grid>

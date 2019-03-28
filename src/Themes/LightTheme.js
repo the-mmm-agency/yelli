@@ -9,7 +9,7 @@ const LightTheme = createMuiTheme({
       paper: '#ffffff'
     },
     contrastThreshold: 3,
-    divider: '#ececec',
+    divider: '#e0e0e0',
     primary: {
       dark: darken('#ea533f', 0.12),
       light: lighten('#ea533f', 0.12),

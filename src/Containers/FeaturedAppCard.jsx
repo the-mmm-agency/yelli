@@ -20,6 +20,12 @@ const useStyles = makeStyles(theme => ({
     height: 200,
     width: '100%'
   },
+  description: {
+    fontSize: '0.7rem'
+  },
+  name: {
+    fontWeight: 500
+  },
   root: {
     '&:hover': {
       boxShadow: theme.shadows[1]
@@ -29,11 +35,6 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.between('sm', 'md')]: {
       width: 'calc(50% - 10px)'
-    },
-    border: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1
     },
     boxShadow: 'none',
     margin: theme.spacing(2),
@@ -77,10 +78,21 @@ const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
         >
           <CardMedia className={classes.banner} image={banner} />
           <CardContent>
-            <Typography align="left" noWrap>
+            <Typography
+              align="left"
+              className={classes.name}
+              noWrap
+              variant="body1"
+            >
               {name}
             </Typography>
-            <Typography align="left" color="textSecondary" noWrap>
+            <Typography
+              align="left"
+              className={classes.description}
+              color="textSecondary"
+              noWrap
+              variant="body2"
+            >
               {description}
             </Typography>
           </CardContent>

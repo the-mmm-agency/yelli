@@ -6,10 +6,13 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import React from 'react';
 
+import LogoGif from '../logo.gif';
+import LogoWebp from '../logo.webp';
+
 import CategoryList from 'Containers/CategoryList';
 import NavLink from 'Components/NavLink';
 
-const drawerWidth = 240;
+export const drawerWidth = 240;
 
 const useStyles = makeStyles(theme => ({
   drawer: {
@@ -24,7 +27,30 @@ const useStyles = makeStyles(theme => ({
   listIcon: {
     color: 'inherit'
   },
-  toolbar: theme.mixins.toolbar
+  logo: {
+    '@media(min-width: 0px) and (orientation: landscape)': {
+      height: 48
+    },
+    [theme.breakpoints.up('sm')]: {
+      height: 64
+    },
+    height: 56,
+    margin: 'auto'
+  },
+  toolbar: {
+    ...theme.mixins.toolbar,
+    borderBottom: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1
+    },
+    display: 'flex',
+    lineHeight: 0,
+    width: drawerWidth
+  },
+  typography: {
+    fontWeight: 'inherit'
+  }
 }));
 
 const SideDrawer = React.memo(() => {
@@ -37,7 +63,13 @@ const SideDrawer = React.memo(() => {
       className={classes.drawer}
       variant="permanent"
     >
-      <div className={classes.toolbar} />
+      <div className={classes.toolbar}>
+        <picture className={classes.logo}>
+          <source srcSet={LogoWebp} type="image/webp" />
+          <source srcSet={LogoGif} type="image/gif" />
+          <img alt="Yelli" className={classes.logo} src={LogoGif} />
+        </picture>
+      </div>
       <List>
         <NavLink href="/" LinkProps={{ exact: true }}>
           <ListItemIcon className={classes.listIcon}>
@@ -45,6 +77,7 @@ const SideDrawer = React.memo(() => {
           </ListItemIcon>
           <ListItemText
             primaryTypographyProps={{
+              className: classes.typography,
               color: 'inherit'
             }}
           >
@@ -55,7 +88,12 @@ const SideDrawer = React.memo(() => {
           <ListItemIcon className={classes.listIcon}>
             <SearchIcon />
           </ListItemIcon>
-          <ListItemText primaryTypographyProps={{ color: 'inherit' }}>
+          <ListItemText
+            primaryTypographyProps={{
+              className: classes.typography,
+              color: 'inherit'
+            }}
+          >
             Search
           </ListItemText>
         </NavLink>
