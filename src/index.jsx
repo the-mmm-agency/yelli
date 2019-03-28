@@ -4,7 +4,7 @@ import { create } from 'jss';
 import ApolloClient from 'apollo-boost';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { pwaInstallPrompt } from 'pwa-install-prompt';
+import pwaInstallPrompt from 'pwa-install-prompt';
 import expand from 'jss-plugin-expand';
 
 import * as serviceWorker from 'serviceWorker';
