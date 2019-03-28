@@ -15,8 +15,6 @@ import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
   content: {
-    alignSelf: 'flex-start',
-    maxWidth: '25vw',
     padding: {
       bottom: theme.spacing(1),
       left: theme.spacing(1),
@@ -26,9 +24,9 @@ const useStyles = makeStyles(theme => ({
   icon: {
     borderRadius: 15,
     margin: 'auto',
-    maxWidth: '100%',
     objectFit: 'contain',
-    padding: theme.spacing(1)
+    padding: theme.spacing(1),
+    width: '90%'
   },
   iconSkeleton: {
     [theme.breakpoints.down('sm')]: {
