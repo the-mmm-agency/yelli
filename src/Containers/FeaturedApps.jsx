@@ -1,4 +1,5 @@
 import { useQuery } from 'react-apollo-hooks';
+import { Grid } from '@material-ui/core';
 import { useTheme } from '@material-ui/styles';
 import React, { memo } from 'react';
 import gql from 'graphql-tag';
@@ -36,7 +37,13 @@ const FeaturedApps = memo(() => {
   const pageLength = getPageLength(isSm, isMd);
   if (loading) {
     return (
-      <ul style={{ display: 'flex', listStyle: 'none' }}>
+      <Grid
+        alignItems="center"
+        component="ul"
+        container
+        justify="center"
+        wrap="nowrap"
+      >
         {isSm ? (
           <FeaturedAppCard loading />
         ) : (
@@ -46,7 +53,7 @@ const FeaturedApps = memo(() => {
             <FeaturedAppCard loading />
           </>
         )}
-      </ul>
+      </Grid>
     );
   }
   return (

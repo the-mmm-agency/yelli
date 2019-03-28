@@ -9,7 +9,7 @@ const SwipeableViews = lazy(() => import('react-swipeable-views'));
 
 const useStyles = makeStyles({
   list: {
-    justifyContent: 'space-around',
+    justifyContent: 'center',
     padding: 0
   },
   slide: {
