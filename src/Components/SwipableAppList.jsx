@@ -18,7 +18,7 @@ const useStyles = makeStyles({
     overflow: 'visible'
   },
   stepper: {
-    justifyContent: 'center',
+    justifyContent: 'center !important',
     minWidth: '100%'
   }
 });

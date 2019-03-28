@@ -1,4 +1,4 @@
-import { Divider, Fade, Grid, InputBase } from '@material-ui/core';
+import { Fade, Grid, InputBase } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
@@ -87,7 +87,6 @@ const Search = React.memo(() => {
             placeholder="Search…"
           />
         </div>
-        <Divider />
         <SearchList searchString={searchString} />
       </Grid>
     </Fade>
