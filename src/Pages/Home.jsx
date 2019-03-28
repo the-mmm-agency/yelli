@@ -10,12 +10,11 @@ import TopApps from 'Containers/TopApps';
 
 const useStyles = makeStyles(theme => ({
   button: {
-    fontSize: '0.675rem',
-    height: 35,
     margin: {
       left: 'auto',
       right: theme.spacing(3)
-    }
+    },
+    textTransform: 'capitalize'
   },
   divider: {
     width: '100%'
@@ -72,7 +71,8 @@ const Home = React.memo(() => {
             className={classes.button}
             color="primary"
             onClick={() => history.push('/toplist')}
-            variant="outlined"
+            size="small"
+            variant="text"
           >
             view more
           </Button>
@@ -89,7 +89,8 @@ const Home = React.memo(() => {
             className={classes.button}
             color="primary"
             onClick={() => history.push('/new')}
-            variant="outlined"
+            size="small"
+            variant="text"
           >
             view all
           </Button>

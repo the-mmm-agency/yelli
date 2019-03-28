@@ -7,16 +7,15 @@ import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
   icon: {
-    height: 30,
-    width: 30
+    height: 50,
+    width: 50
+  },
+  name: {
+    fontWeight: 500,
+    width: '100%'
   },
   root: {
-    borderBottom: {
-      color: theme.palette.background.default,
-      style: 'solid',
-      width: 1
-    },
-    padding: theme.spacing(2)
+    padding: theme.spacing(3)
   }
 }));
 
@@ -24,7 +23,7 @@ const AppListItem = ({ name, category, icon, loading }) => {
   const classes = useStyles();
   if (loading) {
     return (
-      <ListItem className={classes.root} disableGutters divider>
+      <ListItem className={classes.root} disableGutters>
         <ListItemIcon>
           <Skeleton circle height={30} width={30} />
         </ListItemIcon>
@@ -49,7 +48,16 @@ const AppListItem = ({ name, category, icon, loading }) => {
       <ListItemIcon>
         <img alt={name} className={classes.icon} src={icon} />
       </ListItemIcon>
-      <ListItemText primary={name} secondary={category.name} />
+      <ListItemText
+        primary={name}
+        primaryTypographyProps={{ className: classes.name }}
+        secondary={category.name}
+        secondaryTypographyProps={{
+          color: 'textSecondary',
+          component: 'p',
+          variant: 'caption'
+        }}
+      />
     </ListItem>
   );
 };
