@@ -371,6 +371,7 @@ module.exports = function(webpackEnv) {
             new RegExp('^/_'),
             new RegExp('/[^/]+\\.[^/]+$')
           ],
+          precacheManifestFilename: 'precache-manifest.json',
           runtimeCaching: [
             {
               handler: 'staleWhileRevalidate',
