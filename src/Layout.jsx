@@ -2,7 +2,8 @@
 import { CssBaseline, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { useRef, cloneElement, useEffect } from 'react';
+import elasticScroll from 'elastic-scroll-polyfill';
 
 import AppUpdate from 'Containers/AppUpdate';
 import Auth from 'Containers/Auth';
@@ -10,6 +11,37 @@ import CreateApp from 'Containers/CreateApp';
 import Header from 'Containers/Header';
 import Navigation from 'Containers/Navigation';
 import SideDrawer from 'Containers/SideDrawer';
+
+const ElasticScroll = ({ children, ...props }) => {
+  const targetRef = useRef();
+
+  useEffect(() => {
+    const instance = elasticScroll({
+      targets: targetRef.current,
+      ...props
+    });
+
+    return () => {
+      instance.disable();
+    };
+  }, []);
+
+  return cloneElement(children, {
+    children: <div data-elastic-wrapper>{children.props.children}</div>,
+    ref: node => {
+      targetRef.current = node;
+      const { ref } = children;
+      if (ref) {
+        if (typeof ref === 'function') {
+          ref(node);
+          // eslint-disable-next-line no-prototype-builtins
+        } else if (ref.hasOwnProperty('current')) {
+          ref.current = node;
+        }
+      }
+    }
+  });
+};
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -57,7 +89,7 @@ const useStyles = makeStyles(theme => ({
     flexGrow: 1,
     height: '100vh',
     overflowX: 'hidden',
-    overflowY: 'auto'
+    overflowY: 'scroll'
   },
   root: {
     display: 'flex'
@@ -77,13 +109,15 @@ const Layout = ({ children }) => {
       </Hidden>
       <Auth />
       <AppUpdate />
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        {children}
-        <Hidden mdUp>
+      <ElasticScroll>
+        <main className={classes.content}>
           <div className={classes.toolbar} />
-        </Hidden>
-      </main>
+          {children}
+          <Hidden mdUp>
+            <div className={classes.toolbar} />
+          </Hidden>
+        </main>
+      </ElasticScroll>
       <Hidden mdUp>
         <Navigation />
       </Hidden>
