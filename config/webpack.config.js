@@ -365,7 +365,7 @@ module.exports = function(webpackEnv) {
           clientsClaim: true,
           directoryIndex: '/index.html',
           exclude: [/\.map$/, /asset-manifest\.json$/],
-          importWorkboxFrom: 'local',
+          importWorkboxFrom: 'cdn',
           navigateFallback: `${publicUrl}/index.html`,
           navigateFallbackBlacklist: [
             new RegExp('^/_'),
