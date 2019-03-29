@@ -117,7 +117,7 @@ const GET_APP = gql`
 const Info = React.memo(({ name }) => {
   const classes = useStyles();
   useEffect(() => {
-    window.scrollY = 0;
+    window.scrollTo(0, 0);
   });
   const { data, loading } = useQuery(GET_APP, {
     variables: { name }
