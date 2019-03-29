@@ -12,6 +12,8 @@ import Header from 'Containers/Header';
 import Navigation from 'Containers/Navigation';
 import SideDrawer from 'Containers/SideDrawer';
 
+import './fonts.css';
+
 const ElasticScroll = ({ children, ...props }) => {
   const targetRef = useRef();
 

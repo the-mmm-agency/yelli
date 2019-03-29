@@ -34,7 +34,8 @@ const LightTheme = createMuiTheme({
     borderRadius: 8
   },
   typography: {
-    fontFamily: 'proxima-nova, sans-serif',
+    fontFamily:
+      'proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     fontSize: 14,
     h6: {
       fontWeight: 600

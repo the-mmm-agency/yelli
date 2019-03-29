@@ -108,6 +108,7 @@ module.exports = function(webpackEnv) {
     entry: [
       isEnvDevelopment &&
         require.resolve('react-dev-utils/webpackHotDevClient'),
+      isEnvDevelopment && require.resolve('react-error-overlay'),
       paths.appIndexJs
     ].filter(Boolean),
     mode: isEnvProduction ? 'production' : isEnvDevelopment && 'development',
@@ -457,6 +458,7 @@ module.exports = function(webpackEnv) {
     ].filter(Boolean),
     resolve: {
       alias: {
+        'react-dom': '@hot-loader/react-dom',
         'react-native': 'react-native-web'
       },
       extensions: paths.moduleFileExtensions

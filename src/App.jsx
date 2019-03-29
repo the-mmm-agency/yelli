@@ -1,4 +1,5 @@
 import { Router, View } from 'react-navi';
+import { hot } from 'react-hot-loader/root';
 import BusyIndicator from 'react-busy-indicator';
 import React, { Suspense } from 'react';
 
@@ -17,4 +18,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default hot(App);
