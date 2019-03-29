@@ -6,6 +6,7 @@ import {
   Fade,
   Typography
 } from '@material-ui/core';
+import classNames from 'classnames';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
@@ -63,6 +64,9 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'fit-content',
     maxWidth: `calc(100% / 8 - ${theme.spacing(1)}px)`,
     width: `calc(100% / 8 - ${theme.spacing(1)}px)`
+  },
+  skeleton: {
+    padding: theme.spacing(1)
   }
 }));
 
@@ -75,7 +79,7 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
       <Card
         aria-busy="true"
         aria-disabled="true"
-        className={classes.root}
+        className={classNames(classes.root, classes.skeleton)}
         component="li"
       >
         <picture className={classes.iconPlaceholder}>
