@@ -313,6 +313,9 @@ module.exports = function(webpackEnv) {
     },
     performance: false,
     plugins: [
+      new webpack.ProvidePlugin({
+        h: ['react', 'createElement']
+      }),
       new HtmlWebpackPlugin(
         Object.assign(
           {},

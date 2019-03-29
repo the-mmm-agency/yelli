@@ -10,7 +10,7 @@
         }
       }
     ],
-    "@babel/preset-react"
+    ["@babel/preset-react", { "pragma": "h" }]
   ],
   "plugins": [
     [
