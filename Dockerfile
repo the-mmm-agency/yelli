@@ -9,7 +9,7 @@ ENV NODE_ENV production
 RUN npm run build
 
 # Stage 2 - the production environment
-FROM nginx:alpine
+FROM pagespeed/nginx-pagespeed
 COPY --from=react-build /app/build /usr/share/nginx/html
 COPY ./nginx /etc/nginx
 EXPOSE 80
