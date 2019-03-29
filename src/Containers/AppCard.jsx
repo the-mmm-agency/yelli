@@ -37,6 +37,7 @@ const useStyles = makeStyles(theme => ({
       width: 100
     },
     height: 120,
+    padding: theme.spacing(2),
     width: 120
   },
   name: {
