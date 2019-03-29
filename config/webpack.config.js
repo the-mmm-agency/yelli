@@ -394,6 +394,20 @@ module.exports = function(webpackEnv) {
               urlPattern: new RegExp('https://storage.googleapis.com/')
             },
             {
+              handler: 'cacheFirst',
+              options: {
+                cacheableResponse: {
+                  statuses: [0, 200]
+                },
+                cacheName: 'placeholders',
+                expiration: {
+                  maxAgeSeconds: 365 * 24 * 60 * 60,
+                  maxEntries: 1
+                }
+              },
+              urlPattern: new RegExp('https://via.placeholder.com')
+            },
+            {
               handler: 'networkFirst',
               options: {
                 cacheableResponse: {

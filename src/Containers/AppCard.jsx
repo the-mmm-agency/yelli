@@ -72,12 +72,26 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
 
   if (loading) {
     return (
-      <Card className={classes.root} component="li">
-        <img
-          alt="App Icon"
-          className={classes.iconPlaceholder}
-          src="https://via.placeholder.com/128/f4f4f4/dadce0?text=icon"
-        />
+      <Card
+        aria-busy="true"
+        aria-disabled="true"
+        className={classes.root}
+        component="li"
+      >
+        <picture className={classes.iconPlaceholder}>
+          <source
+            srcSet="https://via.placeholder.com/128/f4f4f4/dadce0.webp?text=icon"
+            type="image/webp"
+          />
+          <source
+            srcSet="https://via.placeholder.com/128/f4f4f4/dadce0.jpg?text=icon"
+            type="image/jpg"
+          />
+          <img
+            alt="Loading"
+            src="https://via.placeholder.com/128/f4f4f4/dadce0.jpg?text=icon"
+          />
+        </picture>
         <CardContent className={classes.content}>
           <Skeleton
             color={theme.palette.text.primary}
