@@ -44,15 +44,9 @@ const FeaturedApps = memo(() => {
         justify="center"
         wrap="nowrap"
       >
-        {isSm ? (
-          <FeaturedAppCard loading />
-        ) : (
-          <>
-            <FeaturedAppCard loading />
-            <FeaturedAppCard loading />
-            <FeaturedAppCard loading />
-          </>
-        )}
+        {[...new Array(pageLength).keys()].map(key => (
+          <FeaturedAppCard key={key} loading />
+        ))}
       </Grid>
     );
   }

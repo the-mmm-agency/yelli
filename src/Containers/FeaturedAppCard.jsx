@@ -6,7 +6,7 @@ import {
   Fade,
   Typography
 } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -43,25 +43,53 @@ const useStyles = makeStyles(theme => ({
     },
     boxShadow: 'none',
     margin: theme.spacing(2),
+    transitionProperty: 'opacity,box-shadow !important',
     width: 'calc(100% / 3 - 24px)'
   }
 }));
 
 const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
   const classes = useStyles();
+  const theme = useTheme();
 
   if (loading) {
     return (
       <Card className={classes.root} component="li">
         <CardMedia className={classes.banner}>
-          <Skeleton height="100%" width="100%" />
+          <Skeleton
+            color={theme.palette.text.primary}
+            height="100%"
+            highlightColor={theme.palette.text.secondary}
+            width="100%"
+          />
         </CardMedia>
         <CardContent>
-          <Typography align="left" noWrap>
-            <Skeleton />
+          <Typography
+            align="left"
+            className={classes.name}
+            noWrap
+            variant="body1"
+          >
+            <Skeleton
+              color={theme.palette.text.primary}
+              height={theme.typography.body1.fontSize}
+              highlightColor={theme.palette.text.secondary}
+              width="30%"
+            />
           </Typography>
-          <Typography align="left" color="textSecondary" noWrap>
-            <Skeleton />
+          <Typography
+            align="left"
+            className={classes.description}
+            color="textSecondary"
+            noWrap
+            variant="body2"
+          >
+            <Skeleton
+              color={theme.palette.text.primary}
+              height="0.7rem"
+              highlightColor={theme.palette.text.secondary}
+              width="60%"
+            />
           </Typography>
         </CardContent>
       </Card>

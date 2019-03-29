@@ -1,4 +1,5 @@
 import { useQuery } from 'react-apollo-hooks';
+import { Grid } from '@material-ui/core';
 import React from 'react';
 import PropTypes from 'prop-types';
 import gql from 'graphql-tag';
@@ -20,15 +21,17 @@ const NewApps = ({ pageLength }) => {
   const { data, loading } = useQuery(NEW_APPS);
   if (loading) {
     return (
-      <div style={{ display: 'flex' }}>
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-        <AppCard loading />
-      </div>
+      <Grid
+        alignItems="center"
+        component="ul"
+        container
+        justify="center"
+        wrap="nowrap"
+      >
+        {[...new Array(pageLength).keys()].map(key => (
+          <AppCard key={key} loading />
+        ))}
+      </Grid>
     );
   }
   return (

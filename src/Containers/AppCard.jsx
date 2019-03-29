@@ -6,12 +6,17 @@ import {
   Fade,
   Typography
 } from '@material-ui/core';
-import classNames from 'classnames';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
+
+const iconStyle = {
+  borderRadius: 15,
+  objectFit: 'contain',
+  width: '100%'
+};
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
@@ -26,19 +31,10 @@ const useStyles = makeStyles(theme => ({
     },
     textOverflow: 'ellipsis'
   },
-  icon: {
-    borderRadius: 15,
-    objectFit: 'contain',
-    width: '100%'
-  },
-  iconSkeleton: {
-    [theme.breakpoints.down('sm')]: {
-      height: 100,
-      width: 100
-    },
-    height: 120,
-    padding: theme.spacing(2),
-    width: 120
+  icon: iconStyle,
+  iconPlaceholder: {
+    ...iconStyle,
+    padding: theme.spacing(1)
   },
   name: {
     fontWeight: 500
@@ -72,20 +68,32 @@ const useStyles = makeStyles(theme => ({
 
 const AppCard = React.memo(({ name, icon, category, loading }) => {
   const classes = useStyles();
+  const theme = useTheme();
 
   if (loading) {
     return (
       <Card className={classes.root} component="li">
-        <div className={classNames(classes.icon, classes.iconSkeleton)}>
-          <Skeleton height="100%" width="100%" />
-        </div>
+        <img
+          alt="App Icon"
+          className={classes.iconPlaceholder}
+          src="https://via.placeholder.com/128/f4f4f4/dadce0?text=icon"
+        />
         <CardContent className={classes.content}>
-          <Typography color="inherit" noWrap>
-            <Skeleton />
-          </Typography>
-          <Typography color="textSecondary" noWrap>
-            <Skeleton />
-          </Typography>
+          <Skeleton
+            color={theme.palette.text.primary}
+            height={theme.typography.body1.fontSize}
+            highlightColor={theme.palette.text.secondary}
+            style={{
+              marginRight: '100%'
+            }}
+            width="80%"
+          />
+          <Skeleton
+            color={theme.palette.text.primary}
+            height={theme.typography.caption.fontSize}
+            highlightColor={theme.palette.text.secondary}
+            width="50%"
+          />
         </CardContent>
       </Card>
     );
