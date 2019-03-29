@@ -20,6 +20,11 @@ const useStyles = makeStyles(theme => ({
     height: 200,
     width: '100%'
   },
+  content: {
+    '&:last-child': {
+      paddingBottom: theme.spacing(2)
+    }
+  },
   description: {
     fontSize: '0.7rem'
   },
@@ -63,7 +68,7 @@ const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
             width="100%"
           />
         </CardMedia>
-        <CardContent>
+        <CardContent className={classes.content}>
           <Typography
             align="left"
             className={classes.name}
@@ -110,7 +115,7 @@ const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
           onClick={handleClick}
         >
           <CardMedia className={classes.banner} image={banner} />
-          <CardContent>
+          <CardContent className={classes.content}>
             <Typography
               align="left"
               className={classes.name}

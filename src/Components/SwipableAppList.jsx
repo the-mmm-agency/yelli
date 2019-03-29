@@ -28,13 +28,7 @@ const SwipableAppList = memo(({ pageLength, AppComponent, apps }) => {
   const classes = useStyles();
   if (apps.length <= pageLength) {
     return (
-      <Grid
-        className={classes.list}
-        component="ul"
-        container
-        item
-        wrap="nowrap"
-      >
+      <Grid component="ul" container item wrap="nowrap">
         {apps.map(app => {
           // eslint-disable-next-line no-param-reassign
           delete app.__typename;
