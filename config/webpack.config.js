@@ -418,8 +418,7 @@ module.exports = function(webpackEnv) {
                 expiration: {
                   maxAgeSeconds: 60,
                   maxEntries: 30
-                },
-                networkTimeoutSeconds: 10
+                }
               },
               urlPattern: new RegExp('https://api.yelli.com')
             }
