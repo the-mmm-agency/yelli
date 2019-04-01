@@ -31,7 +31,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const New = React.memo(() => {
+const New = () => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_APPS);
 
@@ -62,4 +62,4 @@ const New = React.memo(() => {
       ))}
     </List>
   );
-});
+};

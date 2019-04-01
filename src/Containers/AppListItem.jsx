@@ -15,10 +15,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%'
   },
   root: {
-    [theme.breakpoints.down('sm')]: {
-      padding: theme.spacing(1)
-    },
-    padding: theme.spacing(3)
+    padding: theme.spacing(2)
   }
 }));
 
@@ -46,6 +43,7 @@ const AppListItem = ({ name, category, icon, loading }) => {
       button
       className={classes.root}
       disableGutters
+      divider
       onClick={handleClick}
     >
       <ListItemIcon>

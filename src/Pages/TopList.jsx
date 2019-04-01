@@ -31,11 +31,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const TopList = React.memo(() => {
+const TopList = () => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_APPS);
 
-  if (loading) {
+  if (loading || !data.apps) {
     return (
       <List className={classes.root}>
         <AppListItem loading />
@@ -62,4 +62,4 @@ const TopList = React.memo(() => {
       ))}
     </List>
   );
-});
+};
