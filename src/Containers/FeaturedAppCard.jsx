@@ -43,12 +43,12 @@ const useStyles = makeStyles(theme => ({
       width: 1
     },
     [theme.breakpoints.down('sm')]: {
-      minWidth: 'calc(100% - 10px)',
-      width: 'calc(100% - 10px)'
+      minWidth: 'calc(100% - 24px)',
+      width: 'calc(100% - 24px)'
     },
     [theme.breakpoints.between('sm', 'md')]: {
-      minWidth: 'calc(50% - 10px)',
-      width: 'calc(50% - 10px)'
+      minWidth: 'calc(50% - 24px)',
+      width: 'calc(50% - 24px)'
     },
     boxShadow: 'none',
     margin: theme.spacing(2),

@@ -31,7 +31,10 @@ const useStyles = makeStyles(theme => ({
   root: {
     [theme.breakpoints.down('sm')]: {
       backgroundColor: theme.palette.background.paper,
-      paddingTop: theme.spacing(3)
+      padding: {
+        top: theme.spacing(3)
+      },
+      paddingInlineStart: `${theme.spacing(1)}px`
     },
     [theme.breakpoints.up('sm')]: {
       display: 'flex',
@@ -60,13 +63,9 @@ const Category = memo(({ name }) => {
   if (loading || !data.apps) {
     return (
       <Grid className={classes.root} component="ul" container spacing={2}>
-        <AppComponent loading />
-        <AppComponent loading />
-        <AppComponent loading />
-        <AppComponent loading />
-        <AppComponent loading />
-        <AppComponent loading />
-        <AppComponent loading />
+        {[...new Array(20).keys()].map(key => (
+          <AppComponent key={key} loading />
+        ))}
       </Grid>
     );
   }

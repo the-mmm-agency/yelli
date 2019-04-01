@@ -38,13 +38,9 @@ const New = () => {
   if (loading) {
     return (
       <List className={classes.root}>
-        <AppListItem loading />
-        <AppListItem loading />
-        <AppListItem loading />
-        <AppListItem loading />
-        <AppListItem loading />
-        <AppListItem loading />
-        <AppListItem loading />
+        {[...new Array(20).keys()].map(key => (
+          <AppListItem key={key} loading />
+        ))}
       </List>
     );
   }
