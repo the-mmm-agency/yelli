@@ -17,7 +17,7 @@ export default mount({
 
 const GET_APPS = gql`
   query newApps {
-    apps(orderBy: createdAt_ASC) {
+    apps(first: 50, orderBy: createdAt_ASC) {
       ...AppCard
     }
   }

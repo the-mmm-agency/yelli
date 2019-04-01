@@ -9,7 +9,7 @@ import FeaturedAppCard from 'Containers/FeaturedAppCard';
 import SwipableAppList from 'Components/SwipableAppList';
 
 const FEATURED_APPS = gql`
-  query apps {
+  query featured {
     apps(first: 3, where: { featured: true }) {
       id
       name
