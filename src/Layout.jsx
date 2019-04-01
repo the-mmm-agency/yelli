@@ -119,6 +119,9 @@ const Layout = ({ children }) => {
           <Hidden mdUp>
             <div className={classes.toolbar} />
           </Hidden>
+          <Hidden mdUp>
+            <div className={classes.toolbar} />
+          </Hidden>
         </main>
       </ElasticScroll>
       <Hidden mdUp>
