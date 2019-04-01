@@ -10,6 +10,7 @@ import TopApps from 'Containers/TopApps';
 
 const useStyles = makeStyles(theme => ({
   button: {
+    fontWeight: 600,
     margin: {
       left: 'auto',
       right: theme.spacing(3)

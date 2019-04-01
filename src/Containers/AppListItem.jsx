@@ -1,4 +1,4 @@
-import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { Fade, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
@@ -42,28 +42,30 @@ const AppListItem = ({ name, category, icon, loading }) => {
     history.push(`/app/${name}`);
   };
   return (
-    <ListItem
-      button
-      className={classes.root}
-      disableGutters
-      divider
-      onClick={handleClick}
-    >
-      <ListItemIcon>
-        <img alt={name} className={classes.icon} src={icon} />
-      </ListItemIcon>
-      <ListItemText
-        primary={name}
-        primaryTypographyProps={{ className: classes.name }}
-        secondary={category.name}
-        secondaryTypographyProps={{
-          className: classes.category,
-          color: 'textSecondary',
-          component: 'p',
-          variant: 'caption'
-        }}
-      />
-    </ListItem>
+    <Fade appear in>
+      <ListItem
+        button
+        className={classes.root}
+        disableGutters
+        divider
+        onClick={handleClick}
+      >
+        <ListItemIcon>
+          <img alt={name} className={classes.icon} src={icon} />
+        </ListItemIcon>
+        <ListItemText
+          primary={name}
+          primaryTypographyProps={{ className: classes.name }}
+          secondary={category.name}
+          secondaryTypographyProps={{
+            className: classes.category,
+            color: 'textSecondary',
+            component: 'p',
+            variant: 'caption'
+          }}
+        />
+      </ListItem>
+    </Fade>
   );
 };
 

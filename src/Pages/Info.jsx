@@ -24,7 +24,7 @@ const useStyles = makeStyles(theme => ({
     textTransform: 'capitalize'
   },
   category: {
-    fontWeight: '500'
+    fontWeight: 500
   },
   description: {
     fontSize: theme.typography.body1.fontSize,
