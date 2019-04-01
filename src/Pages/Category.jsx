@@ -58,7 +58,7 @@ const Category = memo(({ name }) => {
 
   const AppComponent = matches ? AppCard : AppListItem;
 
-  if (loading) {
+  if (loading || !data.apps) {
     return (
       <Grid className={classes.root} component="ul" container spacing={2}>
         <AppComponent loading />

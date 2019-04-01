@@ -389,10 +389,10 @@ module.exports = function(webpackEnv) {
                 cacheName: 'images',
                 expiration: {
                   maxAgeSeconds: 30 * 24 * 60 * 60,
-                  maxEntries: 50
+                  maxEntries: 20
                 }
               },
-              urlPattern: new RegExp('https://storage.googleapis.com/')
+              urlPattern: new RegExp('https://storage.googleapis.com')
             },
             {
               handler: 'cacheFirst',
@@ -409,7 +409,7 @@ module.exports = function(webpackEnv) {
               urlPattern: new RegExp('https://via.placeholder.com')
             },
             {
-              handler: 'networkFirst',
+              handler: 'staleWhileRevalidate',
               options: {
                 cacheableResponse: {
                   statuses: [0, 200]
@@ -417,11 +417,11 @@ module.exports = function(webpackEnv) {
                 cacheName: 'api',
                 expiration: {
                   maxAgeSeconds: 60,
-                  maxEntries: 5
+                  maxEntries: 30
                 },
                 networkTimeoutSeconds: 10
               },
-              urlPattern: new RegExp('https://api.yelli.com/.*')
+              urlPattern: new RegExp('https://api.yelli.com')
             }
           ],
           skipWaiting: true
