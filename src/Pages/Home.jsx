@@ -22,11 +22,13 @@ const useStyles = makeStyles(theme => ({
   header: {
     display: 'flex',
     padding: {
-      left: theme.spacing(3)
+      left: theme.spacing(4)
     }
   },
   root: {
-    padding: 'none'
+    padding: {
+      top: theme.spacing(2)
+    }
   },
   section: {
     padding: {

@@ -9,12 +9,9 @@ const useStyles = makeStyles(theme => ({
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
     '-webkit-scroll-snap-type': 'manditory',
     listStyle: 'none',
-    margin: {
-      left: theme.spacing(-3),
-      right: theme.spacing(-3)
-    },
     overflowX: 'scroll',
     overflowY: 'hidden',
+    'padding-inline-start': `${theme.spacing(2)}px`,
     'scroll-snap-type': 'x mandatory',
     whiteSpace: 'nowrap'
   }
