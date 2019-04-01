@@ -26,6 +26,9 @@ const useStyles = makeStyles(theme => ({
   actionAreaFocusHighlight: {
     ...theme.shape
   },
+  category: {
+    fontWeight: 600
+  },
   content: {
     padding: {
       left: theme.spacing(1)
@@ -144,6 +147,7 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
             </Typography>
             <Typography
               align="left"
+              className={classes.category}
               color="textSecondary"
               noWrap
               variant="caption"

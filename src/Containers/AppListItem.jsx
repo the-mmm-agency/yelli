@@ -6,6 +6,9 @@ import React from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
+  category: {
+    fontWeight: 500
+  },
   icon: {
     height: 50,
     width: 50
@@ -54,6 +57,7 @@ const AppListItem = ({ name, category, icon, loading }) => {
         primaryTypographyProps={{ className: classes.name }}
         secondary={category.name}
         secondaryTypographyProps={{
+          className: classes.category,
           color: 'textSecondary',
           component: 'p',
           variant: 'caption'

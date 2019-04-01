@@ -26,7 +26,8 @@ const useStyles = makeStyles(theme => ({
     }
   },
   description: {
-    fontSize: '0.7rem'
+    fontSize: '0.7rem',
+    fontWeight: 600
   },
   name: {
     fontWeight: 500
