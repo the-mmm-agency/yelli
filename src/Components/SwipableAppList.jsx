@@ -3,18 +3,22 @@ import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles(theme => ({
   root: {
     '-webkit-overflow-scrolling': 'touch',
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
     '-webkit-scroll-snap-type': 'manditory',
     listStyle: 'none',
+    margin: {
+      left: theme.spacing(-3),
+      right: theme.spacing(-3)
+    },
     overflowX: 'scroll',
     overflowY: 'hidden',
     'scroll-snap-type': 'x mandatory',
     whiteSpace: 'nowrap'
   }
-});
+}));
 
 const SwipableAppList = memo(({ AppComponent, apps }) => {
   const classes = useStyles();

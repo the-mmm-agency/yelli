@@ -30,8 +30,8 @@ const useStyles = makeStyles(theme => ({
   },
   section: {
     padding: {
-      bottom: theme.spacing(3),
-      top: theme.spacing(3)
+      bottom: theme.spacing(1),
+      top: theme.spacing(1)
     },
     width: '100%'
   }
