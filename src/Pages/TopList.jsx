@@ -16,8 +16,8 @@ export default mount({
 });
 
 const GET_APPS = gql`
-  query topApps {
-    apps(orderBy: rank_DESC) {
+  query topList {
+    apps(first: 50, orderBy: rank_DESC) {
       ...AppCard
     }
   }
