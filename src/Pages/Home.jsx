@@ -1,8 +1,7 @@
 import { Divider, Grid, Typography, Button } from '@material-ui/core';
-import useMediaQuery from '@material-ui/core/useMediaQuery';
-import { makeStyles, useTheme } from '@material-ui/styles';
+import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
-import React from 'react';
+import React, { memo } from 'react';
 
 import FeaturedApps from 'Containers/FeaturedApps';
 import NewApps from 'Containers/NewApps';
@@ -38,23 +37,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const getPageLength = (isSm, isMd) => {
-  if (isMd) {
-    return 6;
-  }
-  if (isSm) {
-    return 4;
-  }
-  return 8;
-};
-
-const Home = React.memo(() => {
+const Home = memo(() => {
   const classes = useStyles();
   const history = useHistory();
-  const theme = useTheme();
-  const isSm = useMediaQuery(theme.breakpoints.between('xs', 'sm'));
-  const isMd = useMediaQuery(theme.breakpoints.between('sm', 'md'));
-  const pageLength = getPageLength(isSm, isMd);
   return (
     <Grid className={classes.root} container>
       <div className={classes.section}>
@@ -81,7 +66,7 @@ const Home = React.memo(() => {
             view more
           </Button>
         </div>
-        <TopApps pageLength={pageLength} />
+        <TopApps />
       </div>
       <Divider className={classes.divider} />
       <div className={classes.section}>
@@ -99,7 +84,7 @@ const Home = React.memo(() => {
             view all
           </Button>
         </div>
-        <NewApps pageLength={pageLength} />
+        <NewApps />
       </div>
     </Grid>
   );

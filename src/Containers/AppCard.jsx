@@ -60,7 +60,6 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     height: 'fit-content',
     margin: {
-      bottom: theme.spacing(1),
       right: theme.spacing(1),
       top: theme.spacing(1)
     },

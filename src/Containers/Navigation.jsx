@@ -14,11 +14,15 @@ import { useCurrentRoute, useHistory } from 'react-navi';
 import React from 'react';
 
 const useStyles = makeStyles(theme => ({
+  icon: {
+    fontSize: '1.7rem'
+  },
   label: {
     fontSize: '0.75rem',
     fontWeight: '500'
   },
   root: {
+    backgroundColor: theme.palette.background.default,
     borderTop: {
       color: theme.palette.divider,
       style: 'solid',
@@ -48,25 +52,25 @@ const Navigation = () => {
       <BottomNavigation onChange={setValue} showLabels value={value}>
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<HomeIcon />}
+          icon={<HomeIcon className={classes.icon} />}
           label="Home"
           value="/"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<TopIcon />}
+          icon={<TopIcon className={classes.icon} />}
           label="Top apps"
           value="/toplist/"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<CategoryIcon />}
+          icon={<CategoryIcon className={classes.icon} />}
           label="Categories"
           value="/categories/"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<SearchIcon />}
+          icon={<SearchIcon className={classes.icon} />}
           label="Search"
           value="/search/"
         />

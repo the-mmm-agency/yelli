@@ -34,7 +34,8 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     '&:hover': {
-      boxShadow: theme.shadows[1]
+      boxShadow: theme.shadows[1],
+      transform: 'translateY(-2px)'
     },
     border: {
       color: '#dadce0',
@@ -42,14 +43,17 @@ const useStyles = makeStyles(theme => ({
       width: 1
     },
     [theme.breakpoints.down('sm')]: {
+      minWidth: 'calc(100% - 10px)',
       width: 'calc(100% - 10px)'
     },
     [theme.breakpoints.between('sm', 'md')]: {
+      minWidth: 'calc(50% - 10px)',
       width: 'calc(50% - 10px)'
     },
     boxShadow: 'none',
     margin: theme.spacing(2),
-    transitionProperty: 'opacity,box-shadow !important',
+    minWidth: 'calc(100% / 3 - 24px)',
+    transitionProperty: 'opacity,box-shadow,transform !important',
     width: 'calc(100% / 3 - 24px)'
   }
 }));
