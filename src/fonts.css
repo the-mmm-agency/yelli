@@ -1,7 +1,7 @@
 @font-face {
   font-family: 'proxima-nova';
   font-style: normal;
-  font-display: auto;
+  font-display: swap;
   font-weight: 300;
   src: url('/fonts/proxima-nova-light.woff') format('woff'),
     url('/fonts/proxima-nova-light.otf') format('opentype');
@@ -9,7 +9,7 @@
 
 @font-face {
   font-family: 'proxima-nova';
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
   font-weight: 400;
   src: url('/fonts/proxima-nova-regular.woff') format('woff'),
@@ -18,7 +18,7 @@
 
 @font-face {
   font-family: 'proxima-nova';
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
   font-weight: 500;
   src: url('/fonts/proxima-nova-medium.woff') format('woff'),
@@ -27,7 +27,7 @@
 
 @font-face {
   font-family: 'proxima-nova';
-  font-display: auto;
+  font-display: swap;
   font-style: normal;
   font-weight: 600;
   src: url('/fonts/proxima-nova-semibold.woff') format('woff'),
