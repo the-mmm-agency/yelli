@@ -37,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   },
   contentSkeleton: {
     '&:last-child': {
-      paddingBottom: theme.spacing(2)
+      paddingBottom: 0
     },
     padding: {
       left: theme.spacing(1)

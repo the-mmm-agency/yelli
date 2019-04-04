@@ -63,7 +63,6 @@ const useStyles = makeStyles(theme => ({
       paddingTop: theme.spacing(4)
     },
     backgroundColor: theme.palette.background.paper,
-    flexGrow: 1,
     overflow: 'hidden',
     padding: {
       left: theme.spacing(4),
