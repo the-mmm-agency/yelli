@@ -1,4 +1,4 @@
-import { Fade, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import { useApolloClient } from 'react-apollo-hooks';
@@ -52,32 +52,30 @@ const AppListItem = memo(({ name, category, icon, loading }) => {
     });
   };
   return (
-    <Fade appear in>
-      <ListItem
-        button
-        className={classes.root}
-        disableGutters
-        divider
-        onClick={handleClick}
-        onFocus={() => prefetchApp()}
-        onMouseOver={() => prefetchApp()}
-      >
-        <ListItemIcon>
-          <img alt={name} className={classes.icon} src={icon} />
-        </ListItemIcon>
-        <ListItemText
-          primary={name}
-          primaryTypographyProps={{ className: classes.name }}
-          secondary={category.name}
-          secondaryTypographyProps={{
-            className: classes.category,
-            color: 'textSecondary',
-            component: 'p',
-            variant: 'caption'
-          }}
-        />
-      </ListItem>
-    </Fade>
+    <ListItem
+      button
+      className={classes.root}
+      disableGutters
+      divider
+      onClick={handleClick}
+      onFocus={() => prefetchApp()}
+      onMouseOver={() => prefetchApp()}
+    >
+      <ListItemIcon>
+        <img alt={name} className={classes.icon} src={icon} />
+      </ListItemIcon>
+      <ListItemText
+        primary={name}
+        primaryTypographyProps={{ className: classes.name }}
+        secondary={category.name}
+        secondaryTypographyProps={{
+          className: classes.category,
+          color: 'textSecondary',
+          component: 'p',
+          variant: 'caption'
+        }}
+      />
+    </ListItem>
   );
 });
 

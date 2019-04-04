@@ -39,6 +39,11 @@ const Categories = memo(() => {
           <CategoryListItem loading />
           <CategoryListItem loading />
           <CategoryListItem loading />
+          <CategoryListItem loading />
+          <CategoryListItem loading />
+          <CategoryListItem loading />
+          <CategoryListItem loading />
+          <CategoryListItem loading />
         </List>
       </div>
     );

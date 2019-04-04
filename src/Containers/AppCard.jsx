@@ -3,7 +3,6 @@ import {
   Card,
   CardActionArea,
   CardContent,
-  Fade,
   Typography
 } from '@material-ui/core';
 import classNames from 'classnames';
@@ -146,39 +145,37 @@ const AppCard = memo(({ name, icon, category, loading }) => {
   };
 
   return (
-    <Fade appear in>
-      <Card className={classes.root} component="li">
-        <CardActionArea
-          classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
-          className={classes.actionArea}
-          onClick={handleClick}
-          onFocus={() => prefetchApp()}
-          onMouseOver={() => prefetchApp()}
-        >
-          <img alt={name} className={classes.icon} src={icon} />
-          <CardContent className={classes.content}>
-            <Typography
-              align="left"
-              className={classes.name}
-              color="inherit"
-              noWrap
-              variant="body1"
-            >
-              {name}
-            </Typography>
-            <Typography
-              align="left"
-              className={classes.category}
-              color="textSecondary"
-              noWrap
-              variant="caption"
-            >
-              {category.name}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Fade>
+    <Card className={classes.root} component="li">
+      <CardActionArea
+        classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
+        className={classes.actionArea}
+        onClick={handleClick}
+        onFocus={() => prefetchApp()}
+        onMouseOver={() => prefetchApp()}
+      >
+        <img alt={name} className={classes.icon} src={icon} />
+        <CardContent className={classes.content}>
+          <Typography
+            align="left"
+            className={classes.name}
+            color="inherit"
+            noWrap
+            variant="body1"
+          >
+            {name}
+          </Typography>
+          <Typography
+            align="left"
+            className={classes.category}
+            color="textSecondary"
+            noWrap
+            variant="caption"
+          >
+            {category.name}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 });
 

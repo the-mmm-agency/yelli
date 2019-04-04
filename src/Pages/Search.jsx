@@ -1,4 +1,4 @@
-import { Fade, Grid, InputBase } from '@material-ui/core';
+import { Grid, InputBase } from '@material-ui/core';
 import { Search as SearchIcon } from '@material-ui/icons';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
@@ -75,23 +75,21 @@ const Search = memo(() => {
     setSearchString(e.target.value);
   };
   return (
-    <Fade appear in>
-      <Grid className={classes.root} container direction="column">
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            classes={{
-              input: classes.inputInput,
-              root: classes.inputRoot
-            }}
-            onChange={handleChange}
-            placeholder="Search…"
-          />
+    <Grid className={classes.root} container direction="column">
+      <div className={classes.search}>
+        <div className={classes.searchIcon}>
+          <SearchIcon />
         </div>
-        <SearchList searchString={value} />
-      </Grid>
-    </Fade>
+        <InputBase
+          classes={{
+            input: classes.inputInput,
+            root: classes.inputRoot
+          }}
+          onChange={handleChange}
+          placeholder="Search…"
+        />
+      </div>
+      <SearchList searchString={value} />
+    </Grid>
   );
 });

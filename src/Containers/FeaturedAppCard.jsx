@@ -3,7 +3,6 @@ import {
   CardActionArea,
   CardMedia,
   CardContent,
-  Fade,
   Typography
 } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
@@ -113,35 +112,33 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
   };
 
   return (
-    <Fade appear in>
-      <Card className={classes.root} component="li">
-        <CardActionArea
-          classes={{ focusHighlight: classes.actionArea }}
-          onClick={handleClick}
-        >
-          <CardMedia className={classes.banner} image={banner} />
-          <CardContent className={classes.content}>
-            <Typography
-              align="left"
-              className={classes.name}
-              noWrap
-              variant="body1"
-            >
-              {name}
-            </Typography>
-            <Typography
-              align="left"
-              className={classes.description}
-              color="textSecondary"
-              noWrap
-              variant="body2"
-            >
-              {description}
-            </Typography>
-          </CardContent>
-        </CardActionArea>
-      </Card>
-    </Fade>
+    <Card className={classes.root} component="li">
+      <CardActionArea
+        classes={{ focusHighlight: classes.actionArea }}
+        onClick={handleClick}
+      >
+        <CardMedia className={classes.banner} image={banner} />
+        <CardContent className={classes.content}>
+          <Typography
+            align="left"
+            className={classes.name}
+            noWrap
+            variant="body1"
+          >
+            {name}
+          </Typography>
+          <Typography
+            align="left"
+            className={classes.description}
+            color="textSecondary"
+            noWrap
+            variant="body2"
+          >
+            {description}
+          </Typography>
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 });
 
