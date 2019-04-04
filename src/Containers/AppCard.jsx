@@ -7,11 +7,14 @@ import {
   Typography
 } from '@material-ui/core';
 import classNames from 'classnames';
+import { useApolloClient } from 'react-apollo-hooks';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton from 'react-loading-skeleton';
+
+import APP_INFO from 'Graphql/AppInfo.gql';
 
 const iconStyle = {
   borderRadius: 15,
@@ -72,7 +75,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AppCard = React.memo(({ name, icon, category, loading }) => {
+const AppCard = memo(({ name, icon, category, loading }) => {
   const classes = useStyles();
   const theme = useTheme();
 
@@ -119,6 +122,15 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
     );
   }
 
+  const client = useApolloClient();
+
+  const prefetchApp = () => () => {
+    client.query({
+      query: APP_INFO,
+      variables: { name }
+    });
+  };
+
   const history = useHistory();
 
   const handleClick = () => {
@@ -132,6 +144,8 @@ const AppCard = React.memo(({ name, icon, category, loading }) => {
           classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
           className={classes.actionArea}
           onClick={handleClick}
+          onFocus={() => prefetchApp()}
+          onMouseOver={() => prefetchApp()}
         >
           <img alt={name} className={classes.icon} src={icon} />
           <CardContent className={classes.content}>

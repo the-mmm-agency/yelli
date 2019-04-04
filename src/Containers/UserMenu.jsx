@@ -1,8 +1,8 @@
 import { Button, Menu, MenuItem } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
-const UserMenu = React.memo(({ name }) => {
+const UserMenu = memo(({ name }) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const handleClick = event => {
     setAnchorEl(event.currentTarget);

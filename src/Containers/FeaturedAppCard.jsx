@@ -9,7 +9,7 @@ import {
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 const useStyles = makeStyles(theme => ({
@@ -58,7 +58,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const FeaturedAppCard = React.memo(({ banner, name, description, loading }) => {
+const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
   const classes = useStyles();
   const theme = useTheme();
 

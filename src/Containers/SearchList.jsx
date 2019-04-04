@@ -1,7 +1,7 @@
 import { List } from '@material-ui/core';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import gql from 'graphql-tag';
 
 import APP_CARD from 'Graphql/AppCard.gql';
@@ -16,7 +16,7 @@ const SEARCH_APPS = gql`
   ${APP_CARD}
 `;
 
-const SearchList = React.memo(({ searchString }) => {
+const SearchList = memo(({ searchString }) => {
   const { data, loading } = useQuery(SEARCH_APPS, {
     variables: {
       searchString

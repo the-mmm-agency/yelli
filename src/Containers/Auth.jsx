@@ -1,6 +1,6 @@
 import { Button, Modal, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import { dispatch, useGlobalState } from 'state';
 import Forgot from 'Containers/Forgot';
@@ -25,7 +25,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Auth = React.memo(() => {
+const Auth = memo(() => {
   const classes = useStyles();
   const [isOpen] = useGlobalState('auth');
   const [page, setPage] = useState('login');

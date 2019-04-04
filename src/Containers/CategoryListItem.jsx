@@ -2,7 +2,7 @@ import { Fade, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton from 'react-loading-skeleton';
 
 import CategoryIcon from 'Components/CategoryIcon';
@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CategoryListItem = React.memo(({ name, loading }) => {
+const CategoryListItem = memo(({ name, loading }) => {
   const classes = useStyles();
   const history = useHistory();
   if (loading) {

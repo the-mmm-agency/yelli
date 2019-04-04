@@ -3,7 +3,7 @@ import { KeyboardArrowLeft as BackIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
 import { useQuery } from 'react-apollo-hooks';
-import React from 'react';
+import React, { memo } from 'react';
 import gql from 'graphql-tag';
 
 import LogoGif from '../logo.gif';
@@ -79,7 +79,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Header = React.memo(() => {
+const Header = memo(() => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_NAME);
   const route = useCurrentRoute();

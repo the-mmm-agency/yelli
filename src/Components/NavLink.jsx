@@ -3,7 +3,7 @@ import { ListItem } from '@material-ui/core';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 
 const useStyles = makeStyles(theme => ({
   active: {
@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const NavLink = React.memo(({ children, href, LinkProps, ListItemProps }) => {
+const NavLink = memo(({ children, href, LinkProps, ListItemProps }) => {
   const classes = useStyles();
   return (
     <Link

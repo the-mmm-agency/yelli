@@ -1,50 +1,17 @@
-/* eslint-disable no-dupe-keys */
 import { CssBaseline, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import PropTypes from 'prop-types';
-import React, { useRef, cloneElement, useEffect } from 'react';
-import elasticScroll from 'elastic-scroll-polyfill';
+import React, { lazy, Suspense } from 'react';
 
-import AppUpdate from 'Containers/AppUpdate';
-import Auth from 'Containers/Auth';
-import CreateApp from 'Containers/CreateApp';
+import ElasticScroll from 'Components/ElasticScroll';
 import Header from 'Containers/Header';
 import Navigation from 'Containers/Navigation';
 import SideDrawer from 'Containers/SideDrawer';
 
 import './fonts.css';
 
-const ElasticScroll = ({ children, ...props }) => {
-  const targetRef = useRef();
-
-  useEffect(() => {
-    const instance = elasticScroll({
-      appleDevicesOnly: false,
-      targets: targetRef.current,
-      ...props
-    });
-
-    return () => {
-      instance.disable();
-    };
-  }, []);
-
-  return cloneElement(children, {
-    children: <div data-elastic-wrapper>{children.props.children}</div>,
-    ref: node => {
-      targetRef.current = node;
-      const { ref } = children;
-      if (ref) {
-        if (typeof ref === 'function') {
-          ref(node);
-          // eslint-disable-next-line no-prototype-builtins
-        } else if (ref.hasOwnProperty('current')) {
-          ref.current = node;
-        }
-      }
-    }
-  });
-};
+const IosInstallPrompt = lazy(() => import('Components/IosInstallPrompt'));
+const Auth = lazy(() => import('Containers/Auth'));
+const AppUpdate = lazy(() => import('Containers/AppUpdate'));
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -106,12 +73,14 @@ const Layout = ({ children }) => {
     <div className={classes.root}>
       <CssBaseline />
       <Header />
-      <CreateApp />
       <Hidden smDown>
         <SideDrawer />
       </Hidden>
-      <Auth />
-      <AppUpdate />
+      <Suspense fallback={null}>
+        <Auth />
+        <IosInstallPrompt />
+        <AppUpdate />
+      </Suspense>
       <ElasticScroll>
         <main className={classes.content}>
           <div className={classes.toolbar} />
@@ -129,14 +98,6 @@ const Layout = ({ children }) => {
       </Hidden>
     </div>
   );
-};
-
-Layout.propTypes = {
-  children: PropTypes.oneOfType([
-    PropTypes.element,
-    PropTypes.node,
-    PropTypes.arrayOf(PropTypes.oneOfType([PropTypes.element, PropTypes.node]))
-  ])
 };
 
 export default Layout;

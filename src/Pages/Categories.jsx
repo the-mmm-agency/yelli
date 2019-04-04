@@ -2,7 +2,7 @@ import { List, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
-import React from 'react';
+import React, { memo } from 'react';
 
 import CategoryListItem from 'Containers/CategoryListItem';
 import GET_CATEGORIES from 'Graphql/GetCategories.gql';
@@ -22,7 +22,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Categories = React.memo(() => {
+const Categories = memo(() => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_CATEGORIES);
   if (loading) {

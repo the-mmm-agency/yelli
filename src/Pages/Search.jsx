@@ -3,7 +3,7 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 
 import SearchList from 'Containers/SearchList';
 
@@ -66,7 +66,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Search = React.memo(() => {
+const Search = memo(() => {
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
   return (

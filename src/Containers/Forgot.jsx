@@ -1,7 +1,7 @@
 import { Button, CircularProgress, Grid, TextField } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useMutation } from 'react-apollo-hooks';
-import React, { useState } from 'react';
+import React, { memo, useState } from 'react';
 import gql from 'graphql-tag';
 
 const useStyles = makeStyles(theme => ({
@@ -26,7 +26,7 @@ const FORGOT = gql`
   }
 `;
 
-const Forgot = React.memo(() => {
+const Forgot = memo(() => {
   const classes = useStyles();
   const [email, setEmail] = useState('');
   const [loading, setLoading] = useState(false);

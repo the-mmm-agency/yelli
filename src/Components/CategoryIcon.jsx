@@ -12,7 +12,7 @@ import {
 } from '@material-ui/icons';
 import { ReactComponent as Newspaper } from '@mdi/svg/svg/newspaper.svg';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 
 const Icons = {
   Business: DomainOutlined,
@@ -28,7 +28,7 @@ const Icons = {
   Travel: MapOutlined
 };
 
-const CategoryIcon = React.memo(({ name }) => {
+const CategoryIcon = memo(({ name }) => {
   const Icon = Icons[name];
   return <Icon fill="currentColor" />;
 });

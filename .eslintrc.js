@@ -135,7 +135,7 @@ module.exports = {
     'react/no-unused-prop-types': 'error',
     'react/no-unused-state': 'warn',
     'react/prefer-stateless-function': 'warn',
-    'react/prop-types': 'error',
+    'react/prop-types': ['error', { ignore: ['children'] }],
     'react/require-default-props': 'off',
     'react/require-render-return': 'error',
     'react/sort-comp': [

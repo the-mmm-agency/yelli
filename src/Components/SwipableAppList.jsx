@@ -32,7 +32,15 @@ const SwipableAppList = memo(({ AppComponent, apps }) => {
 
 SwipableAppList.propTypes = {
   AppComponent: PropTypes.element.isRequired,
-  apps: PropTypes.object.isRequired
+  apps: PropTypes.arrayOf(
+    PropTypes.shape({
+      category: PropTypes.shape({
+        name: PropTypes.string.isRequired
+      }).isRequired,
+      icon: PropTypes.string.isRequired,
+      name: PropTypes.string.isRequired
+    }).isRequired
+  ).isRequired
 };
 
 export default SwipableAppList;

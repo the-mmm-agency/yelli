@@ -45,6 +45,7 @@ const Navigation = () => {
   const classes = useStyles();
   const value = route.url.pathname;
   const setValue = (event, newValue) => {
+    event.preventDefault();
     history.push(newValue);
   };
   return (

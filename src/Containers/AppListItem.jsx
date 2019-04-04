@@ -1,9 +1,12 @@
 import { Fade, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
+import { useApolloClient } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import Skeleton from 'react-loading-skeleton';
+
+import APP_INFO from 'Graphql/AppInfo.gql';
 
 const useStyles = makeStyles(theme => ({
   category: {
@@ -22,8 +25,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AppListItem = ({ name, category, icon, loading }) => {
+const AppListItem = memo(({ name, category, icon, loading }) => {
   const classes = useStyles();
+
   if (loading) {
     return (
       <ListItem className={classes.root} disableGutters divider>
@@ -37,10 +41,22 @@ const AppListItem = ({ name, category, icon, loading }) => {
       </ListItem>
     );
   }
+
   const history = useHistory();
+
   const handleClick = () => {
     history.push(`/app/${name}`);
   };
+
+  const client = useApolloClient();
+
+  const prefetchApp = () => () => {
+    client.query({
+      query: APP_INFO,
+      variables: { name }
+    });
+  };
+
   return (
     <Fade appear in>
       <ListItem
@@ -49,6 +65,8 @@ const AppListItem = ({ name, category, icon, loading }) => {
         disableGutters
         divider
         onClick={handleClick}
+        onFocus={() => prefetchApp()}
+        onMouseOver={() => prefetchApp()}
       >
         <ListItemIcon>
           <img alt={name} className={classes.icon} src={icon} />
@@ -67,7 +85,7 @@ const AppListItem = ({ name, category, icon, loading }) => {
       </ListItem>
     </Fade>
   );
-};
+});
 
 AppListItem.propTypes = {
   category: PropTypes.string,

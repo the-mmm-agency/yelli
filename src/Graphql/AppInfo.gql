@@ -1,0 +1,12 @@
+  query appInfo($name: String!) {
+    app(where: { name: $name }) {
+      name
+      category {
+        name
+      }
+      icon
+      description
+      screenshots
+      url
+    }
+  }

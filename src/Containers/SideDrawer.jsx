@@ -4,7 +4,7 @@ import {
   SearchOutlined as SearchIcon
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
-import React from 'react';
+import React, { memo } from 'react';
 
 import LogoGif from '../logo.gif';
 import LogoWebp from '../logo.webp';
@@ -53,7 +53,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SideDrawer = React.memo(() => {
+const SideDrawer = memo(() => {
   const classes = useStyles();
   return (
     <Drawer

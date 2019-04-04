@@ -6,7 +6,8 @@ import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
 import Skeleton from 'react-loading-skeleton';
-import gql from 'graphql-tag';
+
+import APP_INFO from 'Graphql/AppInfo.gql';
 
 export default mount({
   '/:name': route(async req => ({
@@ -99,24 +100,9 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const GET_APP = gql`
-  query appInfo($name: String!) {
-    app(where: { name: $name }) {
-      name
-      category {
-        name
-      }
-      icon
-      description
-      screenshots
-      url
-    }
-  }
-`;
-
 const Info = ({ name }) => {
   const classes = useStyles();
-  const { data, loading } = useQuery(GET_APP, {
+  const { data, loading } = useQuery(APP_INFO, {
     variables: { name }
   });
   if (loading || !data.app) {
