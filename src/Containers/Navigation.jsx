@@ -4,10 +4,13 @@ import {
   BottomNavigationAction
 } from '@material-ui/core';
 import {
-  HomeOutlined as HomeIcon,
-  SearchOutlined as SearchIcon,
-  CategoryOutlined as CategoryIcon,
-  PollOutlined as TopIcon
+  Home,
+  Search,
+  Category,
+  Poll,
+  HomeOutlined,
+  CategoryOutlined,
+  PollOutlined
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
@@ -53,25 +56,43 @@ const Navigation = () => {
       <BottomNavigation onChange={setValue} showLabels value={value}>
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<HomeIcon className={classes.icon} />}
+          icon={
+            value === '/' ? (
+              <Home className={classes.icon} />
+            ) : (
+              <HomeOutlined className={classes.icon} />
+            )
+          }
           label="Home"
           value="/"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<TopIcon className={classes.icon} />}
+          icon={
+            value === '/toplist/' ? (
+              <Poll className={classes.icon} />
+            ) : (
+              <PollOutlined className={classes.icon} />
+            )
+          }
           label="Top apps"
           value="/toplist/"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<CategoryIcon className={classes.icon} />}
+          icon={
+            value === '/categories/' ? (
+              <Category className={classes.icon} />
+            ) : (
+              <CategoryOutlined className={classes.icon} />
+            )
+          }
           label="Categories"
           value="/categories/"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
-          icon={<SearchIcon className={classes.icon} />}
+          icon={<Search className={classes.icon} />}
           label="Search"
           value="/search/"
         />
