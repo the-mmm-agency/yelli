@@ -17,15 +17,19 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SwipableAppList = memo(({ AppComponent, apps }) => {
+const SwipableAppList = memo(({ AppComponent, apps, loading }) => {
   const classes = useStyles();
   return (
     <Grid className={classes.root} component="ul" container item wrap="nowrap">
-      {apps.map(app => {
-        // eslint-disable-next-line no-param-reassign
-        delete app.__typename;
-        return <AppComponent key={app.id} {...app} />;
-      })}
+      {loading
+        ? [...new Array(10).keys()].map(key => (
+            <AppComponent key={key} loading />
+          ))
+        : apps.map(app => {
+            // eslint-disable-next-line no-param-reassign
+            delete app.__typename;
+            return <AppComponent key={app.id} {...app} />;
+          })}
     </Grid>
   );
 });
@@ -40,7 +44,8 @@ SwipableAppList.propTypes = {
       icon: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired
     }).isRequired
-  ).isRequired
+  ).isRequired,
+  loading: PropTypes.bool.isRequired
 };
 
 export default SwipableAppList;

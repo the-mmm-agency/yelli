@@ -17,16 +17,13 @@ const TOP_APPS = gql`
 
 const TopApps = () => {
   const { data, loading } = useQuery(TOP_APPS);
-  if (loading) {
-    return (
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        {[...new Array(10).keys()].map(key => (
-          <AppCard key={key} loading />
-        ))}
-      </div>
-    );
-  }
-  return <SwipableAppList AppComponent={AppCard} apps={data.apps} />;
+  return (
+    <SwipableAppList
+      AppComponent={AppCard}
+      apps={data.apps}
+      loading={loading}
+    />
+  );
 };
 
 export default TopApps;

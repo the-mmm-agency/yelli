@@ -16,12 +16,6 @@ import Skeleton from 'react-loading-skeleton';
 
 import APP_INFO from 'Graphql/AppInfo.gql';
 
-const iconStyle = {
-  borderRadius: 15,
-  objectFit: 'contain',
-  width: '100%'
-};
-
 const useStyles = makeStyles(theme => ({
   actionArea: {
     padding: theme.spacing(1)
@@ -33,15 +27,27 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600
   },
   content: {
+    '&:last-child': {
+      paddingBottom: theme.spacing(2)
+    },
     padding: {
       left: theme.spacing(1)
     },
     textOverflow: 'ellipsis'
   },
-  icon: iconStyle,
-  iconPlaceholder: {
-    ...iconStyle,
-    padding: theme.spacing(1)
+  contentSkeleton: {
+    '&:last-child': {
+      paddingBottom: theme.spacing(2)
+    },
+    padding: {
+      left: theme.spacing(1)
+    },
+    whiteSpace: 'pre-wrap'
+  },
+  icon: {
+    borderRadius: 15,
+    objectFit: 'contain',
+    width: '100%'
   },
   name: {
     fontWeight: 500
@@ -87,7 +93,7 @@ const AppCard = memo(({ name, icon, category, loading }) => {
         className={classNames(classes.root, classes.skeleton)}
         component="li"
       >
-        <picture className={classes.iconPlaceholder}>
+        <picture className={classes.icon}>
           <source
             srcSet="https://via.placeholder.com/128/f4f4f4/dadce0.webp?text=icon"
             type="image/webp"
@@ -98,15 +104,17 @@ const AppCard = memo(({ name, icon, category, loading }) => {
           />
           <img
             alt="Loading"
+            className={classes.icon}
             src="https://via.placeholder.com/128/f4f4f4/dadce0.jpg?text=icon"
           />
         </picture>
-        <CardContent className={classes.content}>
+        <CardContent className={classes.contentSkeleton}>
           <Skeleton
             color={theme.palette.text.primary}
             height={theme.typography.body1.fontSize}
             highlightColor={theme.palette.text.secondary}
             style={{
+              marginBottom: theme.spacing(1),
               marginRight: '100%'
             }}
             width="80%"

@@ -1,5 +1,4 @@
 import { useQuery } from 'react-apollo-hooks';
-import { Grid } from '@material-ui/core';
 import React from 'react';
 import gql from 'graphql-tag';
 
@@ -18,22 +17,13 @@ const NEW_APPS = gql`
 
 const NewApps = () => {
   const { data, loading } = useQuery(NEW_APPS);
-  if (loading) {
-    return (
-      <Grid
-        alignItems="center"
-        component="ul"
-        container
-        justify="center"
-        wrap="nowrap"
-      >
-        {[...new Array(10).keys()].map(key => (
-          <AppCard key={key} loading />
-        ))}
-      </Grid>
-    );
-  }
-  return <SwipableAppList AppComponent={AppCard} apps={data.apps} />;
+  return (
+    <SwipableAppList
+      AppComponent={AppCard}
+      apps={data.apps}
+      loading={loading}
+    />
+  );
 };
 
 export default NewApps;

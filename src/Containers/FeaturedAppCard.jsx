@@ -68,7 +68,7 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
         <CardMedia className={classes.banner}>
           <Skeleton
             color={theme.palette.text.primary}
-            height="100%"
+            height="200px"
             highlightColor={theme.palette.text.secondary}
             width="100%"
           />
