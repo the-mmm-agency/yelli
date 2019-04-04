@@ -34,14 +34,11 @@ const useStyles = makeStyles(theme => ({
     }
   },
   divider: {
-    [theme.breakpoints.down('sm')]: {
-      margin: {
-        bottom: theme.spacing(1),
-        left: theme.spacing(-3),
-        top: theme.spacing(1)
-      }
+    margin: {
+      bottom: theme.spacing(2),
+      left: theme.spacing(-3),
+      top: theme.spacing(1)
     },
-    marginLeft: theme.spacing(-3),
     width: '120%'
   },
   icon: {
@@ -87,14 +84,15 @@ const useStyles = makeStyles(theme => ({
   },
   screenshots: {
     '-webkit-overflow-scrolling': 'touch',
+    '-webkit-scroll-snap-points-x': 'repeat(100%)',
+    '-webkit-scroll-snap-type': 'manditory',
     [theme.breakpoints.up('md')]: {
-      height: 'auto',
-      margin: theme.spacing(2)
+      height: 'auto'
     },
     flexWrap: 'nowrap',
-    margin: theme.spacing(2),
     overflowX: 'scroll',
     overflowY: 'hidden',
+    'scroll-snap-type': 'x mandatory',
     whiteSpace: 'nowrap'
   }
 }));
@@ -187,7 +185,7 @@ const Info = ({ name }) => {
         </Typography>
       </Grid>
       <Divider className={classes.divider} />
-      <Grid className={classes.screenshots} container item spacing={2}>
+      <Grid className={classes.screenshots} container item spacing={4}>
         {screenshots.map(screenshot => (
           <img
             key={screenshot}
