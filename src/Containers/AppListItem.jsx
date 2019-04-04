@@ -32,7 +32,7 @@ const AppListItem = memo(({ name, category, icon, loading }) => {
     return (
       <ListItem className={classes.root} disableGutters divider>
         <ListItemIcon>
-          <Skeleton circle height={30} width={30} />
+          <Skeleton circle height={50} width={50} />
         </ListItemIcon>
         <ListItemText
           primary={<Skeleton width="60vw" />}
