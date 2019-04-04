@@ -25,9 +25,9 @@ const SearchList = memo(({ searchString }) => {
   if (loading) {
     return (
       <List>
-        <AppListItem loading />
-        <AppListItem loading />
-        <AppListItem loading />
+        {[...new Array(10).keys()].map(key => (
+          <AppListItem key={key} loading />
+        ))}
       </List>
     );
   }
