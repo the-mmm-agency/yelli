@@ -19,28 +19,6 @@ const useStyles = makeStyles(theme => ({
       scrollbarColor: 'rgba(50,50,50,0.5) transparent',
       scrollbarWidth: 'thin'
     },
-    '::-moz-selection': {
-      background: theme.palette.primary.main,
-      color: '#fff'
-    },
-    '::-webkit-scrollbar': {
-      height: 12,
-      width: 12
-    },
-    '::-webkit-scrollbar-thumb': {
-      backgroundColor: 'transparent'
-    },
-    '::-webkit-scrollbar-thumb:active': {
-      backgroundColor: 'rgba(30,30,30,1)'
-    },
-    '::-webkit-scrollbar-thumb:hover': {
-      backgroundColor: 'rgba(40,40,40,0.75)',
-      height: 16,
-      width: 16
-    },
-    '::-webkit-scrollbar-track': {
-      backgroundColor: 'transparent'
-    },
     '::selection': {
       background: theme.palette.primary.main,
       color: '#fff'

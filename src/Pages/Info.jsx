@@ -148,10 +148,15 @@ const Info = ({ name }) => {
     <Grid className={classes.root} container spacing={4}>
       <Grid container>
         <Grid item xs="auto">
-          <img alt={name} className={classes.icon} src={icon} />
+          <img
+            alt={name}
+            className={classes.icon}
+            itemProp="image"
+            src={icon}
+          />
         </Grid>
         <Grid className={classes.item} item xs="auto">
-          <Typography component="h1" variant="h6">
+          <Typography component="h1" itemProp="name" variant="h6">
             {name}
           </Typography>
           <Typography
@@ -180,7 +185,11 @@ const Info = ({ name }) => {
         </Grid>
       </Grid>
       <Grid item xs={12}>
-        <Typography className={classes.description} paragraph>
+        <Typography
+          className={classes.description}
+          itemprop="description"
+          paragraph
+        >
           {description}
         </Typography>
       </Grid>

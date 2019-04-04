@@ -3,6 +3,7 @@ import { Search as SearchIcon } from '@material-ui/icons';
 import { fade } from '@material-ui/core/styles/colorManipulator';
 import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
+import { useDebounce } from 'use-debounce';
 import React, { memo, useState } from 'react';
 
 import SearchList from 'Containers/SearchList';
@@ -69,6 +70,10 @@ const useStyles = makeStyles(theme => ({
 const Search = memo(() => {
   const classes = useStyles();
   const [searchString, setSearchString] = useState('');
+  const [value] = useDebounce(searchString, 500);
+  const handleChange = e => {
+    setSearchString(e.target.value);
+  };
   return (
     <Fade appear in>
       <Grid className={classes.root} container direction="column">
@@ -81,13 +86,11 @@ const Search = memo(() => {
               input: classes.inputInput,
               root: classes.inputRoot
             }}
-            onChange={event => {
-              setSearchString(event.target.value);
-            }}
+            onChange={handleChange}
             placeholder="Search…"
           />
         </div>
-        <SearchList searchString={searchString} />
+        <SearchList searchString={value} />
       </Grid>
     </Fade>
   );

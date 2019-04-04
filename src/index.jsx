@@ -2,6 +2,7 @@ import { ApolloProvider } from 'react-apollo-hooks';
 import { StylesProvider, ThemeProvider, jssPreset } from '@material-ui/styles';
 import { create } from 'jss';
 import ApolloClient from 'apollo-boost';
+import dayjs from 'dayjs';
 import React from 'react';
 import { render } from 'react-dom';
 import expand from 'jss-plugin-expand';
@@ -54,6 +55,12 @@ const isIos = () => {
   return /iphone|ipad|ipod/.test(userAgent);
 };
 
-window.addEventListener('beforeinstallprompt', () => {
-  if (isIos()) installPrompt();
-});
+if (isIos()) {
+  const localDate = localStorage.getItem('installPrompt');
+  if (localDate) {
+    if ((localDate && dayjs().isAfter(localDate, 'month')) || !localDate) {
+      installPrompt();
+      localStorage.setItem('installPrompt', dayjs());
+    }
+  }
+}
