@@ -39,7 +39,7 @@ export const { GlobalStateProvider, dispatch, useGlobalState } = createStore(
   },
   {
     auth: false,
-    installPrompt: true,
+    installPrompt: false,
     update: false
   }
 );
