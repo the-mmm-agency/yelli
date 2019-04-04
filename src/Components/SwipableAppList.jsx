@@ -39,13 +39,13 @@ SwipableAppList.propTypes = {
   apps: PropTypes.arrayOf(
     PropTypes.shape({
       category: PropTypes.shape({
-        name: PropTypes.string.isRequired
-      }).isRequired,
-      icon: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired
-    }).isRequired
-  ).isRequired,
-  loading: PropTypes.bool.isRequired
+        name: PropTypes.string
+      }),
+      icon: PropTypes.string,
+      name: PropTypes.string
+    })
+  ),
+  loading: PropTypes.bool
 };
 
 export default SwipableAppList;

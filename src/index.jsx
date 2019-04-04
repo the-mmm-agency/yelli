@@ -55,12 +55,11 @@ const isIos = () => {
   return /iphone|ipad|ipod/.test(userAgent);
 };
 
+const localDate = localStorage.getItem('installPrompt');
+
 if (isIos()) {
-  const localDate = localStorage.getItem('installPrompt');
-  if (localDate) {
-    if ((localDate && dayjs().isAfter(localDate, 'month')) || !localDate) {
-      installPrompt();
-      localStorage.setItem('installPrompt', dayjs());
-    }
+  if ((localDate && dayjs().isAfter(localDate, 'month')) || !localDate) {
+    installPrompt();
+    localStorage.setItem('installPrompt', dayjs());
   }
 }

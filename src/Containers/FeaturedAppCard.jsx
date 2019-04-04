@@ -145,7 +145,7 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
 FeaturedAppCard.propTypes = {
   banner: PropTypes.string,
   description: PropTypes.string,
-  loading: PropTypes.bool.isRequired,
+  loading: PropTypes.bool,
   name: PropTypes.string
 };
 
