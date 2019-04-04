@@ -26,7 +26,7 @@ const AppListItem = ({ name, category, icon, loading }) => {
   const classes = useStyles();
   if (loading) {
     return (
-      <ListItem className={classes.root} disableGutters>
+      <ListItem className={classes.root} disableGutters divider>
         <ListItemIcon>
           <Skeleton circle height={30} width={30} />
         </ListItemIcon>
