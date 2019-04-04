@@ -8,7 +8,7 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 
 import CategoryIcon from 'Components/CategoryIcon';
 import GET_CATEGORIES from 'Graphql/GetCategories.gql';
@@ -26,7 +26,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CategoriesSelect = ({ setValue, value }) => {
+const CategoriesSelect = memo(({ setValue, value }) => {
   const { data, loading } = useQuery(GET_CATEGORIES);
   const classes = useStyles();
 
@@ -72,7 +72,7 @@ const CategoriesSelect = ({ setValue, value }) => {
       ))}
     </TextField>
   );
-};
+});
 
 CategoriesSelect.propTypes = {
   setValue: PropTypes.func.isRequired,

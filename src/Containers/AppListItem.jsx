@@ -27,7 +27,6 @@ const useStyles = makeStyles(theme => ({
 
 const AppListItem = memo(({ name, category, icon, loading }) => {
   const classes = useStyles();
-
   if (loading) {
     return (
       <ListItem className={classes.root} disableGutters divider>
@@ -41,22 +40,17 @@ const AppListItem = memo(({ name, category, icon, loading }) => {
       </ListItem>
     );
   }
-
   const history = useHistory();
-
   const handleClick = () => {
     history.push(`/app/${name}`);
   };
-
   const client = useApolloClient();
-
   const prefetchApp = () => () => {
     client.query({
       query: APP_INFO,
       variables: { name }
     });
   };
-
   return (
     <Fade appear in>
       <ListItem

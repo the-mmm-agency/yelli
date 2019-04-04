@@ -1,12 +1,12 @@
 import { Close as CloseIcon } from '@material-ui/icons';
 import { Snackbar, Button, IconButton } from '@material-ui/core';
-import React from 'react';
+import React, { memo } from 'react';
 
 import { dispatch, useGlobalState } from 'state';
 
 const close = () => dispatch({ type: 'closeUpdate' });
 
-const AppUpdate = () => {
+const AppUpdate = memo(() => {
   const [open] = useGlobalState('update');
 
   const handleClose = (event, reason) => {
@@ -48,6 +48,6 @@ const AppUpdate = () => {
       open={open}
     />
   );
-};
+});
 
 export default AppUpdate;

@@ -1,5 +1,5 @@
 import { useQuery } from 'react-apollo-hooks';
-import React from 'react';
+import React, { memo } from 'react';
 import gql from 'graphql-tag';
 
 import APP_CARD from 'Graphql/AppCard.gql';
@@ -15,7 +15,7 @@ const TOP_APPS = gql`
   ${APP_CARD}
 `;
 
-const TopApps = () => {
+const TopApps = memo(() => {
   const { data, loading } = useQuery(TOP_APPS);
   return (
     <SwipableAppList
@@ -24,6 +24,6 @@ const TopApps = () => {
       loading={loading}
     />
   );
-};
+});
 
 export default TopApps;

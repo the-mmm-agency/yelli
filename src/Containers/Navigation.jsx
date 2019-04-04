@@ -14,7 +14,7 @@ import {
 } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
-import React from 'react';
+import React, { memo } from 'react';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -42,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Navigation = () => {
+const Navigation = memo(() => {
   const route = useCurrentRoute();
   const history = useHistory();
   const classes = useStyles();
@@ -99,6 +99,6 @@ const Navigation = () => {
       </BottomNavigation>
     </AppBar>
   );
-};
+});
 
 export default Navigation;
