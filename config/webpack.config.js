@@ -400,6 +400,20 @@ module.exports = function(webpackEnv) {
                 cacheableResponse: {
                   statuses: [0, 200]
                 },
+                cacheName: 'fonts',
+                expiration: {
+                  maxAgeSeconds: 30 * 24 * 60 * 60,
+                  maxEntries: 8
+                }
+              },
+              urlPattern: new RegExp('(.otf$|.woff$)')
+            },
+            {
+              handler: 'cacheFirst',
+              options: {
+                cacheableResponse: {
+                  statuses: [0, 200]
+                },
                 cacheName: 'placeholders',
                 expiration: {
                   maxAgeSeconds: 365 * 24 * 60 * 60,
