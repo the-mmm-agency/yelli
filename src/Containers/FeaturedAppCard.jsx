@@ -52,7 +52,13 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none',
     margin: theme.spacing(2),
     minWidth: 'calc(100% / 3 - 24px)',
-    transitionProperty: 'opacity,box-shadow,transform !important',
+    transition: theme.transitions.create(
+      ['opacity', 'box-shadow', 'transform'],
+      {
+        duration: theme.transitions.duration.standard,
+        easing: theme.transitions.easing.easeInOut
+      }
+    ),
     width: 'calc(100% / 3 - 24px)'
   }
 }));

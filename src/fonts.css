@@ -16,6 +16,7 @@
     url('/fonts/proxima-nova-regular.otf') format('opentype');
 }
 
+
 @font-face {
   font-family: 'proxima-nova';
   font-display: swap;
