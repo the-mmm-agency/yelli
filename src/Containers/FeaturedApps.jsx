@@ -22,6 +22,7 @@ const FeaturedApps = memo(() => {
     <SwipableAppList
       AppComponent={FeaturedAppCard}
       apps={data.apps}
+      length={10}
       loading={loading}
     />
   );

@@ -5,23 +5,23 @@ import { useQuery } from 'react-apollo-hooks';
 import React from 'react';
 import gql from 'graphql-tag';
 
-import APP_CARD from 'Graphql/AppCard.gql';
-import AppListItem from 'Containers/AppListItem';
+import AppComponent from 'Containers/AppComponent';
 
 export default mount({
-  '/': route(() => ({
-    title: 'Yelli - New Apps',
-    view: <New />
-  }))
+  '/': route({
+    async getView() {
+      return <New />;
+    },
+    title: 'Yelli - New Apps'
+  })
 });
 
 const GET_APPS = gql`
   query newApps {
     apps(first: 30, orderBy: createdAt_ASC) {
-      ...AppCard
+      id
     }
   }
-  ${APP_CARD}
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -39,7 +39,7 @@ const New = () => {
     return (
       <List className={classes.root}>
         {[...new Array(20).keys()].map(key => (
-          <AppListItem key={key} loading />
+          <AppComponent key={key} isLoading type="list" />
         ))}
       </List>
     );
@@ -48,13 +48,7 @@ const New = () => {
   return (
     <List className={classes.root}>
       {data.apps.map(app => (
-        <AppListItem
-          key={app.id}
-          category={app.category}
-          icon={app.icon}
-          id={app.id}
-          name={app.name}
-        />
+        <AppComponent key={app.id} id={app.id} type="list" />
       ))}
     </List>
   );

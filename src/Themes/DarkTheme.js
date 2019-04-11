@@ -1,27 +1,40 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { darken, lighten } from '@material-ui/core/styles/colorManipulator';
-import teal from '@material-ui/core/colors/teal';
+import {
+  fade,
+  darken,
+  lighten
+} from '@material-ui/core/styles/colorManipulator';
 
-const LightTheme = createMuiTheme({
+const DarkTheme = {
   palette: {
-    contrastThreshold: 3,
+    background: {
+      default: '#161a2a',
+      paper: '#1e2132'
+    },
+    divider: fade('#121523', 0.6),
     primary: {
-      dark: darken('#ea533f', 0.12),
-      light: lighten('#ea533f', 0.12),
-      main: '#ea533f'
+      dark: darken('#ff5370', 0.12),
+      light: lighten('#ff5370', 0.12),
+      main: '#ff5370'
     },
     secondary: {
-      dark: teal[900],
-      light: teal[500],
-      main: teal[700]
+      dark: lighten('#89ddff', 0.12),
+      light: lighten('#89ddff', 0.12),
+      main: '#89ddff'
     },
     tonalOffset: 0.2,
     type: 'dark'
   },
+  shape: {
+    borderRadius: 8
+  },
   typography: {
-    fontFamily: '"Lato", "Arial", sans-serif',
-    fontSize: 14
+    fontFamily:
+      'proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
+    fontSize: 14,
+    h6: {
+      fontWeight: 600
+    }
   }
-});
+};
 
-export default LightTheme;
+export default DarkTheme;

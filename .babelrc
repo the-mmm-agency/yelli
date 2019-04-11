@@ -3,10 +3,12 @@
     [
       "@babel/preset-env",
       {
+        "corejs": 3,
         "useBuiltIns": "entry",
         "modules": false,
         "targets": {
-          "browsers": ["last 2 versions", "safari >= 7"]
+          "browsers": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
+          "esmodules": true
         }
       }
     ],

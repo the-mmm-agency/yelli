@@ -5,15 +5,19 @@ import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React from 'react';
-import Skeleton from 'react-loading-skeleton';
 
+import Skeleton from 'Components/Skeleton';
 import APP_INFO from 'Graphql/AppInfo.gql';
 
 export default mount({
-  '/:name': route(async req => ({
-    title: `Yelli - ${req.params.name}`,
-    view: <Info name={req.params.name} />
-  }))
+  '/:name': route({
+    async getTitle(req) {
+      return `Yelli - ${req.params.name}`;
+    },
+    async getView(req) {
+      return <Info name={req.params.name} />;
+    }
+  })
 });
 
 const useStyles = makeStyles(theme => ({

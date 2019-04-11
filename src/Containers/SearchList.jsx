@@ -4,16 +4,14 @@ import PropTypes from 'prop-types';
 import React, { memo } from 'react';
 import gql from 'graphql-tag';
 
-import APP_CARD from 'Graphql/AppCard.gql';
-import AppListItem from 'Containers/AppListItem';
+import AppComponent from 'Containers/AppComponent';
 
 const SEARCH_APPS = gql`
   query searchApps($searchString: String) {
     apps(first: 10, where: { name_contains: $searchString }) {
-      ...AppCard
+      id
     }
   }
-  ${APP_CARD}
 `;
 
 const SearchList = memo(({ searchString }) => {
@@ -26,7 +24,7 @@ const SearchList = memo(({ searchString }) => {
     return (
       <List>
         {[...new Array(10).keys()].map(key => (
-          <AppListItem key={key} loading />
+          <AppComponent key={key} isLoading type="list" />
         ))}
       </List>
     );
@@ -34,13 +32,7 @@ const SearchList = memo(({ searchString }) => {
   return (
     <List>
       {data.apps.map(app => (
-        <AppListItem
-          key={app.id}
-          category={app.category}
-          icon={app.icon}
-          id={app.id}
-          name={app.name}
-        />
+        <AppComponent key={app.id} id={app.id} type="list" />
       ))}
     </List>
   );

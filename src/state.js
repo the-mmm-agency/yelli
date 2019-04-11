@@ -33,12 +33,19 @@ export const { GlobalStateProvider, dispatch, useGlobalState } = createStore(
           ...state,
           installPrompt: false
         };
+      case 'toggleDarkTheme':
+        localStorage.setItem('darkTheme', !state.darkTheme);
+        return {
+          ...state,
+          darkTheme: !state.darkTheme
+        };
       default:
         return state;
     }
   },
   {
     auth: false,
+    darkTheme: localStorage.getItem('darkTheme') === 'true',
     installPrompt: false,
     update: false
   }

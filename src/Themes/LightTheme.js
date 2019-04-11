@@ -1,12 +1,10 @@
-import { createMuiTheme } from '@material-ui/core/styles';
 import {
   darken,
   lighten,
   fade
 } from '@material-ui/core/styles/colorManipulator';
-import teal from '@material-ui/core/colors/teal';
 
-const LightTheme = createMuiTheme({
+const LightTheme = {
   palette: {
     background: {
       default: '#ffffff',
@@ -15,14 +13,14 @@ const LightTheme = createMuiTheme({
     contrastThreshold: 3,
     divider: fade('#202124', 0.1),
     primary: {
-      dark: darken('#ea533f', 0.12),
-      light: lighten('#ea533f', 0.12),
-      main: '#ea533f'
+      dark: darken('#ff5370', 0.12),
+      light: lighten('#ff5370', 0.12),
+      main: '#ff5370'
     },
     secondary: {
-      dark: teal[900],
-      light: teal[500],
-      main: teal[700]
+      dark: lighten('#89ddff', 0.12),
+      light: lighten('#89ddff', 0.12),
+      main: '#89ddff'
     },
     text: {
       primary: '#202124',
@@ -41,6 +39,6 @@ const LightTheme = createMuiTheme({
       fontWeight: 600
     }
   }
-});
+};
 
 export default LightTheme;

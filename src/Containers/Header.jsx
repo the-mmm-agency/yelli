@@ -2,26 +2,13 @@ import { AppBar, Button, Hidden, Toolbar } from '@material-ui/core';
 import { KeyboardArrowLeft as BackIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
-import { useQuery } from 'react-apollo-hooks';
 import React, { memo } from 'react';
-import gql from 'graphql-tag';
 
 import LogoGif from '../logo.gif';
 import LogoWebp from '../logo.webp';
 
-import { dispatch } from 'state';
 import { drawerWidth } from 'Containers/SideDrawer';
 import UserMenu from 'Containers/UserMenu';
-
-const openAuth = () => dispatch({ type: 'openAuth' });
-
-const GET_NAME = gql`
-  query currentName {
-    me {
-      name
-    }
-  }
-`;
 
 const useStyles = makeStyles(theme => ({
   appBar: {
@@ -39,7 +26,7 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'fit-content',
     width: `calc(100% - ${drawerWidth}px)`
   },
-  login: {
+  icon: {
     marginLeft: 'auto'
   },
   logo: {
@@ -65,10 +52,10 @@ const useStyles = makeStyles(theme => ({
     width: 216
   },
   name: {
-    alignItems: 'center',
     [theme.breakpoints.up('md')]: {
       marginLeft: theme.spacing(2)
     },
+    alignItems: 'center',
     display: 'flex',
     height: 64,
     margin: 'auto'
@@ -81,7 +68,6 @@ const useStyles = makeStyles(theme => ({
 
 const Header = memo(() => {
   const classes = useStyles();
-  const { data, loading } = useQuery(GET_NAME);
   const route = useCurrentRoute();
   const history = useHistory();
   const isHome = route.title === 'Yelli';
@@ -111,13 +97,7 @@ const Header = memo(() => {
             </div>
           </>
         </Hidden>
-        {!loading && data.me ? (
-          <UserMenu name={data.me.name} />
-        ) : (
-          <Button className={classes.login} color="primary" onClick={openAuth}>
-            Login
-          </Button>
-        )}
+        <UserMenu />
       </Toolbar>
     </AppBar>
   );

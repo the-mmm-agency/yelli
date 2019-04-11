@@ -6,14 +6,11 @@ import {
   Typography
 } from '@material-ui/core';
 import classNames from 'classnames';
-import { useApolloClient } from 'react-apollo-hooks';
 import { makeStyles, useTheme } from '@material-ui/styles';
-import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import Skeleton from 'react-loading-skeleton';
 
-import APP_INFO from 'Graphql/AppInfo.gql';
+import Skeleton from 'Components/Skeleton';
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
@@ -53,13 +50,12 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     [theme.breakpoints.between('xs', 'sm')]: {
-      margin: 0,
-      maxWidth: `calc(100% / 4)`,
-      width: `calc(100% / 4)`
+      maxWidth: `calc(100% / 4 - ${theme.spacing(3)}px)`,
+      width: `calc(100% / 4 - ${theme.spacing(3)}px)`
     },
     [theme.breakpoints.between('sm', 'md')]: {
-      maxWidth: `calc(100% / 6 - ${theme.spacing(1)}px)`,
-      width: `calc(100% / 6 - ${theme.spacing(1)}px)`
+      maxWidth: `calc(100% / 6 - ${theme.spacing(3)}px)`,
+      width: `calc(100% / 6 - ${theme.spacing(3)}px)`
     },
     boxShadow: 'none',
     display: 'flex',
@@ -68,124 +64,115 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     height: 'fit-content',
     margin: {
-      right: theme.spacing(1),
+      right: theme.spacing(2),
       top: theme.spacing(1)
     },
     maxHeight: 'fit-content',
-    maxWidth: `calc(100% / 8 - ${theme.spacing(1)}px)`,
-    width: `calc(100% / 8 - ${theme.spacing(1)}px)`
+    maxWidth: `calc(100% / 8 - ${theme.spacing(3)}px)`,
+    width: `calc(100% / 8 - ${theme.spacing(3)}px)`
   },
   skeleton: {
     padding: theme.spacing(1)
   }
 }));
 
-const AppCard = memo(({ name, icon, category, loading }) => {
-  const classes = useStyles();
-  const theme = useTheme();
+const AppCard = memo(
+  ({ prefetchApp, handleClick, category, name, icon, loading }) => {
+    const classes = useStyles();
+    const theme = useTheme();
+    if (loading) {
+      return (
+        <Card
+          aria-busy="true"
+          aria-disabled="true"
+          className={classNames(classes.root, classes.skeleton)}
+          component="li"
+        >
+          <picture className={classes.icon}>
+            <source
+              srcSet={`https://via.placeholder.com/128/${
+                theme.palette.type === 'dark' ? '3c4361' : 'f4f4f4'
+              }/${
+                theme.palette.type === 'dark' ? 'dcebff' : 'dadce0'
+              }.webp?text=icon`}
+              type="image/webp"
+            />
+            <source
+              srcSet={`https://via.placeholder.com/128/${
+                theme.palette.type === 'dark' ? '3c4361' : 'f4f4f4'
+              }/${
+                theme.palette.type === 'dark' ? 'dcebff' : 'dadce0'
+              }.jpg?text=icon`}
+              type="image/jpg"
+            />
+            <img
+              alt="Loading"
+              className={classes.icon}
+              src={`https://via.placeholder.com/128/${
+                theme.palette.type === 'dark' ? '3c4361' : 'f4f4f4'
+              }/${
+                theme.palette.type === 'dark' ? 'dcebff' : 'dadce0'
+              }.jpg?text=icon`}
+            />
+          </picture>
+          <CardContent className={classes.contentSkeleton}>
+            <>
+              <Skeleton height={theme.typography.body1.fontSize} width="80%" />
+              <Skeleton
+                height={theme.typography.caption.fontSize}
+                width="50%"
+              />
+            </>
+          </CardContent>
+        </Card>
+      );
+    }
 
-  if (loading) {
     return (
-      <Card
-        aria-busy="true"
-        aria-disabled="true"
-        className={classNames(classes.root, classes.skeleton)}
-        component="li"
-      >
-        <picture className={classes.icon}>
-          <source
-            srcSet="https://via.placeholder.com/128/f4f4f4/dadce0.webp?text=icon"
-            type="image/webp"
-          />
-          <source
-            srcSet="https://via.placeholder.com/128/f4f4f4/dadce0.jpg?text=icon"
-            type="image/jpg"
-          />
-          <img
-            alt="Loading"
-            className={classes.icon}
-            src="https://via.placeholder.com/128/f4f4f4/dadce0.jpg?text=icon"
-          />
-        </picture>
-        <CardContent className={classes.contentSkeleton}>
-          <Skeleton
-            color={theme.palette.text.primary}
-            height={theme.typography.body1.fontSize}
-            highlightColor={theme.palette.text.secondary}
-            style={{
-              marginBottom: theme.spacing(1),
-              marginRight: '100%'
-            }}
-            width="80%"
-          />
-          <Skeleton
-            color={theme.palette.text.primary}
-            height={theme.typography.caption.fontSize}
-            highlightColor={theme.palette.text.secondary}
-            width="50%"
-          />
-        </CardContent>
+      <Card className={classes.root} component="li">
+        <CardActionArea
+          classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
+          className={classes.actionArea}
+          onClick={handleClick}
+          onFocus={() => prefetchApp()}
+          onMouseOver={() => prefetchApp()}
+        >
+          <img alt={name} className={classes.icon} src={icon} />
+          <CardContent className={classes.content}>
+            <Typography
+              align="left"
+              className={classes.name}
+              color="inherit"
+              noWrap
+              variant="body1"
+            >
+              {name}
+            </Typography>
+            <Typography
+              align="left"
+              className={classes.category}
+              color="textSecondary"
+              noWrap
+              variant="caption"
+            >
+              {category.name}
+            </Typography>
+          </CardContent>
+        </CardActionArea>
       </Card>
     );
   }
-
-  const client = useApolloClient();
-
-  const prefetchApp = () => () => {
-    client.query({
-      query: APP_INFO,
-      variables: { name }
-    });
-  };
-
-  const history = useHistory();
-
-  const handleClick = () => {
-    history.push(`/app/${name}`);
-  };
-
-  return (
-    <Card className={classes.root} component="li">
-      <CardActionArea
-        classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
-        className={classes.actionArea}
-        onClick={handleClick}
-        onFocus={() => prefetchApp()}
-        onMouseOver={() => prefetchApp()}
-      >
-        <img alt={name} className={classes.icon} src={icon} />
-        <CardContent className={classes.content}>
-          <Typography
-            align="left"
-            className={classes.name}
-            color="inherit"
-            noWrap
-            variant="body1"
-          >
-            {name}
-          </Typography>
-          <Typography
-            align="left"
-            className={classes.category}
-            color="textSecondary"
-            noWrap
-            variant="caption"
-          >
-            {category.name}
-          </Typography>
-        </CardContent>
-      </CardActionArea>
-    </Card>
-  );
-});
+);
 
 AppCard.propTypes = {
   category: PropTypes.shape({
     name: PropTypes.string
   }),
+  handleClick: PropTypes.func,
   icon: PropTypes.string,
   loading: PropTypes.bool,
-  name: PropTypes.string
+  name: PropTypes.string,
+  prefetchApp: PropTypes.func
 };
 
 export default AppCard;

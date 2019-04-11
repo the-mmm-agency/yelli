@@ -2,25 +2,25 @@ import { useQuery } from 'react-apollo-hooks';
 import React, { memo } from 'react';
 import gql from 'graphql-tag';
 
-import APP_CARD from 'Graphql/AppCard.gql';
-import AppCard from 'Containers/AppCard';
+// eslint-disable-next-line import/no-named-as-default
+import AppComponent from 'Containers/AppComponent';
 import SwipableAppList from 'Components/SwipableAppList';
 
 const NEW_APPS = gql`
   query new {
     apps(first: 10, orderBy: createdAt_DESC) {
-      ...AppCard
+      id
     }
   }
-  ${APP_CARD}
 `;
 
 const NewApps = memo(() => {
   const { data, loading } = useQuery(NEW_APPS);
   return (
     <SwipableAppList
-      AppComponent={AppCard}
+      AppComponent={AppComponent}
       apps={data.apps}
+      length={10}
       loading={loading}
     />
   );

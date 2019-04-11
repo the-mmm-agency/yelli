@@ -3,28 +3,30 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React, { memo } from 'react';
+import React from 'react';
 import gql from 'graphql-tag';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
-import APP_CARD from 'Graphql/AppCard.gql';
-import AppCard from 'Containers/AppCard';
-import AppListItem from 'Containers/AppListItem';
+// eslint-disable-next-line import/no-named-as-default
+import AppComponent from 'Containers/AppComponent';
 
 export default mount({
-  '/:name': route(async req => ({
-    title: `Yelli - ${req.params.name}`,
-    view: <Category name={req.params.name} />
-  }))
+  '/:name': route({
+    async getTitle(req) {
+      return `Yelli - ${req.params.name}`;
+    },
+    async getView(req) {
+      return <Category name={req.params.name} />;
+    }
+  })
 });
 
 const GET_APPS = gql`
   query category($name: String!) {
     apps(where: { category: { name: $name } }) {
-      ...AppCard
+      id
     }
   }
-  ${APP_CARD}
 `;
 
 const useStyles = makeStyles(theme => ({
@@ -50,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Category = memo(({ name }) => {
+const Category = ({ name }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -58,13 +60,11 @@ const Category = memo(({ name }) => {
     variables: { name }
   });
 
-  const AppComponent = matches ? AppCard : AppListItem;
-
   if (loading || !data.apps) {
     return (
       <Grid className={classes.root} component="ul" container spacing={2}>
         {[...new Array(20).keys()].map(key => (
-          <AppComponent key={key} loading />
+          <AppComponent key={key} isLoading type={matches ? 'card' : 'list'} />
         ))}
       </Grid>
     );
@@ -75,15 +75,13 @@ const Category = memo(({ name }) => {
       {data.apps.map(app => (
         <AppComponent
           key={app.id}
-          category={app.category}
-          icon={app.icon}
           id={app.id}
-          name={app.name}
+          type={matches ? 'card' : 'list'}
         />
       ))}
     </Grid>
   );
-});
+};
 
 Category.propTypes = {
   name: PropTypes.string.isRequired

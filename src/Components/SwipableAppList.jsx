@@ -17,18 +17,17 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const SwipableAppList = memo(({ AppComponent, apps, loading }) => {
+const SwipableAppList = memo(({ AppComponent, apps, length, loading }) => {
   const classes = useStyles();
+  console.log(apps);
   return (
     <Grid className={classes.root} component="ul" container item wrap="nowrap">
-      {loading
-        ? [...new Array(10).keys()].map(key => (
-            <AppComponent key={key} loading />
+      {!apps || loading
+        ? [...new Array(length).keys()].map(key => (
+            <AppComponent key={key} isLoading />
           ))
         : apps.map(app => {
-            // eslint-disable-next-line no-param-reassign
-            delete app.__typename;
-            return <AppComponent key={app.id} {...app} />;
+            return <AppComponent key={app.id} id={app.id} />;
           })}
     </Grid>
   );
@@ -45,6 +44,7 @@ SwipableAppList.propTypes = {
       name: PropTypes.string
     })
   ),
+  length: PropTypes.number,
   loading: PropTypes.bool
 };
 

@@ -3,8 +3,8 @@ import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import Skeleton from 'react-loading-skeleton';
 
+import Skeleton from 'Components/Skeleton';
 import CategoryIcon from 'Components/CategoryIcon';
 
 const useStyles = makeStyles(theme => ({

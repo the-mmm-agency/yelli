@@ -9,7 +9,6 @@ const ignoredFiles = require('react-dev-utils/ignoredFiles');
 
 const paths = require('./paths');
 
-const protocol = process.env.HTTPS === 'true' ? 'https' : 'http';
 const host = process.env.HOST || '0.0.0.0';
 
 module.exports = function(proxy, allowedHost) {
@@ -32,7 +31,11 @@ module.exports = function(proxy, allowedHost) {
     },
     host,
     hot: true,
-    https: protocol === 'https',
+    https: {
+      ca: fs.readFileSync('/etc/ssl/certs/myCA.pem'),
+      cert: fs.readFileSync('/etc/ssl/certs/localhost.crt'),
+      key: fs.readFileSync('/etc/ssl/private/localhost.key')
+    },
     overlay: false,
     proxy,
     public: allowedHost,

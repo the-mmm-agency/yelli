@@ -1,12 +1,13 @@
 # Stage 1
-FROM node:11.10.0-alpine as react-build
+FROM znck/docker-pnpm:10.5-alpine as react-build
 
-VOLUME ["/root/.npm"]
+VOLUME [ "/root/npm" ]
+RUN npm config set store /root/npm/.pnpm-store
 WORKDIR /app
 COPY . ./
-RUN npm ci
+RUN pnpm i
 ENV NODE_ENV production
-RUN npm run build
+RUN pnpm run build
 
 # Stage 2 - the production environment
 FROM pagespeed/nginx-pagespeed

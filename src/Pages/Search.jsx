@@ -9,10 +9,12 @@ import React, { memo, useState } from 'react';
 import SearchList from 'Containers/SearchList';
 
 export default mount({
-  '/': route(async () => ({
-    title: 'Yelli - Search',
-    view: <Search />
-  }))
+  '/': route({
+    async getView() {
+      return <Search />;
+    },
+    title: 'Yelli - Search'
+  })
 });
 
 const useStyles = makeStyles(theme => ({
@@ -43,15 +45,22 @@ const useStyles = makeStyles(theme => ({
       width: 'auto'
     },
     '&:hover': {
-      backgroundColor: fade(theme.palette.common.black, 0.05)
+      backgroundColor:
+        theme.palette.type === 'dark'
+          ? fade(theme.palette.common.white, 0.08)
+          : fade(theme.palette.common.black, 0.05)
     },
-    backgroundColor: fade(theme.palette.common.black, 0.03),
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? fade(theme.palette.common.white, 0.05)
+        : fade(theme.palette.common.black, 0.03),
     borderRadius: theme.shape.borderRadius,
     margin: {
       bottom: theme.spacing(2),
       left: 0,
       right: theme.spacing(2)
     },
+    padding: theme.spacing(1),
     position: 'relative',
     transition: theme.transitions.create('background-color'),
     width: '100%'
@@ -61,6 +70,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     height: '100%',
     justifyContent: 'center',
+    margin: theme.spacing(-1),
     pointerEvents: 'none',
     position: 'absolute',
     width: theme.spacing(9)

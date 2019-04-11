@@ -20,7 +20,6 @@ const ModuleScopePlugin = require('react-dev-utils/ModuleScopePlugin');
 const getCSSModuleLocalIdent = require('react-dev-utils/getCSSModuleLocalIdent');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
-const WebpackBarPlugin = require('webpackbar');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
 
 const getClientEnvironment = require('./env');
@@ -434,12 +433,11 @@ module.exports = function(webpackEnv) {
                   maxEntries: 30
                 }
               },
-              urlPattern: new RegExp('https://api.yelli.com')
+              urlPattern: new RegExp('/graphql')
             }
           ],
           skipWaiting: true
         }),
-      isEnvDevelopment && new WebpackBarPlugin(),
       useTypeScript &&
         new ForkTsCheckerWebpackPlugin({
           async: false,

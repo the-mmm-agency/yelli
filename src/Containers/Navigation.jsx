@@ -69,32 +69,32 @@ const Navigation = memo(() => {
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
           icon={
-            value === '/toplist/' ? (
+            value === '/toplist' ? (
               <Poll className={classes.icon} />
             ) : (
               <PollOutlined className={classes.icon} />
             )
           }
           label="Top apps"
-          value="/toplist/"
+          value="/toplist"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
           icon={
-            value === '/categories/' ? (
+            value === '/categories' ? (
               <Category className={classes.icon} />
             ) : (
               <CategoryOutlined className={classes.icon} />
             )
           }
           label="Categories"
-          value="/categories/"
+          value="/categories"
         />
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
           icon={<Search className={classes.icon} />}
           label="Search"
-          value="/search/"
+          value="/search"
         />
       </BottomNavigation>
     </AppBar>

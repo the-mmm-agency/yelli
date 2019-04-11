@@ -9,8 +9,20 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import Skeleton from 'react-loading-skeleton';
+import { useQuery } from 'react-apollo-hooks';
+import gql from 'graphql-tag';
 
+import Skeleton from 'Components/Skeleton';
+
+const FEATURED_APP_CARD = gql`
+  query FeaturedAppCard($id: ID!) {
+    app(where: { id: $id }) {
+      name
+      description
+      banner
+    }
+  }
+`;
 const useStyles = makeStyles(theme => ({
   actionArea: {
     height: 200
@@ -37,7 +49,7 @@ const useStyles = makeStyles(theme => ({
       transform: 'translateY(-2px)'
     },
     border: {
-      color: '#dadce0',
+      color: theme.palette.type === 'dark' ? '#121523aa' : '#dadce0',
       style: 'solid',
       width: 1
     },
@@ -63,20 +75,16 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
+const FeaturedAppCard = memo(({ id, isLoading }) => {
   const classes = useStyles();
   const theme = useTheme();
+  const { data, loading } = useQuery(FEATURED_APP_CARD, { variables: { id } });
 
-  if (loading) {
+  if (isLoading || loading) {
     return (
       <Card className={classes.root} component="li">
         <CardMedia className={classes.banner}>
-          <Skeleton
-            color={theme.palette.text.primary}
-            height="200px"
-            highlightColor={theme.palette.text.secondary}
-            width="100%"
-          />
+          <Skeleton height="200px" width="100%" />
         </CardMedia>
         <CardContent className={classes.content}>
           <Typography
@@ -85,12 +93,7 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
             noWrap
             variant="body1"
           >
-            <Skeleton
-              color={theme.palette.text.primary}
-              height={theme.typography.body1.fontSize}
-              highlightColor={theme.palette.text.secondary}
-              width="30%"
-            />
+            <Skeleton height={theme.typography.body1.fontSize} width="30%" />
           </Typography>
           <Typography
             align="left"
@@ -99,12 +102,7 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
             noWrap
             variant="body2"
           >
-            <Skeleton
-              color={theme.palette.text.primary}
-              height="0.7rem"
-              highlightColor={theme.palette.text.secondary}
-              width="60%"
-            />
+            <Skeleton height="0.7rem" width="60%" />
           </Typography>
         </CardContent>
       </Card>
@@ -112,6 +110,8 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
   }
 
   const history = useHistory();
+
+  const { banner, name, description } = data.app;
 
   const handleClick = () => {
     history.push(`/app/${name}`);
@@ -149,10 +149,8 @@ const FeaturedAppCard = memo(({ banner, name, description, loading }) => {
 });
 
 FeaturedAppCard.propTypes = {
-  banner: PropTypes.string,
-  description: PropTypes.string,
-  loading: PropTypes.bool,
-  name: PropTypes.string
+  id: PropTypes.string,
+  isLoading: PropTypes.bool
 };
 
 export default FeaturedAppCard;

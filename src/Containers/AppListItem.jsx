@@ -1,12 +1,9 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import { useHistory } from 'react-navi';
-import { useApolloClient } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import Skeleton from 'react-loading-skeleton';
 
-import APP_INFO from 'Graphql/AppInfo.gql';
+import Skeleton from 'Components/Skeleton';
 
 const useStyles = makeStyles(theme => ({
   category: {
@@ -25,65 +22,60 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const AppListItem = memo(({ name, category, icon, loading }) => {
-  const classes = useStyles();
-  if (loading) {
+const AppListItem = memo(
+  ({ prefetchApp, handleClick, category, name, icon, loading }) => {
+    const classes = useStyles();
+    if (loading) {
+      return (
+        <ListItem className={classes.root} disableGutters divider>
+          <ListItemIcon>
+            <Skeleton circle height={50} width={50} />
+          </ListItemIcon>
+          <ListItemText
+            primary={<Skeleton width="60vw" />}
+            secondary={<Skeleton width="40vw" />}
+          />
+        </ListItem>
+      );
+    }
     return (
-      <ListItem className={classes.root} disableGutters divider>
+      <ListItem
+        button
+        className={classes.root}
+        disableGutters
+        divider
+        onClick={handleClick}
+        onFocus={() => prefetchApp()}
+        onMouseOver={() => prefetchApp()}
+      >
         <ListItemIcon>
-          <Skeleton circle height={50} width={50} />
+          <img alt={name} className={classes.icon} src={icon} />
         </ListItemIcon>
         <ListItemText
-          primary={<Skeleton width="60vw" />}
-          secondary={<Skeleton width="40vw" />}
+          primary={name}
+          primaryTypographyProps={{ className: classes.name }}
+          secondary={category.name}
+          secondaryTypographyProps={{
+            className: classes.category,
+            color: 'textSecondary',
+            component: 'p',
+            variant: 'caption'
+          }}
         />
       </ListItem>
     );
   }
-  const history = useHistory();
-  const handleClick = () => {
-    history.push(`/app/${name}`);
-  };
-  const client = useApolloClient();
-  const prefetchApp = () => () => {
-    client.query({
-      query: APP_INFO,
-      variables: { name }
-    });
-  };
-  return (
-    <ListItem
-      button
-      className={classes.root}
-      disableGutters
-      divider
-      onClick={handleClick}
-      onFocus={() => prefetchApp()}
-      onMouseOver={() => prefetchApp()}
-    >
-      <ListItemIcon>
-        <img alt={name} className={classes.icon} src={icon} />
-      </ListItemIcon>
-      <ListItemText
-        primary={name}
-        primaryTypographyProps={{ className: classes.name }}
-        secondary={category.name}
-        secondaryTypographyProps={{
-          className: classes.category,
-          color: 'textSecondary',
-          component: 'p',
-          variant: 'caption'
-        }}
-      />
-    </ListItem>
-  );
-});
+);
 
 AppListItem.propTypes = {
-  category: PropTypes.string,
+  category: PropTypes.shape({
+    name: PropTypes.string
+  }),
+  handleClick: PropTypes.func,
   icon: PropTypes.string,
   loading: PropTypes.bool,
-  name: PropTypes.string
+  name: PropTypes.string,
+  prefetchApp: PropTypes.func
 };
 
 export default AppListItem;

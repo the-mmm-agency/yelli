@@ -1,6 +1,6 @@
 import { CssBaseline, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
-import React, { lazy, Suspense } from 'react';
+import React, { memo, lazy, Suspense } from 'react';
 
 import ElasticScroll from 'Components/ElasticScroll';
 import Header from 'Containers/Header';
@@ -45,7 +45,7 @@ const useStyles = makeStyles(theme => ({
   toolbar: theme.mixins.toolbar
 }));
 
-const Layout = ({ children }) => {
+const Layout = memo(({ children }) => {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -76,6 +76,6 @@ const Layout = ({ children }) => {
       </Hidden>
     </div>
   );
-};
+});
 
 export default Layout;
