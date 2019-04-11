@@ -2,13 +2,13 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: yelli
-  namespace: default
+  namespace: prisma
   labels:
     app: yelli
     stage: production
     name: yelli
 spec:
-  replicas: 3
+  replicas: 10
   strategy:
     type: Recreate
   template:
@@ -19,18 +19,17 @@ spec:
         stage: production
     spec:
       containers:
-      - name: yelli
-        image: us.gcr.io/yelli-232214/yelli:latest
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 443
-        - containerPort: 80
-        volumeMounts:
-          - mountPath: /etc/nginx/ssl
-            name: ssl
+        - name: yelli
+          image: us.gcr.io/yelli-232214/yelli:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 443
+            - containerPort: 80
+          volumeMounts:
+            - mountPath: /etc/nginx/ssl
+              name: ssl
       restartPolicy: Always
       volumes:
-      - name: ssl
-        secret:
-          secretName: nginx-certs-keys
-          
+        - name: ssl
+          secret:
+            secretName: yelli-tls

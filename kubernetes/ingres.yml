@@ -1,0 +1,22 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: yelli-ingress
+  namespace: prisma
+spec:
+  tls:
+    - hosts:
+        - yelli.com
+      secretName: yelli-tls
+  rules:
+    - host: yelli.com
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: yelli
+              servicePort: 443
+          - path: /graphql
+            backend:
+              serviceName: yelli-api
+              servicePort: 443
