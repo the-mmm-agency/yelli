@@ -12,7 +12,6 @@ dependencies:
   apollo-link-context: 1.0.17
   apollo-link-http: 1.5.14
   classnames: 2.2.6
-  core-js: 3.0.1
   dayjs: 1.8.12
   elastic-scroll-polyfill: 2.1.0
   graphql: 14.2.1
@@ -30,10 +29,8 @@ dependencies:
   jss-plugin-props-sort: 10.0.0-alpha.16
   jss-plugin-rule-value-function: 10.0.0-alpha.16
   jss-plugin-vendor-prefixer: 10.0.0-alpha.16
-  mdi-react: 5.3.0
   navi: 0.12.4
   prop-types: 15.7.2
-  pwa-install-prompt: 1.1.0
   react: 16.8.6
   react-apollo: 2.5.4
   react-apollo-hooks: 0.4.5
@@ -42,8 +39,6 @@ dependencies:
   react-hooks-global-state: 0.9.0
   react-loading-skeleton: 1.1.1
   react-navi: 0.12.4
-  react-repeat-component: 1.0.2
-  react-skeleton-loader: 1.0.4
   react-swipeable-views: 0.13.1
   react-use-localstorage: 3.0.1-alpha.0
   split-every: 0.0.1
@@ -6627,12 +6622,6 @@ packages:
     dev: true
     resolution:
       integrity: sha512-xitP+WxNPcTTOgnTJcrhM0xvdPepipPSf3I8EIpGKeFLjt3PlJLIDG3u8EX53ZIubkb+5U2+3rELYpEhHhzdkg==
-  /mdi-react/5.3.0:
-    dev: false
-    peerDependencies:
-      react: '>=0.14.0'
-    resolution:
-      integrity: sha512-Yf/aZplXLcl+aYlilfcBnCPRBueJMNOl7NxM+layFMRmCOWzxdER8ZsP2GZL7Vjc8U05Anh/mxoVaL0BS6/yCg==
   /mdn-data/1.1.4:
     resolution:
       integrity: sha512-FSYbp3lyKjyj3E7fMl6rYvUdX0FBXaluGqlFoYESWQlyUTq8R+wp0rkFxoYFqZlHCvsUXGjyJmLQSnXToYhOSA==
@@ -8426,10 +8415,6 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
-  /pwa-install-prompt/1.1.0:
-    dev: false
-    resolution:
-      integrity: sha512-pI/7N0iS/mXKXVGQjKuZ7HwQC3O6EpLk0TXak6LvlZ7Ftf75RyjpSca0EHith5IVgQxdDg38+lrVAAublxfIvg==
   /q/1.5.1:
     engines:
       node: '>=0.6.0'
@@ -8663,15 +8648,6 @@ packages:
       react: ^16.5.0
     resolution:
       integrity: sha512-bAlHanQdpdIk4fcbxQqY12BgZHJA7l0SOQ40pvTHm8RfCVZo2bMFZemmXyixcy8buztasR/cKf6NzUcXv38omw==
-  /react-repeat-component/1.0.2:
-    dependencies:
-      prop-types: 15.7.2
-    dev: false
-    peerDependencies:
-      react: ^15.5.4
-      react-dom: ^15.5.4
-    resolution:
-      integrity: sha1-kH9RWrj/UvSeKFW6Ogs4LJlxXtQ=
   /react-side-effect/1.1.5:
     dependencies:
       exenv: 1.2.2
@@ -8681,12 +8657,6 @@ packages:
       react: ^0.13.0 || ^0.14.0 || ^15.0.0 || ^16.0.0
     resolution:
       integrity: sha512-Z2ZJE4p/jIfvUpiUMRydEVpQRf2f8GMHczT6qLcARmX7QRb28JDBTpnM2g/i5y/p7ZDEXYGHWg0RbhikE+hJRw==
-  /react-skeleton-loader/1.0.4:
-    dev: false
-    peerDependencies:
-      react: ^15.6.1 || ^16.0.0
-    resolution:
-      integrity: sha512-o52c3hmadpaMbQ4Gl8inCiAxjkfQopDJ6PCHfuuLh6NxRqL5ossJ1/FoeONIvOf/r4GC+VOB5an/jr4Qmj59zg==
   /react-swipeable-views-core/0.13.1:
     dependencies:
       '@babel/runtime': 7.0.0
@@ -10745,7 +10715,6 @@ specifiers:
   bfj: 6.1.1
   case-sensitive-paths-webpack-plugin: 2.2.0
   classnames: ^2.2.6
-  core-js: '3'
   css-loader: ^2.1.1
   dayjs: ^1.8.12
   dotenv: ^7.0.0
@@ -10785,7 +10754,6 @@ specifiers:
   jss-plugin-props-sort: ^10.0.0-alpha.12
   jss-plugin-rule-value-function: ^10.0.0-alpha.12
   jss-plugin-vendor-prefixer: ^10.0.0-alpha.12
-  mdi-react: ^5.3.0
   mini-css-extract-plugin: ^0.6.0
   navi: ^0.12.4
   optimize-css-assets-webpack-plugin: ^5.0.1
@@ -10796,7 +10764,6 @@ specifiers:
   postcss-safe-parser: ^4.0.1
   prettier: ^1.16.4
   prop-types: ^15.7.2
-  pwa-install-prompt: ^1.1.0
   react: ^16.8.1
   react-apollo: ^2.4.1
   react-apollo-hooks: ^0.4.0
@@ -10809,8 +10776,6 @@ specifiers:
   react-loading-skeleton: ^1.1.1
   react-local: ^0.0.1
   react-navi: ^0.12.4
-  react-repeat-component: ^1.0.2
-  react-skeleton-loader: ^1.0.4
   react-swipeable-views: ^0.13.1
   react-use-localstorage: ^3.0.1-alpha.0
   resolve: 1.10.0
