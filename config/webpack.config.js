@@ -380,7 +380,7 @@ module.exports = function(webpackEnv) {
           ],
           runtimeCaching: [
             {
-              handler: 'staleWhileRevalidate',
+              handler: 'StaleWhileRevalidate',
               options: {
                 cacheableResponse: {
                   statuses: [0, 200]
@@ -394,7 +394,7 @@ module.exports = function(webpackEnv) {
               urlPattern: new RegExp('https://storage.googleapis.com')
             },
             {
-              handler: 'cacheFirst',
+              handler: 'CacheFirst',
               options: {
                 cacheableResponse: {
                   statuses: [0, 200]
@@ -408,7 +408,7 @@ module.exports = function(webpackEnv) {
               urlPattern: new RegExp('(.otf$|.woff$)')
             },
             {
-              handler: 'cacheFirst',
+              handler: 'CacheFirst',
               options: {
                 cacheableResponse: {
                   statuses: [0, 200]
@@ -422,7 +422,7 @@ module.exports = function(webpackEnv) {
               urlPattern: new RegExp('https://via.placeholder.com')
             },
             {
-              handler: 'staleWhileRevalidate',
+              handler: 'StaleWhileRevalidate',
               options: {
                 cacheableResponse: {
                   statuses: [0, 200]
