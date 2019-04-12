@@ -1,9 +1,10 @@
-import { Avatar, IconButton, Menu } from '@material-ui/core';
+import { Avatar, Drawer, IconButton, Menu } from '@material-ui/core';
 import { AccountCircleOutlined as AccountIcon } from '@material-ui/icons';
-import { makeStyles } from '@material-ui/styles';
+import { makeStyles, useTheme } from '@material-ui/styles';
 import React, { memo, useState } from 'react';
 import { useQuery } from 'react-apollo-hooks';
 import gql from 'graphql-tag';
+import useMediaQuery from '@material-ui/core/useMediaQuery';
 
 import UserMenuList from 'Containers/UserMenuList';
 
@@ -27,6 +28,8 @@ const useStyles = makeStyles({
 const UserMenu = memo(() => {
   const [anchorEl, setAnchorEl] = useState(null);
   const classes = useStyles();
+  const theme = useTheme();
+  const matches = useMediaQuery(theme.breakpoints.up('sm'));
   const handleClick = event => {
     setAnchorEl(event.currentTarget);
   };
@@ -51,15 +54,21 @@ const UserMenu = memo(() => {
           <Avatar>{data.me && data.me.name.substring(0, 1)}</Avatar>
         )}
       </IconButton>
-      <Menu
-        anchorEl={anchorEl}
-        classes={{ paper: classes.menuPaper }}
-        id="user-menu"
-        onClose={handleClose}
-        open={Boolean(anchorEl)}
-      >
-        <UserMenuList handleClose={handleClose} isLoggedIn={isLoggedIn} />
-      </Menu>
+      {matches ? (
+        <Menu
+          anchorEl={anchorEl}
+          classes={{ paper: classes.menuPaper }}
+          id="user-menu"
+          onClose={handleClose}
+          open={Boolean(anchorEl)}
+        >
+          <UserMenuList handleClose={handleClose} isLoggedIn={isLoggedIn} />
+        </Menu>
+      ) : (
+        <Drawer anchor="bottom" onClose={handleClose} open={!!anchorEl}>
+          <UserMenuList handleClose={handleClose} isLoggedIn={isLoggedIn} />
+        </Drawer>
+      )}
     </>
   );
 });

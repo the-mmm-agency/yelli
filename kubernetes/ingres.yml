@@ -5,14 +5,11 @@ metadata:
   namespace: prisma
 spec:
   tls:
-    - hosts:
-        - yelli.com
-      secretName: yelli-tls
+    - secretName: tlssecret-tls
   rules:
-    - host: yelli.com
-      http:
+    - http:
         paths:
-          - path: /
+          - path: /*
             backend:
               serviceName: yelli
               servicePort: 443
@@ -20,3 +17,7 @@ spec:
             backend:
               serviceName: yelli-api
               servicePort: 443
+          - path: /vscode
+            backend:
+              serviceName: code-server
+              servicePort: 8443

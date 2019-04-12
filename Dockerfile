@@ -1,5 +1,5 @@
 # Stage 1
-FROM znck/docker-pnpm:10.5-alpine as react-build
+FROM node:11.10.0-alpine as react-build
 
 VOLUME [ "/root/npm" ]
 WORKDIR /app
