@@ -3,7 +3,7 @@ kind: Service
 metadata:
   annotations:
     beta.cloud.google.com/backend-config: '{"ports": {"80":"backend-config", "443":"backend-config"}}'
-    cloud.google.com/load-balancer-type: "Internal"
+    cloud.google.com/load-balancer-type: 'Internal'
     cloud.google.com/app-protocols: '{"https":"HTTPS","http":"HTTP"}'
     service.alpha.kubernetes.io/app-protocols: '{"https":"HTTPS","http":"HTTP"}'
   name: yelli
@@ -15,11 +15,11 @@ spec:
     name: yelli
     stage: production
   ports:
-    - port: 443
+    - port: 8443
       protocol: TCP
       name: https
       targetPort: 8443
-    - port: 80
+    - port: 8080
       protocol: TCP
       name: http
       targetPort: 8080
