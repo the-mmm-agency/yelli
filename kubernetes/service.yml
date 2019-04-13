@@ -7,7 +7,7 @@ metadata:
     cloud.google.com/app-protocols: '{"https":"HTTPS","http":"HTTP"}'
     service.alpha.kubernetes.io/app-protocols: '{"https":"HTTPS","http":"HTTP"}'
   name: yelli
-  namespace: prisma
+  namespace: yelli
 spec:
   type: NodePort
   selector:

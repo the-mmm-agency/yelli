@@ -12,6 +12,6 @@ RUN npm run build
 FROM pagespeed/nginx-pagespeed
 COPY --from=react-build /app/build /usr/share/nginx/html
 COPY ./nginx /etc/nginx
-EXPOSE 80
-EXPOSE 443
+EXPOSE 8080
+EXPOSE 8443
 CMD ["nginx", "-g", "daemon off;"]
