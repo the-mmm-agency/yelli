@@ -3,6 +3,8 @@ kind: Ingress
 metadata:
   name: yelli-ingress
   namespace: yelli
+  annotations:
+    kubernetes.io/ingress.global-static-ip-name: 'web-static-ip'
 spec:
   tls:
     - secretName: tlssecret-tls
@@ -12,7 +14,7 @@ spec:
           - path: /*
             backend:
               serviceName: yelli
-              servicePort: 8443
+              servicePort: 8080
           - path: /graphql
             backend:
               serviceName: yelli-api

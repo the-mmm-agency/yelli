@@ -23,13 +23,5 @@ spec:
           image: us.gcr.io/yelli-232214/yelli:latest
           imagePullPolicy: Always
           ports:
-            - containerPort: 8443
             - containerPort: 8080
-          volumeMounts:
-            - mountPath: /etc/nginx/ssl
-              name: ssl
       restartPolicy: Always
-      volumes:
-        - name: ssl
-          secret:
-            secretName: yelli-tls

@@ -13,5 +13,4 @@ FROM pagespeed/nginx-pagespeed
 COPY --from=react-build /app/build /usr/share/nginx/html
 COPY ./nginx /etc/nginx
 EXPOSE 8080
-EXPOSE 8443
 CMD ["nginx", "-g", "daemon off;"]

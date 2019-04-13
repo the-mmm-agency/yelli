@@ -15,10 +15,6 @@ spec:
     name: yelli
     stage: production
   ports:
-    - port: 8443
-      protocol: TCP
-      name: https
-      targetPort: 8443
     - port: 8080
       protocol: TCP
       name: http
