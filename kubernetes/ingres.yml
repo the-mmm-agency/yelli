@@ -12,12 +12,8 @@ spec:
           - path: /*
             backend:
               serviceName: yelli
-              servicePort: 443
+              servicePort: 8443
           - path: /graphql
             backend:
               serviceName: yelli-api
-              servicePort: 443
-          - path: /vscode
-            backend:
-              serviceName: code-server
               servicePort: 8443

@@ -1,11 +1,6 @@
 import React, { memo } from 'react';
 import PropTypes from 'prop-types';
-import {
-  MenuList,
-  MenuItem,
-  ListItemIcon,
-  ListItemText
-} from '@material-ui/core';
+import { List, MenuItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { useApolloClient } from 'react-apollo-hooks';
 import { ReactComponent as LoginIcon } from '@mdi/svg/svg/login-variant.svg';
 import { ReactComponent as LogoutIcon } from '@mdi/svg/svg/logout-variant.svg';
@@ -24,7 +19,7 @@ const UserMenuList = memo(({ isLoggedIn, handleClose }) => {
     window.location.reload();
   };
   return (
-    <MenuList>
+    <List>
       <DarkThemeToggle />
       <MenuItem onClick={isLoggedIn ? handleLogout : openAuth}>
         <ListItemIcon color="inherit">
@@ -36,7 +31,7 @@ const UserMenuList = memo(({ isLoggedIn, handleClose }) => {
         </ListItemIcon>
         <ListItemText primary={isLoggedIn ? 'Logout' : 'Login'} />
       </MenuItem>
-    </MenuList>
+    </List>
   );
 });
 

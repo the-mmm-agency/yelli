@@ -2,13 +2,13 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: yelli
-  namespace: prisma
+  namespace: yelli
   labels:
     app: yelli
     stage: production
     name: yelli
 spec:
-  replicas: 10
+  replicas: 1
   strategy:
     type: Recreate
   template:

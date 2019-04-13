@@ -1,4 +1,4 @@
-import { AppBar, Button, Hidden, Toolbar } from '@material-ui/core';
+import { AppBar, IconButton, Hidden, Toolbar } from '@material-ui/core';
 import { KeyboardArrowLeft as BackIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
@@ -80,10 +80,9 @@ const Header = memo(() => {
             {isHome ? (
               <div className={classes.spacer} />
             ) : (
-              <Button color="primary" onClick={() => history.goBack()}>
+              <IconButton color="primary" onClick={() => history.goBack()}>
                 <BackIcon />
-                Back
-              </Button>
+              </IconButton>
             )}
             <div
               className={classes.logoContainer}
