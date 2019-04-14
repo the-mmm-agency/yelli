@@ -1,21 +1,20 @@
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: yelli-ingress
-  namespace: yelli
+  name: ingress-nginx
   annotations:
-    kubernetes.io/ingress.global-static-ip-name: 'web-static-ip'
+    kubernetes.io/ingress.class: 'istio'
+
 spec:
-  tls:
-    - secretName: tlssecret-tls
   rules:
-    - http:
+    - host: yelli.com
+      http:
         paths:
           - path: /*
             backend:
               serviceName: yelli
-              servicePort: 8080
+              servicePort: http
           - path: /graphql
             backend:
               serviceName: yelli-api
-              servicePort: 8080
+              servicePort: http

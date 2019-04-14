@@ -45,8 +45,8 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     '&:hover': {
-      boxShadow: theme.shadows[1],
-      transform: 'translateY(-2px)'
+      backgroundSize: 'auto 103%',
+      boxShadow: '0 8px 8px 0 rgba(0,0,0,.2)'
     },
     border: {
       color: theme.palette.type === 'dark' ? '#121523aa' : '#dadce0',

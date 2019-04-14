@@ -9,13 +9,13 @@ metadata:
   name: yelli
   namespace: yelli
 spec:
-  type: NodePort
+  type: LoadBalancer
   selector:
     app: yelli
     name: yelli
     stage: production
   ports:
-    - port: 8080
+    - port: 80
       protocol: TCP
       name: http
       targetPort: 8080
