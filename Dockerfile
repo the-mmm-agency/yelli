@@ -7,4 +7,4 @@ COPY . ./
 RUN npm ci
 ENV NODE_ENV production
 RUN npm run build
-CMD ["serve", '-l', "tcp://0.0.0.0:8080", '-s', "src"]
+CMD ["serve", '-l', "tcp://0.0.0.0:8080", '-s', "build"]
