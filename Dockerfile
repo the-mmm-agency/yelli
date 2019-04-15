@@ -9,8 +9,8 @@ ENV NODE_ENV production
 RUN npm run build
 
 # Stage 2 - the production environment
-FROM pagespeed/nginx-pagespeed
-COPY --from=react-build /app/build /usr/share/nginx/html
-COPY ./nginx /etc/nginx
+FROM node:11.10.0-alpine
+COPY --from=react-build /app/build /src
+RUN npm i -g serve
 EXPOSE 8080
-CMD ["nginx", "-g", "daemon off;"]
+CMD ["serve", '-l', "tcp://0.0.0.0:8080", "-s", "src"]
