@@ -15,7 +15,7 @@ import { GlobalStateProvider, dispatch } from 'state';
 import App from 'App';
 
 const httpLink = createHttpLink({
-  uri: 'http://api.yelli.com'
+  uri: 'https://api.yelli.com'
 });
 
 const authLink = setContext((_, { headers }) => {
