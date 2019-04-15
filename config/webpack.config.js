@@ -429,11 +429,11 @@ module.exports = function(webpackEnv) {
                 },
                 cacheName: 'api',
                 expiration: {
-                  maxAgeSeconds: 60,
+                  maxAgeSeconds: 60 * 30,
                   maxEntries: 30
                 }
               },
-              urlPattern: new RegExp('/graphql')
+              urlPattern: new RegExp('https://api.yelli.com')
             }
           ],
           skipWaiting: true
