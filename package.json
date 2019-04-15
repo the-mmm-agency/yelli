@@ -55,12 +55,6 @@
     "lint": "eslint --format=pretty 'src/*.{js,jsx}' 'src/**/*.{js,jsx}'; exit 0",
     "lint:fix": "eslint --format=pretty 'src/*.{js,jsx}' 'src/**/*.{js,jsx}' --fix; exit 0"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
   "devDependencies": {
     "@babel/core": "^7.4.3",
     "@babel/plugin-proposal-decorators": "^7.4.0",
@@ -171,5 +165,11 @@
   },
   "resolutions": {
     "graphql-anywhere": "4.1.0"
-  }
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
