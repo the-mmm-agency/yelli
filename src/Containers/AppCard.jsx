@@ -50,12 +50,16 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     [theme.breakpoints.between('xs', 'sm')]: {
-      maxWidth: `calc(100% / 4 - ${theme.spacing(3)}px)`,
-      width: `calc(100% / 4 - ${theme.spacing(3)}px)`
+      maxWidth: `calc(100% / 3 - ${theme.spacing(3)}px)`,
+      width: `calc(100% / 3 - ${theme.spacing(3)}px)`
     },
     [theme.breakpoints.between('sm', 'md')]: {
       maxWidth: `calc(100% / 6 - ${theme.spacing(3)}px)`,
       width: `calc(100% / 6 - ${theme.spacing(3)}px)`
+    },
+    [theme.breakpoints.between('md', 'lg')]: {
+      maxWidth: `calc(100% / 8 - ${theme.spacing(3)}px)`,
+      width: `calc(100% / 8 - ${theme.spacing(3)}px)`
     },
     boxShadow: 'none',
     display: 'flex',
@@ -64,12 +68,12 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     height: 'fit-content',
     margin: {
-      right: theme.spacing(2),
+      right: theme.spacing(1),
       top: theme.spacing(1)
     },
     maxHeight: 'fit-content',
-    maxWidth: `calc(100% / 8 - ${theme.spacing(3)}px)`,
-    width: `calc(100% / 8 - ${theme.spacing(3)}px)`
+    maxWidth: `calc(100% / 10 - ${theme.spacing(3)}px)`,
+    width: `calc(100% / 10 - ${theme.spacing(3)}px)`
   },
   skeleton: {
     padding: theme.spacing(1)

@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import React, { memo } from 'react';
+import { Helmet } from 'react-helmet';
 
 import CategoryListItem from 'Containers/CategoryListItem';
 import GET_CATEGORIES from 'Graphql/GetCategories.gql';
@@ -35,33 +36,36 @@ const Categories = memo(() => {
           Browse progressive web apps by category
         </Typography>
         <List>
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
-          <CategoryListItem loading />
+          {[...new Array(10).keys()].map(key => (
+            <CategoryListItem key={key} isLoading />
+          ))}
         </List>
       </div>
     );
   }
 
   return (
-    <div className={classes.root}>
-      <Typography variant="h5">Categories</Typography>
-      <Typography color="textSecondary">
-        Browse progressive web apps by category
-      </Typography>
-      <List>
-        {data.categories.map(category => {
-          return <CategoryListItem key={category.id} name={category.name} />;
-        })}
-      </List>
-    </div>
+    <>
+      <Helmet>
+        <title>Categories</title>
+        <meta
+          content="Browse progressive web apps by category"
+          name="description"
+        />
+      </Helmet>
+      <div className={classes.root}>
+        <Typography component="h1" variant="h5">
+          Categories
+        </Typography>
+        <Typography color="textSecondary" component="h2">
+          Browse progressive web apps by category
+        </Typography>
+        <List>
+          {data.categories.map(category => {
+            return <CategoryListItem key={category.id} name={category.name} />;
+          })}
+        </List>
+      </div>
+    </>
   );
 });

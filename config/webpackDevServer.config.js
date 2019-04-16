@@ -31,11 +31,7 @@ module.exports = function(proxy, allowedHost) {
     },
     host,
     hot: true,
-    https: {
-      ca: fs.readFileSync('/etc/ssl/certs/myCA.pem'),
-      cert: fs.readFileSync('/etc/ssl/certs/localhost.crt'),
-      key: fs.readFileSync('/etc/ssl/private/localhost.key')
-    },
+    https: false,
     overlay: false,
     proxy,
     public: allowedHost,

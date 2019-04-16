@@ -7,24 +7,25 @@ import React, { memo } from 'react';
 import AppCard from 'Containers/AppCard';
 import AppListItem from 'Containers/AppListItem';
 import APP_INFO from 'Graphql/AppInfo.gql';
-import APP_CARD from 'Graphql/AppCard.gql';
 
 const APP = gql`
   query app($id: ID!) {
     app(where: { id: $id }) {
-      ...AppCard
+      id
+      name
+      category {
+        name
+      }
+      icon
     }
   }
-  ${APP_CARD}
 `;
 
 const AppComponent = memo(({ id, isLoading, type }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard;
-  const { data, loading } = id
-    ? useQuery(APP, {
-        variables: { id }
-      })
-    : { data: null, loading: true };
+  const { data, loading } = useQuery(APP, {
+    variables: { id }
+  });
   if (loading || isLoading || !data.app) {
     return <AppItem loading />;
   }

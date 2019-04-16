@@ -46,12 +46,13 @@ const useStyles = makeStyles(theme => ({
   root: {
     '&:hover': {
       backgroundSize: 'auto 103%',
+      borderColor: 'transparent',
       boxShadow: '0 8px 8px 0 rgba(0,0,0,.2)'
     },
     border: {
-      color: theme.palette.type === 'dark' ? '#121523aa' : '#dadce0',
+      color: theme.palette.type === 'dark' ? '#2a2e48' : '#dadce0',
       style: 'solid',
-      width: 1
+      width: 2
     },
     [theme.breakpoints.down('sm')]: {
       minWidth: 'calc(100% - 24px)',
@@ -65,7 +66,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
     minWidth: 'calc(100% / 3 - 24px)',
     transition: theme.transitions.create(
-      ['opacity', 'box-shadow', 'transform'],
+      ['border-color', 'opacity', 'box-shadow', 'background-size'],
       {
         duration: theme.transitions.duration.standard,
         easing: theme.transitions.easing.easeInOut

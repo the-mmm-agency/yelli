@@ -1,8 +1,0 @@
-fragment AppCard on App {
-  id
-  name
-  category {
-    name
-  }
-  icon
-}

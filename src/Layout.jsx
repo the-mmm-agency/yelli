@@ -2,12 +2,11 @@ import { CssBaseline, Hidden } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import React, { memo, lazy, Suspense } from 'react';
 
+import Head from 'Components/Head';
 import ElasticScroll from 'Components/ElasticScroll';
 import Header from 'Containers/Header';
 import Navigation from 'Containers/Navigation';
 import SideDrawer from 'Containers/SideDrawer';
-
-import './fonts.css';
 
 const IosInstallPrompt = lazy(() => import('Components/IosInstallPrompt'));
 const Auth = lazy(() => import('Containers/Auth'));
@@ -48,33 +47,36 @@ const useStyles = makeStyles(theme => ({
 const Layout = memo(({ children }) => {
   const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <Header />
-      <Hidden smDown>
-        <SideDrawer />
-      </Hidden>
-      <Suspense fallback={null}>
-        <Auth />
-        <IosInstallPrompt />
-        <AppUpdate />
-      </Suspense>
-      <ElasticScroll>
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
-          {children}
-          <Hidden mdUp>
+    <>
+      <Head />
+      <div className={classes.root}>
+        <CssBaseline />
+        <Header />
+        <Hidden smDown>
+          <SideDrawer />
+        </Hidden>
+        <Suspense fallback={null}>
+          <Auth />
+          <IosInstallPrompt />
+          <AppUpdate />
+        </Suspense>
+        <ElasticScroll>
+          <main className={classes.content}>
             <div className={classes.toolbar} />
-          </Hidden>
-          <Hidden mdUp>
-            <div className={classes.toolbar} />
-          </Hidden>
-        </main>
-      </ElasticScroll>
-      <Hidden mdUp>
-        <Navigation />
-      </Hidden>
-    </div>
+            {children}
+            <Hidden mdUp>
+              <div className={classes.toolbar} />
+            </Hidden>
+            <Hidden mdUp>
+              <div className={classes.toolbar} />
+            </Hidden>
+          </main>
+        </ElasticScroll>
+        <Hidden mdUp>
+          <Navigation />
+        </Hidden>
+      </div>
+    </>
   );
 });
 

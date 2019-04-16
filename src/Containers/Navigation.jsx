@@ -53,7 +53,7 @@ const Navigation = memo(() => {
   };
   return (
     <AppBar className={classes.root}>
-      <BottomNavigation onChange={setValue} showLabels value={value}>
+      <BottomNavigation onChange={setValue} value={value}>
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
           icon={
