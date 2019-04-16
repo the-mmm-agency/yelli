@@ -2,7 +2,7 @@
   "name": "Yelli",
   "short_name": "Yelli",
   "description": "A directory for progressive web apps",
-  "display": "standalone",
+  "display": "fullscreen",
   "lang": "en-US",
   "orientation": "portrait",
   "start_url": ".",
