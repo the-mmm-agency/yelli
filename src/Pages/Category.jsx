@@ -1,9 +1,9 @@
-import { Grid } from '@material-ui/core';
+import { Divider, Hidden, Grid, Typography } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
 import PropTypes from 'prop-types';
-import React from 'react';
+import React, { memo } from 'react';
 import gql from 'graphql-tag';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 
@@ -30,6 +30,23 @@ const GET_APPS = gql`
 `;
 
 const useStyles = makeStyles(theme => ({
+  header: {
+    [theme.breakpoints.down('sm')]: {
+      backgroundColor: theme.palette.background.paper,
+      padding: {
+        bottom: theme.spacing(1),
+        left: theme.spacing(4),
+        right: theme.spacing(4),
+        top: theme.spacing(3)
+      }
+    },
+    padding: {
+      bottom: theme.spacing(2),
+      left: theme.spacing(4),
+      right: theme.spacing(4),
+      top: theme.spacing(2)
+    }
+  },
   root: {
     [theme.breakpoints.down('sm')]: {
       backgroundColor: theme.palette.background.paper,
@@ -52,7 +69,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Category = ({ name }) => {
+const Category = memo(({ name }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
@@ -62,26 +79,43 @@ const Category = ({ name }) => {
 
   if (loading || !data.apps) {
     return (
-      <Grid className={classes.root} component="ul" container spacing={2}>
-        {[...new Array(20).keys()].map(key => (
-          <AppComponent key={key} isLoading type={matches ? 'card' : 'list'} />
-        ))}
-      </Grid>
+      <>
+        <Hidden smUp>
+          <Typography className={classes.header} variant="h1">
+            {name}
+          </Typography>
+          <Divider />
+        </Hidden>
+        <Grid className={classes.root} component="ul" container spacing={2}>
+          {[...new Array(20).keys()].map(key => (
+            <AppComponent
+              key={key}
+              isLoading
+              type={matches ? 'card' : 'list'}
+            />
+          ))}
+        </Grid>
+      </>
     );
   }
 
   return (
-    <Grid className={classes.root} component="ul" container spacing={2}>
-      {data.apps.map(app => (
-        <AppComponent
-          key={app.id}
-          id={app.id}
-          type={matches ? 'card' : 'list'}
-        />
-      ))}
-    </Grid>
+    <>
+      <Typography className={classes.header} component="h1" variant="h3">
+        {name}
+      </Typography>
+      <Grid className={classes.root} component="ul" container spacing={2}>
+        {data.apps.map(app => (
+          <AppComponent
+            key={app.id}
+            id={app.id}
+            type={matches ? 'card' : 'list'}
+          />
+        ))}
+      </Grid>
+    </>
   );
-};
+});
 
 Category.propTypes = {
   name: PropTypes.string.isRequired

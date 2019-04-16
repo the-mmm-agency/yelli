@@ -1,4 +1,4 @@
-import { Fade, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
+import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
 import { makeStyles } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
@@ -27,25 +27,23 @@ const CategoryListItem = memo(({ name, loading }) => {
     );
   }
   return (
-    <Fade appear in>
-      <ListItem
-        button
-        className={classes.root}
-        disableGutters
-        divider
-        onClick={() => history.push(`/category/${name}`)}
-      >
-        <ListItemIcon style={{ color: 'inherit' }}>
-          <CategoryIcon name={name} />
-        </ListItemIcon>
-        <ListItemText
-          primary={name}
-          primaryTypographyProps={{
-            color: 'inherit'
-          }}
-        />
-      </ListItem>
-    </Fade>
+    <ListItem
+      button
+      className={classes.root}
+      disableGutters
+      divider
+      onClick={() => history.push(`/category/${name}`)}
+    >
+      <ListItemIcon style={{ color: 'inherit' }}>
+        <CategoryIcon name={name} />
+      </ListItemIcon>
+      <ListItemText
+        primary={name}
+        primaryTypographyProps={{
+          color: 'inherit'
+        }}
+      />
+    </ListItem>
   );
 });
 

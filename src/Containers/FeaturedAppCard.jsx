@@ -45,26 +45,28 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     '&:hover': {
+      backgroundColor: theme.palette.background.paper,
       backgroundSize: 'auto 103%',
       borderColor: 'transparent',
       boxShadow: '0 8px 8px 0 rgba(0,0,0,.2)'
     },
+    backgroundColor: theme.palette.background.default,
     border: {
       color: theme.palette.type === 'dark' ? '#2a2e48' : '#dadce0',
       style: 'solid',
-      width: 2
+      width: 1.5
     },
     [theme.breakpoints.down('sm')]: {
-      minWidth: 'calc(100% - 24px)',
-      width: 'calc(100% - 24px)'
+      minWidth: 'calc(100% - 70px)',
+      width: 'calc(100% - 70px)'
     },
     [theme.breakpoints.between('sm', 'md')]: {
-      minWidth: 'calc(50% - 24px)',
-      width: 'calc(50% - 24px)'
+      minWidth: 'calc(50% - 56px)',
+      width: 'calc(50% - 56px)'
     },
     boxShadow: 'none',
     margin: theme.spacing(2),
-    minWidth: 'calc(100% / 3 - 24px)',
+    minWidth: 'calc(100% / 3 - 48px)',
     transition: theme.transitions.create(
       ['border-color', 'opacity', 'box-shadow', 'background-size'],
       {
@@ -72,7 +74,7 @@ const useStyles = makeStyles(theme => ({
         easing: theme.transitions.easing.easeInOut
       }
     ),
-    width: 'calc(100% / 3 - 24px)'
+    width: 'calc(100% / 3 - 48px)'
   }
 }));
 

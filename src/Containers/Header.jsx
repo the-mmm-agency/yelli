@@ -26,6 +26,13 @@ const useStyles = makeStyles(theme => ({
     maxHeight: 'fit-content',
     width: `calc(100% - ${drawerWidth}px)`
   },
+  hide: {
+    opacity: 0,
+    transition: theme.transitions.create(['opacity'], {
+      duration: theme.transitions.duration.standard,
+      easing: theme.transitions.easing.sharp
+    })
+  },
   icon: {
     marginLeft: 'auto'
   },
@@ -59,10 +66,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     height: 64,
     margin: 'auto'
-  },
-  spacer: {
-    marginRight: 'auto',
-    width: 64
   }
 }));
 
@@ -77,13 +80,13 @@ const Header = memo(() => {
       <Toolbar>
         <Hidden mdUp>
           <>
-            {isHome ? (
-              <div className={classes.spacer} />
-            ) : (
-              <IconButton color="primary" onClick={() => history.goBack()}>
-                <BackIcon />
-              </IconButton>
-            )}
+            <IconButton
+              className={isHome ? classes.hide : ''}
+              color="primary"
+              onClick={() => history.goBack()}
+            >
+              <BackIcon />
+            </IconButton>
             <div
               className={classes.logoContainer}
               onClick={() => history.push('/')}

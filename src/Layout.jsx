@@ -15,7 +15,7 @@ const AppUpdate = lazy(() => import('Containers/AppUpdate'));
 const useStyles = makeStyles(theme => ({
   '@global': {
     '*, body': {
-      scrollbarColor: 'rgba(50,50,50,0.5) transparent',
+      scrollbarColor: '#161a2a transparent',
       scrollbarWidth: 'thin'
     },
     '::selection': {
@@ -26,10 +26,12 @@ const useStyles = makeStyles(theme => ({
       '-webkit-tap-highlight-color': 'transparent',
       '-webkit-touch-callout': 'none',
       '-webkit-user-select': 'none',
+      backgroundColor: theme.palette.background.default,
       overflow: 'hidden',
       [theme.breakpoints.up('sm')]: {
         '-webkit-user-select': 'auto'
-      }
+      },
+      wordSpacing: theme.palette.type === 'dark' ? '.05em' : '0'
     }
   },
   content: {
