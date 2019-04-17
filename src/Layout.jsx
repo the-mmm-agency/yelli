@@ -15,7 +15,7 @@ const AppUpdate = lazy(() => import('Containers/AppUpdate'));
 const useStyles = makeStyles(theme => ({
   '@global': {
     '*, body': {
-      scrollbarColor: '#161a2a transparent',
+      scrollbarColor: '#161a2a01 transparent',
       scrollbarWidth: 'thin'
     },
     '::selection': {

@@ -1,0 +1,8 @@
+fragment AppEntry on App {
+  id
+  name
+  category {
+    name
+  }
+  icon
+}

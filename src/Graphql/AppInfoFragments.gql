@@ -1,0 +1,11 @@
+fragment AppInfoEntry on App {
+  id
+  name
+  category {
+    name
+  }
+  icon
+  description
+  screenshots
+  url
+}

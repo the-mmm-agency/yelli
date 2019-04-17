@@ -1,41 +1,14 @@
 import { ApolloProvider } from 'react-apollo-hooks';
-import { StylesProvider, jssPreset } from '@material-ui/styles';
-import { create } from 'jss';
+import { StylesProvider } from '@material-ui/styles';
 import dayjs from 'dayjs';
 import React from 'react';
 import { render } from 'react-dom';
-import expand from 'jss-plugin-expand';
-import { ApolloClient } from 'apollo-client';
-import { createHttpLink } from 'apollo-link-http';
-import { setContext } from 'apollo-link-context';
-import { InMemoryCache } from 'apollo-cache-inmemory';
 
 import * as serviceWorker from 'serviceWorker';
+import jss from 'Lib/jssPreset';
+import client from 'Lib/apolloClient';
 import { GlobalStateProvider, dispatch } from 'state';
 import App from 'App';
-
-const httpLink = createHttpLink({
-  uri: 'https://api.yelli.com'
-});
-
-const authLink = setContext((_, { headers }) => {
-  const token = localStorage.getItem('token');
-  return {
-    headers: {
-      ...headers,
-      Authorization: token || ''
-    }
-  };
-});
-
-const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: authLink.concat(httpLink)
-});
-
-const jss = create({
-  plugins: [...jssPreset().plugins, expand()]
-});
 
 render(
   <ApolloProvider client={client}>

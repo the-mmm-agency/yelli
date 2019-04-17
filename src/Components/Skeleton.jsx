@@ -5,12 +5,12 @@ import { useDarkTheme } from 'Themes/ThemeProvider';
 
 const colors = {
   color: {
-    dark: '#212337',
-    light: '#efefef'
-  },
-  highlightColor: {
     dark: '#3c4361',
     light: '#dadada'
+  },
+  highlightColor: {
+    dark: '#212337',
+    light: '#efefef'
   }
 };
 

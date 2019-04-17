@@ -1,4 +1,4 @@
-import { Divider, Hidden, Grid, Typography } from '@material-ui/core';
+import { Grid, Typography } from '@material-ui/core';
 import { makeStyles, useTheme } from '@material-ui/styles';
 import { mount, route } from 'navi';
 import { useQuery } from 'react-apollo-hooks';
@@ -48,6 +48,10 @@ const useStyles = makeStyles(theme => ({
     }
   },
   root: {
+    '&:after': {
+      content: '""',
+      flex: 'auto'
+    },
     [theme.breakpoints.down('sm')]: {
       backgroundColor: theme.palette.background.paper,
       padding: {
@@ -77,41 +81,33 @@ const Category = memo(({ name }) => {
     variables: { name }
   });
 
-  if (loading || !data.apps) {
-    return (
-      <>
-        <Hidden smUp>
-          <Typography className={classes.header} variant="h1">
-            {name}
-          </Typography>
-          <Divider />
-        </Hidden>
-        <Grid className={classes.root} component="ul" container spacing={2}>
-          {[...new Array(20).keys()].map(key => (
-            <AppComponent
-              key={key}
-              isLoading
-              type={matches ? 'card' : 'list'}
-            />
-          ))}
-        </Grid>
-      </>
-    );
-  }
-
   return (
     <>
-      <Typography className={classes.header} component="h1" variant="h3">
+      <Typography className={classes.header} component="h1" variant="h5">
         {name}
       </Typography>
-      <Grid className={classes.root} component="ul" container spacing={2}>
-        {data.apps.map(app => (
-          <AppComponent
-            key={app.id}
-            id={app.id}
-            type={matches ? 'card' : 'list'}
-          />
-        ))}
+      <Grid
+        className={classes.root}
+        component="ul"
+        container
+        justify="space-between"
+        spacing={2}
+      >
+        {loading
+          ? [...new Array(20).keys()].map(key => (
+              <AppComponent
+                key={key}
+                isLoading
+                type={matches ? 'card' : 'list'}
+              />
+            ))
+          : data.apps.map(app => (
+              <AppComponent
+                key={app.id}
+                id={app.id}
+                type={matches ? 'card' : 'list'}
+              />
+            ))}
       </Grid>
     </>
   );

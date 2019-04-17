@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import React from 'react';
 
 import Skeleton from 'Components/Skeleton';
-import APP_INFO from 'Graphql/AppInfo.gql';
+import APP_INFO from 'Graphql/AppInfoNameQuery.gql';
 
 export default mount({
   '/:name': route({
@@ -63,7 +63,6 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       paddingTop: theme.spacing(4)
     },
-    backgroundColor: theme.palette.background.paper,
     overflow: 'hidden',
     padding: {
       left: theme.spacing(4),
@@ -112,7 +111,7 @@ const Info = ({ name }) => {
         <Grid container>
           <Grid item xs="auto">
             <div className={classes.icon}>
-              <Skeleton circle height="100%" width="100%" />
+              <Skeleton circle height="112px" width="112px" />
             </div>
           </Grid>
           <Grid className={classes.item} item xs="auto">

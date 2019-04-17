@@ -1,0 +1,6 @@
+fragment FeaturedAppEntry on App {
+  id
+  name
+  description
+  banner
+}

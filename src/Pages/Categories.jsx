@@ -27,21 +27,6 @@ const useStyles = makeStyles(theme => ({
 const Categories = memo(() => {
   const classes = useStyles();
   const { data, loading } = useQuery(GET_CATEGORIES);
-  if (loading) {
-    return (
-      <div className={classes.root}>
-        <Typography variant="h5">Categories</Typography>
-        <Typography color="textSecondary">
-          Browse progressive web apps by category
-        </Typography>
-        <List>
-          {[...new Array(10).keys()].map(key => (
-            <CategoryListItem key={key} isLoading />
-          ))}
-        </List>
-      </div>
-    );
-  }
 
   return (
     <div className={classes.root}>
@@ -52,9 +37,15 @@ const Categories = memo(() => {
         Browse progressive web apps by category
       </Typography>
       <List>
-        {data.categories.map(category => {
-          return <CategoryListItem key={category.id} name={category.name} />;
-        })}
+        {loading || !data.categories
+          ? [...new Array(10).keys()].map(key => (
+              <CategoryListItem key={key} loading />
+            ))
+          : data.categories.map(category => {
+              return (
+                <CategoryListItem key={category.id} name={category.name} />
+              );
+            })}
       </List>
     </div>
   );

@@ -20,20 +20,15 @@ const SearchList = memo(({ searchString }) => {
       searchString
     }
   });
-  if (loading) {
-    return (
-      <List>
-        {[...new Array(10).keys()].map(key => (
-          <AppComponent key={key} isLoading type="list" />
-        ))}
-      </List>
-    );
-  }
   return (
     <List>
-      {data.apps.map(app => (
-        <AppComponent key={app.id} id={app.id} type="list" />
-      ))}
+      {loading || !data.apps
+        ? [...new Array(10).keys()].map(key => (
+            <AppComponent key={key} isLoading type="list" />
+          ))
+        : data.apps.map(app => (
+            <AppComponent key={app.id} id={app.id} type="list" />
+          ))}
     </List>
   );
 });

@@ -22,6 +22,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerPaper: {
     borderColor: theme.palette.divider,
+    overflow: 'hidden',
     width: drawerWidth
   },
   listIcon: {

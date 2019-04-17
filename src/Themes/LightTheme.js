@@ -7,7 +7,7 @@ import {
 const LightTheme = {
   palette: {
     background: {
-      default: '#ffffff',
+      default: '#fbfcfd',
       paper: '#ffffff'
     },
     contrastThreshold: 3,
@@ -23,8 +23,8 @@ const LightTheme = {
       main: '#89ddff'
     },
     text: {
-      primary: '#202124',
-      secondary: fade('#202124', 0.4)
+      primary: '#161a2a',
+      secondary: fade('#161a2a', 0.4)
     },
     tonalOffset: 0.2
   },

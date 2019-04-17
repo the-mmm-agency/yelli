@@ -61,6 +61,7 @@ const useStyles = makeStyles(theme => ({
       maxWidth: `calc(100% / 8 - ${theme.spacing(3)}px)`,
       width: `calc(100% / 8 - ${theme.spacing(3)}px)`
     },
+    backgroundColor: theme.palette.background.default,
     boxShadow: 'none',
     display: 'flex',
     flexDirection: 'column',

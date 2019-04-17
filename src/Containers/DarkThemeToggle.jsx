@@ -23,8 +23,8 @@ const DarkThemeToggle = memo(() => {
         )}
       </ListItemIcon>
       <ListItemText
-        inset
         primary={`${themeState.dark ? 'Dark' : 'Light'} theme`}
+        primaryTypographyProps={{ variant: 'subtitle1' }}
       />
       <ListItemSecondaryAction>
         <Switch

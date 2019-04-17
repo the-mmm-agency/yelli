@@ -1,63 +1,46 @@
 import { useQuery, useApolloClient } from 'react-apollo-hooks';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
-import gql from 'graphql-tag';
 import React, { memo } from 'react';
 
 import AppCard from 'Containers/AppCard';
 import AppListItem from 'Containers/AppListItem';
-import APP_INFO from 'Graphql/AppInfo.gql';
-
-const APP = gql`
-  query app($id: ID!) {
-    app(where: { id: $id }) {
-      id
-      name
-      category {
-        name
-      }
-      icon
-    }
-  }
-`;
+import APP from 'Graphql/AppQuery.gql';
+import APP_INFO from 'Graphql/AppInfoQuery.gql';
 
 const AppComponent = memo(({ id, isLoading, type }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard;
   const { data, loading } = useQuery(APP, {
+    skip: isLoading,
     variables: { id }
   });
-  if (loading || isLoading || !data.app) {
-    return <AppItem loading />;
-  }
-  const client = useApolloClient();
 
-  const { name, icon, category } = data.app
-    ? data.app
-    : {
-        category: '',
-        icon: '',
-        name: ''
-      };
+  const client = useApolloClient();
 
   const prefetchApp = () => {
     client.query({
       query: APP_INFO,
-      variables: { name }
+      skip: isLoading,
+      variables: { id }
     });
   };
 
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/app/${name}`);
+    history.push(`/app/${data.app.name || ''}`);
   };
+
+  if (loading || isLoading || !data) {
+    return <AppItem loading />;
+  }
 
   return (
     <AppItem
-      category={category}
+      category={data.app.category}
       handleClick={handleClick}
-      icon={icon}
-      name={name}
+      icon={data.app.icon}
+      name={data.app.name}
       prefetchApp={prefetchApp}
     />
   );

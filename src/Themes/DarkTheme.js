@@ -7,7 +7,7 @@ import {
 const DarkTheme = {
   palette: {
     background: {
-      default: '#161a2a',
+      default: '#212337',
       paper: '#1e2132'
     },
     divider: fade('#121523', 0.6),
@@ -20,6 +20,11 @@ const DarkTheme = {
       dark: lighten('#89ddff', 0.12),
       light: lighten('#89ddff', 0.12),
       main: '#89ddff'
+    },
+    text: {
+      disabled: '#3c4361',
+      primary: '#ffffff',
+      secondary: '#7f85a3'
     },
     tonalOffset: 0.2,
     type: 'dark'
