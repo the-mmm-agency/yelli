@@ -83,6 +83,7 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     height: '45vw',
     marginRight: theme.spacing(2),
+    overflow: 'hidden',
     width: '25vw'
   },
   screenshots: {
@@ -134,13 +135,13 @@ const Info = ({ name }) => {
         <Divider className={classes.divider} />
         <Grid className={classes.screenshots} container item spacing={2}>
           <div className={classes.screenshot}>
-            <Skeleton height="100%" width="100%" />
+            <Skeleton height="45vw" width="100%" />
           </div>
           <div className={classes.screenshot}>
-            <Skeleton height="100%" width="100%" />
+            <Skeleton height="45vw" width="100%" />
           </div>
           <div className={classes.screenshot}>
-            <Skeleton height="100%" width="100%" />
+            <Skeleton height="45vw" width="100%" />
           </div>
         </Grid>
       </Grid>
