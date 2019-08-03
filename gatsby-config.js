@@ -4,7 +4,7 @@ module.exports = {
   siteMetadata: {
     title: 'Yelli',
     description: 'The hottest progressive web app directory on the market',
-    author: '@gatsbyjs',
+    author: '@brettm12345',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

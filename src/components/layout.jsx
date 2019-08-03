@@ -2,7 +2,6 @@ import { Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 
-import Head from 'components/head'
 import ElasticScroll from 'components/elasticScroll'
 import Header from 'components/header'
 import Navigation from 'components/navigation'
@@ -45,30 +44,27 @@ const useStyles = makeStyles(theme => ({
 const Layout = ({ children }) => {
   const classes = useStyles()
   return (
-    <>
-      <Head />
-      <div className={classes.root}>
-        <Header />
-        <Hidden smDown>
-          <SideDrawer />
-        </Hidden>
-        <ElasticScroll>
-          <main className={classes.content}>
+    <div className={classes.root}>
+      <Header />
+      <Hidden smDown>
+        <SideDrawer />
+      </Hidden>
+      <ElasticScroll>
+        <main className={classes.content}>
+          <div className={classes.toolbar} />
+          {children}
+          <Hidden mdUp>
             <div className={classes.toolbar} />
-            {children}
-            <Hidden mdUp>
-              <div className={classes.toolbar} />
-            </Hidden>
-            <Hidden mdUp>
-              <div className={classes.toolbar} />
-            </Hidden>
-          </main>
-        </ElasticScroll>
-        <Hidden mdUp>
-          <Navigation />
-        </Hidden>
-      </div>
-    </>
+          </Hidden>
+          <Hidden mdUp>
+            <div className={classes.toolbar} />
+          </Hidden>
+        </main>
+      </ElasticScroll>
+      <Hidden mdUp>
+        <Navigation />
+      </Hidden>
+    </div>
   )
 }
 

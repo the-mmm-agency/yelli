@@ -119,11 +119,11 @@ const AppCard = ({ handleClick, category, title, icon }) => {
 }
 AppCard.propTypes = {
   category: PropTypes.shape({
-    name: PropTypes.string,
+    name: PropTypes.string.isRequired,
   }),
-  handleClick: PropTypes.func,
-  icon: PropTypes.string,
-  title: PropTypes.string,
+  handleClick: PropTypes.func.isRequired,
+  icon: PropTypes.object.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default AppCard

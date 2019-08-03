@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 
 import AppComponent from 'components/appComponent'
 import Layout from 'components/layout'
+import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -35,6 +36,7 @@ const TopApps = ({ data: { top } }) => {
 
   return (
     <Layout>
+      <SEO title="Top Apps" />
       <Typography className={classes.header} component="h1" variant="h5">
         Top Apps
       </Typography>

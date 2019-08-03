@@ -36,6 +36,7 @@ const useStyles = makeStyles(theme => ({
       backgroundSize: 'auto 105%',
       borderColor: 'transparent',
       boxShadow: '0 8px 8px 0 rgba(0,0,0,.2)',
+      transform: 'translateY(-3px)',
     },
     backgroundColor: theme.palette.background.default,
     border: {
@@ -55,7 +56,7 @@ const useStyles = makeStyles(theme => ({
     margin: theme.spacing(2),
     minWidth: 'calc(100% / 3 - 48px)',
     transition: theme.transitions.create(
-      ['border-color', 'opacity', 'box-shadow', 'background-size'],
+      ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
       {
         duration: theme.transitions.duration.standard,
         easing: theme.transitions.easing.easeInOut,

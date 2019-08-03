@@ -2,11 +2,11 @@ import { Grid, InputBase, List } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles } from '@material-ui/styles'
-import { useDebounce } from 'use-debounce'
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
 
 import AppComponent from 'components/appComponent'
+import SEO from 'components/seo'
 import Layout from 'components/layout'
 
 const useStyles = makeStyles(theme => ({
@@ -83,11 +83,12 @@ const Search = ({
     .filter(application =>
       searchString === ''
         ? true
-        : application.title.toLowerCase().includes(searchString)
+        : application.title.toLowerCase().includes(searchString.toLowerCase())
     )
     .slice(0, 10)
   return (
     <Layout>
+      <SEO title="Search" />
       <Grid className={classes.root} container direction="column">
         <div className={classes.search}>
           <div className={classes.searchIcon}>

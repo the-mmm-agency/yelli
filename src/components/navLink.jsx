@@ -25,6 +25,7 @@ const useStyles = makeStyles(theme => ({
     color: 'inherit',
     marginLeft: theme.spacing(2),
     marginTop: theme.spacing(1),
+    padding: theme.spacing(0.8),
     transition: theme.transitions.create(['background-color', 'color'], {
       duration: theme.transitions.duration.standard,
       easing: theme.transitions.easing.sharp,

@@ -2,6 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
+import Img from 'gatsby-image'
 
 const useStyles = makeStyles(theme => ({
   category: {
@@ -11,9 +12,8 @@ const useStyles = makeStyles(theme => ({
     height: 50,
     width: 50,
   },
-  name: {
-    fontWeight: 500,
-    width: '100%',
+  text: {
+    marginLeft: theme.spacing(1),
   },
   root: {
     padding: theme.spacing(2),
@@ -31,17 +31,21 @@ const AppListItem = ({ handleClick, category, title, icon }) => {
       onClick={handleClick}
     >
       <ListItemIcon>
-        <img alt={title} className={classes.icon} src={icon.url} />
+        <Img
+          alt={title}
+          className={classes.icon}
+          fluid={icon.imageFile.childImageSharp.fluid}
+        />
       </ListItemIcon>
       <ListItemText
+        className={classes.text}
         primary={title}
-        primaryTypographyProps={{ className: classes.name }}
+        primaryTypographyProps={{ variant: 'h6' }}
         secondary={category.name}
         secondaryTypographyProps={{
           className: classes.category,
           color: 'textSecondary',
-          component: 'p',
-          variant: 'caption',
+          variant: 'subtitle2',
         }}
       />
     </ListItem>
@@ -49,13 +53,13 @@ const AppListItem = ({ handleClick, category, title, icon }) => {
 }
 AppListItem.propTypes = {
   category: PropTypes.shape({
-    name: PropTypes.string,
-  }),
-  handleClick: PropTypes.func,
-  icon: PropTypes.string,
-  loading: PropTypes.bool,
-  prefetchApp: PropTypes.func,
-  title: PropTypes.string,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+  icon: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  prefetchApp: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default AppListItem

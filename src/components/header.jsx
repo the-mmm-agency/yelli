@@ -81,7 +81,11 @@ const Header = () => {
                 <IconButton
                   className={pathname === '/' ? classes.hide : ''}
                   color="primary"
-                  onClick={() => window.history.back()}
+                  onClick={() =>
+                    setTimeout(() => {
+                      window.history.back()
+                    }, 300)
+                  }
                 >
                   <BackIcon />
                 </IconButton>

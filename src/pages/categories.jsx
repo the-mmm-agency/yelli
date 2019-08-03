@@ -4,6 +4,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 
 import CategoryListItem from 'components/categoryListItem'
+import SEO from 'components/seo'
 import Layout from 'components/layout'
 
 const useStyles = makeStyles(theme => ({
@@ -32,6 +33,7 @@ const Categories = () => {
 
   return (
     <Layout>
+      <SEO title="Categories" />
       <div className={classes.root}>
         <Typography component="h1" variant="h5">
           Categories
@@ -41,7 +43,7 @@ const Categories = () => {
         </Typography>
         <List>
           {categories.map(category => (
-            <CategoryListItem key={category.id} {...category} />
+            <CategoryListItem colorful key={category.id} {...category} />
           ))}
         </List>
       </div>
