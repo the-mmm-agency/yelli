@@ -15,6 +15,10 @@ const useStyles = makeStyles(theme => ({
     color: theme.palette.primary.dark,
   },
   root: {
+    backgroundColor:
+      theme.palette.type === 'dark'
+        ? theme.palette.background.default
+        : theme.palette.background.paper,
     padding: theme.spacing(2),
     border: {
       color: theme.palette.divider,

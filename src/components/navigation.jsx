@@ -17,6 +17,9 @@ import React, { useState } from 'react'
 import { navigate } from 'gatsby'
 
 const useStyles = makeStyles(theme => ({
+  bottomNavigation: {
+    height: 68,
+  },
   icon: {
     fontSize: '1.7rem',
   },
@@ -56,7 +59,11 @@ const Navigation = () => {
   }
   return (
     <AppBar className={classes.root}>
-      <BottomNavigation onChange={onChange} value={value}>
+      <BottomNavigation
+        className={classes.bottomNavigation}
+        onChange={onChange}
+        value={value}
+      >
         <BottomNavigationAction
           classes={{ label: classes.label, selected: classes.selected }}
           icon={
