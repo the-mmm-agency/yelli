@@ -53,13 +53,13 @@ const AppListItem = ({ handleClick, category, title, icon }) => {
 }
 AppListItem.propTypes = {
   category: PropTypes.shape({
-    name: PropTypes.string,
-  }),
-  handleClick: PropTypes.func,
-  icon: PropTypes.string,
-  loading: PropTypes.bool,
-  prefetchApp: PropTypes.func,
-  title: PropTypes.string,
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  handleClick: PropTypes.func.isRequired,
+  icon: PropTypes.object.isRequired,
+  loading: PropTypes.bool.isRequired,
+  prefetchApp: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
 }
 
 export default AppListItem
