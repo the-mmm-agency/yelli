@@ -83,7 +83,7 @@ const Search = ({
     .filter(application =>
       searchString === ''
         ? true
-        : application.title.toLowerCase().includes(searchString)
+        : application.title.toLowerCase().includes(searchString.toLowerCase())
     )
     .slice(0, 10)
   return (
