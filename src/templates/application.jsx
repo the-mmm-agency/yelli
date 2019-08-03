@@ -6,6 +6,7 @@ import React from 'react'
 import Img from 'gatsby-image'
 
 import Layout from 'components/layout'
+import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
   button: {
@@ -105,6 +106,7 @@ const Application = ({
   const classes = useStyles()
   return (
     <Layout>
+      <SEO title={title} description={description} />
       <Grid className={classes.root} container spacing={4}>
         <Grid container>
           <Grid item xs="auto">
@@ -181,7 +183,7 @@ export const pageQuery = graphql`
           url
           imageFile {
             childImageSharp {
-              fluid(maxWidth: 600, quality: 100) {
+              fluid(maxWidth: 200, quality: 100) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }
@@ -193,7 +195,7 @@ export const pageQuery = graphql`
           url
           imageFile {
             childImageSharp {
-              fluid(maxWidth: 600) {
+              fluid(maxWidth: 1000) {
                 ...GatsbyImageSharpFluid_withWebp
               }
             }

@@ -6,7 +6,7 @@ import {
 
 const DarkTheme = {
   palette: {
-    border: '#2a2e48',
+    border: lighten('#2a2e48', 0.12),
     background: {
       default: '#212337',
       paper: '#1e2132',

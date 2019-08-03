@@ -5,6 +5,7 @@ import React from 'react'
 
 import AppComponent from 'components/appComponent'
 import Layout from 'components/layout'
+import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
   header: {
@@ -35,6 +36,7 @@ const New = ({ data: { latest } }) => {
 
   return (
     <Layout>
+      <SEO title="New Apps" />
       <Typography className={classes.header} component="h1" variant="h5">
         New Apps
       </Typography>

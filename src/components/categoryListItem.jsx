@@ -3,16 +3,31 @@ import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
 import { navigate } from 'gatsby'
+import classNames from 'classnames'
 
 import CategoryIcon from 'components/categoryIcon'
 
 const useStyles = makeStyles(theme => ({
+  icon: {
+    color: 'inherit',
+  },
+  colorfulIcon: {
+    color: theme.palette.primary.dark,
+  },
   root: {
-    padding: theme.spacing(1),
+    padding: theme.spacing(2),
+    border: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1,
+    },
+    backgroundClip: 'padding-box',
+    marginBottom: theme.spacing(2),
+    ...theme.shape,
   },
 }))
 
-const CategoryListItem = ({ name, slug }) => {
+const CategoryListItem = ({ name, slug, colorful }) => {
   const classes = useStyles()
   return (
     <ListItem
@@ -22,13 +37,21 @@ const CategoryListItem = ({ name, slug }) => {
       divider
       onClick={() => navigate(`/category/${slug}`)}
     >
-      <ListItemIcon style={{ color: 'inherit' }}>
+      <ListItemIcon
+        className={classNames(
+          {
+            [classes.colorfulIcon]: colorful,
+          },
+          classes.icon
+        )}
+      >
         <CategoryIcon name={name} />
       </ListItemIcon>
       <ListItemText
         primary={name}
         primaryTypographyProps={{
           color: 'inherit',
+          variant: 'subtitle2',
         }}
       />
     </ListItem>
@@ -36,8 +59,13 @@ const CategoryListItem = ({ name, slug }) => {
 }
 
 CategoryListItem.propTypes = {
-  name: PropTypes.string,
-  slug: PropTypes.string,
+  colorful: PropTypes.bool,
+  name: PropTypes.string.isRequired,
+  slug: PropTypes.string.isRequired,
+}
+
+CategoryListItem.defaultProps = {
+  colorful: false,
 }
 
 export default CategoryListItem
