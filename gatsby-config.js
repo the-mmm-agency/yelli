@@ -2,12 +2,12 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    title: `Yelli`,
-    description: `The hottest progressive web app directory on the market`,
-    author: `@gatsbyjs`,
+    title: 'Yelli',
+    description: 'The hottest progressive web app directory on the market',
+    author: '@gatsbyjs',
   },
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-root-import',
       options: {
@@ -20,24 +20,24 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
+      resolve: 'gatsby-source-filesystem',
       options: {
-        name: `images`,
+        name: 'images',
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-transformer-sharp`,
-    `gatsby-plugin-sharp`,
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
     {
-      resolve: `gatsby-plugin-manifest`,
+      resolve: 'gatsby-plugin-manifest',
       options: {
-        name: `Yelli`,
-        short_name: `Yelli`,
-        start_url: `/`,
-        background_color: `#ffffff`,
-        theme_color: `#ff5370`,
-        display: `fullscreen`,
-        icon: `src/images/yelli-logo.png`, // This path is relative to the root of the site.
+        name: 'Yelli',
+        short_name: 'Yelli',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#ff5370',
+        display: 'fullscreen',
+        icon: 'src/images/yelli-logo.png', // This path is relative to the root of the site.
       },
     },
     {
@@ -48,21 +48,32 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-material-ui`,
+      resolve: 'gatsby-plugin-material-ui',
       options: {
-        pathToStylesProvider: `src/stylesProviderProps`,
+        pathToStylesProvider: 'src/stylesProviderProps',
       },
     },
     {
-      resolve: "gatsby-source-graphql",
+      resolve: 'gatsby-source-graphql',
       options: {
-        typeName: "GraphCMS",
-        fieldName: "graphcms",
+        typeName: 'GraphCMS',
+        fieldName: 'graphcms',
         url:
-          "https://api-useast.graphcms.com/v1/cjyqkhvjb2pd501ffbfokgbte/master",
+          'https://api-useast.graphcms.com/v1/cjyqkhvjb2pd501ffbfokgbte/master',
       },
     },
-    `gatsby-plugin-playground`,
-    `gatsby-plugin-offline`,
+    'gatsby-plugin-playground',
+    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-netlify',
+      options: {
+        allPageHeaders: [
+          'Link: fonts/proxima-nova-regular.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/proxima-nova-medium.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/proxima-nova-semibold.woff2; rel=preload; as=font; type=font/woff2',
+        ],
+      },
+    },
+    'gatsby-plugin-netlify-cache',
   ],
 }
