@@ -1,9 +1,0 @@
-fragment FeaturedAppEntry on Application {
-  id
-  title
-  description
-  slug
-  banner {
-    url
-  }
-}
