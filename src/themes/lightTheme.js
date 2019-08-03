@@ -37,7 +37,7 @@ const LightTheme = {
       'proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
     fontSize: 14,
     h6: {
-      fontWeight: 600,
+      fontWeight: 500,
     },
   },
 }
