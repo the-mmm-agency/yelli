@@ -1,5 +1,0 @@
-query featuredApps {
-  applications(where: { featured: true }) {
-    id
-  }
-}

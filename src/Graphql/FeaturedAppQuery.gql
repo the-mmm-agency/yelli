@@ -1,7 +1,0 @@
-#import "./FeaturedAppFragments.gql"
-
-query FeaturedApp($id: ID!) {
-  application(where: { id: $id }) {
-    ...FeaturedAppEntry
-  }
-}

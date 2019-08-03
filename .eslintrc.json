@@ -1,0 +1,105 @@
+{
+  "globals": {
+    "__PATH_PREFIX__": "true"
+  },
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "eslint:recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:import/recommended",
+    "plugin:react/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/standard",
+    "plugin:unicorn/recommended"
+  ],
+  "plugins": ["import", "prettier", "jsx-a11y", "standard", "unicorn"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "rules": {
+    "no-console": ["warn", { "allow": ["error", "warn"] }],
+
+    "jsx-a11y/label-has-associated-control": "off",
+
+    "quotes": ["error", "single"],
+
+    "prettier/prettier": "error",
+
+    "react/prop-types": [
+      "error",
+      { "ignore": ["data", "children", "pageContext", "theme", "location"] }
+    ],
+    "react/prefer-stateless-function": "warn",
+    "react/sort-prop-types": "error",
+
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "always"
+      }
+    ],
+
+    "unicorn/filename-case": ["error", { "case": "camelCase" }],
+    "unicorn/prevent-abbreviations": "off"
+  },
+  "settings": {
+    "react": {
+      "createClass": "createReactClass",
+      "pragma": "React",
+      "version": "detect"
+    },
+    "propWrapperFunctions": [
+      "forbidExtraProps",
+      { "property": "freeze", "object": "Object" },
+      { "property": "myFavoriteWrapper" }
+    ],
+    "linkComponents": ["Hyperlink", { "name": "Link", "linkAttribute": "to" }],
+    "import/resolver": {
+      "alias": {
+        "map": [
+          ["components", "./src/components"],
+          ["images", "./src/images"],
+          ["pages", "./src/pages"],
+          ["styles", "./src/styles"],
+          ["templates", "./src/templates"],
+          ["themes", "./src/themes"]
+        ],
+        "extensions": [".js", ".jsx"]
+      }
+    }
+  },
+  "overrides": [
+    {
+      "files": [
+        "gatsby-browser.js",
+        "gatsby-config.js",
+        "gatsby-node.js",
+        "gatsby-ssr.js",
+        "src/templates/*.js",
+        "src/templates/*.jsx",
+        "src/pages/*.js",
+        "src/pages/*.jsx"
+      ],
+      "rules": {
+        "unicorn/filename-case": ["error", { "case": "kebabCase" }]
+      }
+    },
+    {
+      "files": [
+        "gatsby-browser.js",
+        "gatsby-config.js",
+        "gatsby-node.js",
+        "gatsby-ssr.js"
+      ]
+    }
+  ]
+}
