@@ -54,6 +54,14 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: '#ff5370',
+        showSpinner: false,
+      },
+    },
+    'gatsby-plugin-fastclick',
+    {
       resolve: 'gatsby-source-graphql',
       options: {
         typeName: 'GraphCMS',
@@ -64,6 +72,7 @@ module.exports = {
     },
     'gatsby-plugin-playground',
     'gatsby-plugin-offline',
+    'gatsby-plugin-preload-link-crossorigin',
     {
       resolve: 'gatsby-plugin-netlify',
       options: {
