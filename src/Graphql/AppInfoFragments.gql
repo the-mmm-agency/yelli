@@ -1,11 +1,16 @@
-fragment AppInfoEntry on App {
+fragment AppInfoEntry on Application {
   id
-  name
+  title
   category {
     name
   }
-  icon
+  icon {
+    url
+  }
   description
-  screenshots
+  screenshots {
+    id
+    url
+  }
   url
 }

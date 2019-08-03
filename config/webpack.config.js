@@ -433,7 +433,9 @@ module.exports = function(webpackEnv) {
                   maxEntries: 30
                 }
               },
-              urlPattern: new RegExp('https://api.yelli.com')
+              urlPattern: new RegExp(
+                'https://api-useast.graphcms.com/v1/cjyqkhvjb2pd501ffbfokgbte/master'
+              )
             }
           ],
           skipWaiting: true
@@ -474,7 +476,6 @@ module.exports = function(webpackEnv) {
         '@material-ui/styles': '@material-ui/styles/esm',
         '@material-ui/system': '@material-ui/system/esm',
         '@material-ui/utils': '@material-ui/utils/esm',
-        'react-dom': '@hot-loader/react-dom',
         'react-native': 'react-native-web'
       },
       extensions: paths.moduleFileExtensions

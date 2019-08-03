@@ -11,19 +11,27 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import AppComponent from 'Containers/AppComponent';
 
 export default mount({
-  '/:name': route({
+  '/:slug': route({
     async getTitle(req) {
-      return `Yelli - ${req.params.name}`;
+      return `Yelli - ${req.params.slug}`;
     },
     async getView(req) {
-      return <Category name={req.params.name} />;
+      return <Category slug={req.params.slug} />;
     }
   })
 });
 
+const GET_NAME = gql`
+  query categoryName($slug: String!) {
+    category(slug: $slug) {
+      name
+    }
+  }
+`;
+
 const GET_APPS = gql`
-  query category($name: String!) {
-    apps(where: { category: { name: $name } }) {
+  query category($slug: String!) {
+    applications(where: { category: { slug: $slug } }) {
       id
     }
   }
@@ -73,18 +81,21 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Category = memo(({ name }) => {
+const Category = memo(({ slug }) => {
   const classes = useStyles();
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.up('sm'));
+  const { name, isLoading } = useQuery(GET_NAME, {
+    variables: { slug }
+  });
   const { data, loading } = useQuery(GET_APPS, {
-    variables: { name }
+    variables: { slug }
   });
 
   return (
     <>
       <Typography className={classes.header} component="h1" variant="h5">
-        {name}
+        {isLoading ? name.category.name : ''}
       </Typography>
       <Grid
         className={classes.root}
@@ -101,7 +112,7 @@ const Category = memo(({ name }) => {
                 type={matches ? 'card' : 'list'}
               />
             ))
-          : data.apps.map(app => (
+          : data.applications.map(app => (
               <AppComponent
                 key={app.id}
                 id={app.id}
@@ -114,5 +125,5 @@ const Category = memo(({ name }) => {
 });
 
 Category.propTypes = {
-  name: PropTypes.string.isRequired
+  slug: PropTypes.string.isRequired
 };

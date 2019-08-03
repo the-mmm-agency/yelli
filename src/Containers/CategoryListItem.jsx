@@ -13,7 +13,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const CategoryListItem = memo(({ name, loading }) => {
+const CategoryListItem = memo(({ name, slug, loading }) => {
   const classes = useStyles();
   const history = useHistory();
   if (loading) {
@@ -32,7 +32,7 @@ const CategoryListItem = memo(({ name, loading }) => {
       className={classes.root}
       disableGutters
       divider
-      onClick={() => history.push(`/category/${name}`)}
+      onClick={() => history.push(`/category/${slug}`)}
     >
       <ListItemIcon style={{ color: 'inherit' }}>
         <CategoryIcon name={name} />
@@ -49,7 +49,8 @@ const CategoryListItem = memo(({ name, loading }) => {
 
 CategoryListItem.propTypes = {
   loading: PropTypes.bool,
-  name: PropTypes.string
+  name: PropTypes.string,
+  slug: PropTypes.string
 };
 
 export default CategoryListItem;

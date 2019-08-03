@@ -71,12 +71,12 @@ module.exports = {
     'import/no-unresolved': 'error',
     'import/no-useless-path-segments': 'error',
     'import/no-webpack-loader-syntax': 'warn',
-    'import/order': [
-      'error',
-      {
-        'newlines-between': 'always'
-      }
-    ],
+    // 'import/order': [
+    //   'error',
+    //   {
+    //     'newlines-between': 'always'
+    //   }
+    // ],
     'import/prefer-default-export': 'off',
 
     // https://github.com/evcohen/eslint-plugin-jsx-a11y

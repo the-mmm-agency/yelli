@@ -79,7 +79,6 @@ module.exports = {
   appTsConfig: resolveApp('tsconfig.json'),
   dotenv: resolveApp('.env'),
   nodeModules: resolveApp('node_modules'),
-  proxySetup: resolveApp('src/setupProxy.js'),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
   testsSetup: resolveModule(resolveApp, 'src/setupTests'),

@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
     '-webkit-scroll-snap-type': 'manditory',
     listStyle: 'none',
+    minHeight: 'fit-content',
     overflowX: 'scroll',
     overflowY: 'hidden',
     'padding-inline-start': `${theme.spacing(2)}px`,
@@ -19,7 +20,6 @@ const useStyles = makeStyles(theme => ({
 
 const SwipableAppList = memo(({ AppComponent, apps, length, loading }) => {
   const classes = useStyles();
-  console.log(apps);
   return (
     <Grid className={classes.root} component="ul" container item wrap="nowrap">
       {!apps || loading

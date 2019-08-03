@@ -7,24 +7,12 @@ const client = new ApolloClient({
   request: operation => {
     const token = localStorage.getItem('token');
     operation.setContext({
-      cacheRedirects: {
-        Query: {
-          App: (_, { id }, { getCacheKey }) =>
-            getCacheKey({ __typename: 'App', id }),
-          AppInfo: (_, { id }, { getCacheKey }) =>
-            getCacheKey({ __typename: 'App', id }),
-          AppInfoName: (_, { id }, { getCacheKey }) =>
-            getCacheKey({ __typename: 'App', id }),
-          FeaturedApp: (_, { id }, { getCacheKey }) =>
-            getCacheKey({ __typename: 'App', id })
-        }
-      },
       headers: {
         Authorization: token || ''
       }
     });
   },
-  uri: 'https://api.yelli.com'
+  uri: 'https://api-useast.graphcms.com/v1/cjyqkhvjb2pd501ffbfokgbte/master'
 });
 
 export default client;

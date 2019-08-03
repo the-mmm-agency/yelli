@@ -8,7 +8,7 @@ import SwipableAppList from 'Components/SwipableAppList';
 
 const NEW_APPS = gql`
   query new {
-    apps(first: 10, orderBy: createdAt_DESC) {
+    applications(first: 10, orderBy: createdAt_DESC) {
       id
     }
   }
@@ -16,10 +16,13 @@ const NEW_APPS = gql`
 
 const NewApps = memo(() => {
   const { data, loading } = useQuery(NEW_APPS);
+  if (loading) {
+    return null;
+  }
   return (
     <SwipableAppList
       AppComponent={AppComponent}
-      apps={data.apps}
+      apps={data.applications}
       length={10}
       loading={loading}
     />

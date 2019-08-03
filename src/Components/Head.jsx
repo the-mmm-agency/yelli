@@ -33,7 +33,10 @@ const Head = () => {
         content={theme.palette.background.default}
         name="msapplication-TileColor"
       />
-      <link href="https://api.yelli.com" rel="preconnect" />
+      <link
+        href="https://api-useast.graphcms.com/v1/cjyqkhvjb2pd501ffbfokgbte/master"
+        rel="preconnect"
+      />
     </Helmet>
   );
 };

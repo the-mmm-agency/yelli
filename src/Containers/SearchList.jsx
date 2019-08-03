@@ -8,7 +8,7 @@ import AppComponent from 'Containers/AppComponent';
 
 const SEARCH_APPS = gql`
   query searchApps($searchString: String) {
-    apps(first: 10, where: { name_contains: $searchString }) {
+    applications(first: 10, where: { name_contains: $searchString }) {
       id
     }
   }
@@ -22,11 +22,11 @@ const SearchList = memo(({ searchString }) => {
   });
   return (
     <List>
-      {loading || !data.apps
+      {loading || !data.applications
         ? [...new Array(10).keys()].map(key => (
             <AppComponent key={key} isLoading type="list" />
           ))
-        : data.apps.map(app => (
+        : data.applications.map(app => (
             <AppComponent key={app.id} id={app.id} type="list" />
           ))}
     </List>

@@ -9,10 +9,10 @@ import { makeStyles, useTheme } from '@material-ui/styles';
 import { useHistory } from 'react-navi';
 import PropTypes from 'prop-types';
 import React, { memo } from 'react';
-import { useQuery, useApolloClient } from 'react-apollo-hooks';
+import { useQuery } from 'react-apollo-hooks';
 
 import FEATURED_APP from 'Graphql/FeaturedAppQuery.gql';
-import APP_INFO from 'Graphql/AppInfoQuery.gql';
+// import APP_INFO from 'Graphql/AppInfoQuery.gql';
 import Skeleton from 'Components/Skeleton';
 
 const useStyles = makeStyles(theme => ({
@@ -78,23 +78,23 @@ const FeaturedAppCard = memo(({ id, isLoading }) => {
     variables: { id }
   });
 
-  const client = useApolloClient();
+  // const client = useApolloClient();
 
   const prefetchApp = () => {
-    client.query({
-      query: APP_INFO,
-      skip: isLoading,
-      variables: { id }
-    });
+    // client.query({
+    //   query: APP_INFO,
+    //   skip: isLoading,
+    //   variables: { id }
+    // });
   };
 
   const history = useHistory();
 
   const handleClick = () => {
-    history.push(`/app/${data.app.name || ''}`);
+    history.push(`/app/${data.application.slug || ''}`);
   };
 
-  const showSkeleton = isLoading || loading || !data.app;
+  const showSkeleton = isLoading || loading || !data.application;
 
   return (
     <Card className={classes.root} component="li">
@@ -107,7 +107,10 @@ const FeaturedAppCard = memo(({ id, isLoading }) => {
         {showSkeleton ? (
           <Skeleton height="200px" width="100%" />
         ) : (
-          <CardMedia className={classes.banner} image={data.app.banner} />
+          <CardMedia
+            className={classes.banner}
+            image={data.application.banner.url}
+          />
         )}
         <CardContent className={classes.content}>
           <Typography
@@ -119,7 +122,7 @@ const FeaturedAppCard = memo(({ id, isLoading }) => {
             {showSkeleton ? (
               <Skeleton height={theme.typography.body1.fontSize} width="30%" />
             ) : (
-              data.app.name
+              data.application.title
             )}
           </Typography>
           <Typography
@@ -132,7 +135,7 @@ const FeaturedAppCard = memo(({ id, isLoading }) => {
             {showSkeleton ? (
               <Skeleton height="0.7rem" width="60%" />
             ) : (
-              data.app.description
+              data.application.description
             )}
           </Typography>
         </CardContent>

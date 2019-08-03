@@ -1,7 +1,5 @@
 /* eslint-disable func-names, sort-keys */
 
-const fs = require('fs');
-
 const errorOverlayMiddleware = require('react-dev-utils/errorOverlayMiddleware');
 const evalSourceMapMiddleware = require('react-dev-utils/evalSourceMapMiddleware');
 const noopServiceWorkerMiddleware = require('react-dev-utils/noopServiceWorkerMiddleware');
@@ -14,9 +12,6 @@ const host = process.env.HOST || '0.0.0.0';
 module.exports = function(proxy, allowedHost) {
   return {
     before(app, server) {
-      if (fs.existsSync(paths.proxySetup)) {
-        require(paths.proxySetup)(app);
-      }
       app.use(evalSourceMapMiddleware(server));
       app.use(errorOverlayMiddleware());
       app.use(noopServiceWorkerMiddleware());

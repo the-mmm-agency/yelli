@@ -40,10 +40,10 @@ const AppUpdate = memo(() => {
         vertical: 'bottom'
       }}
       autoHideDuration={6000}
-      ConentProps={{
+      ContentProps={{
         'aria-describedby': 'message-id'
       }}
-      message={<span id="message-id">An application update is availible</span>}
+      message={<span id="message-id">An application update is available</span>}
       onClose={handleClose}
       open={open}
     />

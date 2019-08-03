@@ -6,11 +6,10 @@ import {
 import { makeStyles } from '@material-ui/styles';
 import React, { memo } from 'react';
 
-import LogoGif from '../logo.gif';
-import LogoWebp from '../logo.webp';
-
 import CategoryList from 'Containers/CategoryList';
 import NavLink from 'Components/NavLink';
+import LogoGif from '../logo.gif';
+import LogoWebp from '../logo.webp';
 
 export const drawerWidth = 240;
 

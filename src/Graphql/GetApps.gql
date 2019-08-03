@@ -1,5 +1,5 @@
-  query apps {
-    apps {
-      id
-    }
+query apps {
+  applications {
+    id
   }
+}

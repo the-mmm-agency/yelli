@@ -1,6 +1,7 @@
-  query GetCategories {
-    categories {
-      name
-      id
-    }
+query GetCategories {
+  categories {
+    id
+    name
+    slug
   }
+}

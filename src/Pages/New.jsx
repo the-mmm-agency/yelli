@@ -18,7 +18,7 @@ export default mount({
 
 const GET_APPS = gql`
   query newApps {
-    apps(first: 30, orderBy: createdAt_ASC) {
+    applications(first: 30, orderBy: createdAt_ASC) {
       id
     }
   }
@@ -68,11 +68,11 @@ const New = () => {
         New Apps
       </Typography>
       <List className={classes.root}>
-        {loading || !data.apps
+        {loading || !data.applications
           ? [...new Array(20).keys()].map(key => (
               <AppComponent key={key} isLoading type="list" />
             ))
-          : data.apps.map(app => (
+          : data.applications.map(app => (
               <AppComponent key={app.id} id={app.id} type="list" />
             ))}
       </List>

@@ -1,7 +1,7 @@
 #import "./AppFragments.gql"
 
 query App($id: ID!) {
-  app(where: { id: $id }) {
+  application(where: { id: $id }) {
     ...AppEntry
   }
 }

@@ -4,11 +4,10 @@ import { makeStyles } from '@material-ui/styles';
 import { useCurrentRoute, useHistory } from 'react-navi';
 import React, { memo } from 'react';
 
+import UserMenu from 'Containers/UserMenu';
+import { drawerWidth } from 'Containers/SideDrawer';
 import LogoGif from '../logo.gif';
 import LogoWebp from '../logo.webp';
-
-import { drawerWidth } from 'Containers/SideDrawer';
-import UserMenu from 'Containers/UserMenu';
 
 const useStyles = makeStyles(theme => ({
   appBar: {

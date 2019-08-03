@@ -2,18 +2,18 @@ import { Avatar, IconButton, Menu } from '@material-ui/core';
 import { AccountCircleOutlined as AccountIcon } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/styles';
 import React, { memo, useState } from 'react';
-import { useQuery } from 'react-apollo-hooks';
-import gql from 'graphql-tag';
+// import { useQuery } from 'react-apollo-hooks';
+// import gql from 'graphql-tag';
 
 import UserMenuList from 'Containers/UserMenuList';
 
-const GET_NAME = gql`
-  query currentName {
-    me {
-      name
-    }
-  }
-`;
+// const GET_NAME = gql`
+//   query currentName {
+//     me {
+//       name
+//     }
+//   }
+// `;
 
 const useStyles = makeStyles({
   button: {
@@ -33,8 +33,14 @@ const UserMenu = memo(() => {
   const handleClose = () => {
     setAnchorEl(null);
   };
-  const { data, loading, error } = useQuery(GET_NAME);
-  const isLoggedIn = !error && !!data.me && !loading;
+  // const { data, loading, error } = useQuery(GET_NAME);
+  const isLoggedIn = false;
+  const loading = false;
+  const data = {
+    me: {
+      name: 'brett'
+    }
+  };
   return (
     <>
       <IconButton

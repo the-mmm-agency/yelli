@@ -34,7 +34,7 @@ const CategoryIcon = memo(({ name }) => {
 });
 
 CategoryIcon.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string
 };
 
 export default CategoryIcon;

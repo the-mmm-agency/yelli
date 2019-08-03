@@ -1,7 +1,7 @@
 #import "./AppInfoFragments.gql"
 
-query AppInfo($id: ID!) {
-  app(where: { id: $id }) {
+query AppInfo($slug: String!) {
+  application(where: { slug: $slug }) {
     ...AppInfoEntry
   }
 }

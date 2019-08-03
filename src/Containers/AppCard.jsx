@@ -82,7 +82,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AppCard = memo(
-  ({ prefetchApp, handleClick, category, name, icon, loading }) => {
+  ({ prefetchApp, handleClick, category, title, icon, loading }) => {
     const classes = useStyles();
     const theme = useTheme();
     if (loading) {
@@ -142,7 +142,7 @@ const AppCard = memo(
           onFocus={() => prefetchApp()}
           onMouseOver={() => prefetchApp()}
         >
-          <img alt={name} className={classes.icon} src={icon} />
+          <img alt={title} className={classes.icon} src={icon.url} />
           <CardContent className={classes.content}>
             <Typography
               align="left"
@@ -151,7 +151,7 @@ const AppCard = memo(
               noWrap
               variant="body1"
             >
-              {name}
+              {title}
             </Typography>
             <Typography
               align="left"
@@ -176,8 +176,8 @@ AppCard.propTypes = {
   handleClick: PropTypes.func,
   icon: PropTypes.string,
   loading: PropTypes.bool,
-  name: PropTypes.string,
-  prefetchApp: PropTypes.func
+  prefetchApp: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default AppCard;

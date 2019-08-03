@@ -1,6 +1,9 @@
-fragment FeaturedAppEntry on App {
+fragment FeaturedAppEntry on Application {
   id
-  name
+  title
   description
-  banner
+  slug
+  banner {
+    url
+  }
 }

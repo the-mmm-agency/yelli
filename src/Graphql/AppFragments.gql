@@ -1,8 +1,11 @@
-fragment AppEntry on App {
+fragment AppEntry on Application {
   id
-  name
+  title
+  slug
   category {
     name
   }
-  icon
+  icon {
+    url
+  }
 }

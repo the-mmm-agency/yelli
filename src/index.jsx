@@ -1,4 +1,5 @@
-import { ApolloProvider } from 'react-apollo-hooks';
+import { ApolloProvider } from 'react-apollo';
+import { ApolloProvider as ApolloHooksProvider } from 'react-apollo-hooks';
 import { StylesProvider } from '@material-ui/styles';
 import dayjs from 'dayjs';
 import React from 'react';
@@ -12,11 +13,13 @@ import App from 'App';
 
 render(
   <ApolloProvider client={client}>
-    <GlobalStateProvider>
-      <StylesProvider jss={jss}>
-        <App />
-      </StylesProvider>
-    </GlobalStateProvider>
+    <ApolloHooksProvider client={client}>
+      <GlobalStateProvider>
+        <StylesProvider jss={jss}>
+          <App />
+        </StylesProvider>
+      </GlobalStateProvider>
+    </ApolloHooksProvider>
   </ApolloProvider>,
   document.getElementById('root')
 );

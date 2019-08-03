@@ -10,12 +10,12 @@ import Skeleton from 'Components/Skeleton';
 import APP_INFO from 'Graphql/AppInfoNameQuery.gql';
 
 export default mount({
-  '/:name': route({
+  '/:slug': route({
     async getTitle(req) {
-      return `Yelli - ${req.params.name}`;
+      return `Yelli - ${req.params.slug}`;
     },
     async getView(req) {
-      return <Info name={req.params.name} />;
+      return <Info slug={req.params.slug} />;
     }
   })
 });
@@ -101,12 +101,12 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const Info = ({ name }) => {
+const Info = ({ slug }) => {
   const classes = useStyles();
   const { data, loading } = useQuery(APP_INFO, {
-    variables: { name }
+    variables: { slug }
   });
-  if (loading || !data.app) {
+  if (loading || !data.application) {
     return (
       <Grid className={classes.root} container spacing={4}>
         <Grid container>
@@ -147,21 +147,28 @@ const Info = ({ name }) => {
       </Grid>
     );
   }
-  const { category, description, icon, screenshots, url } = data.app;
+  const {
+    category,
+    description,
+    icon,
+    screenshots,
+    title,
+    url
+  } = data.application;
   return (
     <Grid className={classes.root} container spacing={4}>
       <Grid container>
         <Grid item xs="auto">
           <img
-            alt={name}
+            alt={title}
             className={classes.icon}
             itemProp="image"
-            src={icon}
+            src={icon.url}
           />
         </Grid>
         <Grid className={classes.item} item xs="auto">
           <Typography component="h1" itemProp="name" variant="h6">
-            {name}
+            {title}
           </Typography>
           <Typography
             className={classes.category}
@@ -201,10 +208,10 @@ const Info = ({ name }) => {
       <Grid className={classes.screenshots} container item spacing={4}>
         {screenshots.map(screenshot => (
           <img
-            key={screenshot}
-            alt={data.app.name}
+            key={screenshot.id}
+            alt={title}
             className={classes.screenshot}
-            src={screenshot}
+            src={screenshot.url}
           />
         ))}
       </Grid>
@@ -213,5 +220,5 @@ const Info = ({ name }) => {
 };
 
 Info.propTypes = {
-  name: PropTypes.string
+  slug: PropTypes.string
 };

@@ -7,10 +7,13 @@ import SwipableAppList from 'Components/SwipableAppList';
 
 const FeaturedApps = memo(() => {
   const { data, loading } = useQuery(FEATURED_APPS);
+  if (loading) {
+    return null;
+  }
   return (
     <SwipableAppList
       AppComponent={FeaturedAppCard}
-      apps={data.apps}
+      apps={data.applications}
       length={10}
       loading={loading}
     />

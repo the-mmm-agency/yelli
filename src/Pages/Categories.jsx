@@ -42,9 +42,7 @@ const Categories = memo(() => {
               <CategoryListItem key={key} loading />
             ))
           : data.categories.map(category => {
-              return (
-                <CategoryListItem key={category.id} name={category.name} />
-              );
+              return <CategoryListItem key={category.id} {...category} />;
             })}
       </List>
     </div>

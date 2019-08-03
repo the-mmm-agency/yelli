@@ -18,7 +18,7 @@ export default mount({
 
 const GET_APPS = gql`
   query topList {
-    apps(first: 30, orderBy: rank_DESC) {
+    applications(first: 30, orderBy: rank_DESC) {
       id
     }
   }
@@ -58,11 +58,11 @@ const TopList = () => {
         Top Apps
       </Typography>
       <List className={classes.root}>
-        {loading || !data.apps
+        {loading || !data.applications
           ? [...new Array(20).keys()].map(key => (
               <AppComponent key={key} isLoading type="list" />
             ))
-          : data.apps.map(app => (
+          : data.applications.map(app => (
               <AppComponent key={app.id} id={app.id} type="list" />
             ))}
       </List>

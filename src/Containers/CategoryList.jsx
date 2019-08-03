@@ -13,14 +13,14 @@ import NavLink from 'Components/NavLink';
 
 const CategoryList = memo(() => {
   const { data, loading } = useQuery(GET_CATEGORIES);
-  if (loading) {
+  if (loading || !data) {
     return null;
   }
   return (
     <List subheader={<ListSubheader>Categories</ListSubheader>}>
       {data.categories.map(category => {
         return (
-          <NavLink key={category.id} href={`/category/${category.name}`}>
+          <NavLink key={category.id} href={`/category/${category.slug}`}>
             <ListItemIcon style={{ color: 'inherit' }}>
               <CategoryIcon name={category.name} />
             </ListItemIcon>

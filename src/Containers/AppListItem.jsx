@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const AppListItem = memo(
-  ({ prefetchApp, handleClick, category, name, icon, loading }) => {
+  ({ prefetchApp, handleClick, category, title, icon, loading }) => {
     const classes = useStyles();
     if (loading) {
       return (
@@ -49,10 +49,10 @@ const AppListItem = memo(
         onMouseOver={() => prefetchApp()}
       >
         <ListItemIcon>
-          <img alt={name} className={classes.icon} src={icon} />
+          <img alt={title} className={classes.icon} src={icon.url} />
         </ListItemIcon>
         <ListItemText
-          primary={name}
+          primary={title}
           primaryTypographyProps={{ className: classes.name }}
           secondary={category.name}
           secondaryTypographyProps={{
@@ -74,8 +74,8 @@ AppListItem.propTypes = {
   handleClick: PropTypes.func,
   icon: PropTypes.string,
   loading: PropTypes.bool,
-  name: PropTypes.string,
-  prefetchApp: PropTypes.func
+  prefetchApp: PropTypes.func,
+  title: PropTypes.string
 };
 
 export default AppListItem;
