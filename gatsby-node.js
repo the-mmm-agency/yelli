@@ -3,48 +3,31 @@ const path = require('path')
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const apps = await graphql(`
-    {
-      graphcms {
-        applications {
-          id
-          slug
+  const createPages = async (type, template, base, query = '') => {
+    const request = await graphql(`
+      {
+        graphcms {
+          ${type} {
+           id
+           slug
+           ${query}
+          }
         }
       }
-    }
-  `)
-
-  apps.data.graphcms.applications.forEach(({ id, slug }) => {
-    createPage({
-      component: path.resolve('./src/templates/application.jsx'),
-      path: `/app/${slug}`,
-      context: {
-        id,
-        slug,
-      },
+    `)
+    request.data.graphcms[type].forEach(({ id, slug, ...rest }) => {
+      createPage({
+        component: path.resolve(`./src/templates/${template}`),
+        path: `${base}/${slug}`,
+        context: {
+          id,
+          slug,
+          ...rest,
+        },
+      })
     })
-  })
+  }
 
-  const cats = await graphql(`
-    {
-      graphcms {
-        categories {
-          id
-          slug
-          name
-        }
-      }
-    }
-  `)
-  cats.data.graphcms.categories.forEach(({ id, slug, name }) => {
-    createPage({
-      component: path.resolve('./src/templates/category.jsx'),
-      path: `/category/${slug}`,
-      context: {
-        id,
-        slug,
-        name,
-      },
-    })
-  })
+  await createPages('applications', 'application.jsx', 'apps')
+  await createPages('categories', 'category.jsx', 'category', 'name')
 }
