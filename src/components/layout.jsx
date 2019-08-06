@@ -62,6 +62,7 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: 'calc(100vh - 128px) !important',
     },
+    height: 'calc(100vh - 64px) !important',
   },
   toolbar: theme.mixins.toolbar,
 }))

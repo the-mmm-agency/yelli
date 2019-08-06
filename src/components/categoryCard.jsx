@@ -52,7 +52,11 @@ const CategoryCard = ({ name, slug }) => {
       <Card className={classes.category}>
         <CardActionArea
           className={classes.actionArea}
-          onClick={() => navigate(`/category/${slug}/`)}
+          onClick={() =>
+            navigate(`/category/${slug}/`, {
+              state: { previousPage: '/categories' },
+            })
+          }
         >
           <CategoryIcon className={classes.icon} name={name} />
           <Typography className={classes.name} color="textPrimary" variant="h6">

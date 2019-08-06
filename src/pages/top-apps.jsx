@@ -41,7 +41,7 @@ const TopApps = ({ data: { top } }) => {
       </Typography>
       <List className={classes.root}>
         {top.applications.map(app => (
-          <AppComponent key={app.id} {...app} type="list" />
+          <AppComponent key={app.id} {...app} type="list" page="/top-apps" />
         ))}
       </List>
     </>

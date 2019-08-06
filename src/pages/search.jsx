@@ -104,7 +104,7 @@ const Search = ({
         </div>
         <List>
           {matchingApps.map(app => (
-            <AppComponent {...app} key={app.id} type="list" />
+            <AppComponent {...app} key={app.id} type="list" page="/search" />
           ))}
         </List>
       </Grid>

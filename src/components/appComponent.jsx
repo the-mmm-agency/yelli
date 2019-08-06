@@ -5,10 +5,10 @@ import { graphql, navigate } from 'gatsby'
 import AppCard from 'components/appCard'
 import AppListItem from 'components/appListItem'
 
-const AppComponent = ({ type, slug, ...props }) => {
+const AppComponent = ({ type, slug, page, ...props }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard
   const handleClick = () => {
-    navigate(`/app/${slug}/`)
+    navigate(`/app/${slug}/`, { state: { previousPage: page } })
   }
   return <AppItem handleClick={handleClick} {...props} />
 }
@@ -34,6 +34,7 @@ AppComponent.defaultProps = {
 }
 
 AppComponent.propTypes = {
+  page: PropTypes.string,
   slug: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['list', 'card']),
 }

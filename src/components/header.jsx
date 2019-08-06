@@ -77,13 +77,13 @@ const Header = () => {
         <Hidden mdUp>
           <>
             <Location>
-              {({ location: { pathname } }) => (
+              {({ location: { pathname, state } }) => (
                 <IconButton
                   className={pathname === '/' ? classes.hide : ''}
                   color="primary"
                   onClick={() =>
                     setTimeout(() => {
-                      window.history.back()
+                      navigate(state.previousPage)
                     }, 300)
                   }
                 >

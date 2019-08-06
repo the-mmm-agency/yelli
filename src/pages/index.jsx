@@ -67,7 +67,9 @@ const Home = ({ data: { latest, top, featured } }) => {
             <Button
               className={classes.button}
               color="primary"
-              onClick={() => navigate('/top-apps')}
+              onClick={() =>
+                navigate('/top-apps', { state: { previousPage: '/' } })
+              }
               size="small"
               variant="text"
             >
@@ -89,7 +91,7 @@ const Home = ({ data: { latest, top, featured } }) => {
             <Button
               className={classes.button}
               color="primary"
-              onClick={() => navigate('/new')}
+              onClick={() => navigate('/new', { state: { previousPage: '/' } })}
               size="small"
               variant="text"
             >

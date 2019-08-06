@@ -55,7 +55,7 @@ const Category = ({
   data: {
     graphcms: { applications },
   },
-  pageContext: { name },
+  pageContext: { name, slug },
 }) => {
   const classes = useStyles()
   const theme = useTheme()
@@ -77,6 +77,7 @@ const Category = ({
         {applications.map(app => (
           <AppComponent
             key={app.id}
+            page={`/category/${slug}`}
             type={matches ? 'card' : 'list'}
             {...app}
           />

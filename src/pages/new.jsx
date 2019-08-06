@@ -41,7 +41,7 @@ const New = ({ data: { latest } }) => {
       </Typography>
       <List className={classes.root}>
         {latest.applications.map(app => (
-          <AppComponent key={app.id} {...app} type="list" />
+          <AppComponent key={app.id} {...app} type="list" page="/new" />
         ))}
       </List>
     </>
