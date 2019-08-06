@@ -28,9 +28,9 @@ const Icons = {
   Travel: MapOutlined,
 }
 
-const CategoryIcon = ({ name }) => {
+const CategoryIcon = ({ name, ...props }) => {
   const Icon = Icons[name]
-  return <Icon fill="currentColor" />
+  return <Icon fill="currentColor" {...props} />
 }
 
 CategoryIcon.propTypes = {

@@ -2,7 +2,7 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Img from 'gatsby-image'
+import Img from 'graphcms-image'
 
 const useStyles = makeStyles(theme => ({
   category: {
@@ -32,9 +32,12 @@ const AppListItem = ({ handleClick, category, title, icon }) => {
     >
       <ListItemIcon>
         <Img
-          alt={title}
+          alt="Application Icon"
           className={classes.icon}
-          fluid={icon.imageFile.childImageSharp.fluid}
+          image={icon}
+          maxWidth={50}
+          title={title}
+          withWebp
         />
       </ListItemIcon>
       <ListItemText
@@ -56,9 +59,11 @@ AppListItem.propTypes = {
     name: PropTypes.string.isRequired,
   }).isRequired,
   handleClick: PropTypes.func.isRequired,
-  icon: PropTypes.object.isRequired,
-  loading: PropTypes.bool.isRequired,
-  prefetchApp: PropTypes.func.isRequired,
+  icon: PropTypes.shape({
+    handle: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  }).isRequired,
   title: PropTypes.string.isRequired,
 }
 

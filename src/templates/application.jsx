@@ -3,7 +3,7 @@ import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 import { graphql } from 'gatsby'
 import React from 'react'
-import Img from 'gatsby-image'
+import Img from 'graphcms-image'
 
 import Layout from 'components/layout'
 import SEO from 'components/seo'
@@ -84,7 +84,7 @@ const useStyles = makeStyles(theme => ({
     },
     '-webkit-overflow-scrolling': 'touch',
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
-    '-webkit-scroll-snap-type': 'manditory',
+    '-webkit-scroll-snap-type': 'mandatory',
     [theme.breakpoints.up('md')]: {
       height: 'auto',
     },
@@ -111,10 +111,12 @@ const Application = ({
         <Grid container>
           <Grid item xs="auto">
             <Img
-              alt={title}
+              alt="Application Icon"
+              title={title}
               className={classes.icon}
               itemProp="image"
-              fluid={icon.imageFile.childImageSharp.fluid}
+              withWebp
+              image={icon}
             />
           </Grid>
           <Grid className={classes.item} item xs="auto">
@@ -149,7 +151,7 @@ const Application = ({
         <Grid item xs={12}>
           <Typography
             className={classes.description}
-            itemprop="description"
+            itemProp="description"
             paragraph
           >
             {description}
@@ -159,10 +161,13 @@ const Application = ({
         <Grid className={classes.screenshots} container item spacing={4}>
           {screenshots.map(screenshot => (
             <Img
-              key={screenshot.id}
-              alt={title}
+              key={screenshot.handle}
+              alt="Application Screenshot"
+              title={title}
+              fit="scale"
               className={classes.screenshot}
-              fluid={screenshot.imageFile.childImageSharp.fluid}
+              image={screenshot}
+              withWebp
             />
           ))}
         </Grid>
@@ -180,26 +185,15 @@ export const pageQuery = graphql`
           name
         }
         icon {
-          url
-          imageFile {
-            childImageSharp {
-              fluid(maxWidth: 200, quality: 100) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+          handle
+          width
+          height
         }
         description
         screenshots {
-          id
-          url
-          imageFile {
-            childImageSharp {
-              fluid(maxWidth: 1000) {
-                ...GatsbyImageSharpFluid_withWebp
-              }
-            }
-          }
+          handle
+          width
+          height
         }
         url
       }

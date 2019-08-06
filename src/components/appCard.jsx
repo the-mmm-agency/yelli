@@ -7,7 +7,7 @@ import {
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
-import Img from 'gatsby-image'
+import Img from 'graphcms-image'
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
@@ -20,22 +20,13 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
   },
   content: {
-    '&:last-child': {
+    '&:last-of-type': {
       paddingBottom: theme.spacing(2),
     },
     padding: {
       left: theme.spacing(1),
     },
     textOverflow: 'ellipsis',
-  },
-  contentSkeleton: {
-    '&:last-child': {
-      paddingBottom: 0,
-    },
-    padding: {
-      left: theme.spacing(1),
-    },
-    whiteSpace: 'pre-wrap',
   },
   icon: {
     borderRadius: 15,
@@ -47,15 +38,12 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     [theme.breakpoints.between('xs', 'sm')]: {
-      maxWidth: `calc(100% / 3 - ${theme.spacing(3)}px)`,
       width: `calc(100% / 3 - ${theme.spacing(3)}px)`,
     },
     [theme.breakpoints.between('sm', 'md')]: {
-      maxWidth: `calc(100% / 6 - ${theme.spacing(3)}px)`,
       width: `calc(100% / 6 - ${theme.spacing(3)}px)`,
     },
     [theme.breakpoints.between('md', 'lg')]: {
-      maxWidth: `calc(100% / 8 - ${theme.spacing(3)}px)`,
       width: `calc(100% / 8 - ${theme.spacing(3)}px)`,
     },
     backgroundColor: theme.palette.background.default,
@@ -70,7 +58,7 @@ const useStyles = makeStyles(theme => ({
       top: theme.spacing(1),
     },
     maxHeight: 'fit-content',
-    maxWidth: `calc(100% / 10 - ${theme.spacing(3)}px)`,
+    maxWidth: 120,
     width: `calc(100% / 10 - ${theme.spacing(3)}px)`,
   },
   skeleton: {
@@ -89,9 +77,12 @@ const AppCard = ({ handleClick, category, title, icon }) => {
         onClick={handleClick}
       >
         <Img
-          alt={title}
+          image={icon}
           className={classes.icon}
-          fluid={icon.imageFile.childImageSharp.fluid}
+          maxWidth={200}
+          widthWebp
+          title={title}
+          alt="Application Icon"
         />
         <CardContent className={classes.content}>
           <Typography
@@ -122,7 +113,11 @@ AppCard.propTypes = {
     name: PropTypes.string.isRequired,
   }),
   handleClick: PropTypes.func.isRequired,
-  icon: PropTypes.object.isRequired,
+  icon: PropTypes.shape({
+    handle: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  }).isRequired,
   title: PropTypes.string.isRequired,
 }
 

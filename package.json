@@ -33,6 +33,7 @@
     "gatsby-source-filesystem": "^2.1.7",
     "gatsby-source-graphql": "^2.1.3",
     "gatsby-transformer-sharp": "^2.2.5",
+    "graphcms-image": "^1.1.0-beta4",
     "graphql": "^14.4.2",
     "jss": "10.0.0-alpha.23",
     "jss-plugin-expand": "^10.0.0-alpha.23",

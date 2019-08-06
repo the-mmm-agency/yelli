@@ -113,12 +113,12 @@ export const query = graphql`
       }
     }
     latest: graphcms {
-      applications(first: 10, orderBy: createdAt_ASC) {
+      applications(first: 15, orderBy: createdAt_DESC) {
         ...AppCard
       }
     }
     top: graphcms {
-      applications(first: 10, orderBy: rank_DESC) {
+      applications(first: 15, orderBy: rank_DESC) {
         ...AppCard
       }
     }

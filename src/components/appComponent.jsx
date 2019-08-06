@@ -22,14 +22,9 @@ export const query = graphql`
       name
     }
     icon {
-      url
-      imageFile {
-        childImageSharp {
-          fluid(maxWidth: 300, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
+      handle
+      width
+      height
     }
   }
 `

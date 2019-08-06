@@ -7,7 +7,7 @@ import {
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import { graphql, navigate } from 'gatsby'
-import Img from 'gatsby-image'
+import Img from 'graphcms-image'
 import React from 'react'
 
 const useStyles = makeStyles(theme => ({
@@ -44,17 +44,9 @@ const useStyles = makeStyles(theme => ({
       style: 'solid',
       width: 1,
     },
-    [theme.breakpoints.down('sm')]: {
-      minWidth: 'calc(100% - 70px)',
-      width: 'calc(100% - 70px)',
-    },
-    [theme.breakpoints.between('sm', 'md')]: {
-      minWidth: 'calc(50% - 56px)',
-      width: 'calc(50% - 56px)',
-    },
     boxShadow: 'none',
     margin: theme.spacing(2),
-    minWidth: 'calc(100% / 3 - 48px)',
+    minWidth: 400,
     transition: theme.transitions.create(
       ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
       {
@@ -62,7 +54,6 @@ const useStyles = makeStyles(theme => ({
         easing: theme.transitions.easing.easeInOut,
       }
     ),
-    width: 'calc(100% / 3 - 48px)',
   },
 }))
 
@@ -78,8 +69,13 @@ const FeaturedAppCard = ({ title, banner, description, slug }) => {
         onClick={handleClick}
       >
         <Img
+          alt="Application Banner"
           className={classes.banner}
-          fluid={banner.imageFile.childImageSharp.fluid}
+          image={banner}
+          fit="max"
+          maxWidth={400}
+          title={title}
+          widthWebp
         />
         <CardContent className={classes.content}>
           <Typography
@@ -106,7 +102,11 @@ const FeaturedAppCard = ({ title, banner, description, slug }) => {
 }
 
 FeaturedAppCard.propTypes = {
-  banner: PropTypes.object.isRequired,
+  banner: PropTypes.shape({
+    handle: PropTypes.string.isRequired,
+    width: PropTypes.number.isRequired,
+    height: PropTypes.number.isRequired,
+  }).isRequired,
   description: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
@@ -118,14 +118,9 @@ export const query = graphql`
     slug
     description
     banner {
-      url
-      imageFile {
-        childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
+      handle
+      width
+      height
     }
   }
 `

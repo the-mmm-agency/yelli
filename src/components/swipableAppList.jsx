@@ -5,9 +5,16 @@ import React from 'react'
 
 const useStyles = makeStyles(theme => ({
   root: {
+    '&::after': {
+      minWidth: 15,
+      minHeight: '100%',
+      /* eslint-disable quotes */
+      content: "''",
+      /* eslint-enable quotes */
+    },
     '-webkit-overflow-scrolling': 'touch',
     '-webkit-scroll-snap-points-x': 'repeat(100%)',
-    '-webkit-scroll-snap-type': 'manditory',
+    '-webkit-scroll-snap-type': 'mandatory',
     listStyle: 'none',
     minHeight: 'fit-content',
     overflowX: 'scroll',
@@ -30,18 +37,21 @@ const SwipableAppList = ({ AppComponent, apps }) => {
 }
 
 SwipableAppList.propTypes = {
-  AppComponent: PropTypes.element.isRequired,
+  AppComponent: PropTypes.func.isRequired,
   apps: PropTypes.arrayOf(
     PropTypes.shape({
       category: PropTypes.shape({
-        name: PropTypes.string,
-      }),
-      icon: PropTypes.string,
-      name: PropTypes.string,
+        name: PropTypes.string.isRequired,
+      }).isRequired,
+      icon: PropTypes.shape({
+        handle: PropTypes.string.isRequired,
+        width: PropTypes.number.isRequired,
+        height: PropTypes.number.isRequired,
+      }).isRequired,
+      slug: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
     })
   ),
-  length: PropTypes.number,
-  loading: PropTypes.bool,
 }
 
 export default SwipableAppList
