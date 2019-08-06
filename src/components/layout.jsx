@@ -1,11 +1,12 @@
 import { Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import Scrollbars from 'react-scrollbars-custom'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Header from 'components/header'
 import Navigation from 'components/navigation'
 import SideDrawer from 'components/sideDrawer'
+import useScroll from 'components/scrollProvider'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
@@ -69,6 +70,19 @@ const useStyles = makeStyles(theme => ({
 
 const Layout = ({ children }) => {
   const classes = useStyles()
+  const { scroll, setScroll } = useScroll()
+  let scrollTop = scroll
+  useEffect(() => {
+    if (typeof window !== 'undefined' && window.location.pathname === '/') {
+      setScroll(0)
+    }
+    if (
+      typeof window !== 'undefined' &&
+      window.location.pathname.includes('/app/')
+    ) {
+      scrollTop = 0
+    }
+  })
   return (
     <div className={classes.root}>
       <Header />
@@ -77,7 +91,12 @@ const Layout = ({ children }) => {
       </Hidden>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Scrollbars mobileNative noScrollX className={classes.scroll}>
+        <Scrollbars
+          mobileNative
+          noScrollX
+          className={classes.scroll}
+          scrollTop={scrollTop}
+        >
           {children}
         </Scrollbars>
         <Hidden mdUp>

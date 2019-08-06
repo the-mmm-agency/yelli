@@ -60,7 +60,7 @@ const useStyles = makeStyles(theme => ({
 const FeaturedAppCard = ({ title, banner, description, slug }) => {
   const classes = useStyles()
   const handleClick = () => {
-    navigate(`/app/${slug}/`, { state: { previousPage: '/' } })
+    navigate(`/app/${slug}/`)
   }
   return (
     <Card className={classes.root}>

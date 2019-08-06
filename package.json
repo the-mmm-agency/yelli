@@ -13,6 +13,7 @@
     "@svgr/webpack": "^4.3.2",
     "babel-plugin-polished": "^1.1.0",
     "classnames": "^2.2.6",
+    "constate": "^1.2.0",
     "gatsby": "^2.13.45",
     "gatsby-image": "^2.2.7",
     "gatsby-plugin-fastclick": "^1.0.1",

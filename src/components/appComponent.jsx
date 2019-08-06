@@ -3,12 +3,15 @@ import React from 'react'
 import { graphql, navigate } from 'gatsby'
 
 import AppCard from 'components/appCard'
+import useScroll from 'components/scrollProvider'
 import AppListItem from 'components/appListItem'
 
 const AppComponent = ({ type, slug, page, ...props }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard
-  const handleClick = () => {
-    navigate(`/app/${slug}/`, { state: { previousPage: page } })
+  const { setScroll } = useScroll()
+  const handleClick = ({ currentTarget }) => {
+    navigate(`/app/${slug}/`)
+    setScroll(currentTarget.offsetTop)
   }
   return <AppItem handleClick={handleClick} {...props} />
 }

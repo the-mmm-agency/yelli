@@ -54,7 +54,7 @@ const Navigation = () => {
     event.preventDefault()
     setValue(newValue)
     setTimeout(() => {
-      navigate(newValue, { replace: true, state: { previousPage: '/' } })
+      navigate(newValue, { replace: true })
     }, 200)
   }
   return (

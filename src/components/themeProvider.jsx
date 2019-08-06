@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
+import useScrollContext from 'components/scrollProvider'
 import BaseTheme from 'themes/baseTheme'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
@@ -49,17 +50,19 @@ export const ThemeProvider = ({ element }) => {
   const computedTheme = createTheme(themeState.dark ? DarkTheme : LightTheme)
 
   return (
-    <MuiThemeProvider theme={computedTheme}>
-      <DarkThemeContext.Provider
-        value={{
-          dark: themeState.dark,
-          toggle,
-        }}
-      >
-        <CssBaseline />
-        {element}
-      </DarkThemeContext.Provider>
-    </MuiThemeProvider>
+    <useScrollContext.Provider>
+      <MuiThemeProvider theme={computedTheme}>
+        <DarkThemeContext.Provider
+          value={{
+            dark: themeState.dark,
+            toggle,
+          }}
+        >
+          <CssBaseline />
+          {element}
+        </DarkThemeContext.Provider>
+      </MuiThemeProvider>
+    </useScrollContext.Provider>
   )
 }
 
