@@ -92,6 +92,7 @@ const Layout = ({ children }) => {
       <main className={classes.content}>
         <div className={classes.toolbar} />
         <Scrollbars
+          createContext={true}
           mobileNative
           noScrollX
           className={classes.scroll}
