@@ -56,6 +56,11 @@ const useStyles = makeStyles(theme => ({
   root: {
     display: 'flex',
   },
+  scroll: {
+    [theme.breakpoints.down('sm')]: {
+      height: 'calc(100vh - 128px) !important',
+    },
+  },
   toolbar: theme.mixins.toolbar,
 }))
 
@@ -69,7 +74,7 @@ const Layout = ({ children }) => {
       </Hidden>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Scrollbars mobileNative noScrollX>
+        <Scrollbars mobileNative noScrollX className={classes.scroll}>
           {children}
         </Scrollbars>
         <Hidden mdUp>

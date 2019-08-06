@@ -37,9 +37,6 @@ const HorizontalScroll = ({ children, ...props }) => {
       translateContentSizesToHolder
       mobileNative
       {...props}
-      renderer={({ elementRef, ...props }) => (
-        <div ref={elementRef} className={classes.scroll} {...props} />
-      )}
     >
       <Grid container className={classes.root} wrap="nowrap">
         {children}

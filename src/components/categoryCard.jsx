@@ -48,7 +48,7 @@ const useStyles = makeStyles(theme => ({
 const CategoryCard = ({ name, slug }) => {
   const classes = useStyles()
   return (
-    <Grid item xs={6} sm={4}>
+    <Grid item xs={12} sm={6} md={4}>
       <Card className={classes.category}>
         <CardActionArea
           className={classes.actionArea}
