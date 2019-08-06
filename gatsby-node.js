@@ -28,6 +28,6 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   }
 
-  await createPages('applications', 'application.jsx', 'apps')
+  await createPages('applications', 'application.jsx', 'app')
   await createPages('categories', 'category.jsx', 'category', 'name')
 }
