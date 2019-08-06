@@ -11,7 +11,7 @@ const AppComponent = ({ type, slug, page, ...props }) => {
   const { setScroll } = useScroll()
   const handleClick = ({ currentTarget }) => {
     navigate(`/app/${slug}/`)
-    setScroll(document.querySelectorAll('.ScrollbarsCustom')[0].scrollTop)
+    setScroll(document.querySelectorAll('#scroll').scrollHeight)
   }
   return <AppItem handleClick={handleClick} {...props} />
 }
