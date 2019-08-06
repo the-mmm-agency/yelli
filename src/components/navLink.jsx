@@ -1,10 +1,11 @@
-import { Link } from 'gatsby'
 import { ListItem } from '@material-ui/core'
 import { fade } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
 import classNames from 'classnames'
+
+import Link from 'components/link'
 
 const useStyles = makeStyles(theme => ({
   active: {
@@ -18,7 +19,7 @@ const useStyles = makeStyles(theme => ({
     },
     '&:hover': {
       backgroundColor: fade(theme.palette.primary.main, 0.08),
-      color: `${theme.palette.primary.main} !important`,
+      color: theme.palette.primary.main,
     },
     backgroundColor: 'inherit',
     borderRadius: 8,
@@ -55,16 +56,12 @@ const useStyles = makeStyles(theme => ({
 
 const NavLink = ({ children, href, LinkProps, ListItemProps }) => {
   const classes = useStyles()
+  const getLinkProps = ({ isCurrent }) => ({
+    className: classNames(classes.root, { [classes.active]: isCurrent }),
+  })
+
   return (
-    <Link
-      getProps={({ isCurrent }) =>
-        isCurrent
-          ? { className: classNames(classes.active, classes.root) }
-          : { className: classes.root }
-      }
-      to={href}
-      {...LinkProps}
-    >
+    <Link getProps={getLinkProps} to={href} {...LinkProps}>
       <ListItem
         button
         classes={{

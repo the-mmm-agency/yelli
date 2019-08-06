@@ -17,7 +17,11 @@ const ElasticScroll = ({ children, ...props }) => {
   }, [])
 
   return cloneElement(children, {
-    children: <div data-elastic-wrapper>{children.props.children}</div>,
+    children: (
+      <div data-elastic-wrapper {...props}>
+        {children.props.children}
+      </div>
+    ),
     ref: node => {
       targetRef.current = node
       const { ref } = children

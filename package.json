@@ -43,6 +43,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
+    "react-scrollbars-custom": "^4.0.16",
     "styled-tools": "^1.7.1"
   },
   "devDependencies": {

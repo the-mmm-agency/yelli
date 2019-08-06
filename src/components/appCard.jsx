@@ -31,6 +31,7 @@ const useStyles = makeStyles(theme => ({
   icon: {
     borderRadius: 15,
     objectFit: 'contain',
+    marginBottom: theme.spacing(1),
     width: '100%',
   },
   name: {

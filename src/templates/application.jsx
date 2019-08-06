@@ -5,6 +5,7 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import Img from 'graphcms-image'
 
+import HorizontalScroll from 'components/horizontalScroll'
 import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
@@ -55,6 +56,7 @@ const useStyles = makeStyles(theme => ({
       left: theme.spacing(4),
       top: theme.spacing(4),
     },
+    paddingBottom: theme.spacing(3),
   },
   screenshot: {
     [theme.breakpoints.down('sm')]: {
@@ -70,28 +72,9 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     height: '45vw',
     marginRight: theme.spacing(2),
+    marginBottom: theme.spacing(3),
     overflow: 'hidden',
     width: '25vw',
-  },
-  screenshots: {
-    '&::after': {
-      /* eslint-disable quotes */
-      content: "''",
-      /* eslint-enable quotes */
-      minWidth: 30,
-      minHeight: '100%',
-    },
-    '-webkit-overflow-scrolling': 'touch',
-    '-webkit-scroll-snap-points-x': 'repeat(100%)',
-    '-webkit-scroll-snap-type': 'mandatory',
-    [theme.breakpoints.up('md')]: {
-      height: 'auto',
-    },
-    flexWrap: 'nowrap',
-    overflowX: 'scroll',
-    overflowY: 'hidden',
-    'scroll-snap-type': 'x mandatory',
-    whiteSpace: 'nowrap',
   },
 }))
 
@@ -157,7 +140,7 @@ const Application = ({
           </Typography>
         </Grid>
         <Divider className={classes.divider} />
-        <Grid className={classes.screenshots} container item spacing={4}>
+        <HorizontalScroll>
           {screenshots.map(screenshot => (
             <Img
               key={screenshot.handle}
@@ -169,7 +152,7 @@ const Application = ({
               withWebp
             />
           ))}
-        </Grid>
+        </HorizontalScroll>
       </Grid>
     </>
   )

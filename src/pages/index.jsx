@@ -3,7 +3,7 @@ import { makeStyles } from '@material-ui/styles'
 import { graphql, navigate } from 'gatsby'
 import React from 'react'
 
-import SwipableAppList from 'components/swipableAppList'
+import HorizontalScroll from 'components/horizontalScroll'
 import FeaturedAppCard from 'components/featuredAppCard'
 import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
@@ -52,10 +52,11 @@ const Home = ({ data: { latest, top, featured } }) => {
               Featured Apps
             </Typography>
           </div>
-          <SwipableAppList
-            AppComponent={FeaturedAppCard}
-            apps={featured.applications}
-          />
+          <HorizontalScroll>
+            {featured.applications.map(({ id, ...app }) => (
+              <FeaturedAppCard key={id} {...app} />
+            ))}
+          </HorizontalScroll>
         </div>
         <Divider className={classes.divider} />
         <div className={classes.section}>
@@ -73,10 +74,11 @@ const Home = ({ data: { latest, top, featured } }) => {
               view more
             </Button>
           </div>
-          <SwipableAppList
-            AppComponent={AppComponent}
-            apps={top.applications}
-          />
+          <HorizontalScroll>
+            {top.applications.map(({ id, ...app }) => (
+              <AppComponent key={id} {...app} />
+            ))}
+          </HorizontalScroll>
         </div>
         <Divider className={classes.divider} />
         <div className={classes.section}>
@@ -94,10 +96,11 @@ const Home = ({ data: { latest, top, featured } }) => {
               view all
             </Button>
           </div>
-          <SwipableAppList
-            AppComponent={AppComponent}
-            apps={latest.applications}
-          />
+          <HorizontalScroll>
+            {latest.applications.map(({ id, ...app }) => (
+              <AppComponent key={id} {...app} />
+            ))}
+          </HorizontalScroll>
         </div>
       </Grid>
     </>

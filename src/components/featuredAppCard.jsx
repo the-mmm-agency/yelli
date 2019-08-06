@@ -63,7 +63,7 @@ const FeaturedAppCard = ({ title, banner, description, slug }) => {
     navigate(`/app/${slug}/`)
   }
   return (
-    <Card className={classes.root} component="li">
+    <Card className={classes.root}>
       <CardActionArea
         classes={{ focusHighlight: classes.actionArea }}
         onClick={handleClick}
