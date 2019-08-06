@@ -22,6 +22,7 @@ const DarkTheme = {
       light: lighten('#89ddff', 0.12),
       main: '#89ddff',
     },
+    scrollbar: darken('#1e2132', 0.2),
     text: {
       disabled: '#3c4361',
       primary: '#ffffff',

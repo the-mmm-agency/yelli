@@ -18,12 +18,13 @@ const useStyles = makeStyles(theme => ({
       color: '#fff',
     },
     '@global .ScrollbarsCustom-Thumb': {
-      background: `${theme.palette.text.disabled} !important`,
+      background: `${theme.palette.scrollbar} !important`,
       borderRadius: '0px !important',
     },
     '@global .ScrollbarsCustom-Track': {
       background: 'transparent !important',
       borderRadius: '0px !important',
+      height: '5px !important',
     },
     body: {
       '-webkit-tap-highlight-color': 'transparent',
@@ -68,9 +69,7 @@ const Layout = ({ children }) => {
       </Hidden>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Scrollbars mobileNative noScrollX>
-          {children}
-        </Scrollbars>
+        <Scrollbars noScrollX>{children}</Scrollbars>
         <Hidden mdUp>
           <div className={classes.toolbar} />
         </Hidden>
