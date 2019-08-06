@@ -25,7 +25,7 @@ const DarkTheme = {
     text: {
       disabled: '#3c4361',
       primary: '#ffffff',
-      secondary: '#7f85a3',
+      secondary: '#a2a6bf',
     },
     tonalOffset: 0.2,
     type: 'dark',

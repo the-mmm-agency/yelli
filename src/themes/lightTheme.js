@@ -25,7 +25,7 @@ const LightTheme = {
     },
     text: {
       primary: '#161a2a',
-      secondary: fade('#161a2a', 0.4),
+      secondary: fade('#161a2a', 0.5),
     },
     tonalOffset: 0.2,
   },
