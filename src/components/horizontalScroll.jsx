@@ -35,6 +35,7 @@ const HorizontalScroll = ({ children, ...props }) => {
       noScrollY
       className={classes.scroll}
       translateContentSizesToHolder
+      mobileNative
       {...props}
       renderer={({ elementRef, ...props }) => (
         <div ref={elementRef} className={classes.scroll} {...props} />

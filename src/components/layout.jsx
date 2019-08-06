@@ -69,7 +69,9 @@ const Layout = ({ children }) => {
       </Hidden>
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <Scrollbars noScrollX>{children}</Scrollbars>
+        <Scrollbars mobileNative noScrollX>
+          {children}
+        </Scrollbars>
         <Hidden mdUp>
           <div className={classes.toolbar} />
         </Hidden>

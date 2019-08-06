@@ -4134,11 +4134,6 @@ ee-first@1.1.1:
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
 
-elastic-scroll-polyfill@^2.1.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/elastic-scroll-polyfill/-/elastic-scroll-polyfill-2.1.0.tgz#9b1c320ffca30b3f447f93f3e48165c8f39f2df5"
-  integrity sha512-r4nw62S4volCAuY9yNEv4PqrfJzzUTJ3Inr4/lMaFnradV4X5vCyqxhgYUiRMybJdStNMQFpqLzBy52j5lrCow==
-
 electron-to-chromium@^1.3.191, electron-to-chromium@^1.3.47:
   version "1.3.206"
   resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.206.tgz#f72a8694dce5c669170c78097177d7b601977c10"
