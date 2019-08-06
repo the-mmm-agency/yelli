@@ -94,6 +94,7 @@ const Layout = ({ children }) => {
         <Scrollbars
           createContext={true}
           id="scroll"
+          mobileNative
           noScrollX
           className={classes.scroll}
           scrollTop={scrollTop}

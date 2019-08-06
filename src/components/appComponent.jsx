@@ -9,7 +9,7 @@ import AppListItem from 'components/appListItem'
 const AppComponent = ({ type, slug, page, ...props }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard
   const { setScroll } = useScroll()
-  const handleClick = ({ currentTarget }) => {
+  const handleClick = () => {
     navigate(`/app/${slug}/`)
     setScroll(document.querySelectorAll('#scroll').scrollHeight)
   }
