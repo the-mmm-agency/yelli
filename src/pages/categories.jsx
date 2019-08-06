@@ -8,6 +8,9 @@ import SEO from 'components/seo'
 import Layout from 'components/layout'
 
 const useStyles = makeStyles(theme => ({
+  actionArea: {
+    padding: theme.spacing(5),
+  },
   category: {
     '&:hover': {
       backgroundColor: theme.palette.background.paper,
@@ -22,7 +25,6 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     margin: theme.spacing(2),
-    padding: theme.spacing(5),
     ...theme.shape,
     textAlign: 'center',
     transition: theme.transitions.create(
@@ -72,7 +74,10 @@ const Categories = () => {
         {categories.map(({ id, name, slug }) => (
           <Grid item xs={6} sm={4} key={id}>
             <Card className={classes.category}>
-              <CardActionArea onClick={() => navigate(`/category/${slug}/`)}>
+              <CardActionArea
+                className={classes.actionArea}
+                onClick={() => navigate(`/category/${slug}/`)}
+              >
                 <CategoryIcon className={classes.icon} name={name} />
                 <Typography
                   className={classes.name}
