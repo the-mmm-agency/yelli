@@ -4,7 +4,6 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 
-import Layout from 'components/layout'
 import SEO from 'components/seo'
 import AppComponent from 'components/appComponent'
 
@@ -63,7 +62,7 @@ const Category = ({
   const matches = useMediaQuery(theme.breakpoints.up('sm'))
 
   return (
-    <Layout>
+    <>
       <SEO title={`${name} Apps`} />
       <Typography className={classes.header} component="h1" variant="h5">
         {name}
@@ -83,7 +82,7 @@ const Category = ({
           />
         ))}
       </Grid>
-    </Layout>
+    </>
   )
 }
 

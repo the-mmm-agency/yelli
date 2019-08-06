@@ -5,7 +5,6 @@ import React from 'react'
 
 import SwipableAppList from 'components/swipableAppList'
 import FeaturedAppCard from 'components/featuredAppCard'
-import Layout from 'components/layout'
 import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
 
@@ -44,7 +43,7 @@ const useStyles = makeStyles(theme => ({
 const Home = ({ data: { latest, top, featured } }) => {
   const classes = useStyles()
   return (
-    <Layout>
+    <>
       <SEO title="Home" />
       <Grid className={classes.root} container>
         <div className={classes.section}>
@@ -101,7 +100,7 @@ const Home = ({ data: { latest, top, featured } }) => {
           />
         </div>
       </Grid>
-    </Layout>
+    </>
   )
 }
 

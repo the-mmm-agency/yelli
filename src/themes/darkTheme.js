@@ -30,17 +30,6 @@ const DarkTheme = {
     tonalOffset: 0.2,
     type: 'dark',
   },
-  shape: {
-    borderRadius: 8,
-  },
-  typography: {
-    fontFamily:
-      'proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    fontSize: 14,
-    h6: {
-      fontWeight: 600,
-    },
-  },
 }
 
 export default DarkTheme

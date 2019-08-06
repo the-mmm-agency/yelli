@@ -5,7 +5,6 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import Img from 'graphcms-image'
 
-import Layout from 'components/layout'
 import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
@@ -29,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     margin: {
       bottom: theme.spacing(2),
       left: theme.spacing(-3),
-      top: theme.spacing(1),
+      top: theme.spacing(2),
     },
     width: '120%',
   },
@@ -43,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   item: {
     display: 'flex',
     flexDirection: 'column',
-    height: theme.spacing(13),
+    height: theme.spacing(14),
     margin: theme.spacing(1),
     marginTop: 15,
   },
@@ -105,7 +104,7 @@ const Application = ({
 }) => {
   const classes = useStyles()
   return (
-    <Layout>
+    <>
       <SEO title={title} description={description} />
       <Grid className={classes.root} container spacing={4}>
         <Grid container>
@@ -114,13 +113,13 @@ const Application = ({
               alt="Application Icon"
               title={title}
               className={classes.icon}
-              itemProp="image"
+              itemprop="image"
               withWebp
               image={icon}
             />
           </Grid>
           <Grid className={classes.item} item xs="auto">
-            <Typography component="h1" itemProp="name" variant="h6">
+            <Typography component="h1" itemprop="name" variant="h6">
               {title}
             </Typography>
             <Typography
@@ -151,7 +150,7 @@ const Application = ({
         <Grid item xs={12}>
           <Typography
             className={classes.description}
-            itemProp="description"
+            itemprop="description"
             paragraph
           >
             {description}
@@ -172,7 +171,7 @@ const Application = ({
           ))}
         </Grid>
       </Grid>
-    </Layout>
+    </>
   )
 }
 

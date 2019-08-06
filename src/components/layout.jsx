@@ -28,6 +28,12 @@ const useStyles = makeStyles(theme => ({
       },
       wordSpacing: theme.palette.type === 'dark' ? '.05em' : '0',
     },
+    '*, *::before, *::after': {
+      '@media: (prefers-reduced-motion: reduce)': {
+        animation: 'none !important',
+        transition: 'none !important',
+      },
+    },
   },
   content: {
     flexGrow: 1,

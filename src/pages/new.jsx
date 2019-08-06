@@ -4,7 +4,6 @@ import { graphql } from 'gatsby'
 import React from 'react'
 
 import AppComponent from 'components/appComponent'
-import Layout from 'components/layout'
 import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
@@ -35,7 +34,7 @@ const New = ({ data: { latest } }) => {
   const classes = useStyles()
 
   return (
-    <Layout>
+    <>
       <SEO title="New Apps" />
       <Typography className={classes.header} component="h1" variant="h5">
         New Apps
@@ -45,7 +44,7 @@ const New = ({ data: { latest } }) => {
           <AppComponent key={app.id} {...app} type="list" />
         ))}
       </List>
-    </Layout>
+    </>
   )
 }
 

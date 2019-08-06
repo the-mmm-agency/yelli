@@ -7,7 +7,6 @@ import { graphql } from 'gatsby'
 
 import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
-import Layout from 'components/layout'
 
 const useStyles = makeStyles(theme => ({
   inputInput: {
@@ -87,7 +86,7 @@ const Search = ({
     )
     .slice(0, 10)
   return (
-    <Layout>
+    <>
       <SEO title="Search" />
       <Grid className={classes.root} container direction="column">
         <div className={classes.search}>
@@ -109,7 +108,7 @@ const Search = ({
           ))}
         </List>
       </Grid>
-    </Layout>
+    </>
   )
 }
 

@@ -29,17 +29,6 @@ const LightTheme = {
     },
     tonalOffset: 0.2,
   },
-  shape: {
-    borderRadius: 8,
-  },
-  typography: {
-    fontFamily:
-      'proxima-nova, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif',
-    fontSize: 14,
-    h6: {
-      fontWeight: 500,
-    },
-  },
 }
 
 export default LightTheme

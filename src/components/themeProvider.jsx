@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
+import BaseTheme from 'themes/baseTheme'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
 
@@ -43,7 +44,9 @@ export const ThemeProvider = ({ element }) => {
     setThemeState({ ...themeState, dark })
   }
 
-  const computedTheme = createMuiTheme(themeState.dark ? DarkTheme : LightTheme)
+  const createTheme = theme => createMuiTheme({ ...BaseTheme, ...theme })
+
+  const computedTheme = createTheme(themeState.dark ? DarkTheme : LightTheme)
 
   return (
     <MuiThemeProvider theme={computedTheme}>
