@@ -83,7 +83,7 @@ const Header = () => {
                   color="primary"
                   onClick={() =>
                     setTimeout(() => {
-                      navigate('../')
+                      window.history.back()
                     }, 300)
                   }
                 >
