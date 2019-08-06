@@ -55,6 +55,8 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     display: 'flex',
+    minHeight: '100vh',
+    minWidth: '100vw',
   },
   scroll: {
     [theme.breakpoints.down('sm')]: {
