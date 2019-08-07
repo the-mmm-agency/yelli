@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('md')]: {
       marginLeft: 240,
+      width: 'calc(100% - 240px)',
     },
     height: 'calc(100vh - 65px) !important',
     marginTop: 65,
