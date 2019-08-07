@@ -57,7 +57,7 @@ const useStyles = makeStyles(theme => ({
 const SideDrawer = () => {
   const classes = useStyles()
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+  const matches = useMediaQuery(theme.breakpoints.up('md'))
   if (matches) {
     return (
       <Drawer

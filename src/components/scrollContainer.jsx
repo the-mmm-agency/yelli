@@ -7,8 +7,11 @@ import useScroll from 'components/scrollProvider'
 
 const useStyles = makeStyles(theme => ({
   scroll: {
-    [theme.breakpoints.down('md')]: {
+    [theme.breakpoints.down('sm')]: {
       height: 'calc(100vh - 65px - 68px) !important',
+    },
+    [theme.breakpoints.up('md')]: {
+      marginLeft: 240,
     },
     height: 'calc(100vh - 65px) !important',
     marginTop: 65,

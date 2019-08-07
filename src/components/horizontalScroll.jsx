@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
   },
   scroll: {
     [theme.breakpoints.down('sm')]: {
+      marginRight: 0,
       width: '100vw !important',
     },
     scrollPaddingInlineStart: `${theme.spacing(2)}px`,
@@ -28,6 +29,7 @@ const useStyles = makeStyles(theme => ({
     scrollSnapType: 'x proximity',
     scrollSnapPointsX: 'repeat(100%)',
     WebkitOverflowScrolling: 'touch',
+    marginRight: 240,
     width: 'calc(100vw - 240px) !important',
   },
 }))

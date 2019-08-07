@@ -53,7 +53,7 @@ const Navigation = ({ pathname }) => {
   const classes = useStyles()
   const { setScroll } = useScroll()
   const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down('md'))
+  const matches = useMediaQuery(theme.breakpoints.down('sm'))
   const onChange = (event, newValue) => {
     event.preventDefault()
     navigate(newValue, { replace: true })
