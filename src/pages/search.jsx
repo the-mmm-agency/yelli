@@ -1,6 +1,5 @@
-import { Grid, InputBase, List } from '@material-ui/core'
+import { Grid, InputBase, InputAdornment, List } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
-import { lighten, darken } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
@@ -9,26 +8,22 @@ import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
 
 const useStyles = makeStyles(theme => ({
-  inputInput: {
-    [theme.breakpoints.up('md')]: {
-      width: 200,
+  inputAdornment: {
+    margin: {
+      left: theme.spacing(1),
+      right: theme.spacing(2),
     },
-    padding: {
-      bottom: theme.spacing(1),
-      left: theme.spacing(10),
-      right: theme.spacing(1),
-      top: theme.spacing(1),
-    },
-    width: '100%',
   },
-  inputRoot: {
-    color: 'inherit',
-    width: '100%',
+  list: {
+    scrollSnapAlign: 'start',
+    scrollMarginTop: '64px',
   },
   root: {
     backgroundColor: theme.palette.background.paper,
     minHeight: '100vw',
-    padding: theme.spacing(2),
+  },
+  searchFocus: {
+    backgroundColor: theme.palette.input.focus,
   },
   search: {
     [theme.breakpoints.up('sm')]: {
@@ -36,30 +31,20 @@ const useStyles = makeStyles(theme => ({
       width: 'auto',
     },
     '&:hover': {
-      backgroundColor: darken(theme.palette.divider, 0.3),
+      backgroundColor: theme.palette.input.hover,
     },
-    backgroundColor: theme.palette.divider,
+    boxShadow: theme.shadows[3],
+    backgroundColor: theme.palette.input.default,
     borderRadius: theme.shape.borderRadius,
-    margin: {
-      bottom: theme.spacing(2),
-      left: 0,
-      right: theme.spacing(2),
-    },
+    margin: theme.spacing(2),
     padding: theme.spacing(1),
-    position: 'relative',
+    position: 'sticky',
+    fontWeight: 500,
+    scrollMarginBottom: '20px',
+    scrollSnapAlign: 'start',
+    zIndex: theme.zIndex.appBar,
+    top: theme.spacing(3),
     transition: theme.transitions.create('background-color'),
-    width: '100%',
-  },
-  searchIcon: {
-    alignItems: 'center',
-    color: theme.palette.primary.main,
-    display: 'flex',
-    height: '100%',
-    justifyContent: 'center',
-    margin: theme.spacing(-1),
-    pointerEvents: 'none',
-    position: 'absolute',
-    width: theme.spacing(9),
   },
 }))
 
@@ -84,22 +69,25 @@ const Search = ({
     <>
       <SEO title="Search" />
       <Grid className={classes.root} container direction="column">
-        <div className={classes.search}>
-          <div className={classes.searchIcon}>
-            <SearchIcon />
-          </div>
-          <InputBase
-            classes={{
-              input: classes.inputInput,
-              root: classes.inputRoot,
-            }}
-            onChange={handleChange}
-            placeholder="Search…"
-          />
-        </div>
-        <List>
+        <InputBase
+          className={classes.search}
+          startAdornment={
+            <InputAdornment
+              classes={{ root: classes.inputAdornment }}
+              position="start"
+            >
+              <SearchIcon color="primary" />
+            </InputAdornment>
+          }
+          classes={{
+            focus: classes.searchFocus,
+          }}
+          onChange={handleChange}
+          placeholder="Search…"
+        />
+        <List className={classes.list}>
           {matchingApps.map(app => (
-            <AppComponent {...app} key={app.id} type="list" page="/search" />
+            <AppComponent {...app} key={app.id} type="list" />
           ))}
         </List>
       </Grid>

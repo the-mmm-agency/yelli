@@ -22,7 +22,7 @@ const Categories = ({
   return (
     <>
       <SEO title="Categories" />
-      <Grid className={classes.root} container>
+      <Grid className={classes.root} container spacing={2}>
         {categories.map(({ id, ...category }) => (
           <CategoryCard key={id} {...category} />
         ))}

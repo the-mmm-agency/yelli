@@ -5,9 +5,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import CategoryIcon from 'components/categoryIcon'
+import useScroll from 'components/scrollProvider'
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
+    [theme.breakpoints.down('sm')]: {
+      padding: theme.spacing(3),
+    },
     padding: theme.spacing(5),
   },
   category: {
@@ -21,9 +25,13 @@ const useStyles = makeStyles(theme => ({
     alignItems: 'center',
     backgroundColor: theme.palette.background.default,
     boxShadow: 'none',
+    border: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1,
+    },
     display: 'flex',
     flexDirection: 'column',
-    margin: theme.spacing(2),
     ...theme.shape,
     textAlign: 'center',
     transition: theme.transitions.create(
@@ -36,6 +44,7 @@ const useStyles = makeStyles(theme => ({
   },
   icon: {
     color: theme.palette.primary.main,
+    fontSize: '1.5rem',
     height: '2em',
     width: '2em',
   },
@@ -47,13 +56,15 @@ const useStyles = makeStyles(theme => ({
 
 const CategoryCard = ({ name, slug }) => {
   const classes = useStyles()
+  const { setScroll } = useScroll()
+  const handleClick = () => {
+    setScroll(0)
+    navigate(`/category/${slug}/`)
+  }
   return (
-    <Grid item xs={12} sm={6} md={4}>
+    <Grid item xs={6} md={4}>
       <Card className={classes.category}>
-        <CardActionArea
-          className={classes.actionArea}
-          onClick={() => navigate(`/category/${slug}/`)}
-        >
+        <CardActionArea className={classes.actionArea} onClick={handleClick}>
           <CategoryIcon className={classes.icon} name={name} />
           <Typography className={classes.name} color="textPrimary" variant="h6">
             {name}

@@ -41,12 +41,12 @@ const useStyles = makeStyles(theme => ({
     },
     cursor: 'pointer',
     height: 64,
-    width: '30%',
     margin: 'auto',
   },
   logoContainer: {
     [theme.breakpoints.down('sm')]: {
       margin: 'auto',
+      flexGrow: 1,
     },
     [theme.breakpoints.up('md')]: {
       borderRight: {
@@ -54,9 +54,9 @@ const useStyles = makeStyles(theme => ({
         style: 'solid',
         width: 1,
       },
+      width: 216,
     },
     display: 'flex',
-    width: 216,
   },
   name: {
     [theme.breakpoints.up('md')]: {
@@ -72,7 +72,7 @@ const useStyles = makeStyles(theme => ({
 const Header = () => {
   const classes = useStyles()
   return (
-    <AppBar className={classes.appBar} color="paper" position="absolute">
+    <AppBar className={classes.appBar} color="paper">
       <Toolbar>
         <Hidden mdUp>
           <>

@@ -51,7 +51,7 @@ const useStyles = makeStyles(theme => ({
     boxShadow: 'none',
     display: 'flex',
     flexDirection: 'column',
-    flexGrow: 1,
+    flexGrow: 0,
     flexShrink: 0,
     height: 'fit-content',
     margin: {
@@ -60,6 +60,7 @@ const useStyles = makeStyles(theme => ({
       top: theme.spacing(1),
     },
     maxHeight: 'fit-content',
+    minWidth: 100,
     maxWidth: 120,
     scrollSnapAlign: 'start',
     width: `calc(100% / 10 - ${theme.spacing(3)}px)`,

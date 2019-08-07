@@ -7,8 +7,8 @@ const Logo = ({ ...props }) => {
     query {
       logo: file(relativePath: { eq: "yelli-logo.png" }) {
         childImageSharp {
-          fluid(maxWidth: 500, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
+          fixed(height: 64, quality: 100) {
+            ...GatsbyImageSharpFixed_withWebp
           }
         }
       }
@@ -17,7 +17,7 @@ const Logo = ({ ...props }) => {
 
   return (
     <Img
-      fluid={logo.childImageSharp.fluid}
+      fixed={logo.childImageSharp.fixed}
       fadeIn={false}
       loading="eager"
       {...props}

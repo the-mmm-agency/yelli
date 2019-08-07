@@ -15,6 +15,10 @@ const useStyles = makeStyles(theme => ({
     height: 175,
   },
   banner: {
+    [theme.breakpoints.down('sm')]: {
+      height: '42vw',
+      maxHeight: 200,
+    },
     height: 175,
     width: '100%',
   },
@@ -45,12 +49,17 @@ const useStyles = makeStyles(theme => ({
       width: 1,
     },
     [theme.breakpoints.down('sm')]: {
-      minWidth: 'calc(100% - 32px)',
+      width: 'calc(100% - 32px)',
+      maxWidth: 400,
+      flexShrink: 0,
     },
     boxShadow: 'none',
     margin: theme.spacing(2),
+    marginRight: theme.spacing(1),
     minWidth: 350,
-    scrollSnapAlign: 'center',
+    maxWidth: 375,
+    width: 'calc(100% / 3 - 32px)',
+    scrollSnapAlign: 'start',
     transition: theme.transitions.create(
       ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
       {

@@ -1,5 +1,6 @@
 import { Hidden } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
+import { Location } from '@reach/router'
 import Scrollbars from 'react-scrollbars-custom'
 import React from 'react'
 
@@ -10,13 +11,16 @@ import useScroll from 'components/scrollProvider'
 
 const useStyles = makeStyles(theme => ({
   '@global': {
-    '*, body': {
-      scrollbarColor: '#161a2a01 transparent',
-      scrollbarWidth: 'thin',
-    },
     '::selection': {
       background: theme.palette.primary.main,
       color: '#fff',
+    },
+    '::placeholder': {
+      color: `${theme.palette.text.placeholder} !important`,
+    },
+    '@global .ScrollbarsCustom-Content': {
+      display: 'flex',
+      flexDirection: 'column',
     },
     '@global .ScrollbarsCustom-Thumb': {
       background: `${theme.palette.scrollbar} !important`,
@@ -45,25 +49,22 @@ const useStyles = makeStyles(theme => ({
       },
     },
   },
-  content: {
-    [theme.breakpoints.down('sm')]: {
-      height: 'calc(100vh - 128px)',
-      width: '100vw',
-    },
-    flexGrow: 1,
-    height: 'calc(100vh - 64px)',
-    width: 'calc(100vw - 240px)',
-  },
   root: {
     display: 'flex',
     minHeight: '100vh',
     minWidth: '100vw',
   },
   scroll: {
-    [theme.breakpoints.down('sm')]: {
-      height: 'calc(100vh - 128px) !important',
+    [theme.breakpoints.down('md')]: {
+      height: 'calc(100vh - 65px - 68px)',
     },
-    height: 'calc(100vh - 64px) !important',
+    height: 'calc(100vh - 65px)',
+    marginTop: 65,
+    width: '100%',
+    scrollPaddingTop: '100px',
+    scrollSnapType: 'y mandatory',
+    scrollSnapPointsY: 'repeat(100%)',
+    WebkitOverflowScrolling: 'touch',
   },
   toolbar: theme.mixins.toolbar,
 }))
@@ -77,30 +78,20 @@ const Layout = ({ children }) => {
       <Hidden smDown>
         <SideDrawer />
       </Hidden>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Scrollbars
-          createContext={true}
-          id="scroll"
-          mobileNative
-          noScrollX
-          className={classes.scroll}
-          scrollTop={
-            typeof window !== 'undefined' &&
-            window.location.pathname.includes('/app/')
-              ? 0
-              : scroll
-          }
-        >
-          {children}
-        </Scrollbars>
-        <Hidden mdUp>
-          <div className={classes.toolbar} />
-        </Hidden>
-        <Hidden mdUp>
-          <div className={classes.toolbar} />
-        </Hidden>
-      </main>
+      <Location>
+        {({ location: { pathname } }) => (
+          <Scrollbars
+            createContext={true}
+            id="scroll"
+            mobileNative
+            noScrollX
+            className={classes.scroll}
+            scrollTop={pathname.includes('/app/') ? 0 : scroll}
+          >
+            {children}
+          </Scrollbars>
+        )}
+      </Location>
       <Hidden mdUp>
         <Navigation />
       </Hidden>

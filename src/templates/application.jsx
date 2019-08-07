@@ -16,9 +16,6 @@ const useStyles = makeStyles(theme => ({
   buttonLabel: {
     textTransform: 'capitalize',
   },
-  category: {
-    fontWeight: 500,
-  },
   description: {
     fontSize: theme.typography.body1.fontSize,
     padding: {
@@ -27,9 +24,8 @@ const useStyles = makeStyles(theme => ({
   },
   divider: {
     margin: {
-      bottom: theme.spacing(2),
+      bottom: theme.spacing(4),
       left: theme.spacing(-3),
-      top: theme.spacing(2),
     },
     width: '120%',
   },
@@ -44,8 +40,12 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
     height: theme.spacing(14),
-    margin: theme.spacing(1),
-    marginTop: 15,
+    margin: {
+      left: theme.spacing(1),
+      right: theme.spacing(1),
+      top: theme.spacing(2),
+      bottom: theme.spacing(1),
+    },
   },
   root: {
     [theme.breakpoints.down('sm')]: {
@@ -90,7 +90,13 @@ const Application = ({
   return (
     <>
       <SEO title={title} description={description} />
-      <Grid className={classes.root} container spacing={4}>
+      <Grid
+        className={classes.root}
+        container
+        spacing={4}
+        itemScope
+        itemType="https://schema.org/MobileApplication"
+      >
         <Grid container>
           <Grid item xs="auto">
             <Img
@@ -103,12 +109,12 @@ const Application = ({
             />
           </Grid>
           <Grid className={classes.item} item xs="auto">
-            <Typography component="h1" itemprop="name" variant="h6">
+            <Typography component="h1" itemProp="name" variant="h6">
               {title}
             </Typography>
             <Typography
-              className={classes.category}
               color="textSecondary"
+              itemProp="applicationCategory"
               component="h2"
               gutterBottom
               variant="h6"
@@ -121,20 +127,21 @@ const Application = ({
               }}
               className={classes.button}
               color="primary"
+              itemProp="installUrl"
               href={url}
-              size="small"
               target="_blank"
               variant="outlined"
             >
               <OpenIcon fontSize="inherit" />
               &nbsp; Launch App
             </Button>
+            <link itemProp="installUrl" href={url} />
           </Grid>
         </Grid>
         <Grid item xs={12}>
           <Typography
             className={classes.description}
-            itemprop="description"
+            itemProp="description"
             paragraph
           >
             {description}
@@ -146,6 +153,7 @@ const Application = ({
             <Img
               key={screenshot.handle}
               alt="Application Screenshot"
+              itemProp="screenshot"
               title={title}
               fit="scale"
               className={classes.screenshot}

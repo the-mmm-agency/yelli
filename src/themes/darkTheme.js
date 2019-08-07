@@ -12,6 +12,11 @@ const DarkTheme = {
       paper: '#1e2132',
     },
     divider: fade('#121523', 0.6),
+    input: {
+      default: '#191a2a',
+      hover: darken('#191a2a', 0.12),
+      focus: darken('#191a2a', 0.2),
+    },
     primary: {
       dark: darken('#ff5370', 0.12),
       light: lighten('#ff5370', 0.12),
@@ -26,7 +31,8 @@ const DarkTheme = {
     text: {
       disabled: '#3c4361',
       primary: '#ffffff',
-      secondary: '#a2a6bf',
+      secondary: '#9da5d7',
+      placeholder: '#afbeeeaa',
     },
     tonalOffset: 0.2,
     type: 'dark',

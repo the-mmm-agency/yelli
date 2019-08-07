@@ -1,22 +1,18 @@
-import { Divider, Grid, Typography } from '@material-ui/core'
-import { makeStyles, useTheme } from '@material-ui/styles'
+import { Hidden, Grid, Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { graphql } from 'gatsby'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
 
 import SEO from 'components/seo'
+import AppList from 'templates/app-list'
 import AppComponent from 'components/appComponent'
 
 const useStyles = makeStyles(theme => ({
   header: {
-    [theme.breakpoints.down('sm')]: {
-      backgroundColor: theme.palette.background.paper,
-      padding: {
-        bottom: theme.spacing(1),
-        left: theme.spacing(4),
-        right: theme.spacing(4),
-        top: theme.spacing(3),
-      },
+    borderBottom: {
+      color: theme.palette.divider,
+      style: 'solid',
+      width: 1,
     },
     padding: {
       bottom: theme.spacing(2),
@@ -24,64 +20,53 @@ const useStyles = makeStyles(theme => ({
       right: theme.spacing(4),
       top: theme.spacing(2),
     },
+    fontWeight: 500,
   },
   root: {
-    '&:after': {
+    '&::after': {
       content: '""',
-      flex: 'auto',
+      flex: '2 0 auto',
     },
-    [theme.breakpoints.down('sm')]: {
-      backgroundColor: theme.palette.background.paper,
-      padding: {
-        top: theme.spacing(3),
-      },
-      paddingInlineStart: `${theme.spacing(1)}px`,
+    display: 'flex',
+    flexWrap: 'wrap',
+    padding: {
+      bottom: theme.spacing(3),
+      left: theme.spacing(4),
+      right: theme.spacing(4),
+      top: theme.spacing(3),
     },
-    [theme.breakpoints.up('sm')]: {
-      display: 'flex',
-      flexWrap: 'wrap',
-      padding: {
-        bottom: theme.spacing(3),
-        left: theme.spacing(4),
-        right: theme.spacing(4),
-        top: theme.spacing(3),
-      },
-    },
-    listStyle: 'none',
   },
+  listStyle: 'none',
 }))
 
 const Category = ({
   data: {
     graphcms: { applications },
   },
-  pageContext: { name, slug },
+  pageContext: { name },
 }) => {
   const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('sm'))
-
   return (
     <>
       <SEO title={`${name} Apps`} />
-      <Typography className={classes.header} component="h1" variant="h5">
-        {name}
-      </Typography>
-      <Grid
-        className={classes.root}
-        component="ul"
-        container
-        justify="space-between"
-        spacing={2}
-      >
-        {applications.map(app => (
-          <AppComponent
-            key={app.id}
-            type={matches ? 'card' : 'list'}
-            {...app}
-          />
-        ))}
-      </Grid>
+      <Hidden smUp>
+        <AppList name={name} apps={applications} />
+      </Hidden>
+      <Hidden smDown>
+        <Typography className={classes.header} component="h1" variant="h5">
+          {name}
+        </Typography>
+        <Grid
+          className={classes.root}
+          component="ul"
+          container
+          justify="space-between"
+        >
+          {applications.map(app => (
+            <AppComponent key={app.id} {...app} />
+          ))}
+        </Grid>
+      </Hidden>
     </>
   )
 }
