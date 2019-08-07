@@ -12,10 +12,10 @@ import React from 'react'
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
-    height: 200,
+    height: 175,
   },
   banner: {
-    height: 200,
+    height: 175,
     width: '100%',
   },
   content: {
@@ -45,11 +45,12 @@ const useStyles = makeStyles(theme => ({
       width: 1,
     },
     [theme.breakpoints.down('sm')]: {
-      minWidth: 'calc(100% - 50px)',
+      minWidth: 'calc(100% - 32px)',
     },
     boxShadow: 'none',
     margin: theme.spacing(2),
     minWidth: 350,
+    scrollSnapAlign: 'center',
     transition: theme.transitions.create(
       ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
       {

@@ -28,13 +28,13 @@ const useStyles = makeStyles(theme => ({
   },
   root: {
     padding: {
-      top: theme.spacing(2),
+      top: theme.spacing(1),
     },
   },
   section: {
     padding: {
+      top: theme.spacing(2),
       bottom: theme.spacing(1),
-      top: theme.spacing(1),
     },
     width: '100%',
   },

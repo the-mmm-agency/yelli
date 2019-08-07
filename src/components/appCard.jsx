@@ -61,10 +61,8 @@ const useStyles = makeStyles(theme => ({
     },
     maxHeight: 'fit-content',
     maxWidth: 120,
+    scrollSnapAlign: 'start',
     width: `calc(100% / 10 - ${theme.spacing(3)}px)`,
-  },
-  skeleton: {
-    padding: theme.spacing(1),
   },
 }))
 

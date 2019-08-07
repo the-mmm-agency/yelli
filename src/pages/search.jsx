@@ -1,6 +1,6 @@
 import { Grid, InputBase, List } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
-import { fade } from '@material-ui/core/styles/colorManipulator'
+import { lighten, darken } from '@material-ui/core/styles/colorManipulator'
 import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
@@ -36,15 +36,9 @@ const useStyles = makeStyles(theme => ({
       width: 'auto',
     },
     '&:hover': {
-      backgroundColor:
-        theme.palette.type === 'dark'
-          ? fade(theme.palette.common.white, 0.08)
-          : fade(theme.palette.common.black, 0.05),
+      backgroundColor: darken(theme.palette.divider, 0.3),
     },
-    backgroundColor:
-      theme.palette.type === 'dark'
-        ? fade(theme.palette.common.white, 0.05)
-        : fade(theme.palette.common.black, 0.03),
+    backgroundColor: theme.palette.divider,
     borderRadius: theme.shape.borderRadius,
     margin: {
       bottom: theme.spacing(2),
@@ -58,6 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
   searchIcon: {
     alignItems: 'center',
+    color: theme.palette.primary.main,
     display: 'flex',
     height: '100%',
     justifyContent: 'center',

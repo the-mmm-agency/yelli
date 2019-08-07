@@ -74,6 +74,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: theme.spacing(2),
     marginBottom: theme.spacing(3),
     overflow: 'hidden',
+    scrollSnapAlign: 'start',
     width: '25vw',
   },
 }))
