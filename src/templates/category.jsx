@@ -61,6 +61,7 @@ const Category = ({
           component="ul"
           container
           justify="space-between"
+          spacing={4}
         >
           {applications.map(app => (
             <AppComponent key={app.id} {...app} />
