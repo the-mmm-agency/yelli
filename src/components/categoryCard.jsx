@@ -58,8 +58,11 @@ const CategoryCard = ({ name, slug }) => {
   const classes = useStyles()
   const { setScroll } = useScroll()
   const handleClick = () => {
+    setScroll(document.querySelector('#scroll').scrollTop)
     navigate(`/category/${slug}/`)
-    setScroll(0)
+    setTimeout(() => {
+      setScroll(0)
+    }, 300)
   }
   return (
     <Grid item xs={6} md={4}>
