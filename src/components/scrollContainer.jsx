@@ -9,6 +9,7 @@ const useStyles = makeStyles(theme => ({
   scroll: {
     [theme.breakpoints.down('sm')]: {
       height: 'calc(100vh - 65px - 68px) !important',
+      paddingBottom: 64,
     },
     [theme.breakpoints.up('md')]: {
       marginLeft: 240,

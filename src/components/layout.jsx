@@ -10,7 +10,8 @@ import SideDrawer from 'components/sideDrawer'
 const RouteContainer = posed.div({
   enter: {
     opacity: 1,
-    delay: 100,
+    beforeChildren: 600,
+    delay: 0,
   },
   exit: {
     opacity: 0,
@@ -28,7 +29,7 @@ const Layout = ({
     <SideDrawer />
     <PoseGroup>
       <RouteContainer key={pathname}>
-        <div style={{ height: 64 }} />
+        <div style={{ height: 65 }} />
         <ScrollContainer pathname={pathname}>{element}</ScrollContainer>
       </RouteContainer>
     </PoseGroup>
