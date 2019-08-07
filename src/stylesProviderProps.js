@@ -5,11 +5,7 @@ import expand from 'jss-plugin-expand'
 const stylesProviderProps = {
   jss: create({
     ...jssPreset(),
-    plugins: [
-      ...jssPreset().plugins,
-      expand(),
-    ],
-    insertionPoint: 'mui-inject-first',
+    plugins: [...jssPreset().plugins, expand()],
   }),
 }
 

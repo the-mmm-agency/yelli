@@ -1,9 +1,9 @@
 import { AppBar, IconButton, Hidden, Toolbar } from '@material-ui/core'
 import { ArrowBack as BackIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
-import { Location } from '@reach/router'
 import React from 'react'
 import { navigate } from 'gatsby'
+import PropTypes from 'prop-types'
 
 import UserMenu from 'components/userMenu'
 import Logo from 'components/logo'
@@ -21,6 +21,7 @@ const useStyles = makeStyles(theme => ({
       width: 1,
     },
     boxShadow: 'none',
+    backgroundColor: theme.palette.background.paper,
     marginLeft: drawerWidth,
     maxHeight: 'fit-content',
     width: `calc(100% - ${drawerWidth}px)`,
@@ -69,26 +70,22 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Header = () => {
+const Header = ({ pathname }) => {
   const classes = useStyles()
   return (
-    <AppBar className={classes.appBar} color="paper">
+    <AppBar className={classes.appBar}>
       <Toolbar>
         <Hidden mdUp>
           <>
-            <Location>
-              {({ location: { pathname } }) => (
-                <IconButton
-                  className={pathname === '/' ? classes.hide : ''}
-                  color="primary"
-                  onClick={() => {
-                    window.history.back()
-                  }}
-                >
-                  <BackIcon />
-                </IconButton>
-              )}
-            </Location>
+            <IconButton
+              className={pathname === '/' ? classes.hide : ''}
+              color="primary"
+              onClick={() => {
+                window.history.back()
+              }}
+            >
+              <BackIcon />
+            </IconButton>
             <div
               className={classes.logoContainer}
               onClick={() => navigate('/')}
@@ -103,6 +100,10 @@ const Header = () => {
       </Toolbar>
     </AppBar>
   )
+}
+
+Header.propTypes = {
+  pathname: PropTypes.string.isRequired,
 }
 
 export default Header

@@ -10,12 +10,7 @@ const useStyles = makeStyles(theme => ({
       width: 1,
     },
     backgroundColor: theme.palette.background.paper,
-    padding: {
-      left: theme.spacing(2),
-      right: theme.spacing(4),
-      bottom: theme.spacing(2),
-      top: theme.spacing(4),
-    },
+    padding: theme.spacing(2),
     scrollSnapAlign: 'start',
     fontWeight: 500,
   },

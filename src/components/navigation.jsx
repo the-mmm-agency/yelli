@@ -12,9 +12,11 @@ import {
   CategoryOutlined,
   PollOutlined,
 } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
-import React, { useState } from 'react'
+import { makeStyles, useTheme } from '@material-ui/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import React from 'react'
 import { navigate } from 'gatsby'
+import PropTypes from 'prop-types'
 
 import useScroll from 'components/scrollProvider'
 
@@ -47,72 +49,75 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const Navigation = () => {
+const Navigation = ({ pathname }) => {
   const classes = useStyles()
-  const [value, setValue] = useState(
-    typeof window !== 'undefined' ? window.location.pathname : '/'
-  )
   const { setScroll } = useScroll()
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.down('md'))
   const onChange = (event, newValue) => {
     event.preventDefault()
-    setValue(newValue)
-    setTimeout(() => {
-      setScroll(0)
-      navigate(newValue, { replace: true })
-    }, 200)
+    navigate(newValue, { replace: true })
+    setScroll(0)
   }
-  return (
-    <AppBar className={classes.root}>
-      <BottomNavigation
-        className={classes.bottomNavigation}
-        onChange={onChange}
-        value={value}
-      >
-        <BottomNavigationAction
-          classes={{ label: classes.label, selected: classes.selected }}
-          icon={
-            value === '/' ? (
-              <Home className={classes.icon} />
-            ) : (
-              <HomeOutlined className={classes.icon} />
-            )
-          }
-          label="Home"
-          value="/"
-        />
-        <BottomNavigationAction
-          classes={{ label: classes.label, selected: classes.selected }}
-          icon={
-            value === '/top-apps' ? (
-              <Poll className={classes.icon} />
-            ) : (
-              <PollOutlined className={classes.icon} />
-            )
-          }
-          label="Top apps"
-          value="/top-apps"
-        />
-        <BottomNavigationAction
-          classes={{ label: classes.label, selected: classes.selected }}
-          icon={
-            value === '/categories' ? (
-              <Category className={classes.icon} />
-            ) : (
-              <CategoryOutlined className={classes.icon} />
-            )
-          }
-          label="Categories"
-          value="/categories"
-        />
-        <BottomNavigationAction
-          classes={{ label: classes.label, selected: classes.selected }}
-          icon={<Search className={classes.icon} />}
-          label="Search"
-          value="/search"
-        />
-      </BottomNavigation>
-    </AppBar>
-  )
+  if (matches) {
+    return (
+      <AppBar className={classes.root}>
+        <BottomNavigation
+          className={classes.bottomNavigation}
+          onChange={onChange}
+          value={pathname}
+        >
+          <BottomNavigationAction
+            classes={{ label: classes.label, selected: classes.selected }}
+            icon={
+              pathname === '/' ? (
+                <Home className={classes.icon} />
+              ) : (
+                <HomeOutlined className={classes.icon} />
+              )
+            }
+            label="Home"
+            value="/"
+          />
+          <BottomNavigationAction
+            classes={{ label: classes.label, selected: classes.selected }}
+            icon={
+              pathname === '/top-apps' ? (
+                <Poll className={classes.icon} />
+              ) : (
+                <PollOutlined className={classes.icon} />
+              )
+            }
+            label="Top apps"
+            value="/top-apps"
+          />
+          <BottomNavigationAction
+            classes={{ label: classes.label, selected: classes.selected }}
+            icon={
+              pathname === '/categories' ? (
+                <Category className={classes.icon} />
+              ) : (
+                <CategoryOutlined className={classes.icon} />
+              )
+            }
+            label="Categories"
+            value="/categories"
+          />
+          <BottomNavigationAction
+            classes={{ label: classes.label, selected: classes.selected }}
+            icon={<Search className={classes.icon} />}
+            label="Search"
+            value="/search"
+          />
+        </BottomNavigation>
+      </AppBar>
+    )
+  }
+  return null
+}
+
+Navigation.propTypes = {
+  pathname: PropTypes.string.isRequired,
 }
 
 export default Navigation

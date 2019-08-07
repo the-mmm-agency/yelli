@@ -3,7 +3,8 @@ import {
   HomeOutlined as HomeIcon,
   SearchOutlined as SearchIcon,
 } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
+import { makeStyles, useTheme } from '@material-ui/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
 import React from 'react'
 
 import CategoryList from 'components/categoryList'
@@ -55,48 +56,53 @@ const useStyles = makeStyles(theme => ({
 
 const SideDrawer = () => {
   const classes = useStyles()
-  return (
-    <Drawer
-      classes={{
-        paper: classes.drawerPaper,
-      }}
-      className={classes.drawer}
-      variant="permanent"
-    >
-      <div className={classes.toolbar}>
-        <Logo className={classes.logo} />
-      </div>
-      <List dense>
-        <NavLink href="/">
-          <ListItemIcon className={classes.listIcon}>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText
-            primaryTypographyProps={{
-              className: classes.typography,
-              color: 'inherit',
-            }}
-          >
-            Home
-          </ListItemText>
-        </NavLink>
-        <NavLink href="/search/">
-          <ListItemIcon className={classes.listIcon}>
-            <SearchIcon />
-          </ListItemIcon>
-          <ListItemText
-            primaryTypographyProps={{
-              className: classes.typography,
-              color: 'inherit',
-            }}
-          >
-            Search
-          </ListItemText>
-        </NavLink>
-      </List>
-      <CategoryList />
-    </Drawer>
-  )
+  const theme = useTheme()
+  const matches = useMediaQuery(theme.breakpoints.up('sm'))
+  if (matches) {
+    return (
+      <Drawer
+        classes={{
+          paper: classes.drawerPaper,
+        }}
+        className={classes.drawer}
+        variant="permanent"
+      >
+        <div className={classes.toolbar}>
+          <Logo className={classes.logo} />
+        </div>
+        <List dense>
+          <NavLink href="/">
+            <ListItemIcon className={classes.listIcon}>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText
+              primaryTypographyProps={{
+                className: classes.typography,
+                color: 'inherit',
+              }}
+            >
+              Home
+            </ListItemText>
+          </NavLink>
+          <NavLink href="/search/">
+            <ListItemIcon className={classes.listIcon}>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText
+              primaryTypographyProps={{
+                className: classes.typography,
+                color: 'inherit',
+              }}
+            >
+              Search
+            </ListItemText>
+          </NavLink>
+        </List>
+        <CategoryList />
+      </Drawer>
+    )
+  }
+  return null
 }
 
 export default SideDrawer

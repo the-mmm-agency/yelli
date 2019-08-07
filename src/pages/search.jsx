@@ -24,6 +24,7 @@ const useStyles = makeStyles(theme => ({
   },
   searchFocus: {
     backgroundColor: theme.palette.input.focus,
+    boxShadow: theme.shadows[3],
   },
   search: {
     [theme.breakpoints.up('sm')]: {
@@ -33,7 +34,6 @@ const useStyles = makeStyles(theme => ({
     '&:hover': {
       backgroundColor: theme.palette.input.hover,
     },
-    boxShadow: theme.shadows[3],
     backgroundColor: theme.palette.input.default,
     borderRadius: theme.shape.borderRadius,
     margin: theme.spacing(2),
@@ -44,7 +44,7 @@ const useStyles = makeStyles(theme => ({
     scrollSnapAlign: 'start',
     zIndex: theme.zIndex.appBar,
     top: theme.spacing(3),
-    transition: theme.transitions.create('background-color'),
+    transition: theme.transitions.create(['background-color', 'box-shadow']),
   },
 }))
 
@@ -80,7 +80,7 @@ const Search = ({
             </InputAdornment>
           }
           classes={{
-            focus: classes.searchFocus,
+            focused: classes.searchFocus,
           }}
           onChange={handleChange}
           placeholder="Search…"

@@ -127,6 +127,7 @@ FeaturedAppCard.propTypes = {
 
 export const query = graphql`
   fragment FeaturedAppCard on GraphCMS_Application {
+    id
     title
     slug
     description
