@@ -6,7 +6,7 @@ import AppCard from 'components/appCard'
 import useScroll from 'components/scrollProvider'
 import AppListItem from 'components/appListItem'
 
-const AppComponent = ({ type, slug, page, ...props }) => {
+const AppComponent = ({ type, slug, ...props }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard
   const { setScroll } = useScroll()
   const handleClick = () => {
@@ -37,7 +37,6 @@ AppComponent.defaultProps = {
 }
 
 AppComponent.propTypes = {
-  page: PropTypes.string,
   slug: PropTypes.string.isRequired,
   type: PropTypes.oneOf(['list', 'card']),
 }

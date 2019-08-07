@@ -16,6 +16,8 @@ import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
 import { navigate } from 'gatsby'
 
+import useScroll from 'components/scrollProvider'
+
 const useStyles = makeStyles(theme => ({
   bottomNavigation: {
     height: 68,
@@ -50,10 +52,12 @@ const Navigation = () => {
   const [value, setValue] = useState(
     typeof window !== 'undefined' ? window.location.pathname : '/'
   )
+  const { setScroll } = useScroll()
   const onChange = (event, newValue) => {
     event.preventDefault()
     setValue(newValue)
     setTimeout(() => {
+      setScroll(0)
       navigate(newValue, { replace: true })
     }, 200)
   }

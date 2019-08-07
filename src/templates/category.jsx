@@ -1,4 +1,4 @@
-import { Grid, Typography } from '@material-ui/core'
+import { Divider, Grid, Typography } from '@material-ui/core'
 import { makeStyles, useTheme } from '@material-ui/styles'
 import React from 'react'
 import { graphql } from 'gatsby'
@@ -77,7 +77,6 @@ const Category = ({
         {applications.map(app => (
           <AppComponent
             key={app.id}
-            page={`/category/${slug}`}
             type={matches ? 'card' : 'list'}
             {...app}
           />

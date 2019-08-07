@@ -44,9 +44,12 @@ const useStyles = makeStyles(theme => ({
       style: 'solid',
       width: 1,
     },
+    [theme.breakpoints.down('sm')]: {
+      minWidth: 'calc(100% - 50px)',
+    },
     boxShadow: 'none',
     margin: theme.spacing(2),
-    minWidth: 400,
+    minWidth: 350,
     transition: theme.transitions.create(
       ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
       {

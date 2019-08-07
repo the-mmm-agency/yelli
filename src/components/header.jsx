@@ -1,5 +1,5 @@
 import { AppBar, IconButton, Hidden, Toolbar } from '@material-ui/core'
-import { KeyboardArrowLeft as BackIcon } from '@material-ui/icons'
+import { ArrowBack as BackIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 import { Location } from '@reach/router'
 import React from 'react'
@@ -81,11 +81,9 @@ const Header = () => {
                 <IconButton
                   className={pathname === '/' ? classes.hide : ''}
                   color="primary"
-                  onClick={() =>
-                    setTimeout(() => {
-                      window.history.back()
-                    }, 300)
-                  }
+                  onClick={() => {
+                    window.history.back()
+                  }}
                 >
                   <BackIcon />
                 </IconButton>

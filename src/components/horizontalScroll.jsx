@@ -24,6 +24,9 @@ const useStyles = makeStyles(theme => ({
       width: '100vw !important',
     },
     minHeight: 'fit-content !important',
+    scrollSnapType: 'x mandatory',
+    scrollSnapPointsX: 'repeat(100%)',
+    WebkitOverflowScrolling: 'touch',
     width: 'calc(100vw - 240px) !important',
   },
 }))

@@ -13,9 +13,6 @@ const BaseTheme = {
       'sans-serif',
     ].join(','),
     fontSize: 14,
-    h6: {
-      fontWeight: 600,
-    },
   },
 }
 

@@ -86,10 +86,8 @@ const Layout = ({ children }) => {
           noScrollX
           className={classes.scroll}
           scrollTop={
-            (typeof window !== 'undefined' &&
-              window.location.pathname === '/') ||
-            (typeof window !== 'undefined' &&
-              window.location.pathname.includes('/app/'))
+            typeof window !== 'undefined' &&
+            window.location.pathname.includes('/app/')
               ? 0
               : scroll
           }
