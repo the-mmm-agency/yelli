@@ -10,6 +10,8 @@ import { graphql, navigate } from 'gatsby'
 import Img from 'graphcms-image'
 import React from 'react'
 
+import useScroll from 'components/scrollProvider'
+
 const useStyles = makeStyles(theme => ({
   actionArea: {
     height: 175,
@@ -72,7 +74,9 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedAppCard = ({ title, banner, description, slug }) => {
   const classes = useStyles()
+  const { setScroll } = useScroll()
   const handleClick = () => {
+    setScroll(document.querySelector('#scroll').scrollTop)
     navigate(`/app/${slug}/`)
   }
   return (
