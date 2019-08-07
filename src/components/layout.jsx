@@ -56,9 +56,9 @@ const useStyles = makeStyles(theme => ({
   },
   scroll: {
     [theme.breakpoints.down('md')]: {
-      height: 'calc(100vh - 65px - 68px)',
+      height: 'calc(100vh - 65px - 68px) !important',
     },
-    height: 'calc(100vh - 65px)',
+    height: 'calc(100vh - 65px) !important',
     marginTop: 65,
     width: '100%',
     scrollPaddingTop: '100px',
