@@ -81,6 +81,7 @@ const AppCard = ({ handleClick, category, title, icon }) => {
           image={icon}
           className={classes.icon}
           maxWidth={200}
+          fadeIn={false}
           widthWebp
           title={title}
           alt="Application Icon"

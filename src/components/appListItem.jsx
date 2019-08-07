@@ -38,6 +38,7 @@ const AppListItem = ({ handleClick, category, title, icon }) => {
           image={icon}
           maxWidth={50}
           title={title}
+          fadeIn={false}
           withWebp
         />
       </ListItemIcon>
