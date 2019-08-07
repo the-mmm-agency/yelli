@@ -36,7 +36,6 @@ module.exports = {
         short_name: 'Yelli',
         start_url: '/',
         background_color: '#212337',
-        theme_color: '#ff5370',
         display: 'standalone',
         icon: 'src/images/yelli-logo.png', // This path is relative to the root of the site.
       },
