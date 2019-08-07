@@ -12,25 +12,15 @@ const useStyles = makeStyles(theme => ({
       content: "''",
       /* eslint-enable quotes */
     },
-    [theme.breakpoints.down('sm')]: {
-      width: '100vw',
-    },
     minHeight: 'fit-content',
     'padding-inline-start': `${theme.spacing(2)}px`,
-    width: 'calc(100vw - 240px)',
   },
   scroll: {
-    [theme.breakpoints.down('sm')]: {
-      marginRight: 0,
-      width: '100vw !important',
-    },
     scrollPaddingInlineStart: `${theme.spacing(2)}px`,
     minHeight: 'fit-content !important',
     scrollSnapType: 'x proximity',
     scrollSnapPointsX: 'repeat(100%)',
     WebkitOverflowScrolling: 'touch',
-    marginRight: 240,
-    width: 'calc(100vw - 240px) !important',
   },
 }))
 
