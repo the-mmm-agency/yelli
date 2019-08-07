@@ -58,8 +58,8 @@ const CategoryCard = ({ name, slug }) => {
   const classes = useStyles()
   const { setScroll } = useScroll()
   const handleClick = () => {
-    setScroll(0)
     navigate(`/category/${slug}/`)
+    setScroll(0)
   }
   return (
     <Grid item xs={6} md={4}>

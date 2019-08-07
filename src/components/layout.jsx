@@ -10,7 +10,6 @@ import SideDrawer from 'components/sideDrawer'
 const RouteContainer = posed.div({
   enter: {
     opacity: 1,
-    beforeChildren: 600,
     delay: 0,
   },
   exit: {
