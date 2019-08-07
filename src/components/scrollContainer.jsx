@@ -15,7 +15,6 @@ const useStyles = makeStyles(theme => ({
       width: 'calc(100% - 240px)',
     },
     height: 'calc(100vh - 65px) !important',
-    marginTop: 65,
     width: '100%',
     scrollPaddingTop: '100px',
     scrollSnapType: 'y mandatory',
@@ -27,6 +26,7 @@ const useStyles = makeStyles(theme => ({
 const ScrollContainer = ({ children, pathname }) => {
   const classes = useStyles()
   const { scroll } = useScroll()
+  const scrollTop = pathname.includes('/app/') ? 0 : scroll
   return (
     <Scrollbars
       createContext={true}
@@ -34,7 +34,7 @@ const ScrollContainer = ({ children, pathname }) => {
       mobileNative
       noScrollX
       className={classes.scroll}
-      scrollTop={pathname.includes('/app/') ? 0 : scroll}
+      scrollTop={scrollTop}
     >
       {children}
     </Scrollbars>

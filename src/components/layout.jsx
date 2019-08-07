@@ -11,7 +11,6 @@ const RouteContainer = posed.div({
   enter: {
     opacity: 1,
     delay: 100,
-    beforeChildren: 100,
   },
   exit: {
     opacity: 0,
@@ -23,20 +22,19 @@ const Layout = ({
   props: {
     location: { pathname },
   },
-}) => {
-  return (
-    <>
-      <Header pathname={pathname} />
-      <SideDrawer />
-      <ScrollContainer pathname={pathname}>
-        <PoseGroup>
-          <RouteContainer key={pathname}>{element}</RouteContainer>
-        </PoseGroup>
-      </ScrollContainer>
-      <Navigation pathname={pathname} />
-    </>
-  )
-}
+}) => (
+  <>
+    <Header pathname={pathname} />
+    <SideDrawer />
+    <PoseGroup>
+      <RouteContainer key={pathname}>
+        <div style={{ height: 64 }} />
+        <ScrollContainer pathname={pathname}>{element}</ScrollContainer>
+      </RouteContainer>
+    </PoseGroup>
+    <Navigation pathname={pathname} />
+  </>
+)
 
 Layout.propTypes = {
   element: PropTypes.element.isRequired,

@@ -72,24 +72,29 @@ const useStyles = makeStyles(theme => ({
 
 const Header = ({ pathname }) => {
   const classes = useStyles()
+  const handleLogoClick = () => {
+    navigate('/')
+  }
+  const handleBack = () => {
+    window.history.back()
+  }
+  const iconClass = pathname === '/' ? classes.hide : ''
   return (
     <AppBar className={classes.appBar}>
       <Toolbar>
         <Hidden mdUp>
           <>
             <IconButton
-              className={pathname === '/' ? classes.hide : ''}
+              className={iconClass}
               color="primary"
-              onClick={() => {
-                window.history.back()
-              }}
+              onClick={handleBack}
             >
               <BackIcon />
             </IconButton>
             <div
               className={classes.logoContainer}
-              onClick={() => navigate('/')}
-              onKeyDown={() => navigate('/')}
+              onClick={handleLogoClick}
+              onKeyDown={handleLogoClick}
               role="presentation"
             >
               <Logo className={classes.logo} />
