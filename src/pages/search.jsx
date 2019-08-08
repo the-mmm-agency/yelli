@@ -63,11 +63,11 @@ const Search = ({
   const [searchString, setSearchString] = useState(initialSearchString)
   const options = {
     shouldSort: true,
-    threshold: 0.6,
+    threshold: 0.5,
     tokenize: true,
     location: 0,
     distance: 100,
-    maxPatternLength: 32,
+    maxPatternLength: 16,
     minMatchCharLength: 1,
     keys: [
       {
@@ -81,7 +81,7 @@ const Search = ({
     ],
   }
   const fuse = new Fuse(applications, options)
-  const matchingApps = fuse.search(searchString).slice(0, 10)
+  const matchingApps = fuse.search(searchString).slice(0, 15)
   const handleKeyDown = e => {
     if (e.key === 'Enter') {
       navigate(`/app/${matchingApps[0].slug}`)
