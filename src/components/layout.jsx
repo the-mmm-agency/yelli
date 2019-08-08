@@ -10,15 +10,17 @@ import SideDrawer from 'components/sideDrawer'
 const RouteContainer = posed.div({
   enter: {
     opacity: 1,
+    y: 0,
     transition: {
-      duration: 225,
+      duration: 300,
       ease: [0.645, 0.045, 0.355, 1],
     },
   },
   exit: {
     opacity: 0,
+    y: 5,
     transition: {
-      duration: 195,
+      duration: 225,
       ease: [0.25, 0.46, 0.45, 0.94],
     },
   },

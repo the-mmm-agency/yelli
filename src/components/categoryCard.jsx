@@ -1,6 +1,6 @@
 import { Card, CardActionArea, Grid, Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -21,7 +21,7 @@ const useStyles = makeStyles(theme => ({
       backgroundSize: 'auto 105%',
       borderColor: 'transparent',
       boxShadow: '0 8px 8px 0 rgba(0,0,0,.2)',
-      transform: 'translateY(-3px)',
+      transform: 'translateY(-5px)',
     },
     alignItems: 'center',
     backgroundColor: theme.palette.background.default,
@@ -38,8 +38,8 @@ const useStyles = makeStyles(theme => ({
     transition: theme.transitions.create(
       ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
       {
-        duration: theme.transitions.duration.standard,
-        easing: theme.transitions.easing.easeInOut,
+        duration: theme.transitions.duration.complex,
+        easing: theme.transitions.easing.sharp,
       }
     ),
   },
