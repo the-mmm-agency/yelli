@@ -9,6 +9,7 @@ import useRememberScroll from 'util/useRememberScroll'
 
 const useStyles = makeStyles(theme => ({
   category: {
+    fontSize: '1rem',
     fontWeight: 500,
   },
   icon: {
