@@ -18,6 +18,7 @@ const useStyles = makeStyles(theme => ({
   list: {
     scrollSnapAlign: 'start',
     scrollMarginTop: '64px',
+    minHeight: '100vh',
   },
   root: {
     backgroundColor: theme.palette.background.paper,
