@@ -1,4 +1,9 @@
-import React, { createContext, useEffect, useContext, useState } from 'react'
+import React, {
+  createContext,
+  useLayoutEffect,
+  useContext,
+  useState,
+} from 'react'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CssBaseline from '@material-ui/core/CssBaseline'
@@ -6,6 +11,11 @@ import CssBaseline from '@material-ui/core/CssBaseline'
 import BaseTheme from 'themes/baseTheme'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
+
+const storage = {
+  get: () => window.localStorage.getItem('darkTheme'),
+  set: value => window.localStorage.setItem(value),
+}
 
 const defaultContextData = {
   dark: false,
@@ -16,16 +26,16 @@ const DarkThemeContext = createContext(defaultContextData)
 export const useDarkTheme = () => useContext(DarkThemeContext)
 
 const useEffectDarkMode = () => {
-  const matches = useMediaQuery('(prefers-color-scheme: dark)')
   const [themeState, setThemeState] = useState({
-    dark: matches,
+    dark: true,
     hasThemeLoaded: false,
   })
-  useEffect(() => {
-    const isDark =
-      typeof window !== 'undefined' &&
-      window.localStorage.getItem('darkTheme') === 'true'
-    setThemeState({ dark: isDark, hasThemeLoaded: true })
+  const matches = useMediaQuery('(prefers-color-scheme: dark)', { noSsr: true })
+  useLayoutEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isDark = storage.get() === null ? matches : storage.get() === 'true'
+      setThemeState({ dark: isDark, hasThemeLoaded: true })
+    }
   }, [])
   return [themeState, setThemeState]
 }
