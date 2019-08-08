@@ -9,8 +9,16 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Img from 'graphcms-image'
 
+import useRememberScroll from 'util/useRememberScroll'
+import Link from 'components/link'
+
 const useStyles = makeStyles(theme => ({
   actionArea: {
+    '&:hover': {
+      textDecoration: 'none',
+    },
+    color: 'inherit',
+    textDecoration: 'none',
     padding: theme.spacing(1),
   },
   actionAreaFocusHighlight: {
@@ -67,15 +75,18 @@ const useStyles = makeStyles(theme => ({
   },
 }))
 
-const AppCard = ({ handleClick, category, title, icon }) => {
+const AppCard = ({ category, title, icon, slug }) => {
   const classes = useStyles()
+  const handleClick = useRememberScroll()
 
   return (
     <Card className={classes.root} component="li">
       <CardActionArea
+        component={Link}
+        to={`/app/${slug}`}
+        onClick={handleClick}
         classes={{ focusHighlight: classes.actionAreaFocusHighlight }}
         className={classes.actionArea}
-        onClick={handleClick}
       >
         <Img
           image={icon}
@@ -114,12 +125,12 @@ AppCard.propTypes = {
   category: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }),
-  handleClick: PropTypes.func.isRequired,
   icon: PropTypes.shape({
     handle: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
   }).isRequired,
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 }
 

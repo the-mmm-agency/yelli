@@ -5,6 +5,7 @@ import React from 'react'
 
 import HorizontalScroll from 'components/horizontalScroll'
 import FeaturedAppCard from 'components/featuredAppCard'
+import Link from 'components/link'
 import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
 
@@ -65,9 +66,10 @@ const Home = ({ data: { latest, top, featured } }) => {
               Top Apps
             </Typography>
             <Button
+              component={Link}
+              to="/top-apps"
               className={classes.button}
               color="primary"
-              onClick={() => navigate('/top-apps')}
               size="small"
               variant="text"
             >
@@ -87,9 +89,10 @@ const Home = ({ data: { latest, top, featured } }) => {
               New Apps
             </Typography>
             <Button
+              component={Link}
               className={classes.button}
               color="primary"
-              onClick={() => navigate('/new')}
+              to="/new"
               size="small"
               variant="text"
             >

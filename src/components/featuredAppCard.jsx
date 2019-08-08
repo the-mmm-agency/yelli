@@ -6,11 +6,12 @@ import {
 } from '@material-ui/core'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 import Img from 'graphcms-image'
 import React from 'react'
 
-import useScroll from 'components/scrollProvider'
+import Link from 'components/link'
+import useRememberScroll from 'util/useRememberScroll'
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
@@ -46,7 +47,7 @@ const useStyles = makeStyles(theme => ({
     },
     backgroundColor: theme.palette.background.default,
     border: {
-      color: theme.palette.border,
+      color: theme.palette.divider,
       style: 'solid',
       width: 1,
     },
@@ -74,15 +75,13 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedAppCard = ({ title, banner, description, slug }) => {
   const classes = useStyles()
-  const { setScroll } = useScroll()
-  const handleClick = () => {
-    setScroll(document.querySelector('#scroll').scrollTop)
-    navigate(`/app/${slug}/`)
-  }
+  const handleClick = useRememberScroll()
   return (
     <Card className={classes.root}>
       <CardActionArea
         classes={{ focusHighlight: classes.actionArea }}
+        component={Link}
+        to={`/app/${slug}`}
         onClick={handleClick}
       >
         <Img

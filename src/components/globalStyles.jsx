@@ -15,13 +15,20 @@ const useStyles = makeStyles(theme => ({
       flexDirection: 'column',
     },
     '@global .ScrollbarsCustom-Thumb': {
-      background: `${theme.palette.scrollbar} !important`,
+      background: `${theme.palette.scrollbar.thumb} !important`,
       borderRadius: '0px !important',
     },
-    '@global .ScrollbarsCustom-Track': {
-      background: 'transparent !important',
+    '@global .ScrollbarsCustom-TrackX': {
+      background: `${theme.palette.scrollbar.track} !important`,
       borderRadius: '0px !important',
-      height: '5px !important',
+      height: '8px !important',
+    },
+    '@global .ScrollbarsCustom-TrackY': {
+      background: `${theme.palette.scrollbar.track} !important`,
+      borderRadius: '0px !important',
+      height: '100% !important',
+      top: '0px !important',
+      width: '12px !important',
     },
     body: {
       '-webkit-tap-highlight-color': 'transparent',

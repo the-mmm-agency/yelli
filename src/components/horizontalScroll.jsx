@@ -30,7 +30,7 @@ const HorizontalScroll = ({ children, ...props }) => {
     <Scrollbars
       noScrollY
       className={classes.scroll}
-      translateContentSizesToHolder
+      translateContentSizeYToHolder
       mobileNative
       {...props}
     >

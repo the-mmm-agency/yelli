@@ -6,7 +6,6 @@ import {
 
 const DarkTheme = {
   palette: {
-    border: lighten('#2a2e48', 0.12),
     background: {
       default: '#212337',
       paper: '#1e2132',
@@ -27,11 +26,14 @@ const DarkTheme = {
       light: lighten('#89ddff', 0.12),
       main: '#89ddff',
     },
-    scrollbar: darken('#1e2132', 0.2),
+    scrollbar: {
+      thumb: darken('#1e2132', 0.12),
+      track: darken('#212337', 0.08),
+    },
     text: {
       disabled: '#3c4361',
       primary: '#ffffff',
-      secondary: '#9da5d7',
+      secondary: '#777fab',
       placeholder: '#afbeeeaa',
     },
     tonalOffset: 0.2,

@@ -10,10 +10,10 @@ const AppComponent = ({ type, slug, ...props }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard
   const { setScroll } = useScroll()
   const handleClick = () => {
-    setScroll(document.querySelector('#scroll').scrollTop)
+    setScroll()
     navigate(`/app/${slug}/`)
   }
-  return <AppItem handleClick={handleClick} {...props} />
+  return <AppItem handleClick={handleClick} slug={slug} {...props} />
 }
 
 export const query = graphql`

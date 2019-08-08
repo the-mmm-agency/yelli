@@ -4,6 +4,9 @@ import PropTypes from 'prop-types'
 import React from 'react'
 import Img from 'graphcms-image'
 
+import Link from 'components/link'
+import useRememberScroll from 'util/useRememberScroll'
+
 const useStyles = makeStyles(theme => ({
   category: {
     fontWeight: 500,
@@ -16,20 +19,27 @@ const useStyles = makeStyles(theme => ({
     marginLeft: theme.spacing(1),
   },
   root: {
+    '&:hover': {
+      textDecoration: 'none',
+    },
     padding: theme.spacing(2),
+    color: 'inherit',
     scrollSnapAlign: 'start',
   },
 }))
 
-const AppListItem = ({ handleClick, category, title, icon }) => {
+const AppListItem = ({ category, title, icon, slug }) => {
   const classes = useStyles()
+  const handleClick = useRememberScroll()
   return (
     <ListItem
       button
+      component={Link}
+      to={`/app/${slug}`}
+      onClick={handleClick}
       className={classes.root}
       disableGutters
       divider
-      onClick={handleClick}
     >
       <ListItemIcon>
         <Img
@@ -45,7 +55,7 @@ const AppListItem = ({ handleClick, category, title, icon }) => {
       <ListItemText
         className={classes.text}
         primary={title}
-        primaryTypographyProps={{ variant: 'h6' }}
+        primaryTypographyProps={{ variant: 'h6', color: 'textPrimary' }}
         secondary={category.name}
         secondaryTypographyProps={{
           className: classes.category,
@@ -60,12 +70,12 @@ AppListItem.propTypes = {
   category: PropTypes.shape({
     name: PropTypes.string.isRequired,
   }).isRequired,
-  handleClick: PropTypes.func.isRequired,
   icon: PropTypes.shape({
     handle: PropTypes.string.isRequired,
     width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
   }).isRequired,
+  slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
 }
 

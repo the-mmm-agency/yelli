@@ -49,10 +49,10 @@ const Category = ({
   return (
     <>
       <SEO title={`${name} Apps`} />
-      <Hidden smUp>
+      <Hidden smUp implementation="css">
         <AppList name={name} apps={applications} />
       </Hidden>
-      <Hidden smDown>
+      <Hidden smDown implementation="css">
         <Typography className={classes.header} component="h1" variant="h5">
           {name}
         </Typography>

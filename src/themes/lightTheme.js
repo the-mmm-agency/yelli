@@ -23,7 +23,10 @@ const LightTheme = {
       light: lighten('#ff5370', 0.12),
       main: '#ff5370',
     },
-    scrollbar: darken('#fbfcfd', 0.12),
+    scrollbar: {
+      thumb: darken('#fbfcfd', 0.12),
+      track: darken('#fbfcfd', 0.05),
+    },
     secondary: {
       dark: lighten('#89ddff', 0.12),
       light: lighten('#89ddff', 0.12),

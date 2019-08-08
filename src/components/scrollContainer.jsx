@@ -1,5 +1,5 @@
-import React from 'react'
-import Scrollbars from 'react-scrollbars-custom'
+import React, { useContext } from 'react'
+import Scrollbars, { ScrollbarContext } from 'react-scrollbars-custom'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 
@@ -13,14 +13,12 @@ const useStyles = makeStyles(theme => ({
     },
     [theme.breakpoints.up('md')]: {
       marginLeft: 240,
-      width: 'calc(100% - 240px)',
+      width: 'calc(100% - 240px) !important',
     },
     height: 'calc(100vh - 65px) !important',
-    width: '100%',
     scrollPaddingTop: '100px',
     scrollSnapType: 'y mandatory',
     scrollSnapPointsY: 'repeat(100%)',
-    WebkitOverflowScrolling: 'touch',
   },
 }))
 
@@ -30,7 +28,7 @@ const ScrollContainer = ({ children, pathname }) => {
   const scrollTop = pathname.includes('/app/') ? 0 : scroll
   return (
     <Scrollbars
-      createContext={true}
+      createContext
       id="scroll"
       mobileNative
       noScrollX
@@ -41,6 +39,9 @@ const ScrollContainer = ({ children, pathname }) => {
     </Scrollbars>
   )
 }
+
+export const useScrollContainer = () =>
+  useContext(ScrollbarContext).parentScrollbar
 
 ScrollContainer.propTypes = {
   pathname: PropTypes.string.isRequired,

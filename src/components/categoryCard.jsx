@@ -4,6 +4,7 @@ import { graphql, navigate } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Link from 'components/link'
 import CategoryIcon from 'components/categoryIcon'
 import useScroll from 'components/scrollProvider'
 
@@ -58,16 +59,17 @@ const CategoryCard = ({ name, slug }) => {
   const classes = useStyles()
   const { setScroll } = useScroll()
   const handleClick = () => {
-    setScroll(document.querySelector('#scroll').scrollTop)
-    navigate(`/category/${slug}/`)
-    setTimeout(() => {
-      setScroll(0)
-    }, 300)
+    setScroll(0)
   }
   return (
     <Grid item xs={6} md={4}>
       <Card className={classes.category}>
-        <CardActionArea className={classes.actionArea} onClick={handleClick}>
+        <CardActionArea
+          component={Link}
+          to={`/category/${slug}`}
+          className={classes.actionArea}
+          onClick={handleClick}
+        >
           <CategoryIcon className={classes.icon} name={name} />
           <Typography className={classes.name} color="textPrimary" variant="h6">
             {name}

@@ -1,10 +1,15 @@
-import { Drawer, List, ListItemIcon, ListItemText } from '@material-ui/core'
+import {
+  Drawer,
+  List,
+  ListItemIcon,
+  ListItemText,
+  Hidden,
+} from '@material-ui/core'
 import {
   HomeOutlined as HomeIcon,
   SearchOutlined as SearchIcon,
 } from '@material-ui/icons'
-import { makeStyles, useTheme } from '@material-ui/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 
 import CategoryList from 'components/categoryList'
@@ -56,10 +61,8 @@ const useStyles = makeStyles(theme => ({
 
 const SideDrawer = () => {
   const classes = useStyles()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.up('md'))
-  if (matches) {
-    return (
+  return (
+    <Hidden implementation="css" smDown>
       <Drawer
         classes={{
           paper: classes.drawerPaper,
@@ -100,9 +103,8 @@ const SideDrawer = () => {
         </List>
         <CategoryList />
       </Drawer>
-    )
-  }
-  return null
+    </Hidden>
+  )
 }
 
 export default SideDrawer

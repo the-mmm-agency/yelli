@@ -71,7 +71,8 @@
           ["pages", "./src/pages"],
           ["styles", "./src/styles"],
           ["templates", "./src/templates"],
-          ["themes", "./src/themes"]
+          ["themes", "./src/themes"],
+          ["util", "./src/util"]
         ],
         "extensions": [".js", ".jsx"]
       }

@@ -28,7 +28,7 @@ const useStyles = makeStyles(theme => ({
   },
   hide: {
     opacity: 0,
-    transition: theme.transitions.create(['opacity'], {
+    transition: theme.transitions.create('opacity', {
       duration: theme.transitions.duration.standard,
       easing: theme.transitions.easing.sharp,
     }),

@@ -102,6 +102,7 @@ const Application = ({
             <Img
               alt="Application Icon"
               title={title}
+              fadeIn={false}
               className={classes.icon}
               itemprop="image"
               withWebp

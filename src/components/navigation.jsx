@@ -2,6 +2,7 @@ import {
   AppBar,
   BottomNavigation,
   BottomNavigationAction,
+  Hidden,
 } from '@material-ui/core'
 import {
   Home,
@@ -12,8 +13,7 @@ import {
   CategoryOutlined,
   PollOutlined,
 } from '@material-ui/icons'
-import { makeStyles, useTheme } from '@material-ui/styles'
-import useMediaQuery from '@material-ui/core/useMediaQuery'
+import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { navigate } from 'gatsby'
 import PropTypes from 'prop-types'
@@ -52,15 +52,13 @@ const useStyles = makeStyles(theme => ({
 const Navigation = ({ pathname }) => {
   const classes = useStyles()
   const { setScroll } = useScroll()
-  const theme = useTheme()
-  const matches = useMediaQuery(theme.breakpoints.down('sm'))
   const onChange = (event, newValue) => {
     event.preventDefault()
     navigate(newValue, { replace: true })
     setScroll(0)
   }
-  if (matches) {
-    return (
+  return (
+    <Hidden implementation="css" mdUp>
       <AppBar className={classes.root}>
         <BottomNavigation
           className={classes.bottomNavigation}
@@ -111,9 +109,8 @@ const Navigation = ({ pathname }) => {
           />
         </BottomNavigation>
       </AppBar>
-    )
-  }
-  return null
+    </Hidden>
+  )
 }
 
 Navigation.propTypes = {
