@@ -64,11 +64,21 @@ const Search = ({
   const options = {
     shouldSort: true,
     threshold: 0.6,
+    tokenize: true,
     location: 0,
     distance: 100,
     maxPatternLength: 32,
     minMatchCharLength: 1,
-    keys: ['title'],
+    keys: [
+      {
+        name: 'title',
+        weight: 0.7,
+      },
+      {
+        name: 'category.name',
+        weight: 0.3,
+      },
+    ],
   }
   const fuse = new Fuse(applications, options)
   const matchingApps = fuse.search(searchString).slice(0, 10)
