@@ -94,7 +94,7 @@ const Search = ({
           }}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
-          placeholder="Search…"
+          placeholder="Just start typing…"
         />
         <List className={classes.list}>
           {matchingApps.map(app => (
