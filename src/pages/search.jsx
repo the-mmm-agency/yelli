@@ -2,7 +2,7 @@ import { Grid, InputBase, InputAdornment, List } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import Fuse from 'fuse.js'
 
 import AppComponent from 'components/appComponent'
@@ -66,10 +66,15 @@ const Search = ({
     keys: ['title'],
   }
   const fuse = new Fuse(applications, options)
+  const matchingApps = fuse.search(searchString).slice(0, 10)
+  const handleKeyDown = e => {
+    if (e.key === 'Enter') {
+      navigate(`/app/${matchingApps[0].slug}`)
+    }
+  }
   const handleChange = e => {
     setSearchString(e.target.value)
   }
-  const matchingApps = fuse.search(searchString).slice(0, 10)
   return (
     <>
       <SEO title="Search" />
@@ -88,6 +93,7 @@ const Search = ({
             focused: classes.searchFocus,
           }}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
           placeholder="Search…"
         />
         <List className={classes.list}>
