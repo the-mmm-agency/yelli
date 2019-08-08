@@ -3,6 +3,7 @@ import { Search as SearchIcon } from '@material-ui/icons'
 import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
 import { graphql } from 'gatsby'
+import Fuse from 'fuse.js'
 
 import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
@@ -55,16 +56,20 @@ const Search = ({
 }) => {
   const classes = useStyles()
   const [searchString, setSearchString] = useState('')
+  const options = {
+    shouldSort: true,
+    threshold: 0.6,
+    location: 0,
+    distance: 100,
+    maxPatternLength: 32,
+    minMatchCharLength: 1,
+    keys: ['title'],
+  }
+  const fuse = new Fuse(applications, options)
   const handleChange = e => {
     setSearchString(e.target.value)
   }
-  const matchingApps = applications
-    .filter(application =>
-      searchString === ''
-        ? true
-        : application.title.toLowerCase().includes(searchString.toLowerCase())
-    )
-    .slice(0, 10)
+  const matchingApps = fuse.search(searchString).slice(0, 10)
   return (
     <>
       <SEO title="Search" />
