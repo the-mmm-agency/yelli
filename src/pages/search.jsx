@@ -55,7 +55,12 @@ const Search = ({
   },
 }) => {
   const classes = useStyles()
-  const [searchString, setSearchString] = useState('')
+  const initialSearchString =
+    typeof window !== 'undefined' &&
+    window.localStorage.getItem('searchString') !== null
+      ? window.localStorage.getItem('searchString')
+      : ''
+  const [searchString, setSearchString] = useState(initialSearchString)
   const options = {
     shouldSort: true,
     threshold: 0.6,
@@ -74,6 +79,7 @@ const Search = ({
   }
   const handleChange = e => {
     setSearchString(e.target.value)
+    window.localStorage.setItem('searchString', e.target.value)
   }
   return (
     <>
@@ -93,6 +99,7 @@ const Search = ({
             focused: classes.searchFocus,
           }}
           onChange={handleChange}
+          value={searchString}
           onKeyDown={handleKeyDown}
           placeholder="Just start typing…"
         />
