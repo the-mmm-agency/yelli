@@ -10,6 +10,9 @@ const useStyles = makeStyles(theme => ({
     [theme.breakpoints.down('sm')]: {
       height: 'calc(100vh - 65px - 68px) !important',
       paddingBottom: 64,
+      '@media all and (display-mode: standalone)': {
+        paddingBottom: 0,
+      },
     },
     [theme.breakpoints.up('md')]: {
       marginLeft: 240,
