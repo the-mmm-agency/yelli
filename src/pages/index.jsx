@@ -123,7 +123,7 @@ export const query = graphql`
       }
     }
     top: graphcms {
-      applications(first: 15, orderBy: rank_DESC) {
+      applications(first: 15, orderBy: rank_ASC) {
         ...AppCard
       }
     }
