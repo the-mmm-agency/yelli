@@ -42,6 +42,9 @@ const LogoButton = styled(ButtonBase)`
     border-right: 1px solid ${theme('palette.divider')};
     width: 216px;
   }
+  .gatsby-image-wrapper {
+    margin: auto;
+  }
 `
 
 const Header = ({ pathname }) => (
