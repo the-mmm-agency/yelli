@@ -26,10 +26,7 @@ const Description = styled(Typography)`
   ${down('sm')} {
     max-width: 80%;
   }
-  ${down('md')} {
-    margin-left: ${spacing(3)};
-  }
-  margin-left: ${spacing(6)};
+  margin-left: ${spacing(3)};
   margin-top: ${spacing(1)};
   margin-bottom: ${spacing(3)};
   max-width: 50%;
@@ -46,7 +43,10 @@ const Icon = styled(Img)`
 `
 
 const Info = styled(Grid)`
-  padding: ${spacing(2)} 0 ${spacing(2)} ${spacing(3)};
+  ${down('sm')} {
+    padding: ${spacing(1)} 0 ${spacing(1)} 0;
+  }
+  padding: ${spacing(2)} 0 ${spacing(2)} 0;
   flex-basis: ${spacing(16)};
 `
 

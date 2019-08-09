@@ -1,16 +1,9 @@
-import { List as MuiList } from '@material-ui/core'
+import { List } from '@material-ui/core'
 import React from 'react'
 import PropTypes from 'prop-types'
-import styled from '@emotion/styled'
-import { theme } from 'styled-tools'
 
 import AppComponent from 'components/appComponent'
 import ListHeader from 'components/listHeader'
-
-const List = styled(MuiList)`
-  background-color: ${theme('palette.background.paper')};
-  min-height: 100vh;
-`
 
 const AppList = ({ name, apps }) => (
   <>

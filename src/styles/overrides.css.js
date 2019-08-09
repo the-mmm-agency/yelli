@@ -1,12 +1,18 @@
 import { css } from '@emotion/core'
 
 const overrides = ({ theme }) => css`
+  .MuiList-root {
+    background-color: ${theme.palette.background.paper};
+  }
   .MuiAppBar-root {
     background-color: ${theme.palette.background.paper};
   }
   .MuiAppBar-root,
   .MuiCard-root {
     box-shadow: none;
+  }
+  .MuiBottomNavigation-root {
+    height: 68px;
   }
   .MuiCardContent-root {
     & > * {

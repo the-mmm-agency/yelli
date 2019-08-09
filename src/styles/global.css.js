@@ -8,6 +8,9 @@ const globalStyle = ({ theme }) => css`
   ::placeholder {
     color: ${theme.palette.text.placeholder};
   }
+  body {
+    overflow: hidden;
+  }
   html,
   body {
     overflow-x: hidden;
