@@ -6,6 +6,7 @@ import Img from 'graphcms-image'
 
 import Link from 'components/link'
 import useRememberScroll from 'util/useRememberScroll'
+import useScroll from 'components/scrollProvider'
 
 const useStyles = makeStyles(theme => ({
   category: {
@@ -31,40 +32,47 @@ const useStyles = makeStyles(theme => ({
 
 const AppListItem = ({ category, title, icon, slug }) => {
   const classes = useStyles()
-  const handleClick = useRememberScroll()
+  const rememberScroll = useRememberScroll()
+  const { setNextPageTop } = useScroll()
+  const handleClick = () => {
+    rememberScroll()
+    setNextPageTop(true)
+  }
   return (
-    <ListItem
-      button
-      component={Link}
-      to={`/app/${slug}`}
-      onClick={handleClick}
-      className={classes.root}
-      disableGutters
-      divider
-    >
-      <ListItemIcon>
-        <Img
-          alt="Application Icon"
-          className={classes.icon}
-          image={icon}
-          maxWidth={50}
-          title={title}
-          fadeIn={false}
-          withWebp
+    <li>
+      <ListItem
+        button
+        component={Link}
+        to={`/app/${slug}`}
+        onClick={handleClick}
+        className={classes.root}
+        disableGutters
+        divider
+      >
+        <ListItemIcon>
+          <Img
+            alt="Application Icon"
+            className={classes.icon}
+            image={icon}
+            maxWidth={50}
+            title={title}
+            fadeIn={false}
+            withWebp
+          />
+        </ListItemIcon>
+        <ListItemText
+          className={classes.text}
+          primary={title}
+          primaryTypographyProps={{ variant: 'h6', color: 'textPrimary' }}
+          secondary={category.name}
+          secondaryTypographyProps={{
+            className: classes.category,
+            color: 'textSecondary',
+            variant: 'subtitle2',
+          }}
         />
-      </ListItemIcon>
-      <ListItemText
-        className={classes.text}
-        primary={title}
-        primaryTypographyProps={{ variant: 'h6', color: 'textPrimary' }}
-        secondary={category.name}
-        secondaryTypographyProps={{
-          className: classes.category,
-          color: 'textSecondary',
-          variant: 'subtitle2',
-        }}
-      />
-    </ListItem>
+      </ListItem>
+    </li>
   )
 }
 AppListItem.propTypes = {

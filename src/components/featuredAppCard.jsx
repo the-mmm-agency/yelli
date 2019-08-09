@@ -12,6 +12,7 @@ import React from 'react'
 
 import Link from 'components/link'
 import useRememberScroll from 'util/useRememberScroll'
+import useScroll from 'components/scrollProvider'
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
@@ -75,7 +76,12 @@ const useStyles = makeStyles(theme => ({
 
 const FeaturedAppCard = ({ title, banner, description, slug }) => {
   const classes = useStyles()
-  const handleClick = useRememberScroll()
+  const rememberScroll = useRememberScroll()
+  const { setNextPageTop } = useScroll()
+  const handleClick = () => {
+    rememberScroll()
+    setNextPageTop(true)
+  }
   return (
     <Card className={classes.root}>
       <CardActionArea

@@ -10,6 +10,7 @@ import React from 'react'
 import Img from 'graphcms-image'
 
 import useRememberScroll from 'util/useRememberScroll'
+import useScroll from 'components/scrollProvider'
 import Link from 'components/link'
 
 const useStyles = makeStyles(theme => ({
@@ -77,7 +78,12 @@ const useStyles = makeStyles(theme => ({
 
 const AppCard = ({ category, title, icon, slug }) => {
   const classes = useStyles()
-  const handleClick = useRememberScroll()
+  const rememberScroll = useRememberScroll()
+  const { setNextPageTop } = useScroll()
+  const handleClick = () => {
+    rememberScroll()
+    setNextPageTop(true)
+  }
 
   return (
     <Card className={classes.root} component="li">

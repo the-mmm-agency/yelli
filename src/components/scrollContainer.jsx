@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Scrollbars, { ScrollbarContext } from 'react-scrollbars-custom'
 import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
@@ -27,8 +27,17 @@ const useStyles = makeStyles(theme => ({
 
 const ScrollContainer = ({ children, pathname }) => {
   const classes = useStyles()
-  const { scroll } = useScroll()
-  const scrollTop = pathname.includes('/app/') ? 0 : scroll
+  const { scroll, nextPageTop, setNextPageTop } = useScroll()
+  const [scrollTop, setScrollTop] = useState(0)
+  useEffect(() => {
+    setScrollTop(scroll)
+  }, [scroll])
+  useEffect(() => {
+    if (nextPageTop) {
+      setScrollTop(0)
+      setNextPageTop(false)
+    }
+  }, [pathname])
   return (
     <Scrollbars
       createContext

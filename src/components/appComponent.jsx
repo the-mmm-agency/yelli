@@ -1,19 +1,13 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 
 import AppCard from 'components/appCard'
-import useScroll from 'components/scrollProvider'
 import AppListItem from 'components/appListItem'
 
 const AppComponent = ({ type, slug, ...props }) => {
   const AppItem = type === 'list' ? AppListItem : AppCard
-  const { setScroll } = useScroll()
-  const handleClick = () => {
-    setScroll()
-    navigate(`/app/${slug}/`)
-  }
-  return <AppItem handleClick={handleClick} slug={slug} {...props} />
+  return <AppItem slug={slug} {...props} />
 }
 
 export const query = graphql`

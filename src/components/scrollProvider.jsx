@@ -3,7 +3,8 @@ import createUseContext from 'constate'
 
 const useScroll = () => {
   const [scroll, setScroll] = useState(0)
-  return { scroll, setScroll }
+  const [nextPageTop, setNextPageTop] = useState(true)
+  return { scroll, setScroll, nextPageTop, setNextPageTop }
 }
 
 const useScrollContext = createUseContext(useScroll)

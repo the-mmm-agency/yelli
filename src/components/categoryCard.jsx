@@ -7,6 +7,7 @@ import PropTypes from 'prop-types'
 import Link from 'components/link'
 import CategoryIcon from 'components/categoryIcon'
 import useScroll from 'components/scrollProvider'
+import useRememberScroll from 'util/useRememberScroll'
 
 const useStyles = makeStyles(theme => ({
   actionArea: {
@@ -57,9 +58,11 @@ const useStyles = makeStyles(theme => ({
 
 const CategoryCard = ({ name, slug }) => {
   const classes = useStyles()
-  const { setScroll } = useScroll()
+  const rememberScroll = useRememberScroll()
+  const { setNextPageTop } = useScroll()
   const handleClick = () => {
-    setScroll(0)
+    rememberScroll()
+    setNextPageTop(true)
   }
   return (
     <Grid item xs={6} md={4}>
