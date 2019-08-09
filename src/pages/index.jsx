@@ -1,114 +1,44 @@
-import { Divider, Grid, Typography, Button } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
-import { graphql, navigate } from 'gatsby'
+import { Divider, Grid } from '@material-ui/core'
+import { graphql } from 'gatsby'
+import styled from '@emotion/styled'
 import React from 'react'
 
-import HorizontalScroll from 'components/horizontalScroll'
 import FeaturedAppCard from 'components/featuredAppCard'
-import Link from 'components/link'
 import AppComponent from 'components/appComponent'
+import HomeSection from 'components/homeSection'
+import { spacing } from 'util/theme'
 import SEO from 'components/seo'
 
-const useStyles = makeStyles(theme => ({
-  button: {
-    fontWeight: 600,
-    margin: {
-      left: 'auto',
-      right: theme.spacing(3),
-    },
-    textTransform: 'capitalize',
-  },
-  divider: {
-    width: '100%',
-  },
-  header: {
-    display: 'flex',
-    padding: {
-      left: theme.spacing(4),
-    },
-  },
-  root: {
-    padding: {
-      top: theme.spacing(1),
-    },
-  },
-  section: {
-    padding: {
-      top: theme.spacing(2),
-      bottom: theme.spacing(1),
-    },
-    width: '100%',
-  },
-}))
+const Root = styled(Grid)`
+  padding-top: ${spacing(1)};
+`
 
-const Home = ({ data: { latest, top, featured } }) => {
-  const classes = useStyles()
-  return (
-    <>
-      <SEO title="Home" />
-      <Grid className={classes.root} container>
-        <div className={classes.section}>
-          <div className={classes.header}>
-            <Typography component="h2" gutterBottom variant="h6">
-              Featured Apps
-            </Typography>
-          </div>
-          <HorizontalScroll>
-            {featured.applications.map(({ id, ...app }) => (
-              <FeaturedAppCard key={id} {...app} />
-            ))}
-          </HorizontalScroll>
-        </div>
-        <Divider className={classes.divider} />
-        <div className={classes.section}>
-          <div className={classes.header}>
-            <Typography component="h2" gutterBottom variant="h6">
-              Top Apps
-            </Typography>
-            <Button
-              component={Link}
-              to="/top-apps"
-              className={classes.button}
-              color="primary"
-              size="small"
-              variant="text"
-            >
-              view more
-            </Button>
-          </div>
-          <HorizontalScroll>
-            {top.applications.map(({ id, ...app }) => (
-              <AppComponent key={id} {...app} />
-            ))}
-          </HorizontalScroll>
-        </div>
-        <Divider className={classes.divider} />
-        <div className={classes.section}>
-          <div className={classes.header}>
-            <Typography component="h2" gutterBottom variant="h6">
-              New Apps
-            </Typography>
-            <Button
-              component={Link}
-              className={classes.button}
-              color="primary"
-              to="/new"
-              size="small"
-              variant="text"
-            >
-              view all
-            </Button>
-          </div>
-          <HorizontalScroll>
-            {latest.applications.map(({ id, ...app }) => (
-              <AppComponent key={id} {...app} />
-            ))}
-          </HorizontalScroll>
-        </div>
-      </Grid>
-    </>
-  )
-}
+const Home = ({ data: { latest, top, featured } }) => (
+  <>
+    <SEO title="Home" />
+    <Root container direction="column">
+      <HomeSection
+        title="Featured Apps"
+        apps={featured.applications}
+        AppComponent={FeaturedAppCard}
+      />
+      <Divider variant="fullWidth" />
+      <HomeSection
+        title="Top Apps"
+        link="/top-apps"
+        apps={top.applications}
+        AppComponent={AppComponent}
+      />
+      <Divider variant="fullWidth" />
+      <HomeSection
+        title="New Apps"
+        link="/new-apps"
+        apps={latest.applications}
+        AppComponent={AppComponent}
+      />
+    </Root>
+  </>
+)
 
 export const query = graphql`
   query homePage {

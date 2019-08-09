@@ -1,44 +1,27 @@
-import { Grid } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
-import Scrollbars from 'react-scrollbars-custom'
+import styled from '@emotion/styled'
 import React from 'react'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '&::after': {
-      minWidth: 15,
-      minHeight: 'fit-content',
-      /* eslint-disable quotes */
-      content: "''",
-      /* eslint-enable quotes */
-    },
-    minHeight: 'fit-content',
-    'padding-inline-start': `${theme.spacing(2)}px`,
-  },
-  scroll: {
-    scrollPaddingInlineStart: `${theme.spacing(2)}px`,
-    minHeight: 'fit-content !important',
-    scrollSnapType: 'x proximity',
-    scrollSnapPointsX: 'repeat(100%)',
-    WebkitOverflowScrolling: 'touch',
-  },
-}))
+import { spacing } from 'util/theme'
 
-const HorizontalScroll = ({ children, ...props }) => {
-  const classes = useStyles()
-  return (
-    <Scrollbars
-      noScrollY
-      className={classes.scroll}
-      translateContentSizeYToHolder
-      mobileNative
-      {...props}
-    >
-      <Grid container className={classes.root} wrap="nowrap">
-        {children}
-      </Grid>
-    </Scrollbars>
-  )
-}
+const Scroll = styled.ul`
+  &::after {
+    min-width: ${spacing(2)};
+    min-height: fit-content;
+    content: '';
+  }
+  display: inline-flex;
+  flex-wrap: nowrap;
+  overflow: scroll hidden;
+  min-height: fit-content;
+  padding-inline-start: ${spacing(2)};
+  scroll-padding-inline-start: ${spacing(2)};
+  min-height: fit-content !important;
+  scroll-snap-type: x proximity;
+  scroll-snap-points-x: repeat(100%);
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+`
+
+const HorizontalScroll = ({ children }) => <Scroll>{children}</Scroll>
 
 export default HorizontalScroll

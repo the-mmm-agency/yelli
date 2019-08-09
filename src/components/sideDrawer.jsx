@@ -1,5 +1,5 @@
 import {
-  Drawer,
+  Drawer as MuiDrawer,
   List,
   ListItemIcon,
   ListItemText,
@@ -9,102 +9,71 @@ import {
   HomeOutlined as HomeIcon,
   SearchOutlined as SearchIcon,
 } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
 import React from 'react'
+import { theme } from 'styled-tools'
+import styled from '@emotion/styled'
+import { css } from '@emotion/core'
 
+import { up } from 'util/theme'
 import CategoryList from 'components/categoryList'
 import NavLink from 'components/navLink'
 import Logo from 'components/logo'
 
 export const drawerWidth = 240
 
-const useStyles = makeStyles(theme => ({
-  drawer: {
-    flexShrink: 0,
-    width: drawerWidth,
-    zIndex: 1000,
-  },
-  drawerPaper: {
-    borderColor: theme.palette.divider,
-    overflow: 'hidden',
-    width: drawerWidth,
-  },
-  listIcon: {
-    color: 'inherit',
-  },
-  logo: {
-    '@media(min-width: 0px) and (orientation: landscape)': {
-      height: 48,
-    },
-    [theme.breakpoints.up('sm')]: {
-      height: 64,
-    },
-    height: 56,
-    width: '30%',
-    margin: 'auto',
-  },
-  toolbar: {
-    ...theme.mixins.toolbar,
-    borderBottom: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1,
-    },
-    display: 'flex',
-    lineHeight: 0,
-    width: drawerWidth,
-  },
-  typography: {
-    fontWeight: 'inherit',
-  },
-}))
+const LogoContainer = styled.div`
+  min-height: 56px;
+  border-bottom: 1px solid ${theme('palette.divider')};
+  display: flex;
+  line-height: 0;
+  width: ${drawerWidth};
+  @media (min-width: 0px) and (orientation: landscape) {
+    min-height: 48px;
+  }
+  ${up('sm')} {
+    min-height: 64px;
+  }
+`
 
-const SideDrawer = () => {
-  const classes = useStyles()
-  return (
-    <Hidden implementation="css" smDown>
-      <Drawer
-        classes={{
-          paper: classes.drawerPaper,
-        }}
-        className={classes.drawer}
-        variant="permanent"
-      >
-        <div className={classes.toolbar}>
-          <Logo className={classes.logo} />
-        </div>
-        <List dense>
-          <NavLink href="/">
-            <ListItemIcon className={classes.listIcon}>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText
-              primaryTypographyProps={{
-                className: classes.typography,
-                color: 'inherit',
-              }}
-            >
-              Home
-            </ListItemText>
-          </NavLink>
-          <NavLink href="/search/">
-            <ListItemIcon className={classes.listIcon}>
-              <SearchIcon />
-            </ListItemIcon>
-            <ListItemText
-              primaryTypographyProps={{
-                className: classes.typography,
-                color: 'inherit',
-              }}
-            >
-              Search
-            </ListItemText>
-          </NavLink>
-        </List>
-        <CategoryList />
-      </Drawer>
-    </Hidden>
-  )
-}
+const Drawer = styled(MuiDrawer)`
+  flex-shrink: 0;
+  width: ${drawerWidth}px;
+  z-index: 1000;
+  .MuiDrawer-paper {
+    border-color: ${theme('palette.divider')};
+    overflow: hidden;
+    width: ${drawerWidth}px;
+  }
+`
+
+const SideDrawer = () => (
+  <Hidden implementation="css" smDown>
+    <Drawer variant="permanent">
+      <LogoContainer>
+        <Logo
+          css={css`
+            height: 100%;
+            margin: auto;
+          `}
+        />
+      </LogoContainer>
+      <List dense>
+        <NavLink to="/">
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText>Home</ListItemText>
+        </NavLink>
+        <NavLink to="/search/">
+          <ListItemIcon>
+            <SearchIcon />
+          </ListItemIcon>
+          <ListItemText>Search</ListItemText>
+        </NavLink>
+      </List>
+      <CategoryList />
+    </Drawer>
+  </Hidden>
+)
 
 export default SideDrawer

@@ -1,11 +1,12 @@
 import posed, { PoseGroup } from 'react-pose'
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
 
 import Header from 'components/header'
 import Navigation from 'components/navigation'
-import ScrollContainer from 'components/scrollContainer'
 import SideDrawer from 'components/sideDrawer'
+import { up } from 'util/theme'
 
 const RouteContainer = posed.div({
   enter: {
@@ -26,23 +27,31 @@ const RouteContainer = posed.div({
   },
 })
 
+const Content = styled(RouteContainer)`
+  display: flex;
+  margin-top: 64px;
+  flex-direction: column;
+  flex: 1 1 100%;
+  max-width: 100vw;
+  ${up('md')} {
+    max-width: calc(100vw - 240px);
+  }
+`
+
 const Layout = ({
   element,
   props: {
     location: { pathname },
   },
 }) => (
-  <>
+  <div css={{ display: 'flex' }}>
     <Header pathname={pathname} />
     <SideDrawer />
     <PoseGroup>
-      <RouteContainer key={pathname}>
-        <div style={{ height: 65 }} />
-        <ScrollContainer pathname={pathname}>{element}</ScrollContainer>
-      </RouteContainer>
+      <Content key={pathname}>{element}</Content>
     </PoseGroup>
     <Navigation pathname={pathname} />
-  </>
+  </div>
 )
 
 Layout.propTypes = {

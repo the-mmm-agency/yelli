@@ -1,33 +1,20 @@
 import { Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
-import React from 'react'
+import styled from '@emotion/styled'
+import { theme } from 'styled-tools'
 
-const useStyles = makeStyles(theme => ({
-  header: {
-    borderBottom: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1,
-    },
-    backgroundColor: theme.palette.background.paper,
-    padding: theme.spacing(2),
-    scrollSnapAlign: 'start',
-    fontWeight: 500,
-  },
-}))
+import { spacing } from 'util/theme'
 
-const ListHeader = ({ children, ...props }) => {
-  const classes = useStyles()
-  return (
-    <Typography
-      className={classes.header}
-      component="h1"
-      variant="h5"
-      {...props}
-    >
-      {children}
-    </Typography>
-  )
+const ListHeader = styled(Typography)`
+  border-bottom: 1px solid ${theme('palette.divider')};
+  background-color: ${theme('palette.background.paper')};
+  padding: ${spacing(2)};
+  font-weight: 500;
+  scroll-snap-align: start;
+`
+
+ListHeader.defaultProps = {
+  component: 'h1',
+  variant: 'h5',
 }
 
 export default ListHeader

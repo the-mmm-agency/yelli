@@ -5,10 +5,12 @@ import React, {
   useState,
 } from 'react'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import BaseTheme from 'themes/baseTheme'
+import GlobalStyles from 'components/globalStyles'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
 
@@ -58,16 +60,19 @@ export const ThemeProvider = ({ children }) => {
   const computedTheme = createTheme(themeState.dark ? DarkTheme : LightTheme)
 
   return (
-    <MuiThemeProvider theme={computedTheme}>
-      <DarkThemeContext.Provider
-        value={{
-          dark: themeState.dark,
-          toggle,
-        }}
-      >
-        <CssBaseline />
-        {children}
-      </DarkThemeContext.Provider>
-    </MuiThemeProvider>
+    <EmotionThemeProvider theme={computedTheme}>
+      <GlobalStyles theme={computedTheme} />
+      <MuiThemeProvider theme={computedTheme}>
+        <DarkThemeContext.Provider
+          value={{
+            dark: themeState.dark,
+            toggle,
+          }}
+        >
+          <CssBaseline />
+          {children}
+        </DarkThemeContext.Provider>
+      </MuiThemeProvider>
+    </EmotionThemeProvider>
   )
 }

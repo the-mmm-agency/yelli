@@ -50,9 +50,12 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-material-ui',
       options: {
-        pathToStylesProvider: 'src/stylesProviderProps',
+        stylesProvider: {
+          injectFirst: true,
+        },
       },
     },
+    'gatsby-plugin-emotion',
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

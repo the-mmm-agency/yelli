@@ -13,14 +13,14 @@ import { useDarkTheme } from 'components/themeProvider'
 
 const DarkThemeToggle = () => {
   const themeState = useDarkTheme()
+  const Icon = themeState.dark ? DarkThemeIcon : LightThemeIcon
+  const handleClick = () => {
+    themeState.toggle()
+  }
   return (
-    <MenuItem onClick={() => themeState.toggle()}>
+    <MenuItem onClick={handleClick}>
       <ListItemIcon color="inherit">
-        {themeState.dark ? (
-          <DarkThemeIcon fill="currentColor" />
-        ) : (
-          <LightThemeIcon fill="currentColor" />
-        )}
+        <Icon fill="currentColor" />
       </ListItemIcon>
       <ListItemText
         primary={`${themeState.dark ? 'Dark' : 'Light'} theme`}
@@ -28,9 +28,9 @@ const DarkThemeToggle = () => {
       />
       <ListItemSecondaryAction>
         <Switch
-          checked={themeState.dark}
           color="primary"
-          onChange={() => themeState.toggle()}
+          checked={themeState.dark}
+          onChange={handleClick}
         />
       </ListItemSecondaryAction>
     </MenuItem>

@@ -1,80 +1,49 @@
 import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
 import PropTypes from 'prop-types'
 import React from 'react'
+import styled from '@emotion/styled'
 import Img from 'graphcms-image'
 
 import Link from 'components/link'
-import useRememberScroll from 'util/useRememberScroll'
-import useScroll from 'components/scrollProvider'
+import { spacing } from 'util/theme'
 
-const useStyles = makeStyles(theme => ({
-  category: {
-    fontSize: '1rem',
-    fontWeight: 500,
-  },
-  icon: {
-    height: 50,
-    width: 50,
-  },
-  text: {
-    marginLeft: theme.spacing(1),
-  },
-  root: {
-    '&:hover': {
-      textDecoration: 'none',
-    },
-    padding: theme.spacing(2),
-    color: 'inherit',
-    scrollSnapAlign: 'start',
-  },
-}))
+const Icon = styled(Img)`
+  width: 50px;
+  height: 50px;
+  margin-right: ${spacing(3)};
+`
 
-const AppListItem = ({ category, title, icon, slug }) => {
-  const classes = useStyles()
-  const rememberScroll = useRememberScroll()
-  const { setNextPageTop } = useScroll()
-  const handleClick = () => {
-    rememberScroll()
-    setNextPageTop(true)
-  }
-  return (
-    <li>
-      <ListItem
-        button
-        component={Link}
-        to={`/app/${slug}`}
-        onClick={handleClick}
-        className={classes.root}
-        disableGutters
-        divider
-      >
-        <ListItemIcon>
-          <Img
-            alt="Application Icon"
-            className={classes.icon}
-            image={icon}
-            maxWidth={50}
-            title={title}
-            fadeIn={false}
-            withWebp
-          />
-        </ListItemIcon>
-        <ListItemText
-          className={classes.text}
-          primary={title}
-          primaryTypographyProps={{ variant: 'h6', color: 'textPrimary' }}
-          secondary={category.name}
-          secondaryTypographyProps={{
-            className: classes.category,
-            color: 'textSecondary',
-            variant: 'subtitle2',
-          }}
+const Root = styled(ListItem)`
+  padding: ${spacing(2)};
+  scroll-snap-align: start;
+`
+
+const AppListItem = ({ category, title, icon, slug }) => (
+  <li>
+    <Root button component={Link} to={`/app/${slug}`} disableGutters divider>
+      <ListItemIcon>
+        <Icon
+          alt="Application Icon"
+          image={icon}
+          maxWidth={50}
+          title={title}
+          fadeIn={false}
+          withWebp
         />
-      </ListItem>
-    </li>
-  )
-}
+      </ListItemIcon>
+      <ListItemText
+        primary={title}
+        primaryTypographyProps={{ variant: 'h6', color: 'textPrimary' }}
+        secondary={category.name}
+        secondaryTypographyProps={{
+          color: 'textSecondary',
+          variant: 'subtitle1',
+        }}
+      />
+    </Root>
+  </li>
+)
+
 AppListItem.propTypes = {
   category: PropTypes.shape({
     name: PropTypes.string.isRequired,

@@ -1,22 +1,12 @@
 import { IconButton, Menu } from '@material-ui/core'
 import { SettingsOutlined as SettingsIcon } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
+import { css } from '@emotion/core'
 
 import DarkThemeToggle from 'components/darkThemeToggle'
 
-const useStyles = makeStyles({
-  button: {
-    marginLeft: 'auto',
-  },
-  menuPaper: {
-    minWidth: 230,
-  },
-})
-
 const UserMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null)
-  const classes = useStyles()
   const handleClick = event => {
     setAnchorEl(event.currentTarget)
   }
@@ -28,7 +18,9 @@ const UserMenu = () => {
       <IconButton
         aria-haspopup="true"
         aria-owns={anchorEl ? 'settings-menu' : undefined}
-        className={classes.button}
+        css={css`
+          margin-left: auto;
+        `}
         color="primary"
         onClick={handleClick}
       >
@@ -36,7 +28,11 @@ const UserMenu = () => {
       </IconButton>
       <Menu
         anchorEl={anchorEl}
-        classes={{ paper: classes.menuPaper }}
+        css={css`
+          .MuiMenu-paper {
+            min-width: 230px;
+          }
+        `}
         id="settings-menu"
         onClose={handleClose}
         open={Boolean(anchorEl)}

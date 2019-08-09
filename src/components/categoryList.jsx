@@ -28,7 +28,7 @@ const CategoryList = () => {
   return (
     <List subheader={<ListSubheader>Categories</ListSubheader>}>
       {categories.map(category => (
-        <NavLink key={category.id} href={`/category/${category.slug}`}>
+        <NavLink key={category.id} to={`/category/${category.slug}`}>
           <ListItemIcon style={{ color: 'inherit' }}>
             <CategoryIcon name={category.name} />
           </ListItemIcon>

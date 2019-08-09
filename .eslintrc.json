@@ -14,7 +14,14 @@
     "prettier/standard",
     "plugin:unicorn/recommended"
   ],
-  "plugins": ["import", "prettier", "jsx-a11y", "standard", "unicorn"],
+  "plugins": [
+    "emotion",
+    "import",
+    "prettier",
+    "jsx-a11y",
+    "standard",
+    "unicorn"
+  ],
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
@@ -33,6 +40,10 @@
     "quotes": ["error", "single"],
 
     "prettier/prettier": "error",
+
+    "emotion/no-vanilla": "error",
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error",
 
     "react/prop-types": [
       "error",

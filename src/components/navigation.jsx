@@ -1,5 +1,5 @@
 import {
-  AppBar,
+  AppBar as MuiAppBar,
   BottomNavigation,
   BottomNavigationAction,
   Hidden,
@@ -13,97 +13,50 @@ import {
   CategoryOutlined,
   PollOutlined,
 } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
 import React from 'react'
 import { navigate } from 'gatsby'
+import styled from '@emotion/styled'
 import PropTypes from 'prop-types'
+import { theme } from 'styled-tools'
 
-import useScroll from 'components/scrollProvider'
-
-const useStyles = makeStyles(theme => ({
-  bottomNavigation: {
-    height: 68,
-  },
-  icon: {
-    fontSize: '1.7rem',
-  },
-  label: {
-    fontSize: '0.75rem',
-    fontWeight: '500',
-  },
-  root: {
-    backgroundColor: theme.palette.background.default,
-    borderTop: {
-      color: theme.palette.divider,
-      style: 'solid',
-      width: 1,
-    },
-    bottom: 0,
-    boxShadow: 'none',
-    fontSize: '1.8rem',
-    top: 'auto',
-  },
-  selected: {
-    fontSize: '0.75rem !important',
-    fontWeight: '600 !important',
-  },
-}))
+const AppBar = styled(MuiAppBar)`
+  border-top: 1px solid ${theme('palette.divider')};
+  bottom: 0;
+  top: auto;
+`
 
 const Navigation = ({ pathname }) => {
-  const classes = useStyles()
-  const { setScroll } = useScroll()
-  const onChange = (event, newValue) => {
+  const handleChange = (event, newValue) => {
     event.preventDefault()
     navigate(newValue, { replace: true })
-    setScroll(0)
   }
+  const getIcon = (path, Match, NoMatch) =>
+    path === pathname ? <Match /> : <NoMatch />
   return (
     <Hidden implementation="css" mdUp>
-      <AppBar className={classes.root}>
+      <AppBar>
         <BottomNavigation
-          className={classes.bottomNavigation}
-          onChange={onChange}
+          css={{ height: 68 }}
+          onChange={handleChange}
           value={pathname}
         >
           <BottomNavigationAction
-            classes={{ label: classes.label, selected: classes.selected }}
-            icon={
-              pathname === '/' ? (
-                <Home className={classes.icon} />
-              ) : (
-                <HomeOutlined className={classes.icon} />
-              )
-            }
+            icon={getIcon('/', Home, HomeOutlined)}
             label="Home"
             value="/"
           />
           <BottomNavigationAction
-            classes={{ label: classes.label, selected: classes.selected }}
-            icon={
-              pathname === '/top-apps' ? (
-                <Poll className={classes.icon} />
-              ) : (
-                <PollOutlined className={classes.icon} />
-              )
-            }
+            icon={getIcon('/top-apps', Poll, PollOutlined)}
             label="Top apps"
             value="/top-apps"
           />
           <BottomNavigationAction
-            classes={{ label: classes.label, selected: classes.selected }}
-            icon={
-              pathname === '/categories' ? (
-                <Category className={classes.icon} />
-              ) : (
-                <CategoryOutlined className={classes.icon} />
-              )
-            }
+            icon={getIcon('/categories', Category, CategoryOutlined)}
             label="Categories"
             value="/categories"
           />
           <BottomNavigationAction
-            classes={{ label: classes.label, selected: classes.selected }}
-            icon={<Search className={classes.icon} />}
+            icon={<Search />}
             label="Search"
             value="/search"
           />

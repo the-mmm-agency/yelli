@@ -27,7 +27,7 @@ const DarkTheme = {
       main: '#89ddff',
     },
     scrollbar: {
-      thumb: darken('#1e2132', 0.12),
+      thumb: darken('#1e2132', 0.18),
       track: darken('#212337', 0.08),
     },
     text: {

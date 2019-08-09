@@ -1,5 +1,5 @@
-import rootWrapper from './rootWrapper'
 import pageWrapper from './src/components/layout'
+import rootWrapper from './rootWrapper'
 
-export const wrapPageElement = pageWrapper
 export const wrapRootElement = rootWrapper
+export const wrapPageElement = pageWrapper

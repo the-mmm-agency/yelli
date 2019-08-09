@@ -1,61 +1,47 @@
 import { Grid, InputBase, InputAdornment, List } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
-import { makeStyles } from '@material-ui/styles'
 import React, { useState } from 'react'
 import { graphql, navigate } from 'gatsby'
 import Fuse from 'fuse.js'
+import styled from '@emotion/styled'
+import { theme } from 'styled-tools'
 
+import { spacing, up, transitions } from 'util/theme'
 import AppComponent from 'components/appComponent'
 import SEO from 'components/seo'
 
-const useStyles = makeStyles(theme => ({
-  inputAdornment: {
-    margin: {
-      left: theme.spacing(1),
-      right: theme.spacing(2),
-    },
-  },
-  list: {
-    scrollSnapAlign: 'start',
-    scrollMarginTop: '64px',
-    minHeight: '100vh',
-  },
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    minHeight: '100vw',
-  },
-  searchFocus: {
-    backgroundColor: theme.palette.input.focus,
-    boxShadow: theme.shadows[3],
-  },
-  search: {
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(3),
-      width: 'auto',
-    },
-    '&:hover': {
-      backgroundColor: theme.palette.input.hover,
-    },
-    backgroundColor: theme.palette.input.default,
-    borderRadius: theme.shape.borderRadius,
-    margin: theme.spacing(2),
-    padding: theme.spacing(1),
-    position: 'sticky',
-    fontWeight: 500,
-    scrollMarginBottom: '20px',
-    scrollSnapAlign: 'start',
-    zIndex: theme.zIndex.appBar,
-    top: theme.spacing(3),
-    transition: theme.transitions.create(['background-color', 'box-shadow']),
-  },
-}))
+const SearchInput = styled(InputBase)`
+  ${up('sm')} {
+    margin-left: ${spacing(3)};
+    width: auto;
+  }
+  &:focus {
+    background-color: ${theme('palette.input.focus')};
+    box-shadow: ${theme('shadows.3')};
+  }
+  &:hover {
+    background-color: ${theme('palette.input.hover')};
+  }
+  background-color: ${theme('palette.input.default')};
+  border-radius: ${theme('shape.borderRadius')}px;
+  margin: ${spacing(2)};
+  padding: ${spacing(1)};
+  font-weight: 500;
+  scroll-margin-bottom: 20px;
+  scroll-snap-align: start;
+  transition: ${transitions(['background-color', 'box-shadow'])};
+`
+
+const Adornment = styled(InputAdornment)`
+  margin-left: ${spacing(1)};
+  margin-right: ${spacing(2)};
+`
 
 const Search = ({
   data: {
     graphcms: { applications },
   },
 }) => {
-  const classes = useStyles()
   const initialSearchString =
     typeof window !== 'undefined' &&
     window.localStorage.getItem('searchString') !== null
@@ -95,31 +81,22 @@ const Search = ({
   return (
     <>
       <SEO title="Search" />
-      <Grid className={classes.root} container direction="column">
-        <InputBase
-          className={classes.search}
-          startAdornment={
-            <InputAdornment
-              classes={{ root: classes.inputAdornment }}
-              position="start"
-            >
-              <SearchIcon color="primary" />
-            </InputAdornment>
-          }
-          classes={{
-            focused: classes.searchFocus,
-          }}
-          onChange={handleChange}
-          value={searchString}
-          onKeyDown={handleKeyDown}
-          placeholder="Just start typing…"
-        />
-        <List className={classes.list}>
-          {matchingApps.map(app => (
-            <AppComponent {...app} key={app.id} type="list" />
-          ))}
-        </List>
-      </Grid>
+      <SearchInput
+        startAdornment={
+          <Adornment position="start">
+            <SearchIcon color="primary" />
+          </Adornment>
+        }
+        onChange={handleChange}
+        value={searchString}
+        onKeyDown={handleKeyDown}
+        placeholder="Just start typing…"
+      />
+      <List>
+        {matchingApps.map(app => (
+          <AppComponent {...app} key={app.id} type="list" />
+        ))}
+      </List>
     </>
   )
 }

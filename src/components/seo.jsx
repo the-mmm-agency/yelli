@@ -49,11 +49,6 @@ const SEO = ({ description, lang, meta, title }) => {
           content: 'https://yelli.com',
         },
         {
-          name: 'viewport',
-          content:
-            'width=device-width, initial-scale=1, user-scalable=no, shrink-to-fit=no, minimum-scale=1',
-        },
-        {
           name: 'twitter:card',
           content: 'summary',
         },
@@ -74,24 +69,12 @@ const SEO = ({ description, lang, meta, title }) => {
           content: theme.palette.background.default,
         },
         {
-          name: 'mobile-web-app-capable',
-          content: 'yes',
-        },
-        {
-          name: 'apple-mobile-web-app-capable',
-          content: 'yes',
-        },
-        {
           name: 'apple-mobile-web-app-title',
           content: title,
         },
         {
-          name: 'apple-mobile-web-app-status-bar-style',
-          content: 'default',
-        },
-        {
           name: 'application-name',
-          content: 'Yelli',
+          content: title,
         },
         {
           name: 'msapplication-TileColor',

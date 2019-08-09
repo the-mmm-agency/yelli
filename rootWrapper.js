@@ -1,16 +1,12 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-import GlobalStyles from './src/components/globalStyles.jsx'
 import { ThemeProvider } from './src/components/themeProvider'
-import useScrollContext from './src/components/scrollProvider'
 
-const rootWrapper = ({ element }) => (
-  <useScrollContext.Provider>
-    <ThemeProvider>
-      <GlobalStyles />
-      {element}
-    </ThemeProvider>
-  </useScrollContext.Provider>
-)
+const rootWrapper = ({ element }) => <ThemeProvider>{element}</ThemeProvider>
+
+rootWrapper.propTypes = {
+  element: PropTypes.element.isRequired,
+}
 
 export default rootWrapper

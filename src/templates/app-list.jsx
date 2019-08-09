@@ -1,31 +1,27 @@
-import { List } from '@material-ui/core'
-import { makeStyles } from '@material-ui/styles'
+import { List as MuiList } from '@material-ui/core'
 import React from 'react'
 import PropTypes from 'prop-types'
+import styled from '@emotion/styled'
+import { theme } from 'styled-tools'
 
 import AppComponent from 'components/appComponent'
 import ListHeader from 'components/listHeader'
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    backgroundColor: theme.palette.background.paper,
-    minHeight: '100vh',
-  },
-}))
+const List = styled(MuiList)`
+  background-color: ${theme('palette.background.paper')};
+  min-height: 100vh;
+`
 
-const AppList = ({ name, apps }) => {
-  const classes = useStyles()
-  return (
-    <>
-      <ListHeader>{name}</ListHeader>
-      <List className={classes.root}>
-        {apps.map(app => (
-          <AppComponent key={app.id} {...app} type="list" page="/new" />
-        ))}
-      </List>
-    </>
-  )
-}
+const AppList = ({ name, apps }) => (
+  <>
+    <ListHeader>{name}</ListHeader>
+    <List>
+      {apps.map(app => (
+        <AppComponent key={app.id} {...app} type="list" page="/new" />
+      ))}
+    </List>
+  </>
+)
 
 AppList.propTypes = {
   apps: PropTypes.array.isRequired,
