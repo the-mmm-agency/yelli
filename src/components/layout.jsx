@@ -6,7 +6,7 @@ import styled from '@emotion/styled'
 import Header from 'components/header'
 import Navigation from 'components/navigation'
 import SideDrawer from 'components/sideDrawer'
-import { up } from 'util/theme'
+import { up, down } from 'util/theme'
 
 const RouteContainer = posed.div({
   enter: {
@@ -33,6 +33,9 @@ const Content = styled(RouteContainer)`
   flex-direction: column;
   flex: 1 1 100%;
   max-width: 100vw;
+  ${down('sm')} {
+    padding-bottom: 64px;
+  }
   ${up('md')} {
     max-width: calc(100vw - 240px);
   }

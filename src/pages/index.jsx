@@ -32,7 +32,7 @@ const Home = ({ data: { latest, top, featured } }) => (
       <Divider variant="fullWidth" />
       <HomeSection
         title="New Apps"
-        link="/new-apps"
+        link="/new"
         apps={latest.applications}
         AppComponent={AppComponent}
       />
