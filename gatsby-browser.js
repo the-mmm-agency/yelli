@@ -40,7 +40,7 @@ export const shouldUpdateScroll = ({
     const savedPosition = getSavedScrollPosition(location)
     window.setTimeout(
       () => window.scrollTo(...(savedPosition || [0, 0])),
-      transitionDelay + 70
+      transitionDelay
     )
   }
   return false
