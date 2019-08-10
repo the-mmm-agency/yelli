@@ -19,7 +19,7 @@ const Scroll = styled.ul`
   scroll-snap-type: x proximity;
   scroll-snap-points-x: repeat(100%);
   -webkit-overflow-scrolling: touch;
-  width: 100%;
+  max-width: 100%;
 `
 
 const HorizontalScroll = ({ children }) => <Scroll>{children}</Scroll>
