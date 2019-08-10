@@ -9,8 +9,9 @@ const TransitionPose = posed.div({
   enter: {
     opacity: 1,
     y: 0,
+    delay: 100,
     transition: {
-      duration: 300,
+      duration: 200,
       ease: [0.645, 0.045, 0.355, 1],
     },
   },
@@ -28,7 +29,7 @@ const Transition = styled(TransitionPose)`
   overflow: hidden;
 `
 
-const transitionDelay = 105
+const transitionDelay = 145
 
 export const shouldUpdateScroll = ({
   routerProps: { location },
