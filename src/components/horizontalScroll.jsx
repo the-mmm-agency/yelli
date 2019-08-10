@@ -11,7 +11,7 @@ const Scroll = styled.ul`
   }
   display: inline-flex;
   flex-wrap: nowrap;
-  overflow: scroll hidden;
+  overflow-y: scroll;
   min-height: fit-content;
   padding-inline-start: ${spacing(2)};
   scroll-padding-inline-start: ${spacing(2)};
