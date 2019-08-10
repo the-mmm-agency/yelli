@@ -41,7 +41,7 @@ const Root = styled(Card)`
   background-color: ${theme('palette.background.default')};
   border: 1px solid ${theme('palette.divider')};
   margin: ${spacing(2)};
-  margin-right: ${spacing(1)};
+  margin-left: 0;
   min-width: 350px;
   max-width: 375px;
   width: calc(100% / 3 - 32px);
