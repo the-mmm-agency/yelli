@@ -33,11 +33,12 @@ const Description = styled(Typography)`
 `
 
 const Icon = styled(Img)`
-  border-radius: 15px;
   flex-grow: 1;
   margin: ${spacing(2)} ${spacing(2)} 0;
+  height: ${spacing(14)};
   width: ${spacing(14)};
   img {
+    border-radius: 15px;
     filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
   }
 `
@@ -46,6 +47,7 @@ const Info = styled(Grid)`
   ${down('sm')} {
     padding: ${spacing(1)} 0 ${spacing(1)} 0;
   }
+  height: ${spacing(20)};
   padding: ${spacing(2)} 0 ${spacing(2)} 0;
   flex-basis: ${spacing(16)};
 `
@@ -117,11 +119,12 @@ const Application = ({
             color="primary"
             itemProp="installUrl"
             href={url}
+            size="small"
             target="_blank"
             variant="outlined"
           >
             <OpenIcon fontSize="inherit" />
-            &nbsp; LAUNCH APP
+            &nbsp; Launch App
           </Button>
           <link itemProp="installUrl" href={url} />
         </Meta>

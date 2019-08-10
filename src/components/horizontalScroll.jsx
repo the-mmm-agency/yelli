@@ -15,11 +15,11 @@ const Scroll = styled.ul`
   min-height: fit-content;
   padding-inline-start: ${spacing(2)};
   scroll-padding-inline-start: ${spacing(2)};
+  max-width: 100%;
   min-height: fit-content !important;
   scroll-snap-type: x proximity;
   scroll-snap-points-x: repeat(100%);
   -webkit-overflow-scrolling: touch;
-  max-width: 100%;
 `
 
 const HorizontalScroll = ({ children }) => <Scroll>{children}</Scroll>
