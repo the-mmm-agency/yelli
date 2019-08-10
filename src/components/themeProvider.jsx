@@ -60,19 +60,19 @@ export const ThemeProvider = ({ children }) => {
   const computedTheme = createTheme(themeState.dark ? DarkTheme : LightTheme)
 
   return (
-    <EmotionThemeProvider theme={computedTheme}>
-      <GlobalStyles theme={computedTheme} />
-      <MuiThemeProvider theme={computedTheme}>
+    <MuiThemeProvider theme={computedTheme}>
+      <EmotionThemeProvider theme={computedTheme}>
         <DarkThemeContext.Provider
           value={{
             dark: themeState.dark,
             toggle,
           }}
         >
+          <GlobalStyles theme={computedTheme} />
           <CssBaseline />
           {children}
         </DarkThemeContext.Provider>
-      </MuiThemeProvider>
-    </EmotionThemeProvider>
+      </EmotionThemeProvider>
+    </MuiThemeProvider>
   )
 }

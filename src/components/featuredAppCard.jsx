@@ -33,7 +33,9 @@ const Root = styled(Card)`
   }
   ${down('sm')} {
     width: calc(100% - 32px);
+    min-width: 300px;
     max-width: 400px;
+    flex-grow: 0;
     flex-shrink: 0;
   }
   background-color: ${theme('palette.background.default')};
@@ -54,7 +56,7 @@ const Root = styled(Card)`
 `
 
 const FeaturedAppCard = ({ title, banner, description, slug }) => (
-  <Root>
+  <Root component="li">
     <CardActionArea component={Link} to={`/app/${slug}`}>
       <Banner
         alt="Application Banner"

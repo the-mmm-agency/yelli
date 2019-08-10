@@ -13,7 +13,7 @@ import SEO from 'components/seo'
 const SearchInput = styled(InputBase)`
   ${up('sm')} {
     margin-left: ${spacing(3)};
-    width: auto;
+    width: calc(100% - ${spacing(6)});
   }
   &:focus {
     background-color: ${theme('palette.input.focus')};
@@ -27,8 +27,7 @@ const SearchInput = styled(InputBase)`
   margin: ${spacing(2)};
   padding: ${spacing(1)};
   font-weight: 500;
-  scroll-margin-bottom: 20px;
-  scroll-snap-align: start;
+  width: calc(100% - ${spacing(4)});
   transition: ${transitions(['background-color', 'box-shadow'])};
 `
 

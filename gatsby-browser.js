@@ -1,10 +1,11 @@
 import React from 'react'
 import posed, { PoseGroup } from 'react-pose'
+import styled from '@emotion/styled'
 
-import rootWrapper from './rootWrapper'
 import Layout from './src/components/layout'
+import rootWrapper from './rootWrapper'
 
-const Transition = posed.div({
+const TransitionPose = posed.div({
   enter: {
     opacity: 1,
     y: 0,
@@ -22,6 +23,10 @@ const Transition = posed.div({
     },
   },
 })
+
+const Transition = styled(TransitionPose)`
+  overflow: hidden;
+`
 
 const transitionDelay = 105
 

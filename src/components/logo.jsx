@@ -3,12 +3,7 @@ import { useStaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
 import styled from '@emotion/styled'
 
-import { up, spacing } from 'util/theme'
-
 const Img = styled(Image)`
-  ${up('md')} {
-    margin-left: ${spacing(4)};
-  }
   height: 64;
   margin: auto;
 `

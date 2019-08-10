@@ -3,6 +3,7 @@ import {
   BottomNavigation,
   BottomNavigationAction,
   Hidden,
+  NoSsr,
 } from '@material-ui/core'
 import {
   Home,

@@ -6,7 +6,7 @@ import Navigation from 'components/navigation'
 import SideDrawer from 'components/sideDrawer'
 import { up, down } from 'util/theme'
 
-const Content = styled.div`
+const Content = styled.main`
   display: flex;
   margin-top: 64px;
   flex-direction: column;
@@ -25,8 +25,8 @@ const Layout = ({ children, pathname }) => (
   <>
     <Header pathname={pathname} />
     <SideDrawer />
-    <Content>{children}</Content>
     <Navigation pathname={pathname} />
+    <Content>{children}</Content>
   </>
 )
 
