@@ -115,6 +115,9 @@ const Application = ({
             css={css`
               border-radius: 4px;
               margin-top: auto;
+              .MuiButton-label {
+                text-transform: capitalize;
+              }
             `}
             color="primary"
             itemProp="installUrl"
