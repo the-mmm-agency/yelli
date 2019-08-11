@@ -40,7 +40,7 @@ const Toolbar = styled(MuiToolbar)`
 
 const Header = ({ pathname }) => (
   <AppBar>
-    <Toolbar css={{ justifyContent: 'space-between' }}>
+    <Toolbar>
       <Hidden mdUp>
         <BackButton
           color="primary"

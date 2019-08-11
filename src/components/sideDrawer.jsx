@@ -12,9 +12,7 @@ import {
 import React from 'react'
 import { theme } from 'styled-tools'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 
-import { up } from 'util/theme'
 import CategoryList from 'components/categoryList'
 import NavLink from 'components/navLink'
 import Logo from 'components/logo'
@@ -22,17 +20,10 @@ import Logo from 'components/logo'
 export const drawerWidth = 240
 
 const LogoContainer = styled.div`
-  min-height: 56px;
   border-bottom: 1px solid ${theme('palette.divider')};
   display: flex;
-  line-height: 0;
+  height: 64px;
   width: ${drawerWidth};
-  @media (min-width: 0px) and (orientation: landscape) {
-    min-height: 48px;
-  }
-  ${up('sm')} {
-    min-height: 64px;
-  }
 `
 
 const Drawer = styled(MuiDrawer)`
@@ -47,15 +38,10 @@ const Drawer = styled(MuiDrawer)`
 `
 
 const SideDrawer = () => (
-  <Hidden smDown>
+  <Hidden smDown implementation="css">
     <Drawer variant="permanent">
       <LogoContainer>
-        <Logo
-          css={css`
-            height: 100%;
-            margin: auto;
-          `}
-        />
+        <Logo />
       </LogoContainer>
       <List dense>
         <li>

@@ -41,9 +41,11 @@ const ListItem = styled(MuiListItem)`
 `
 
 const NavLink = ({ children, ...props }) => (
-  <ListItem activeClassName="active" button component={Link} dense {...props}>
-    {children}
-  </ListItem>
+  <li>
+    <ListItem activeClassName="active" button component={Link} dense {...props}>
+      {children}
+    </ListItem>
+  </li>
 )
 
 export default NavLink

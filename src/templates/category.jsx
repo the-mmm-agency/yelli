@@ -15,10 +15,10 @@ const Category = ({
 }) => (
   <Flex flexDirection="column">
     <SEO title={`${name} Apps`} />
-    <Hidden smUp>
+    <Hidden smUp implementation="css">
       <AppList name={name} apps={applications} />
     </Hidden>
-    <Hidden smDown>
+    <Hidden smDown implementation="css">
       <AppGrid name={name} apps={applications} />
     </Hidden>
   </Flex>
