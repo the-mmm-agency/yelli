@@ -34,34 +34,32 @@ const Navigation = ({ pathname }) => {
   const getIcon = (path, Match, NoMatch) =>
     path === pathname ? <Match /> : <NoMatch />
   return (
-    <NoSsr>
-      <Hidden mdUp>
-        <AppBar>
-          <BottomNavigation onChange={handleChange} value={pathname}>
-            <BottomNavigationAction
-              icon={getIcon('/', Home, HomeOutlined)}
-              label="Home"
-              value="/"
-            />
-            <BottomNavigationAction
-              icon={getIcon('/top-apps', Poll, PollOutlined)}
-              label="Top apps"
-              value="/top-apps"
-            />
-            <BottomNavigationAction
-              icon={getIcon('/categories', Category, CategoryOutlined)}
-              label="Categories"
-              value="/categories"
-            />
-            <BottomNavigationAction
-              icon={<Search />}
-              label="Search"
-              value="/search"
-            />
-          </BottomNavigation>
-        </AppBar>
-      </Hidden>
-    </NoSsr>
+    <Hidden mdUp implementation="css">
+      <AppBar>
+        <BottomNavigation onChange={handleChange} value={pathname}>
+          <BottomNavigationAction
+            icon={getIcon('/', Home, HomeOutlined)}
+            label="Home"
+            value="/"
+          />
+          <BottomNavigationAction
+            icon={getIcon('/top-apps', Poll, PollOutlined)}
+            label="Top apps"
+            value="/top-apps"
+          />
+          <BottomNavigationAction
+            icon={getIcon('/categories', Category, CategoryOutlined)}
+            label="Categories"
+            value="/categories"
+          />
+          <BottomNavigationAction
+            icon={<Search />}
+            label="Search"
+            value="/search"
+          />
+        </BottomNavigation>
+      </AppBar>
+    </Hidden>
   )
 }
 

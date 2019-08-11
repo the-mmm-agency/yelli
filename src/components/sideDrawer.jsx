@@ -39,30 +39,28 @@ const Drawer = styled(MuiDrawer)`
 `
 
 const SideDrawer = () => (
-  <NoSsr>
-    <Hidden smDown>
-      <Drawer variant="permanent">
-        <LogoContainer>
-          <Logo />
-        </LogoContainer>
-        <List dense>
-          <NavLink to="/">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText>Home</ListItemText>
-          </NavLink>
-          <NavLink to="/search/">
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <ListItemText>Search</ListItemText>
-          </NavLink>
-        </List>
-        <CategoryList />
-      </Drawer>
-    </Hidden>
-  </NoSsr>
+  <Hidden implementation="css" smDown>
+    <Drawer variant="permanent">
+      <LogoContainer>
+        <Logo />
+      </LogoContainer>
+      <List dense>
+        <NavLink to="/">
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText>Home</ListItemText>
+        </NavLink>
+        <NavLink to="/search/">
+          <ListItemIcon>
+            <SearchIcon />
+          </ListItemIcon>
+          <ListItemText>Search</ListItemText>
+        </NavLink>
+      </List>
+      <CategoryList />
+    </Drawer>
+  </Hidden>
 )
 
 export default SideDrawer

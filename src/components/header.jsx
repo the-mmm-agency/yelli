@@ -2,8 +2,6 @@ import {
   AppBar as MuiAppBar,
   ButtonBase,
   IconButton,
-  Hidden,
-  NoSsr,
   Toolbar as MuiToolbar,
 } from '@material-ui/core'
 import { ArrowBack as BackIcon } from '@material-ui/icons'
@@ -28,39 +26,40 @@ const AppBar = styled(MuiAppBar)`
   width: calc(100% - ${drawerWidth}px);
 `
 
+const LogoButton = styled(ButtonBase)`
+  ${up('md')} {
+    opacity: 0;
+  }
+`
 const BackButton = styled(IconButton)`
+  ${up('md')} {
+    opacity: 0;
+  }
   opacity: ${ifProp('hidden', 0, 1)};
 `
 
 const Toolbar = styled(MuiToolbar)`
   justify-content: space-between;
-  ${up('md')} {
-    justify-content: flex-end;
-  }
 `
 
 const Header = ({ pathname }) => (
-  <NoSsr>
-    <AppBar>
-      <Toolbar>
-        <Hidden mdUp>
-          <BackButton
-            color="primary"
-            hidden={pathname === '/'}
-            onClick={() => {
-              window.history.back()
-            }}
-          >
-            <BackIcon />
-          </BackButton>
-          <ButtonBase component={Link} to="/">
-            <Logo />
-          </ButtonBase>
-        </Hidden>
-        <UserMenu />
-      </Toolbar>
-    </AppBar>
-  </NoSsr>
+  <AppBar>
+    <Toolbar>
+      <BackButton
+        color="primary"
+        hidden={pathname === '/'}
+        onClick={() => {
+          window.history.back()
+        }}
+      >
+        <BackIcon />
+      </BackButton>
+      <LogoButton component={Link} to="/">
+        <Logo />
+      </LogoButton>
+      <UserMenu />
+    </Toolbar>
+  </AppBar>
 )
 
 Header.propTypes = {

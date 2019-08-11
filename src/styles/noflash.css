@@ -1,3 +1,19 @@
+.MuiCard-root {
+  background: transparent;
+}
+
 body.dark-mode {
   background-color: #212337;
+}
+
+body.dark-mode .MuiDrawer-paper {
+  background-color: #1e2132;
+}
+
+body.dark-mode .MuiList-root {
+  background-color: #1e2132;
+}
+
+body.dark-mode .MuiAppBar-root {
+  background-color: #1e2132 !important;
 }
