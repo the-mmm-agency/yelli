@@ -1,12 +1,11 @@
 body.dark-mode {
-  color: #fff;
   background-color: #212337;
 }
 
-.MuiTypography-colorTextSecondary {
-  color: #777fab;
+body.dark-mode .MuiPaper-root {
+  background-color: #1e2132;
 }
 
-.MuiPaper-root {
+body.dark-mode .MuiAppBar-root {
   background-color: #1e2132;
 }
