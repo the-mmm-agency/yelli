@@ -3,6 +3,7 @@ import {
   ButtonBase,
   IconButton,
   Hidden,
+  NoSsr,
   Toolbar as MuiToolbar,
 } from '@material-ui/core'
 import { ArrowBack as BackIcon } from '@material-ui/icons'
@@ -39,25 +40,27 @@ const Toolbar = styled(MuiToolbar)`
 `
 
 const Header = ({ pathname }) => (
-  <AppBar>
-    <Toolbar>
-      <Hidden mdUp>
-        <BackButton
-          color="primary"
-          hidden={pathname === '/'}
-          onClick={() => {
-            window.history.back()
-          }}
-        >
-          <BackIcon />
-        </BackButton>
-        <ButtonBase component={Link} to="/">
-          <Logo />
-        </ButtonBase>
-      </Hidden>
-      <UserMenu />
-    </Toolbar>
-  </AppBar>
+  <NoSsr>
+    <AppBar>
+      <Toolbar>
+        <Hidden mdUp>
+          <BackButton
+            color="primary"
+            hidden={pathname === '/'}
+            onClick={() => {
+              window.history.back()
+            }}
+          >
+            <BackIcon />
+          </BackButton>
+          <ButtonBase component={Link} to="/">
+            <Logo />
+          </ButtonBase>
+        </Hidden>
+        <UserMenu />
+      </Toolbar>
+    </AppBar>
+  </NoSsr>
 )
 
 Header.propTypes = {

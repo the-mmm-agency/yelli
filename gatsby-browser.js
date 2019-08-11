@@ -6,9 +6,14 @@ import rootWrapper from './rootWrapper'
 
 export const wrapRootElement = rootWrapper
 
-export const wrapPageElement = ({ element, props }) => (
-  <Layout pathname={props.location.pathname}>{element}</Layout>
-)
+export const replaceComponentRenderer = ({ props }) => {
+  const { component } = props.pageResources
+  return (
+    <Layout pathname={props.location.pathname}>
+      {React.createElement(component, props)}
+    </Layout>
+  )
+}
 
 export const shouldUpdateScroll = ({
   routerProps: { location },

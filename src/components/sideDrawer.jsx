@@ -3,6 +3,7 @@ import {
   List,
   ListItemIcon,
   ListItemText,
+  NoSsr,
   Hidden,
 } from '@material-ui/core'
 import {
@@ -38,28 +39,30 @@ const Drawer = styled(MuiDrawer)`
 `
 
 const SideDrawer = () => (
-  <Hidden smDown implementation="css">
-    <Drawer variant="permanent">
-      <LogoContainer>
-        <Logo />
-      </LogoContainer>
-      <List dense>
-        <NavLink to="/">
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText>Home</ListItemText>
-        </NavLink>
-        <NavLink to="/search/">
-          <ListItemIcon>
-            <SearchIcon />
-          </ListItemIcon>
-          <ListItemText>Search</ListItemText>
-        </NavLink>
-      </List>
-      <CategoryList />
-    </Drawer>
-  </Hidden>
+  <NoSsr>
+    <Hidden smDown>
+      <Drawer variant="permanent">
+        <LogoContainer>
+          <Logo />
+        </LogoContainer>
+        <List dense>
+          <NavLink to="/">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText>Home</ListItemText>
+          </NavLink>
+          <NavLink to="/search/">
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText>Search</ListItemText>
+          </NavLink>
+        </List>
+        <CategoryList />
+      </Drawer>
+    </Hidden>
+  </NoSsr>
 )
 
 export default SideDrawer

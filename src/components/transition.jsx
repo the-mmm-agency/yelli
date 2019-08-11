@@ -8,7 +8,6 @@ const Transition = ({ children, pathname }) => {
   const variants = {
     initial: {
       opacity: 0,
-      y: 20,
     },
     enter: {
       opacity: 1,
@@ -21,6 +20,7 @@ const Transition = ({ children, pathname }) => {
     },
     exit: {
       opacity: 0,
+      y: 20,
       transition: { duration: duration },
     },
   }
