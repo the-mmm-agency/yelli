@@ -2,7 +2,7 @@ body.dark-mode {
   background-color: #212337;
 }
 
-body.dark-mode .MuiPaper-root {
+body.dark-mode .MuiDrawer-paper {
   background-color: #1e2132;
 }
 
