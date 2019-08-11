@@ -11,6 +11,14 @@ body.dark-mode .MuiList-root {
   background-color: #1e2132;
 }
 
+body.dark-mode .MuiPaper-root {
+  color: #fff;
+}
+
+body.dark-mode .MuiTypography-colorTextSecondary {
+  color: #777fab;
+}
+
 body.dark-mode .MuiAppBar-root {
   background-color: #1e2132 !important;
 }
