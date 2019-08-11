@@ -29,6 +29,7 @@ const TransitionPose = posed.div({
 
 const Transition = styled(TransitionPose)`
   overflow: hidden;
+  will-change: opacity, transform;
 `
 
 export const replaceComponentRenderer = ({ props, ...other }) => {

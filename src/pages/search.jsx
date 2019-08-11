@@ -23,6 +23,7 @@ const SearchInput = styled(InputBase)`
   font-weight: 500;
   flex-grow: 1;
   transition: ${transitions(['background-color', 'box-shadow'])};
+  will-change: background-color, box-shadow;
 `
 
 const Adornment = styled(InputAdornment)`

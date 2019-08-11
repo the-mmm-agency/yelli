@@ -36,6 +36,7 @@ const ListItem = styled(MuiListItem)`
     duration: theme('transitions.duration.standard'),
     easing: theme('transitions.easing.sharp'),
   })};
+  will-change: background-color, color;
   width: calc(100% - ${spacing(4)});
 `
 
