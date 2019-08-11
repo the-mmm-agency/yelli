@@ -1,9 +1,6 @@
-.MuiCard-root {
-  background: transparent;
-}
-
 body.dark-mode {
   background-color: #212337;
+  color: #fff;
 }
 
 body.dark-mode .MuiDrawer-paper {

@@ -29,7 +29,7 @@ const Root = styled(Card)`
     max-width: 375px;
     width: calc(100% / 3 - 32px);
   }
-  background-color: ${theme('palette.background.default')};
+  background: transparent;
   border: 1px solid ${theme('palette.divider')};
   margin: ${spacing(2)} ${spacing(1)};
   flex: 0 0 auto;

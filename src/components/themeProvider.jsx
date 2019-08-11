@@ -15,13 +15,13 @@ const ThemeProvider = ({ children }) => {
   const createTheme = theme => createMuiTheme({ ...BaseTheme, ...theme })
   const computedTheme = createTheme(darkMode.value ? DarkTheme : LightTheme)
   return (
-    <MuiThemeProvider theme={computedTheme}>
-      <EmotionThemeProvider theme={computedTheme}>
+    <EmotionThemeProvider theme={computedTheme}>
+      <MuiThemeProvider theme={computedTheme}>
         <GlobalStyles theme={computedTheme} />
         <CssBaseline />
         {children}
-      </EmotionThemeProvider>
-    </MuiThemeProvider>
+      </MuiThemeProvider>
+    </EmotionThemeProvider>
   )
 }
 
