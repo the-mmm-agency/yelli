@@ -57,7 +57,7 @@ const AppCard = ({ category, title, icon, slug }) => (
           fontWeight={600}
           color="textSecondary"
           noWrap
-          variant="caption"
+          variant="body2"
         >
           {category.name}
         </Typography>

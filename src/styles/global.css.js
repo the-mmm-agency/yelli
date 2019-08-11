@@ -21,7 +21,6 @@ const globalStyle = ({ theme }) => css`
   }
   body {
     background-color: ${theme.palette.background.default};
-    word-spacing: ${theme.palette.type === 'dark' ? '0.05em' : 0};
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;

@@ -14,6 +14,7 @@ const HomeSection = ({ title, link, apps, AppComponent }) => (
       </Typography>
       {link && (
         <Button
+          aria-label="Show more"
           component={Link}
           color="primary"
           size="small"

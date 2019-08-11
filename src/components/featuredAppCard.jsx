@@ -50,12 +50,12 @@ const FeaturedAppCard = ({ title, banner, description, slug }) => (
         widthWebp
       />
       <Content>
-        <Typography fontWeight={500} noWrap variant="body1">
+        <Typography fontWeight={600} noWrap variant="body1">
           {title}
         </Typography>
         <Typography
           color="textSecondary"
-          fontSize="0.7rem"
+          variant="body2"
           fontWeight={600}
           gutterBottom
           noWrap

@@ -17,6 +17,7 @@ const UserMenu = () => {
     <>
       <IconButton
         aria-haspopup="true"
+        aria-label="Open settings menu"
         aria-owns={anchorEl ? 'settings-menu' : undefined}
         color="primary"
         onClick={handleClick}
