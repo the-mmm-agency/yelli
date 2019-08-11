@@ -1,19 +1,15 @@
-import {
-  Divider as MuiDivider,
-  Grid,
-  Typography,
-  Button,
-} from '@material-ui/core'
+import { Divider as MuiDivider, Button } from '@material-ui/core'
 import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons'
 import { graphql } from 'gatsby'
 import React from 'react'
 import styled from '@emotion/styled'
-import { css } from '@emotion/core'
 import { theme } from 'styled-tools'
 import Img from 'graphcms-image'
 
 import HorizontalScroll from 'components/horizontalScroll'
+import Flex from 'components/flex'
 import AppIcon from 'components/appIcon'
+import Typography from 'components/typography'
 import SEO from 'components/seo'
 import { spacing, up } from 'util/theme'
 
@@ -21,14 +17,12 @@ const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
 `
 
-const Description = styled(Typography)`
-  ${up('md')} {
-    max-width: 50%;
+const LaunchButton = styled(Button)`
+  border-radius: 4px;
+  margin-top: auto;
+  .MuiButton-label {
+    text-transform: capitalize;
   }
-  max-width: 80%;
-  margin-left: ${spacing(3)};
-  margin-top: ${spacing(1)};
-  margin-bottom: ${spacing(3)};
 `
 
 const Icon = styled(AppIcon)`
@@ -36,21 +30,6 @@ const Icon = styled(AppIcon)`
   margin: ${spacing(2)} ${spacing(2)} 0;
   height: ${spacing(14)};
   width: ${spacing(14)};
-`
-
-const Info = styled(Grid)`
-  ${up('md')} {
-    padding: ${spacing(2)} 0 ${spacing(2)} 0;
-  }
-  padding: ${spacing(1)} 0 ${spacing(1)} 0;
-  height: ${spacing(20)};
-  flex-basis: ${spacing(16)};
-`
-
-const Meta = styled(Grid)`
-  display: flex;
-  flex-direction: column;
-  margin: ${spacing(2)} ${spacing(1)} ${spacing(1)};
 `
 
 const Screenshot = styled(Img)`
@@ -75,35 +54,26 @@ const Application = ({
 }) => (
   <>
     <SEO title={title} description={description} />
-    <Grid
-      container
-      direction="column"
+    <Flex
+      flexDirection="column"
       itemScope
       itemType="https://schema.org/MobileApplication"
     >
-      <Info item container direction="row">
+      <Flex pt={{ xs: 1, md: 2 }} pl={{ xs: 1, md: 2 }}>
         <Icon title={title} itemprop="image" image={icon} />
-        <Meta xs="auto" item>
+        <Flex flexDirection="column" mt={2} mx={1} mb={1}>
           <Typography component="h1" itemProp="name" variant="h6">
             {title}
           </Typography>
           <Typography
             color="textSecondary"
             itemProp="applicationCategory"
-            component="h2"
             gutterBottom
             variant="h6"
           >
             {category.name}
           </Typography>
-          <Button
-            css={css`
-              border-radius: 4px;
-              margin-top: auto;
-              .MuiButton-label {
-                text-transform: capitalize;
-              }
-            `}
+          <LaunchButton
             color="primary"
             itemProp="installUrl"
             href={url}
@@ -113,13 +83,20 @@ const Application = ({
           >
             <OpenIcon fontSize="inherit" />
             &nbsp; Launch App
-          </Button>
+          </LaunchButton>
           <link itemProp="installUrl" href={url} />
-        </Meta>
-      </Info>
-      <Description itemProp="description" variant="body1" component="p">
+        </Flex>
+      </Flex>
+      <Typography
+        ml={{ xs: 4, sm: 5 }}
+        my={{ xs: 2, sm: 3 }}
+        maxWidth={{ xs: 0.8, md: 0.5 }}
+        itemProp="description"
+        variant="body1"
+        component="p"
+      >
         {description}
-      </Description>
+      </Typography>
       <Divider variant="fullWidth" />
       <HorizontalScroll>
         {screenshots.map(screenshot => (
@@ -134,7 +111,7 @@ const Application = ({
           />
         ))}
       </HorizontalScroll>
-    </Grid>
+    </Flex>
   </>
 )
 

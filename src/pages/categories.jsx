@@ -1,17 +1,9 @@
 import React from 'react'
-import { Grid as MuiGrid } from '@material-ui/core'
 import { graphql } from 'gatsby'
-import styled from '@emotion/styled'
-import { theme } from 'styled-tools'
 
-import { spacing } from 'util/theme'
 import CategoryCard from 'components/categoryCard'
 import SEO from 'components/seo'
-
-const Grid = styled(MuiGrid)`
-  background-color: ${theme('palette.background.paper')};
-  padding: ${spacing(2)};
-`
+import Flex from 'components/flex'
 
 const Categories = ({
   data: {
@@ -20,11 +12,11 @@ const Categories = ({
 }) => (
   <>
     <SEO title="Categories" />
-    <Grid container spacing={2}>
+    <Flex bgcolor="background.paper" flexWrap="wrap" padding={1}>
       {categories.map(({ id, ...category }) => (
         <CategoryCard key={id} {...category} />
       ))}
-    </Grid>
+    </Flex>
   </>
 )
 

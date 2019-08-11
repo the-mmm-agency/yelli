@@ -27,6 +27,9 @@ const globalStyle = ({ theme }) => css`
     -webkit-user-select: none;
     -webkit-user-select: auto;
   }
+  ul {
+    list-style: none;
+  }
   ::selection {
     background: ${theme.palette.primary.main};
     color: white;

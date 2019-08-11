@@ -1,4 +1,4 @@
-import { Card, CardActionArea, Grid } from '@material-ui/core'
+import { Card, CardActionArea } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
@@ -20,7 +20,9 @@ const Category = styled(Card)`
   border: 1px solid ${theme('palette.divider')};
   border-radius: ${theme('shape.borderRadius')};
   display: flex;
+  flex: 0 0 calc(50% - ${spacing(2)});
   flex-direction: column;
+  margin: ${spacing(1)};
   text-align: center;
 `
 
@@ -32,16 +34,14 @@ const Icon = styled(CategoryIcon)`
 `
 
 const CategoryCard = ({ name, slug }) => (
-  <Grid item xs={6} md={4}>
-    <Category>
-      <ActionArea component={Link} to={`/category/${slug}`}>
-        <Icon name={name} />
-        <Typography color="textPrimary" mt={1} variant="h6">
-          {name}
-        </Typography>
-      </ActionArea>
-    </Category>
-  </Grid>
+  <Category>
+    <ActionArea component={Link} to={`/category/${slug}`}>
+      <Icon name={name} />
+      <Typography color="textPrimary" mt={1} variant="h6">
+        {name}
+      </Typography>
+    </ActionArea>
+  </Category>
 )
 
 export const query = graphql`
