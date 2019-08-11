@@ -5,9 +5,10 @@ import styled from '@emotion/styled'
 import Header from 'components/header'
 import Navigation from 'components/navigation'
 import SideDrawer from 'components/sideDrawer'
+import Transition from 'components/transition'
 import { up, down } from 'util/theme'
 
-const Content = styled.main`
+const Content = styled.div`
   display: flex;
   margin-top: 64px;
   flex-direction: column;
@@ -30,7 +31,9 @@ const Layout = ({ children, pathname }) => (
     <Header pathname={pathname} />
     <SideDrawer />
     <Navigation pathname={pathname} />
-    <Content>{children}</Content>
+    <Content>
+      <Transition pathname={pathname}>{children}</Transition>
+    </Content>
   </>
 )
 

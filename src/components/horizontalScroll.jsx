@@ -27,6 +27,8 @@ const Scroll = styled.ul`
   -webkit-overflow-scrolling: touch;
 `
 
-const HorizontalScroll = ({ children }) => <Scroll>{children}</Scroll>
+const HorizontalScroll = ({ children, ...props }) => (
+  <Scroll {...props}>{children}</Scroll>
+)
 
 export default HorizontalScroll

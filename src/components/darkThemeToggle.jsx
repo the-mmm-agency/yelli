@@ -8,29 +8,25 @@ import {
 } from '@material-ui/core'
 import { ReactComponent as DarkThemeIcon } from '@mdi/svg/svg/weather-night.svg'
 import { ReactComponent as LightThemeIcon } from '@mdi/svg/svg/weather-sunny.svg'
-
-import { useDarkTheme } from 'components/themeProvider'
+import useDarkMode from 'use-dark-mode'
 
 const DarkThemeToggle = () => {
-  const themeState = useDarkTheme()
-  const Icon = themeState.dark ? DarkThemeIcon : LightThemeIcon
-  const handleClick = () => {
-    themeState.toggle()
-  }
+  const darkMode = useDarkMode()
+  const Icon = darkMode.value ? DarkThemeIcon : LightThemeIcon
   return (
-    <MenuItem onClick={handleClick}>
+    <MenuItem onClick={darkMode.toggle}>
       <ListItemIcon color="inherit">
         <Icon fill="currentColor" />
       </ListItemIcon>
       <ListItemText
-        primary={`${themeState.dark ? 'Dark' : 'Light'} theme`}
+        primary={`${darkMode.value ? 'Dark' : 'Light'} theme`}
         primaryTypographyProps={{ variant: 'subtitle1' }}
       />
       <ListItemSecondaryAction>
         <Switch
           color="primary"
-          checked={themeState.dark}
-          onChange={handleClick}
+          checked={darkMode.value}
+          onChange={darkMode.toggle}
         />
       </ListItemSecondaryAction>
     </MenuItem>

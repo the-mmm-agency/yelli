@@ -2,10 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Helmet } from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
-import { useTheme } from '@material-ui/styles'
 
 const SEO = ({ description, lang, meta, title }) => {
-  const theme = useTheme()
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -65,20 +63,12 @@ const SEO = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
         {
-          name: 'theme-color',
-          content: theme.palette.background.default,
-        },
-        {
           name: 'apple-mobile-web-app-title',
           content: title,
         },
         {
           name: 'application-name',
           content: title,
-        },
-        {
-          name: 'msapplication-TileColor',
-          content: theme.palette.background.default,
         },
         ...meta,
       ]}

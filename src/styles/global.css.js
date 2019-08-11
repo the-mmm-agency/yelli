@@ -9,7 +9,6 @@ const globalStyle = ({ theme }) => css`
   }
   html {
     overflow-y: scroll;
-    scroll-behavior: smooth;
   }
   html > * {
     overflow-y: hidden;

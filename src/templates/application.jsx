@@ -32,6 +32,11 @@ const Icon = styled(AppIcon)`
   width: ${spacing(14)};
 `
 
+const Screenshots = styled(HorizontalScroll)`
+  padding-inline-start: ${spacing(4)};
+  scroll-padding-inline-start: ${spacing(4)};
+`
+
 const Screenshot = styled(Img)`
   ${up('md')} {
     height: 45vw;
@@ -98,7 +103,7 @@ const Application = ({
         {description}
       </Typography>
       <Divider variant="fullWidth" />
-      <HorizontalScroll>
+      <Screenshots>
         {screenshots.map(screenshot => (
           <Screenshot
             key={screenshot.handle}
@@ -110,7 +115,7 @@ const Application = ({
             withWebp
           />
         ))}
-      </HorizontalScroll>
+      </Screenshots>
     </Flex>
   </>
 )

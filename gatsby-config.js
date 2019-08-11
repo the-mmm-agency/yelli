@@ -56,6 +56,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-emotion',
+    'gatsby-plugin-use-dark-mode',
     {
       resolve: 'gatsby-plugin-nprogress',
       options: {

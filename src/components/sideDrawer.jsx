@@ -44,22 +44,18 @@ const SideDrawer = () => (
         <Logo />
       </LogoContainer>
       <List dense>
-        <li>
-          <NavLink to="/">
-            <ListItemIcon>
-              <HomeIcon />
-            </ListItemIcon>
-            <ListItemText>Home</ListItemText>
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/search/">
-            <ListItemIcon>
-              <SearchIcon />
-            </ListItemIcon>
-            <ListItemText>Search</ListItemText>
-          </NavLink>
-        </li>
+        <NavLink to="/">
+          <ListItemIcon>
+            <HomeIcon />
+          </ListItemIcon>
+          <ListItemText>Home</ListItemText>
+        </NavLink>
+        <NavLink to="/search/">
+          <ListItemIcon>
+            <SearchIcon />
+          </ListItemIcon>
+          <ListItemText>Search</ListItemText>
+        </NavLink>
       </List>
       <CategoryList />
     </Drawer>
