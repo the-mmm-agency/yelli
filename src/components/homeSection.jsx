@@ -1,43 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Box, Button as MuiButton, Typography } from '@material-ui/core'
-import styled from '@emotion/styled'
+import { Button, Typography } from '@material-ui/core'
 
+import Flex from 'components/flex'
 import Link from 'components/link'
 import HorizontalScroll from 'components/horizontalScroll'
-import { spacing } from 'util/theme'
-
-const Button = styled(MuiButton)`
-  font-weight: 600;
-  margin-left: auto;
-  margin-right: ${spacing(3)};
-  text-transform: capitalize;
-`
 
 const HomeSection = ({ title, link, apps, AppComponent }) => (
-  <Box pt={2} pb={1} width={1}>
-    <Box display="flex" pl={4}>
+  <Flex flexDirection="column" pt={2} pb={1} width={1}>
+    <Flex pl={3} pr={{ xs: 1, md: 2 }} justifyContent="space-between">
       <Typography gutterBottom variant="h6">
         {title}
       </Typography>
       {link && (
         <Button
+          component={Link}
           color="primary"
           size="small"
-          variant="text"
-          component={Link}
           to={link}
+          variant="text"
         >
           Show More
         </Button>
       )}
-    </Box>
+    </Flex>
     <HorizontalScroll>
       {apps.map(({ id, ...app }) => (
         <AppComponent key={id} {...app} />
       ))}
     </HorizontalScroll>
-  </Box>
+  </Flex>
 )
 
 HomeSection.defaultProps = {

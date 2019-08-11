@@ -34,7 +34,7 @@ const Navigation = ({ pathname }) => {
   const getIcon = (path, Match, NoMatch) =>
     path === pathname ? <Match /> : <NoMatch />
   return (
-    <Hidden mdUp>
+    <Hidden mdUp implementation="css">
       <AppBar>
         <BottomNavigation onChange={handleChange} value={pathname}>
           <BottomNavigationAction

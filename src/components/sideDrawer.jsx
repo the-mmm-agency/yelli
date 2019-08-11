@@ -47,7 +47,7 @@ const Drawer = styled(MuiDrawer)`
 `
 
 const SideDrawer = () => (
-  <Hidden smDown>
+  <Hidden smDown implementation="css">
     <Drawer variant="permanent">
       <LogoContainer>
         <Logo

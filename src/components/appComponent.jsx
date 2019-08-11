@@ -5,9 +5,9 @@ import { graphql } from 'gatsby'
 import AppCard from 'components/appCard'
 import AppListItem from 'components/appListItem'
 
-const AppComponent = ({ type, slug, ...props }) => {
-  const AppItem = type === 'list' ? AppListItem : AppCard
-  return <AppItem slug={slug} {...props} />
+const AppComponent = ({ variant, ...props }) => {
+  const AppItem = variant === 'list' ? AppListItem : AppCard
+  return <AppItem {...props} />
 }
 
 export const query = graphql`
@@ -27,12 +27,11 @@ export const query = graphql`
 `
 
 AppComponent.defaultProps = {
-  type: 'card',
+  variant: 'card',
 }
 
 AppComponent.propTypes = {
-  slug: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['list', 'card']),
+  variant: PropTypes.oneOf(['list', 'card']),
 }
 
 export default AppComponent

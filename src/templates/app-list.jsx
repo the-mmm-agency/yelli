@@ -10,7 +10,7 @@ const AppList = ({ name, apps }) => (
     <ListHeader>{name}</ListHeader>
     <List>
       {apps.map(app => (
-        <AppComponent key={app.id} {...app} type="list" page="/new" />
+        <AppComponent key={app.id} variant="list" {...app} />
       ))}
     </List>
   </>

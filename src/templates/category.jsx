@@ -1,29 +1,11 @@
-import { Hidden, Grid, Typography } from '@material-ui/core'
+import { Hidden } from '@material-ui/core'
 import React from 'react'
-import { theme } from 'styled-tools'
-import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 
 import SEO from 'components/seo'
+import Flex from 'components/flex'
 import AppList from 'templates/app-list'
-import AppComponent from 'components/appComponent'
-import { spacing } from 'util/theme'
-
-const Name = styled(Typography)`
-  border-bottom: 1px solid ${theme('palette.divider')};
-  padding: ${spacing(2)} ${spacing(4)};
-  font-weight: 500;
-`
-
-const List = styled(Grid)`
-  &::after {
-    content: '';
-    flex: 2 0 auto;
-  }
-  flex-wrap: wrap;
-  padding: ${spacing(3)} ${spacing(4)};
-  list-style: none;
-`
+import AppGrid from 'components/appGrid'
 
 const Category = ({
   data: {
@@ -31,22 +13,15 @@ const Category = ({
   },
   pageContext: { name },
 }) => (
-  <>
+  <Flex flexDirection="column">
     <SEO title={`${name} Apps`} />
-    <Hidden smUp implementation="css">
+    <Hidden smUp>
       <AppList name={name} apps={applications} />
     </Hidden>
-    <Hidden smDown implementation="css">
-      <Name component="h1" variant="h5">
-        {name}
-      </Name>
-      <List component="ul" container justify="space-between" spacing={4}>
-        {applications.map(app => (
-          <AppComponent key={app.id} {...app} />
-        ))}
-      </List>
+    <Hidden smDown>
+      <AppGrid name={name} apps={applications} />
     </Hidden>
-  </>
+  </Flex>
 )
 
 export const pageQuery = graphql`

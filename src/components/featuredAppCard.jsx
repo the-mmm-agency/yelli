@@ -8,15 +8,15 @@ import styled from '@emotion/styled'
 
 import Link from 'components/link'
 import Typography from 'components/typography'
-import { down, spacing, transitions } from 'util/theme'
+import { up, spacing } from 'util/theme'
 
 const Banner = styled(Img)`
-  ${down('sm')} {
-    height: 42vw;
-    max-height: 200px;
+  ${up('md')} {
+    height: 175px;
+    width: 100%;
   }
-  height: 175px;
-  width: 100%;
+  height: 42vw;
+  max-height: 200px;
 `
 
 const Content = styled(CardContent)`
@@ -24,35 +24,18 @@ const Content = styled(CardContent)`
 `
 
 const Root = styled(Card)`
-  &:hover {
-    background-color: ${theme('palette.background.paper')};
-    background-size: auto 105%;
-    border-color: transparent;
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
-  }
-  ${down('sm')} {
-    width: calc(100% - 32px);
-    min-width: 300px;
-    max-width: 400px;
-    flex-grow: 0;
-    flex-shrink: 0;
+  ${up('md')} {
+    min-width: 350px;
+    max-width: 375px;
+    width: calc(100% / 3 - 32px);
   }
   background-color: ${theme('palette.background.default')};
   border: 1px solid ${theme('palette.divider')};
-  margin: ${spacing(2)};
-  margin-left: 0;
-  min-width: 350px;
-  max-width: 375px;
-  width: calc(100% / 3 - 32px);
-  scroll-snap-align: start;
-  transition: ${transitions(
-    ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
-    {
-      duration: theme('transitions.duration.standard'),
-      easing: theme('transitions.easing.easeInOut'),
-    }
-  )};
+  margin: ${spacing(2)} ${spacing(1)};
+  flex: 0 0 auto;
+  min-width: 300px;
+  max-width: 400px;
+  width: calc(100% - 32px);
 `
 
 const FeaturedAppCard = ({ title, banner, description, slug }) => (

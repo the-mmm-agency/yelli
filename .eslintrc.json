@@ -102,6 +102,7 @@
         "src/pages/*.jsx"
       ],
       "rules": {
+        "react/prop-types": "off",
         "unicorn/filename-case": ["error", { "case": "kebabCase" }]
       }
     },

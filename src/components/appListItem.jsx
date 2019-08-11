@@ -2,34 +2,26 @@ import { ListItem, ListItemIcon, ListItemText } from '@material-ui/core'
 import PropTypes from 'prop-types'
 import React from 'react'
 import styled from '@emotion/styled'
-import Img from 'graphcms-image'
 
 import Link from 'components/link'
+import AppIcon from 'components/appIcon'
 import { spacing } from 'util/theme'
 
-const Icon = styled(Img)`
+const Icon = styled(AppIcon)`
   width: 50px;
   height: 50px;
   margin-right: ${spacing(3)};
 `
 
-const Root = styled(ListItem)`
+const Item = styled(ListItem)`
   padding: ${spacing(2)};
-  scroll-snap-align: start;
 `
 
 const AppListItem = ({ category, title, icon, slug }) => (
   <li>
-    <Root button component={Link} to={`/app/${slug}`} disableGutters divider>
+    <Item button component={Link} to={`/app/${slug}`} disableGutters divider>
       <ListItemIcon>
-        <Icon
-          alt="Application Icon"
-          image={icon}
-          maxWidth={50}
-          title={title}
-          fadeIn={false}
-          withWebp
-        />
+        <Icon image={icon} maxWidth={50} title={title} />
       </ListItemIcon>
       <ListItemText
         primary={title}
@@ -40,7 +32,7 @@ const AppListItem = ({ category, title, icon, slug }) => (
           variant: 'subtitle1',
         }}
       />
-    </Root>
+    </Item>
   </li>
 )
 

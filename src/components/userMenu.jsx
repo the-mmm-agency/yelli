@@ -18,9 +18,6 @@ const UserMenu = () => {
       <IconButton
         aria-haspopup="true"
         aria-owns={anchorEl ? 'settings-menu' : undefined}
-        css={css`
-          margin-left: auto;
-        `}
         color="primary"
         onClick={handleClick}
       >

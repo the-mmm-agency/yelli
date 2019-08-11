@@ -3,7 +3,7 @@ import {
   ButtonBase,
   IconButton,
   Hidden,
-  Toolbar,
+  Toolbar as MuiToolbar,
 } from '@material-ui/core'
 import { ArrowBack as BackIcon } from '@material-ui/icons'
 import React from 'react'
@@ -23,9 +23,7 @@ const AppBar = styled(MuiAppBar)`
     width: 100%;
   }
   border-bottom: 1px solid ${theme('palette.divider')};
-  box-shadow: none;
   margin-left: ${drawerWidth}px;
-  max-height: fit-content;
   width: calc(100% - ${drawerWidth}px);
 `
 
@@ -33,23 +31,16 @@ const BackButton = styled(IconButton)`
   opacity: ${ifProp('hidden', 0, 1)};
 `
 
-const LogoButton = styled(ButtonBase)`
-  ${down('sm')} {
-    margin: auto;
-    flex-grow: 1;
-  }
+const Toolbar = styled(MuiToolbar)`
+  justify-content: space-between;
   ${up('md')} {
-    border-right: 1px solid ${theme('palette.divider')};
-    width: 216px;
-  }
-  .gatsby-image-wrapper {
-    margin: auto;
+    justify-content: flex-end;
   }
 `
 
 const Header = ({ pathname }) => (
   <AppBar>
-    <Toolbar>
+    <Toolbar css={{ justifyContent: 'space-between' }}>
       <Hidden mdUp>
         <BackButton
           color="primary"
@@ -60,9 +51,9 @@ const Header = ({ pathname }) => (
         >
           <BackIcon />
         </BackButton>
-        <LogoButton component={Link} to="/">
+        <ButtonBase component={Link} to="/">
           <Logo />
-        </LogoButton>
+        </ButtonBase>
       </Hidden>
       <UserMenu />
     </Toolbar>

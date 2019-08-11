@@ -8,23 +8,13 @@ import { theme } from 'styled-tools'
 import Link from 'components/link'
 import CategoryIcon from 'components/categoryIcon'
 import Typography from 'components/typography'
-import { down, spacing, transitions } from 'util/theme'
+import { spacing } from 'util/theme'
 
 const ActionArea = styled(CardActionArea)`
-  ${down('sm')} {
-    padding: ${spacing(3)};
-  }
-  padding: ${spacing(5)};
+  padding: ${spacing(3)};
 `
 
 const Category = styled(Card)`
-  &:hover {
-    background-color: ${theme('palette.background.paper')};
-    background-size: auto 105%;
-    border-color: transparent;
-    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2);
-    transform: translateY(-3px);
-  }
   align-items: center;
   background-color: ${theme('palette.background.default')};
   border: 1px solid ${theme('palette.divider')};
@@ -32,13 +22,6 @@ const Category = styled(Card)`
   display: flex;
   flex-direction: column;
   text-align: center;
-  transition: ${transitions(
-    ['border-color', 'opacity', 'box-shadow', 'background-size', 'transform'],
-    {
-      duration: theme('transitions.duration.complex'),
-      easing: theme('transitions.easing.sharp'),
-    }
-  )};
 `
 
 const Icon = styled(CategoryIcon)`
@@ -51,10 +34,7 @@ const Icon = styled(CategoryIcon)`
 const CategoryCard = ({ name, slug }) => (
   <Grid item xs={6} md={4}>
     <Category>
-      <ActionArea
-        component={Link}
-        to={`/category/${slug}`}
-      >
+      <ActionArea component={Link} to={`/category/${slug}`}>
         <Icon name={name} />
         <Typography color="textPrimary" mt={1} variant="h6">
           {name}

@@ -1,22 +1,20 @@
-import React, {
-  createContext,
-  useLayoutEffect,
-  useContext,
-  useState,
-} from 'react'
+import React, { createContext, useContext, useState } from 'react'
 import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { useEffectOnce } from 'react-use'
 
 import BaseTheme from 'themes/baseTheme'
 import GlobalStyles from 'components/globalStyles'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
 
+const key = 'darkTheme'
+
 const storage = {
-  get: () => window.localStorage.getItem('darkTheme'),
-  set: value => window.localStorage.setItem(value),
+  get: () => window.localStorage.getItem(key),
+  set: value => window.localStorage.setItem(key, value),
 }
 
 const defaultContextData = {
@@ -24,55 +22,44 @@ const defaultContextData = {
   toggle: () => {},
 }
 
-const DarkThemeContext = createContext(defaultContextData)
-export const useDarkTheme = () => useContext(DarkThemeContext)
+const ThemeContext = createContext(defaultContextData)
+export const useDarkTheme = () => useContext(ThemeContext)
 
 const useEffectDarkMode = () => {
   const [themeState, setThemeState] = useState({
-    dark: true,
-    hasThemeLoaded: false,
+    dark: false,
   })
   const matches = useMediaQuery('(prefers-color-scheme: dark)', { noSsr: true })
-  useLayoutEffect(() => {
-    if (typeof window !== 'undefined') {
-      const isDark = storage.get() === null ? matches : storage.get() === 'true'
-      setThemeState({ dark: isDark, hasThemeLoaded: true })
-    }
-  }, [])
+  useEffectOnce(() => {
+    const isDark = storage.get() === null ? matches : storage.get() === 'true'
+    setThemeState({ dark: isDark })
+  })
   return [themeState, setThemeState]
 }
 
 export const ThemeProvider = ({ children }) => {
   const [themeState, setThemeState] = useEffectDarkMode()
-
-  if (!themeState.hasThemeLoaded) {
-    return <div />
-  }
-
   const toggle = () => {
     const dark = !themeState.dark
-    window.localStorage.setItem('darkTheme', JSON.stringify(dark))
+    storage.set(JSON.stringify(dark))
     setThemeState({ ...themeState, dark })
   }
-
   const createTheme = theme => createMuiTheme({ ...BaseTheme, ...theme })
-
   const computedTheme = createTheme(themeState.dark ? DarkTheme : LightTheme)
-
   return (
-    <EmotionThemeProvider theme={computedTheme}>
-      <MuiThemeProvider theme={computedTheme}>
-        <DarkThemeContext.Provider
-          value={{
-            dark: themeState.dark,
-            toggle,
-          }}
-        >
+    <ThemeContext.Provider
+      value={{
+        dark: themeState.dark,
+        toggle,
+      }}
+    >
+      <EmotionThemeProvider theme={computedTheme}>
+        <MuiThemeProvider theme={computedTheme}>
           <GlobalStyles theme={computedTheme} />
           <CssBaseline />
           {children}
-        </DarkThemeContext.Provider>
-      </MuiThemeProvider>
-    </EmotionThemeProvider>
+        </MuiThemeProvider>
+      </EmotionThemeProvider>
+    </ThemeContext.Provider>
   )
 }

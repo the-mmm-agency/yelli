@@ -1,4 +1,5 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 
 import Header from 'components/header'
@@ -29,5 +30,9 @@ const Layout = ({ children, pathname }) => (
     <Content>{children}</Content>
   </>
 )
+
+Layout.propTypes = {
+  pathname: PropTypes.string.isRequired,
+}
 
 export default Layout

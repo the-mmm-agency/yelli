@@ -51,6 +51,7 @@
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-pose": "^4.0.8",
+    "react-use": "^10.5.0",
     "styled-ax": "^1.1.1",
     "styled-components": "^4.3.2",
     "styled-tools": "^1.7.1"

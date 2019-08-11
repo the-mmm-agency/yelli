@@ -13,42 +13,37 @@ import { theme } from 'styled-tools'
 import Img from 'graphcms-image'
 
 import HorizontalScroll from 'components/horizontalScroll'
+import AppIcon from 'components/appIcon'
 import SEO from 'components/seo'
-import { spacing, down } from 'util/theme'
+import { spacing, up } from 'util/theme'
 
 const Divider = styled(MuiDivider)`
-  min-width: 100vw;
-  margin-left: ${spacing(-3)};
   margin-bottom: ${spacing(2)};
 `
 
 const Description = styled(Typography)`
-  ${down('sm')} {
-    max-width: 80%;
+  ${up('md')} {
+    max-width: 50%;
   }
+  max-width: 80%;
   margin-left: ${spacing(3)};
   margin-top: ${spacing(1)};
   margin-bottom: ${spacing(3)};
-  max-width: 50%;
 `
 
-const Icon = styled(Img)`
+const Icon = styled(AppIcon)`
   flex-grow: 1;
   margin: ${spacing(2)} ${spacing(2)} 0;
   height: ${spacing(14)};
   width: ${spacing(14)};
-  img {
-    border-radius: 15px;
-    filter: drop-shadow(0px 2px 4px rgba(0, 0, 0, 0.1));
-  }
 `
 
 const Info = styled(Grid)`
-  ${down('sm')} {
-    padding: ${spacing(1)} 0 ${spacing(1)} 0;
+  ${up('md')} {
+    padding: ${spacing(2)} 0 ${spacing(2)} 0;
   }
+  padding: ${spacing(1)} 0 ${spacing(1)} 0;
   height: ${spacing(20)};
-  padding: ${spacing(2)} 0 ${spacing(2)} 0;
   flex-basis: ${spacing(16)};
 `
 
@@ -59,19 +54,16 @@ const Meta = styled(Grid)`
 `
 
 const Screenshot = styled(Img)`
+  ${up('md')} {
+    height: 45vw;
+    width: 25vw;
+  }
   border: 1px solid ${theme('palette.divider')};
   border-radius: 15px;
-  flex-shrink: 0;
-  height: 45vw;
   margin-right: ${spacing(2)};
   margin-bottom: ${spacing(3)};
-  overflow: hidden;
-  scroll-snap-align: start;
-  width: 25vw;
-  ${down('sm')} {
-    height: 355px;
-    width: 200px;
-  }
+  height: 355px;
+  width: 200px;
 `
 
 const Application = ({
@@ -90,14 +82,7 @@ const Application = ({
       itemType="https://schema.org/MobileApplication"
     >
       <Info item container direction="row">
-        <Icon
-          alt="Application Icon"
-          title={title}
-          fadeIn={false}
-          itemprop="image"
-          withWebp
-          image={icon}
-        />
+        <Icon title={title} itemprop="image" image={icon} />
         <Meta xs="auto" item>
           <Typography component="h1" itemProp="name" variant="h6">
             {title}
@@ -135,7 +120,7 @@ const Application = ({
       <Description itemProp="description" variant="body1" component="p">
         {description}
       </Description>
-      <Divider />
+      <Divider variant="fullWidth" />
       <HorizontalScroll>
         {screenshots.map(screenshot => (
           <Screenshot

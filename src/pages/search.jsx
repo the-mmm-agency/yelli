@@ -1,33 +1,27 @@
-import { Grid, InputBase, InputAdornment, List } from '@material-ui/core'
+import { Divider, InputBase, InputAdornment, List } from '@material-ui/core'
 import { Search as SearchIcon } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { graphql, navigate } from 'gatsby'
 import Fuse from 'fuse.js'
 import styled from '@emotion/styled'
 import { theme } from 'styled-tools'
+import { useLocalStorage } from 'react-use'
 
-import { spacing, up, transitions } from 'util/theme'
+import { spacing, transitions } from 'util/theme'
 import AppComponent from 'components/appComponent'
+import Flex from 'components/flex'
 import SEO from 'components/seo'
 
 const SearchInput = styled(InputBase)`
-  ${up('sm')} {
-    margin-left: ${spacing(3)};
-    width: calc(100% - ${spacing(6)});
-  }
-  &:focus {
-    background-color: ${theme('palette.input.focus')};
-    box-shadow: ${theme('shadows.3')};
-  }
   &:hover {
     background-color: ${theme('palette.input.hover')};
   }
   background-color: ${theme('palette.input.default')};
   border-radius: ${theme('shape.borderRadius')}px;
-  margin: ${spacing(2)};
+  margin: ${spacing(4)} ${spacing(2)};
   padding: ${spacing(1)};
   font-weight: 500;
-  width: calc(100% - ${spacing(4)});
+  flex-grow: 1;
   transition: ${transitions(['background-color', 'box-shadow'])};
 `
 
@@ -41,12 +35,8 @@ const Search = ({
     graphcms: { applications },
   },
 }) => {
-  const initialSearchString =
-    typeof window !== 'undefined' &&
-    window.localStorage.getItem('searchString') !== null
-      ? window.localStorage.getItem('searchString')
-      : ''
-  const [searchString, setSearchString] = useState(initialSearchString)
+  const [stored, setStored] = useLocalStorage('searchString', '')
+  const [searchString, setSearchString] = useState(stored)
   const options = {
     shouldSort: true,
     threshold: 0.5,
@@ -68,17 +58,17 @@ const Search = ({
   }
   const fuse = new Fuse(applications, options)
   const matchingApps = fuse.search(searchString).slice(0, 15)
-  const handleKeyDown = e => {
-    if (e.key === 'Enter') {
+  const handleKeyDown = ({ key }) => {
+    if (key === 'Enter') {
       navigate(`/app/${matchingApps[0].slug}`)
     }
   }
-  const handleChange = e => {
-    setSearchString(e.target.value)
-    window.localStorage.setItem('searchString', e.target.value)
+  const handleChange = ({ target: { value } }) => {
+    setSearchString(value)
+    setStored(value)
   }
   return (
-    <>
+    <Flex flexDirection="column" bgcolor="background.paper">
       <SEO title="Search" />
       <SearchInput
         startAdornment={
@@ -91,12 +81,13 @@ const Search = ({
         onKeyDown={handleKeyDown}
         placeholder="Just start typing…"
       />
-      <List>
+      <Divider />
+      <List css={{ minHeight: '100vh' }}>
         {matchingApps.map(app => (
-          <AppComponent {...app} key={app.id} type="list" />
+          <AppComponent {...app} variant="list" key={app.id} />
         ))}
       </List>
-    </>
+    </Flex>
   )
 }
 

@@ -9,7 +9,6 @@ const ListHeader = styled(Typography)`
   background-color: ${theme('palette.background.paper')};
   padding: ${spacing(2)};
   font-weight: 500;
-  scroll-snap-align: start;
 `
 
 ListHeader.defaultProps = {

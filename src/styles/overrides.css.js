@@ -3,13 +3,18 @@ import { css } from '@emotion/core'
 const overrides = ({ theme }) => css`
   .MuiList-root {
     background-color: ${theme.palette.background.paper};
+    width: 100%;
   }
   .MuiAppBar-root {
     background-color: ${theme.palette.background.paper};
+    box-shadow: none;
   }
-  .MuiAppBar-root,
+  .MuiButton-text .MuiButton-label {
+    font-weight: 600;
+  }
   .MuiCard-root {
     box-shadow: none;
+    background: transparent;
   }
   .MuiBottomNavigation-root {
     height: 68px;
@@ -27,8 +32,10 @@ const overrides = ({ theme }) => css`
       font-size: 1.7rem;
     }
   }
-  .MuiList-root {
-    width: 100%;
+  .MuiInput-root.Mui-focused,
+  .MuiInputBase-root.Mui-focused {
+    background-color: ${theme.palette.input.focus};
+    box-shadow: ${theme.shadows[3]};
   }
   .MuiBottomNavigationAction-label.Mui-selected {
     font-weight: 600;
