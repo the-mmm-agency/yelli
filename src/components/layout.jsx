@@ -8,7 +8,7 @@ import SideDrawer from 'components/sideDrawer'
 import Transition from 'components/transition'
 import { up, down } from 'util/theme'
 
-const Content = styled.div`
+const Content = styled.main`
   display: flex;
   margin-top: 64px;
   flex-direction: column;
@@ -30,9 +30,9 @@ const Layout = ({ children, pathname }) => (
   <>
     <Header pathname={pathname} />
     <SideDrawer />
-    <Content>
-      <Transition pathname={pathname}>{children}</Transition>
-    </Content>
+    <Transition pathname={pathname}>
+      <Content>{children}</Content>
+    </Transition>
     <Navigation pathname={pathname} />
   </>
 )

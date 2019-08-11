@@ -27,7 +27,7 @@ const Transition = ({ children, pathname }) => {
 
   return (
     <AnimatePresence>
-      <motion.main
+      <motion.div
         key={pathname}
         variants={variants}
         initial="initial"
@@ -36,7 +36,7 @@ const Transition = ({ children, pathname }) => {
         id="main"
       >
         {children}
-      </motion.main>
+      </motion.div>
     </AnimatePresence>
   )
 }
