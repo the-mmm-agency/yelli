@@ -30,10 +30,10 @@ const Layout = ({ children, pathname }) => (
   <>
     <Header pathname={pathname} />
     <SideDrawer />
-    <Navigation pathname={pathname} />
     <Content>
       <Transition pathname={pathname}>{children}</Transition>
     </Content>
+    <Navigation pathname={pathname} />
   </>
 )
 
