@@ -14,7 +14,10 @@ const Content = styled.main`
   flex: 1 1 100%;
   max-width: 100vw;
   ${down('sm')} {
-    padding-bottom: 64px;
+    @media all and (display-mode: standalone) {
+      padding-bottom: 64px;
+    }
+    padding-bottom: 100px;
   }
   ${up('md')} {
     max-width: calc(100vw - 240px);

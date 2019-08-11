@@ -37,7 +37,7 @@ module.exports = {
         start_url: '/',
         background_color: '#212337',
         display: 'standalone',
-        icon: 'src/images/yelli-logo.png', // This path is relative to the root of the site.
+        icon: 'src/images/yelli-logo.png',
       },
     },
     {

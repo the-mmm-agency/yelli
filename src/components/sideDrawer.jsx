@@ -47,7 +47,7 @@ const Drawer = styled(MuiDrawer)`
 `
 
 const SideDrawer = () => (
-  <Hidden smDown implementation="css">
+  <Hidden smDown>
     <Drawer variant="permanent">
       <LogoContainer>
         <Logo
@@ -58,18 +58,22 @@ const SideDrawer = () => (
         />
       </LogoContainer>
       <List dense>
-        <NavLink to="/">
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText>Home</ListItemText>
-        </NavLink>
-        <NavLink to="/search/">
-          <ListItemIcon>
-            <SearchIcon />
-          </ListItemIcon>
-          <ListItemText>Search</ListItemText>
-        </NavLink>
+        <li>
+          <NavLink to="/">
+            <ListItemIcon>
+              <HomeIcon />
+            </ListItemIcon>
+            <ListItemText>Home</ListItemText>
+          </NavLink>
+        </li>
+        <li>
+          <NavLink to="/search/">
+            <ListItemIcon>
+              <SearchIcon />
+            </ListItemIcon>
+            <ListItemText>Search</ListItemText>
+          </NavLink>
+        </li>
       </List>
       <CategoryList />
     </Drawer>
