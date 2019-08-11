@@ -28,11 +28,12 @@ export const useDarkTheme = () => useContext(ThemeContext)
 const useEffectDarkMode = () => {
   const [themeState, setThemeState] = useState({
     dark: false,
+    loaded: false,
   })
   const matches = useMediaQuery('(prefers-color-scheme: dark)', { noSsr: true })
   useEffectOnce(() => {
     const isDark = storage.get() === null ? matches : storage.get() === 'true'
-    setThemeState({ dark: isDark })
+    setThemeState({ dark: isDark, loaded: true })
   })
   return [themeState, setThemeState]
 }
@@ -43,6 +44,9 @@ export const ThemeProvider = ({ children }) => {
     const dark = !themeState.dark
     storage.set(JSON.stringify(dark))
     setThemeState({ ...themeState, dark })
+  }
+  if (!themeState.loaded) {
+    return <div />
   }
   const createTheme = theme => createMuiTheme({ ...BaseTheme, ...theme })
   const computedTheme = createTheme(themeState.dark ? DarkTheme : LightTheme)
