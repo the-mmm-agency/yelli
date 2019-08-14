@@ -1,6 +1,9 @@
 const BaseTheme = {
   shape: {
-    borderRadius: 8,
+    borderRadius: '8px',
+  },
+  sizes: {
+    sideDrawer: '240px',
   },
   typography: {
     fontFamily: [

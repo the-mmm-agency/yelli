@@ -27,7 +27,7 @@ const ListItem = styled(MuiListItem)`
     color: inherit;
     font-weight: inherit;
   }
-  border-radius: ${theme('shape.borderRadius')}px;
+  border-radius: ${theme('shape.borderRadius')};
   margin-left: ${spacing(2)};
   margin-top: ${spacing(1)};
   font-weight: 500;

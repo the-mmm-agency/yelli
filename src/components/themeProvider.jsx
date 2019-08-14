@@ -4,8 +4,10 @@ import { createMuiTheme } from '@material-ui/core/styles'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import useDarkMode from 'use-dark-mode'
 import CssBaseline from '@material-ui/core/CssBaseline'
+import { Global } from '@emotion/core'
 
 import BaseTheme from 'themes/baseTheme'
+import noflash from 'styles/noflash.css'
 import GlobalStyles from 'components/globalStyles'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
@@ -13,15 +15,20 @@ import LightTheme from 'themes/lightTheme'
 const ThemeProvider = ({ children }) => {
   const darkMode = useDarkMode()
   const createTheme = theme => createMuiTheme({ ...BaseTheme, ...theme })
-  const computedTheme = createTheme(darkMode.value ? DarkTheme : LightTheme)
+  const darkTheme = createTheme(DarkTheme)
+  const lightTheme = createTheme(LightTheme)
+  const theme = darkMode.value ? darkTheme : lightTheme
   return (
-    <EmotionThemeProvider theme={computedTheme}>
-      <MuiThemeProvider theme={computedTheme}>
-        <GlobalStyles theme={computedTheme} />
-        <CssBaseline />
-        {children}
-      </MuiThemeProvider>
-    </EmotionThemeProvider>
+    <>
+      <Global styles={noflash(darkTheme)} />
+      <EmotionThemeProvider theme={theme}>
+        <MuiThemeProvider theme={theme}>
+          <GlobalStyles theme={theme} />
+          <CssBaseline />
+          {children}
+        </MuiThemeProvider>
+      </EmotionThemeProvider>
+    </>
   )
 }
 

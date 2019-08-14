@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import AppList from 'templates/app-list'
 import SEO from 'components/seo'
+import AppList from 'views/app-list'
 
 const TopApps = ({ data: { top } }) => (
   <>

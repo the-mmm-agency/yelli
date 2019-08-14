@@ -33,6 +33,9 @@ const Icon = styled(AppIcon)`
 `
 
 const Screenshots = styled(HorizontalScroll)`
+  &::after {
+    min-width: ${spacing(2)};
+  }
   padding-inline-start: ${spacing(4)};
   scroll-padding-inline-start: ${spacing(4)};
 `
@@ -105,15 +108,16 @@ const Application = ({
       <Divider variant="fullWidth" />
       <Screenshots>
         {screenshots.map(screenshot => (
-          <Screenshot
-            key={screenshot.handle}
-            alt="Application Screenshot"
-            itemProp="screenshot"
-            title={title}
-            fit="scale"
-            image={screenshot}
-            withWebp
-          />
+          <li key={screenshot.handle}>
+            <Screenshot
+              alt="Application Screenshot"
+              itemProp="screenshot"
+              title={title}
+              fit="scale"
+              image={screenshot}
+              withWebp
+            />
+          </li>
         ))}
       </Screenshots>
     </Flex>

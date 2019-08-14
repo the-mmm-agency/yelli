@@ -10,7 +10,7 @@ const Scroll = styled.ul`
     }
   }
   &::after {
-    min-width: ${spacing(2)};
+    min-width: ${spacing(1)};
     min-height: fit-content;
     content: '';
   }

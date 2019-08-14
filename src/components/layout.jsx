@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
+import { theme } from 'styled-tools'
 
 import Header from 'components/header'
 import Navigation from 'components/navigation'
@@ -21,8 +22,8 @@ const Content = styled.main`
     padding-bottom: 100px;
   }
   ${up('md')} {
-    max-width: calc(100vw - 240px);
-    margin-left: 240px;
+    max-width: calc(100vw - ${theme('sizes.sideDrawer')});
+    margin-left: ${theme('sizes.sideDrawer')};
   }
 `
 

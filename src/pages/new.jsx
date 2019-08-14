@@ -1,7 +1,7 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import AppList from 'templates/app-list'
+import AppList from 'views/app-list'
 import SEO from 'components/seo'
 
 const New = ({ data: { latest } }) => (

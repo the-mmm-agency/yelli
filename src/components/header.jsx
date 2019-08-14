@@ -13,27 +13,28 @@ import styled from '@emotion/styled'
 import Link from 'components/link'
 import UserMenu from 'components/userMenu'
 import Logo from 'components/logo'
-import { drawerWidth } from 'components/sideDrawer'
-import { up, down } from 'util/theme'
+import { up } from 'util/theme'
 
 const AppBar = styled(MuiAppBar)`
-  ${down('sm')} {
-    margin-left: 0;
-    width: 100%;
+  ${up('md')} {
+    margin-left: ${theme('sizes.sideDrawer')};
+    width: calc(100% - ${theme('sizes.sideDrawer')});
   }
   border-bottom: 1px solid ${theme('palette.divider')};
-  margin-left: ${drawerWidth}px;
-  width: calc(100% - ${drawerWidth}px);
+  margin-left: 0;
+  width: 100%;
 `
 
 const LogoButton = styled(ButtonBase)`
   ${up('md')} {
     opacity: 0;
+    pointer-events: none;
   }
 `
 const BackButton = styled(IconButton)`
   ${up('md')} {
     opacity: 0;
+    pointer-events: none;
   }
   opacity: ${ifProp('hidden', 0, 1)};
 `

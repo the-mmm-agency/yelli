@@ -1,6 +1,5 @@
 import React from 'react'
 
-import './src/styles/noflash.css'
 import Layout from './src/components/layout'
 import rootWrapper from './rootWrapper'
 

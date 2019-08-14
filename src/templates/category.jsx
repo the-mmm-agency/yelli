@@ -4,7 +4,9 @@ import { graphql } from 'gatsby'
 
 import SEO from 'components/seo'
 import Flex from 'components/flex'
-import AppList from 'templates/app-list'
+
+import AppList from 'views/app-list'
+
 import AppGrid from 'components/appGrid'
 
 const Category = ({

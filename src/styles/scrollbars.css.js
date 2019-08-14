@@ -12,6 +12,11 @@ const scrollbars = ({ theme }) => css`
       }
       background: ${theme.palette.scrollbar.thumb};
     }
+    html {
+      scrollbar-color: ${theme.palette.scrollbar.thumb}
+        ${theme.palette.scrollbar.track};
+      scrollbar-width: thin;
+    }
   }
 `
 

@@ -83,7 +83,8 @@
           ["styles", "./src/styles"],
           ["templates", "./src/templates"],
           ["themes", "./src/themes"],
-          ["util", "./src/util"]
+          ["util", "./src/util"],
+          ["views", "./src/views"]
         ],
         "extensions": [".js", ".jsx"]
       }
@@ -99,10 +100,11 @@
         "src/templates/*.js",
         "src/templates/*.jsx",
         "src/pages/*.js",
-        "src/pages/*.jsx"
+        "src/pages/*.jsx",
+        "src/views/*.js",
+        "src/views/*.jsx"
       ],
       "rules": {
-        "react/prop-types": "off",
         "unicorn/filename-case": ["error", { "case": "kebabCase" }]
       }
     },
@@ -112,7 +114,10 @@
         "gatsby-config.js",
         "gatsby-node.js",
         "gatsby-ssr.js"
-      ]
+      ],
+      "rules": {
+        "react/prop-types": "off"
+      }
     }
   ]
 }

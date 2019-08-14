@@ -33,7 +33,6 @@ const Transition = ({ children, pathname }) => {
         initial="initial"
         animate="enter"
         exit="exit"
-        id="main"
       >
         {children}
       </motion.div>

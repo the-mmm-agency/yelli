@@ -18,6 +18,7 @@ module.exports = {
         templates: path.join(__dirname, 'src', 'templates'),
         themes: path.join(__dirname, 'src', 'themes'),
         util: path.join(__dirname, 'src', 'util'),
+        views: path.join(__dirname, 'src', 'views'),
       },
     },
     {
@@ -56,6 +57,7 @@ module.exports = {
       },
     },
     'gatsby-plugin-emotion',
+    'gatsby-plugin-polished',
     'gatsby-plugin-use-dark-mode',
     {
       resolve: 'gatsby-plugin-nprogress',
