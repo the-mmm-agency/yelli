@@ -1,7 +1,7 @@
 import { css } from '@emotion/core'
 import { darken } from '@material-ui/core/styles/colorManipulator'
 
-const scrollbars = ({ theme }) => css`
+const scrollbars = theme => css`
   ${theme.breakpoints.up('sm')} {
     ::-webkit-scrollbar {
       background: ${theme.palette.scrollbar.track};

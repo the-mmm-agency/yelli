@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 
-const overrides = ({ theme }) => css`
+const overrides = theme => css`
   .MuiList-root {
     background-color: ${theme.palette.background.paper};
     width: 100%;

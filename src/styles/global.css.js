@@ -1,6 +1,6 @@
 import { css } from '@emotion/core'
 
-const globalStyle = ({ theme }) => css`
+const globalStyle = theme => css`
   * {
     @media (prefers-reduced-motion: reduce) {
       animation: none !important;

@@ -8,6 +8,7 @@ import { Global } from '@emotion/core'
 
 import BaseTheme from 'themes/baseTheme'
 import noflash from 'styles/noflash.css'
+import fonts from 'styles/fonts.css'
 import GlobalStyles from 'components/globalStyles'
 import DarkTheme from 'themes/darkTheme'
 import LightTheme from 'themes/lightTheme'
@@ -21,6 +22,7 @@ const ThemeProvider = ({ children }) => {
   return (
     <>
       <Global styles={noflash(darkTheme)} />
+      <Global styles={fonts} />
       <EmotionThemeProvider theme={theme}>
         <MuiThemeProvider theme={theme}>
           <GlobalStyles theme={theme} />
