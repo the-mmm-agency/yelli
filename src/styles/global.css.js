@@ -9,6 +9,7 @@ const globalStyle = theme => css`
   }
   html {
     overflow-y: scroll;
+    text-rendering: geometricPrecision;
   }
   html > * {
     overflow-y: hidden;
@@ -19,6 +20,7 @@ const globalStyle = theme => css`
     height: auto;
   }
   body {
+    transition: ${theme.transitions.create(['color', 'background-color'])};
     background-color: ${theme.palette.background.default};
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;

@@ -1,35 +1,13 @@
-import { Divider, InputBase, InputAdornment, List } from '@material-ui/core'
-import { Search as SearchIcon } from '@material-ui/icons'
+import { Divider, List } from '@material-ui/core'
 import React from 'react'
 import { graphql, navigate } from 'gatsby'
 import Fuse from 'fuse.js'
-import styled from '@emotion/styled'
-import { theme } from 'styled-tools'
 import createPersistedState from 'use-persisted-state'
 
-import { spacing, transitions } from 'util/theme'
 import AppComponent from 'components/appComponent'
+import SearchBar from 'components/searchBar'
 import Flex from 'components/flex'
 import SEO from 'components/seo'
-
-const SearchInput = styled(InputBase)`
-  &:hover {
-    background-color: ${theme('palette.input.hover')};
-  }
-  background-color: ${theme('palette.input.default')};
-  border-radius: ${theme('shape.borderRadius')};
-  margin: ${spacing(4)} ${spacing(2)};
-  padding: ${spacing(1)};
-  font-weight: 500;
-  flex-grow: 1;
-  transition: ${transitions(['background-color', 'box-shadow'])};
-  will-change: background-color, box-shadow;
-`
-
-const Adornment = styled(InputAdornment)`
-  margin-left: ${spacing(1)};
-  margin-right: ${spacing(2)};
-`
 
 const useSearchString = createPersistedState('searchString')
 
@@ -71,16 +49,10 @@ const Search = ({
   return (
     <Flex flexDirection="column" bgcolor="background.paper">
       <SEO title="Search" />
-      <SearchInput
-        startAdornment={
-          <Adornment position="start">
-            <SearchIcon color="primary" />
-          </Adornment>
-        }
+      <SearchBar
         onChange={handleChange}
         value={searchString}
         onKeyDown={handleKeyDown}
-        placeholder="Just start typing…"
       />
       <Divider />
       <List css={{ minHeight: '100vh' }}>

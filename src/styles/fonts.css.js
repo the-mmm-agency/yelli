@@ -13,6 +13,7 @@ const fonts = Object.keys(weights).map(fontWeight =>
     fontStyle: 'normal',
     fileFormats: ['woff2', 'woff', 'otf'],
     fontDisplay: 'swap',
+    unicodeRange: 'U+0020—007F',
     fontWeight,
   })
 )

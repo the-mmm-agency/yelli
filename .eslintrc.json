@@ -110,6 +110,9 @@
     },
     {
       "files": [
+        "gatsby/browser/*.js",
+        "gatsby/ssr/*.js",
+        "gatsby/*.js",
         "gatsby-browser.js",
         "gatsby-config.js",
         "gatsby-node.js",

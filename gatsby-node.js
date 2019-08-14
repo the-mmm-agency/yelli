@@ -3,7 +3,7 @@ const path = require('path')
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const createPages = async (type, template, base, query = '') => {
+  const generatePages = async (type, template, base, query = '') => {
     const request = await graphql(`
       {
         graphcms {
@@ -28,6 +28,6 @@ exports.createPages = async ({ actions, graphql }) => {
     })
   }
 
-  await createPages('applications', 'application.jsx', 'app')
-  await createPages('categories', 'category.jsx', 'category', 'name')
+  await generatePages('applications', 'application/application.jsx', 'app')
+  await generatePages('categories', 'category/category.jsx', 'category', 'name')
 }
