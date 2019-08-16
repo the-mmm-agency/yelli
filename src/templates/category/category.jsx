@@ -17,10 +17,10 @@ const Category = ({
   }
   return (
     <>
-      <Hidden mdUp>
+      <Hidden mdUp implementation="css">
         <List {...props} />
       </Hidden>
-      <Hidden smDown>
+      <Hidden smDown implementation="css">
         <Grid {...props} />
       </Hidden>
     </>
