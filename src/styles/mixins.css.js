@@ -1,7 +1,6 @@
 import { css } from '@emotion/core'
 import { isNil } from 'ramda'
-
-import { up, down, between } from 'util/theme'
+import { between, down, up } from 'util/theme'
 
 const getBreakpoint = breakpoint => props => {
   if (!isNil(breakpoint.up)) {

@@ -1,6 +1,6 @@
-import React, { forwardRef } from 'react'
 import { Link as MuiLink } from '@material-ui/core'
 import { Link as GatsbyLink } from 'gatsby'
+import React, { forwardRef } from 'react'
 
 const Link = forwardRef((props, ref) => (
   <MuiLink

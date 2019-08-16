@@ -1,15 +1,14 @@
-import React from 'react'
+import Link from 'components/link'
+import Typography from 'components/typography'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 import {
-  Card,
   ActionArea,
+  Card,
   Content,
   Icon,
 } from './application.card.css'
-
-import Link from 'components/link'
-import Typography from 'components/typography'
 
 const AppCard = ({ category, title, icon, slug }) => (
   <Card component="li">
@@ -17,21 +16,21 @@ const AppCard = ({ category, title, icon, slug }) => (
       <Icon image={icon} title={title} />
       <Content>
         <Typography
-          fontWeight={500}
           fontSize={{
-            xs: 'body2.fontSize',
             md: 'body1.fontSize',
+            xs: 'body2.fontSize',
           }}
+          fontWeight={500}
         >
           {title}
         </Typography>
         <Typography
+          color="textSecondary"
           fontSize={{
-            xs: 'caption.fontSize',
             md: 'body2.fontSize',
+            xs: 'caption.fontSize',
           }}
           fontWeight={600}
-          color="textSecondary"
         >
           {category.name}
         </Typography>
@@ -46,8 +45,8 @@ AppCard.propTypes = {
   }),
   icon: PropTypes.shape({
     handle: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
   }).isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

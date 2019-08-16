@@ -10,21 +10,25 @@ const overrides = ({
   .MuiList-root {
     background-color: ${paper};
   }
+
   .MuiAppBar-root {
     background-color: ${paper};
   }
+
   .MuiCardContent-root {
     & > * {
       overflow: hidden;
-      text-overflow: ellipsis;
       white-space: nowrap;
+      text-overflow: ellipsis;
     }
   }
+
   .MuiBottomNavigationAction-root {
     svg {
       font-size: 1.7rem;
     }
   }
+
   .MuiInput-root.Mui-focused,
   .MuiInputBase-root.Mui-focused {
     background-color: ${input.focus};

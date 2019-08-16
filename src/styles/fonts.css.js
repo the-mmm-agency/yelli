@@ -8,13 +8,13 @@ const weights = {
 
 const fonts = Object.keys(weights).map(fontWeight =>
   fontFace({
+    fileFormats: ['woff2', 'woff', 'otf'],
+    fontDisplay: 'swap',
     fontFamily: 'proxima-nova',
     fontFilePath: `/fonts/proxima-nova-${weights[fontWeight]}`,
     fontStyle: 'normal',
-    fileFormats: ['woff2', 'woff', 'otf'],
-    fontDisplay: 'swap',
-    unicodeRange: 'U+0020—007F',
     fontWeight,
+    unicodeRange: 'U+0020—007F',
   })
 )
 

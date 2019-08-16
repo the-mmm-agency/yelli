@@ -2,13 +2,7 @@ import Fuse from 'fuse.js'
 
 const createFuse = object =>
   new Fuse(object, {
-    shouldSort: true,
-    threshold: 0.5,
-    tokenize: true,
-    location: 0,
     distance: 100,
-    maxPatternLength: 16,
-    minMatchCharLength: 1,
     keys: [
       {
         name: 'title',
@@ -19,6 +13,12 @@ const createFuse = object =>
         weight: 0.3,
       },
     ],
+    location: 0,
+    maxPatternLength: 16,
+    minMatchCharLength: 1,
+    shouldSort: true,
+    threshold: 0.5,
+    tokenize: true,
   })
 
 export default createFuse

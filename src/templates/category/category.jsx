@@ -1,7 +1,6 @@
 import { Hidden } from '@material-ui/core'
-import React from 'react'
 import { graphql } from 'gatsby'
-
+import React from 'react'
 import Grid from 'templates/appGrid'
 import List from 'templates/appList'
 
@@ -12,8 +11,8 @@ const Category = ({
   pageContext: { name },
 }) => {
   const props = {
-    name,
     apps: applications,
+    name,
   }
   return (
     <>

@@ -6,13 +6,12 @@ import {
   HomeOutlined as Home,
   SearchOutlined as Search,
 } from '@material-ui/icons'
+import Logo from 'components/logo'
 import React from 'react'
 
-import { Nav, LogoContainer } from './drawer.css'
 import Categories from './drawer.categories'
+import { LogoContainer, Nav } from './drawer.css'
 import DrawerLink from './drawer.link'
-
-import Logo from 'components/logo'
 
 const Drawer = () => (
   <Nav aria-label="Site navigation">
@@ -21,11 +20,11 @@ const Drawer = () => (
         <Logo />
       </LogoContainer>
       <List dense>
-        <DrawerLink to="/" Icon={Home} text="Home" />
+        <DrawerLink Icon={Home} text="Home" to="/" />
         <DrawerLink
-          to="/search"
           Icon={Search}
           text="Search"
+          to="/search"
         />
       </List>
       <Categories />

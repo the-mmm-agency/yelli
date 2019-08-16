@@ -1,20 +1,19 @@
-import React from 'react'
-import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
+import { Global } from '@emotion/core'
 import {
   createMuiTheme,
   CssBaseline,
 } from '@material-ui/core'
-import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
-import useDarkMode from 'use-dark-mode'
-import { Global } from '@emotion/core'
-import { mergeDeepRight } from 'ramda'
-
+import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
 import GlobalStyles from 'components/globalStyles'
-import noflash from 'styles/noflash.css'
+import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
+import { mergeDeepRight } from 'ramda'
+import React from 'react'
 import fonts from 'styles/fonts.css'
+import noflash from 'styles/noflash.css'
 import base from 'themes/base'
 import dark from 'themes/dark'
 import light from 'themes/light'
+import useDarkMode from 'use-dark-mode'
 
 const ThemeProvider = ({ children }) => {
   const darkMode = useDarkMode()

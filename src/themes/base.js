@@ -5,42 +5,15 @@ import {
 import { theme } from 'styled-tools'
 
 const base = {
-  contrastThreshold: 3,
-  palette: {
-    primary: {
-      dark: darken('#ff5370', 0.12),
-      light: lighten('#ff5370', 0.12),
-      main: '#ff5370',
-    },
-    secondary: {
-      dark: lighten('#89ddff', 0.12),
-      light: lighten('#89ddff', 0.12),
-      main: '#89ddff',
-    },
-    tonalOffset: 0.2,
-  },
   borders: {
     standard: props =>
       `1px solid ${theme('palette.divider')(props)}`,
   },
-  radii: {
-    image: '15px',
-  },
+  contrastThreshold: 3,
   overrides: {
-    MuiCard: {
-      root: {
-        boxShadow: 'none',
-        background: 'transparent',
-      },
-    },
     MuiAppBar: {
       root: {
         boxShadow: 'none',
-      },
-    },
-    MuiList: {
-      root: {
-        width: '100%',
       },
     },
     MuiBottomNavigation: {
@@ -59,11 +32,38 @@ const base = {
         textTransform: 'capitalize',
       },
     },
+    MuiCard: {
+      root: {
+        background: 'transparent',
+        boxShadow: 'none',
+      },
+    },
+    MuiList: {
+      root: {
+        width: '100%',
+      },
+    },
     MuiListItemText: {
       inset: {
         paddingLeft: 16,
       },
     },
+  },
+  palette: {
+    primary: {
+      dark: darken('#ff5370', 0.12),
+      light: lighten('#ff5370', 0.12),
+      main: '#ff5370',
+    },
+    secondary: {
+      dark: lighten('#89ddff', 0.12),
+      light: lighten('#89ddff', 0.12),
+      main: '#89ddff',
+    },
+    tonalOffset: 0.2,
+  },
+  radii: {
+    image: '15px',
   },
   shape: {
     borderRadius: '8px',
@@ -72,6 +72,16 @@ const base = {
     sideDrawer: '240px',
   },
   typography: {
+    body1: {
+      letterSpacing: '0.02em',
+    },
+    body2: {
+      letterSpacing: '0.018em',
+    },
+    button: {
+      fontWeight: 600,
+      letterSpacing: '0.05em',
+    },
     fontFamily: [
       'proxima-nova',
       '-apple-system',
@@ -82,26 +92,16 @@ const base = {
       'sans-serif',
     ].join(','),
     fontSize: 14,
-    button: {
-      fontWeight: 600,
-      letterSpacing: '0.05em',
-    },
-    body1: {
-      letterSpacing: '0.02em',
-    },
-    body2: {
-      letterSpacing: '0.018em',
-    },
-    subtitle1: {
-      letterSpacing: '0.02em',
-      fontWeight: 500,
-    },
     h5: {
       letterSpacing: '0.035em',
     },
     h6: {
-      letterSpacing: '0.03em',
       fontWeight: 500,
+      letterSpacing: '0.03em',
+    },
+    subtitle1: {
+      fontWeight: 500,
+      letterSpacing: '0.02em',
     },
   },
 }

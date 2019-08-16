@@ -6,40 +6,46 @@ const globalStyle = ({
 }) => css`
   * {
     @media (prefers-reduced-motion: reduce) {
-      animation: none !important;
       transition: none !important;
+      animation: none !important;
     }
   }
+
   html {
     overflow-y: scroll;
     text-rendering: geometricPrecision;
   }
+
   html > * {
     overflow-y: hidden;
   }
+
   html,
   body {
-    overflow-x: hidden;
     height: auto;
+    overflow-x: hidden;
   }
+
   body {
+    background-color: ${background.default};
     transition: ${transitions.create([
       'color',
       'background-color',
     ])};
-    background-color: ${background.default};
+    user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -webkit-user-select: auto;
   }
+
   ul {
     list-style: none;
   }
+
   ::selection {
-    background: ${primary.main};
     color: white;
+    background: ${primary.main};
   }
+
   ::placeholder {
     color: ${text.placeholder};
   }

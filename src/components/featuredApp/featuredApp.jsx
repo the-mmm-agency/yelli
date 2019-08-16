@@ -1,13 +1,12 @@
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 import { CardActionArea } from '@material-ui/core'
+import Img from 'components/img'
+import Link from 'components/link'
+import Typography from 'components/typography'
+import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Card, Content } from './featuredApp.css'
-
-import Link from 'components/link'
-import Img from 'components/img'
-import Typography from 'components/typography'
 
 const FeaturedApp = ({
   title,
@@ -18,24 +17,24 @@ const FeaturedApp = ({
   <Card component="li">
     <CardActionArea component={Link} to={`/app/${slug}`}>
       <Img
-        alt="Featured app banner"
-        image={banner}
-        fit="max"
-        maxWidth={400}
-        height={{ xs: '42vw', md: 175 }}
-        maxHeight={200}
-        title={title}
         widthWebp
+        alt="Featured app banner"
+        fit="max"
+        height={{ md: 175, xs: '42vw' }}
+        image={banner}
+        maxHeight={200}
+        maxWidth={400}
+        title={title}
       />
       <Content>
         <Typography fontWeight={600} variant="body1">
           {title}
         </Typography>
         <Typography
-          color="textSecondary"
-          variant="body2"
-          fontWeight={600}
           gutterBottom
+          color="textSecondary"
+          fontWeight={600}
+          variant="body2"
         >
           {description}
         </Typography>
@@ -47,8 +46,8 @@ const FeaturedApp = ({
 FeaturedApp.propTypes = {
   banner: PropTypes.shape({
     handle: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
   }).isRequired,
   description: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,

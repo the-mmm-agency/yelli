@@ -52,6 +52,7 @@
     "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.1",
     "styled-tools": "^1.7.1",
+    "stylelint-config-prettier": "^5.2.0",
     "use-dark-mode": "^2.3.1",
     "webpack": "^4.39.2"
   },
@@ -60,15 +61,24 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-node": "^9.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-ramda": "^2.5.1",
     "eslint-plugin-react": "^7.14.3",
+    "eslint-plugin-simple-import-sort": "^4.0.0",
+    "eslint-plugin-sort-keys-fix": "^1.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-unicorn": "^10.0.0",
-    "prettier": "^1.18.2"
+    "prettier": "^1.18.2",
+    "stylelint-config-rational-order": "^0.1.2",
+    "stylelint-config-recommended": "^2.2.0",
+    "stylelint-config-standard": "^18.3.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylint": "^2.0.0"
   },
   "keywords": [
     "gatsby"

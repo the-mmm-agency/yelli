@@ -3,17 +3,17 @@ import {
   BottomNavigationAction,
 } from '@material-ui/core'
 import {
-  Home,
-  Search,
   Category,
-  Poll,
-  HomeOutlined,
   CategoryOutlined,
+  Home,
+  HomeOutlined,
+  Poll,
   PollOutlined,
+  Search,
 } from '@material-ui/icons'
-import React from 'react'
 import { navigate } from 'gatsby'
 import PropTypes from 'prop-types'
+import React from 'react'
 
 import AppBar from './navigation.css'
 

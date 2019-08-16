@@ -1,16 +1,16 @@
-import React from 'react'
 import { Search } from '@material-ui/icons'
+import React from 'react'
 
-import { SearchInput, Adornment } from './searchBar.css.js'
+import { Adornment, SearchInput } from './searchBar.css.js'
 
 const SearchBar = props => (
   <SearchInput
+    placeholder="Just start typing…"
     startAdornment={
       <Adornment position="start">
         <Search color="primary" />
       </Adornment>
     }
-    placeholder="Just start typing…"
     {...props}
   />
 )

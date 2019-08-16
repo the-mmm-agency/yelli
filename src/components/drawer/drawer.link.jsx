@@ -1,21 +1,20 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
+import Link from 'components/link'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 import LinkButton from './drawer.link.css'
-
-import Link from 'components/link'
 
 const DrawerLink = ({ children, Icon, text, ...props }) => (
   <li>
     <LinkButton
-      activeClassName="active"
       button
-      component={Link}
       dense
+      activeClassName="active"
+      component={Link}
       {...props}
     >
       <ListItemIcon>

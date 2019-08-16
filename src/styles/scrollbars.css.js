@@ -11,12 +11,14 @@ const scrollbars = ({
     ::-webkit-scrollbar {
       background: ${track};
     }
+
     ::-webkit-scrollbar-thumb {
       &:hover {
         background: ${darken(thumb, 0.18)};
       }
       background: ${thumb};
     }
+
     html {
       scrollbar-color: ${thumb} ${track};
       scrollbar-width: thin;

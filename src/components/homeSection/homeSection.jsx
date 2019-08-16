@@ -1,10 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Button, Typography } from '@material-ui/core'
-
 import Flex from 'components/flex'
-import Link from 'components/link'
 import HorizontalScroll from 'components/horizontalScroll'
+import Link from 'components/link'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const HomeSection = ({
   title,
@@ -12,11 +11,11 @@ const HomeSection = ({
   apps,
   AppComponent,
 }) => (
-  <Flex flexDirection="column" pt={2} pb={1} width={1}>
+  <Flex flexDirection="column" pb={1} pt={2} width={1}>
     <Flex
-      pl={3}
-      pr={{ xs: 1, md: 2 }}
       justifyContent="space-between"
+      pl={3}
+      pr={{ md: 2, xs: 1 }}
     >
       <Typography gutterBottom variant="h6">
         {title}
@@ -24,8 +23,8 @@ const HomeSection = ({
       {link && (
         <Button
           aria-label="Show more"
-          component={Link}
           color="primary"
+          component={Link}
           size="small"
           to={link}
           variant="text"

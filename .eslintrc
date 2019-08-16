@@ -12,14 +12,19 @@
     "prettier",
     "prettier/react",
     "prettier/standard",
-    "plugin:unicorn/recommended"
+    "plugin:unicorn/recommended",
+    "plugin:ramda/recommended"
   ],
   "plugins": [
     "emotion",
     "import",
     "prettier",
     "jsx-a11y",
+    "fp",
     "standard",
+    "ramda",
+    "simple-import-sort",
+    "sort-keys-fix",
     "unicorn"
   ],
   "parserOptions": {
@@ -45,6 +50,18 @@
     "emotion/import-from-emotion": "error",
     "emotion/styled-import": "error",
 
+    "fp/no-arguments": "error",
+    "fp/no-class": "error",
+    "fp/no-delete": "error",
+    "fp/no-events": "error",
+    "fp/no-get-set": "error",
+    "fp/no-loops": "error",
+    "fp/no-mutating-assign": "error",
+    "fp/no-mutating-methods": "error",
+    "fp/no-proxy": "error",
+    "fp/no-this": "error",
+    "fp/no-valueof-field": "error",
+
     "react/prop-types": [
       "error",
       {
@@ -58,14 +75,18 @@
       }
     ],
     "react/prefer-stateless-function": "warn",
-    "react/sort-prop-types": "error",
-
-    "import/order": [
+    "react/jsx-fragments": ["error", "syntax"],
+    "react/jsx-sort-props": [
       "error",
       {
-        "newlines-between": "always"
+        "shorthandFirst": true
       }
     ],
+    "react/sort-prop-types": "error",
+
+    "sort-keys-fix/sort-keys-fix": "error",
+
+    "simple-import-sort/sort": "error",
 
     "unicorn/filename-case": [
       "error",

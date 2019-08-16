@@ -1,10 +1,9 @@
 import { List } from '@material-ui/core'
-import React from 'react'
-import PropTypes from 'prop-types'
-
 import Application from 'components/application'
 import ListHeader from 'components/listHeader'
 import SEO from 'components/seo'
+import PropTypes from 'prop-types'
+import React from 'react'
 
 const AppList = ({ name, apps }) => (
   <>

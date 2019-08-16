@@ -1,9 +1,9 @@
-import Image from 'gatsby-image'
 import styled from '@emotion/styled'
+import Image from 'gatsby-image'
 
 const Img = styled(Image)`
-  height: 56px;
   width: 56px;
+  height: 56px;
   margin: auto;
 `
 

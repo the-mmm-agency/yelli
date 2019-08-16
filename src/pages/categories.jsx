@@ -1,9 +1,8 @@
-import React from 'react'
-import { graphql } from 'gatsby'
-
 import CategoryCard from 'components/categoryCard'
-import SEO from 'components/seo'
 import Flex from 'components/flex'
+import SEO from 'components/seo'
+import { graphql } from 'gatsby'
+import React from 'react'
 
 const Categories = ({
   data: {

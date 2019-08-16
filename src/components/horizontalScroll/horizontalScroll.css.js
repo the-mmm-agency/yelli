@@ -1,5 +1,4 @@
 import styled from '@emotion/styled'
-
 import { down, spacing } from 'util/theme'
 
 const Scroll = styled.ul`
@@ -8,6 +7,7 @@ const Scroll = styled.ul`
       scroll-snap-align: start;
     }
   }
+
   &::after {
     min-width: ${spacing(1)};
     min-height: fit-content;
@@ -15,10 +15,10 @@ const Scroll = styled.ul`
   }
   display: inline-flex;
   flex-wrap: nowrap;
+  max-width: 100%;
   overflow-y: scroll;
   overflow-y: hidden;
   padding-inline-start: ${spacing(1)};
-  max-width: 100%;
   scroll-behavior: smooth;
   scroll-snap-type: x proximity;
   scroll-padding-inline-start: ${spacing(2)};

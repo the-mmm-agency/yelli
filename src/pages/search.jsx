@@ -1,12 +1,11 @@
 import { Divider, List } from '@material-ui/core'
-import React from 'react'
-import { graphql, navigate } from 'gatsby'
-import createPersistedState from 'use-persisted-state'
-
 import Application from 'components/application'
-import SearchBar from 'components/searchBar'
 import Flex from 'components/flex'
+import SearchBar from 'components/searchBar'
 import SEO from 'components/seo'
+import { graphql, navigate } from 'gatsby'
+import React from 'react'
+import createPersistedState from 'use-persisted-state'
 import createFuse from 'util/createFuse'
 
 const useSearchString = createPersistedState('searchString')
@@ -28,20 +27,20 @@ const Search = ({
     }
   }
   return (
-    <Flex flexDirection="column" bgcolor="background.paper">
+    <Flex bgcolor="background.paper" flexDirection="column">
       <SEO title="Search" />
       <SearchBar
         onChange={handleChange}
-        value={value}
         onKeyDown={handleKeyDown}
+        value={value}
       />
       <Divider />
       <List css={{ minHeight: '100vh' }}>
         {matchingApps.map(app => (
           <Application
             {...app}
-            variant="list"
             key={app.id}
+            variant="list"
           />
         ))}
       </List>

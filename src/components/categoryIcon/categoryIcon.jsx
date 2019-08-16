@@ -1,14 +1,14 @@
 import {
-  FaceOutlined,
-  BuildOutlined,
-  FavoriteBorderOutlined,
-  ShoppingBasketOutlined,
   AudiotrackOutlined,
-  MapOutlined,
-  FastfoodOutlined,
-  VideogameAssetOutlined,
+  BuildOutlined,
   DomainOutlined,
+  FaceOutlined,
+  FastfoodOutlined,
+  FavoriteBorderOutlined,
+  MapOutlined,
+  ShoppingBasketOutlined,
   StarsOutlined,
+  VideogameAssetOutlined,
 } from '@material-ui/icons'
 import { ReactComponent as Newspaper } from '@mdi/svg/svg/newspaper.svg'
 import PropTypes from 'prop-types'

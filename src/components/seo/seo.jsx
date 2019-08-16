@@ -1,7 +1,7 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Helmet } from 'react-helmet'
 import { graphql, useStaticQuery } from 'gatsby'
+import PropTypes from 'prop-types'
+import React from 'react'
+import { Helmet } from 'react-helmet'
 
 const SEO = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
@@ -17,69 +17,70 @@ const SEO = ({ description, lang, meta, title }) => {
       }
     `
   )
-  const metaDescription = description || site.siteMetadata.description
+  const metaDescription =
+    description || site.siteMetadata.description
   return (
     <Helmet
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
         {
+          content: metaDescription,
           name: 'description',
-          content: metaDescription,
         },
         {
+          content: title,
           property: 'og:title',
-          content: title,
         },
         {
+          content: metaDescription,
           property: 'og:description',
-          content: metaDescription,
         },
         {
-          property: 'og:type',
           content: 'website',
+          property: 'og:type',
         },
         {
-          property: 'og:url',
           content: 'https://yelli.com',
+          property: 'og:url',
         },
         {
-          name: 'twitter:card',
           content: 'summary',
+          name: 'twitter:card',
         },
         {
-          name: 'twitter:creator',
           content: site.siteMetadata.author,
+          name: 'twitter:creator',
         },
         {
+          content: title,
           name: 'twitter:title',
-          content: title,
         },
         {
-          name: 'twitter:description',
           content: metaDescription,
+          name: 'twitter:description',
         },
         {
+          content: title,
           name: 'apple-mobile-web-app-title',
-          content: title,
         },
         {
-          name: 'application-name',
           content: title,
+          name: 'application-name',
         },
         ...meta,
       ]}
+      title={title}
+      titleTemplate={`%s | ${site.siteMetadata.title}`}
     />
   )
 }
 
 SEO.defaultProps = {
+  description: '',
   lang: 'en',
   meta: [],
-  description: '',
 }
 
 SEO.propTypes = {

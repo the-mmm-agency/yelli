@@ -1,9 +1,8 @@
-import {
-  InputBase,
-  InputAdornment,
-} from '@material-ui/core'
 import styled from '@emotion/styled'
-
+import {
+  InputAdornment,
+  InputBase,
+} from '@material-ui/core'
 import {
   palette,
   shape,
@@ -20,11 +19,11 @@ export const SearchInput = styled(InputBase)`
   padding: ${spacing(1)};
   font-weight: 500;
   flex-grow: 1;
-  ${transitions(['background-color', 'box-shadow'])};
+  ${transitions(['background-color', 'box-shadow'])}
   ${shape}
 `
 
 export const Adornment = styled(InputAdornment)`
-  margin-left: ${spacing(1)};
   margin-right: ${spacing(2)};
+  margin-left: ${spacing(1)};
 `

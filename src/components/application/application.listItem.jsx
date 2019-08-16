@@ -2,21 +2,20 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
+import Link from 'components/link'
 import PropTypes from 'prop-types'
 import React from 'react'
 
 import { Icon, ListItem } from './application.listItem.css'
 
-import Link from 'components/link'
-
 const AppListItem = ({ category, title, icon, slug }) => (
   <li>
     <ListItem
       button
-      component={Link}
-      to={`/app/${slug}`}
       disableGutters
       divider
+      component={Link}
+      to={`/app/${slug}`}
     >
       <ListItemIcon>
         <Icon image={icon} maxWidth={50} title={title} />
@@ -24,8 +23,8 @@ const AppListItem = ({ category, title, icon, slug }) => (
       <ListItemText
         primary={title}
         primaryTypographyProps={{
-          variant: 'h6',
           color: 'textPrimary',
+          variant: 'h6',
         }}
         secondary={category.name}
         secondaryTypographyProps={{
@@ -43,8 +42,8 @@ AppListItem.propTypes = {
   }).isRequired,
   icon: PropTypes.shape({
     handle: PropTypes.string.isRequired,
-    width: PropTypes.number.isRequired,
     height: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
   }).isRequired,
   slug: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

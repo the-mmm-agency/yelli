@@ -1,12 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-import Content from './layout.css'
-
+import Drawer from 'components/drawer'
 import Header from 'components/header'
 import Navigation from 'components/navigation'
-import Drawer from 'components/drawer'
 import PageTransition from 'components/pageTransition'
+import PropTypes from 'prop-types'
+import React from 'react'
+
+import Content from './layout.css'
 
 const Layout = ({ children, pathname }) => (
   <>

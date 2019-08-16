@@ -1,13 +1,13 @@
-import facepaint from 'facepaint'
 import { css } from '@emotion/core'
+import { fade as muiFade } from '@material-ui/core/styles/colorManipulator'
+import facepaint from 'facepaint'
 import {
   curry,
+  identity,
+  memoizeWith,
   prop,
   propOr,
-  memoizeWith,
-  identity,
 } from 'ramda'
-import { fade as muiFade } from '@material-ui/core/styles/colorManipulator'
 import { theme } from 'styled-tools'
 
 const propOrProp = curry((obj1, obj2, val, fallback) =>

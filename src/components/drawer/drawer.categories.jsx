@@ -1,10 +1,9 @@
 import { List, ListSubheader } from '@material-ui/core'
-import { useStaticQuery, graphql } from 'gatsby'
+import CategoryIcon from 'components/categoryIcon'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 
 import DrawerLink from './drawer.link'
-
-import CategoryIcon from 'components/categoryIcon'
 
 const Categories = () => {
   const {
@@ -27,10 +26,10 @@ const Categories = () => {
     >
       {categories.map(({ id, name, slug }) => (
         <DrawerLink
-          key={id}
-          to={`/category/${slug}`}
           Icon={() => <CategoryIcon name={name} />}
+          key={id}
           text={name}
+          to={`/category/${slug}`}
         />
       ))}
     </List>

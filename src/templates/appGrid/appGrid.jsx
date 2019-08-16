@@ -1,10 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-
-import { Name, Grid } from './appGrid.css'
-
 import Application from 'components/application'
 import SEO from 'components/seo'
+import PropTypes from 'prop-types'
+import React from 'react'
+
+import { Grid, Name } from './appGrid.css'
 
 const AppGrid = ({ name, apps }) => (
   <>
@@ -14,9 +13,9 @@ const AppGrid = ({ name, apps }) => (
     </Name>
     <Grid
       as="ul"
-      px={2}
       flexWrap="wrap"
       justifyContent="space-between"
+      px={2}
     >
       {apps.map(app => (
         <Application key={app.id} {...app} />

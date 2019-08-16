@@ -1,10 +1,9 @@
-import React from 'react'
 import { graphql } from 'gatsby'
-
+import React from 'react'
 import AppList from 'templates/appList'
 
 const TopApps = ({ data: { top } }) => (
-  <AppList name="Top Apps" apps={top.applications} />
+  <AppList apps={top.applications} name="Top Apps" />
 )
 
 export const query = graphql`

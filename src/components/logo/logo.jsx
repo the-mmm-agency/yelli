@@ -1,5 +1,5 @@
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
-import { useStaticQuery, graphql } from 'gatsby'
 
 import Img from './logo.css'
 
@@ -18,8 +18,8 @@ const Logo = ({ ...props }) => {
 
   return (
     <Img
-      fluid={logo.childImageSharp.fluid}
       fadeIn={false}
+      fluid={logo.childImageSharp.fluid}
       loading="eager"
       {...props}
     />

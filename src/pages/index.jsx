@@ -1,35 +1,34 @@
 import { Divider } from '@material-ui/core'
-import { graphql } from 'gatsby'
-import React from 'react'
-
+import Application from 'components/application'
 import FeaturedApplication from 'components/featuredApp'
 import Flex from 'components/flex'
-import Application from 'components/application'
 import HomeSection from 'components/homeSection'
 import SEO from 'components/seo'
+import { graphql } from 'gatsby'
+import React from 'react'
 
 const Home = ({ data: { latest, top, featured } }) => (
   <>
     <SEO title="Home" />
     <Flex flexDirection="column" pt={1}>
       <HomeSection
-        title="Featured Apps"
-        apps={featured.applications}
         AppComponent={FeaturedApplication}
+        apps={featured.applications}
+        title="Featured Apps"
       />
       <Divider variant="fullWidth" />
       <HomeSection
-        title="Top Apps"
-        link="/top-apps"
+        AppComponent={Application}
         apps={top.applications}
-        AppComponent={Application}
+        link="/top-apps"
+        title="Top Apps"
       />
       <Divider variant="fullWidth" />
       <HomeSection
-        title="New Apps"
-        link="/new"
-        apps={latest.applications}
         AppComponent={Application}
+        apps={latest.applications}
+        link="/new"
+        title="New Apps"
       />
     </Flex>
   </>

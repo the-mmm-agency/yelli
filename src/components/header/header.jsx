@@ -1,9 +1,9 @@
 import { Hidden } from '@material-ui/core'
-import React from 'react'
 import PropTypes from 'prop-types'
+import React from 'react'
 
-import MobileHeader from './header.mobile'
 import DesktopHeader from './header.desktop'
+import MobileHeader from './header.mobile'
 
 const Header = ({ pathname }) => (
   <>

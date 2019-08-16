@@ -1,7 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
 import { Global } from '@emotion/core'
-
+import PropTypes from 'prop-types'
+import React from 'react'
 import globalStyles from 'styles/global.css'
 import overrides from 'styles/overrides.css'
 import scrollbars from 'styles/scrollbars.css'

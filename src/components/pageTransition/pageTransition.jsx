@@ -1,41 +1,41 @@
-import React from 'react'
+import { AnimatePresence, motion } from 'framer-motion'
 import PropTypes from 'prop-types'
-import { motion, AnimatePresence } from 'framer-motion'
+import React from 'react'
 
 const PageTransition = ({ children, pathname }) => {
   const duration = 0.2
 
   const variants = {
-    initial: {
-      opacity: 0,
-      y: 20,
-      transition: {
-        duration: duration,
-      },
-    },
     enter: {
       opacity: 1,
-      y: 0,
       transition: {
-        duration: duration,
         delay: duration,
+        duration: duration,
         when: 'beforeChildren',
       },
+      y: 0,
     },
     exit: {
       opacity: 0,
       transition: { duration: duration },
+    },
+    initial: {
+      opacity: 0,
+      transition: {
+        duration: duration,
+      },
+      y: 20,
     },
   }
 
   return (
     <AnimatePresence>
       <motion.div
-        key={pathname}
-        variants={variants}
-        initial="initial"
         animate="enter"
         exit="exit"
+        initial="initial"
+        key={pathname}
+        variants={variants}
       >
         {children}
       </motion.div>

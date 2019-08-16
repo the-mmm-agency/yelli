@@ -1,18 +1,17 @@
 import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons'
+import Button from 'components/button'
+import Flex from 'components/flex'
+import SEO from 'components/seo'
+import Typography from 'components/typography'
 import { graphql } from 'gatsby'
 import React from 'react'
 
 import {
   Divider,
   Icon,
-  Screenshots,
   Screenshot,
+  Screenshots,
 } from './application.css'
-
-import Button from 'components/button'
-import Flex from 'components/flex'
-import Typography from 'components/typography'
-import SEO from 'components/seo'
 
 const Application = ({
   data: {
@@ -29,14 +28,14 @@ const Application = ({
   },
 }) => (
   <>
-    <SEO title={title} description={description} />
+    <SEO description={description} title={title} />
     <Flex
-      flexDirection="column"
       itemScope
+      flexDirection="column"
       itemType="https://schema.org/MobileApplication"
     >
-      <Flex pt={{ xs: 1, md: 2 }} pl={{ xs: 1, md: 2 }}>
-        <Icon title={title} itemprop="image" image={icon} />
+      <Flex pl={{ md: 2, xs: 1 }} pt={{ md: 2, xs: 1 }}>
+        <Icon image={icon} itemprop="image" title={title} />
         <Flex flexDirection="column" mt={2} mx={1}>
           <Typography
             component="h1"
@@ -46,17 +45,17 @@ const Application = ({
             {title}
           </Typography>
           <Typography
+            gutterBottom
             color="textSecondary"
             itemProp="applicationCategory"
-            gutterBottom
             variant="h6"
           >
             {category.name}
           </Typography>
           <Button
             color="primary"
-            itemProp="installUrl"
             href={url}
+            itemProp="installUrl"
             mt="auto"
             size="small"
             target="_blank"
@@ -65,16 +64,16 @@ const Application = ({
             <OpenIcon fontSize="inherit" />
             &nbsp; Launch App
           </Button>
-          <link itemProp="installUrl" href={url} />
+          <link href={url} itemProp="installUrl" />
         </Flex>
       </Flex>
       <Typography
-        ml={{ xs: 4, sm: 5 }}
-        my={{ xs: 2, sm: 3 }}
-        maxWidth={{ xs: 0.8, md: 0.5 }}
-        itemProp="description"
-        variant="body1"
         component="p"
+        itemProp="description"
+        maxWidth={{ md: 0.5, xs: 0.8 }}
+        ml={{ sm: 5, xs: 4 }}
+        my={{ sm: 3, xs: 2 }}
+        variant="body1"
       >
         {description}
       </Typography>
@@ -83,12 +82,12 @@ const Application = ({
         {screenshots.map(screenshot => (
           <li key={screenshot.handle}>
             <Screenshot
+              withWebp
               alt="Application Screenshot"
-              itemProp="screenshot"
-              title={title}
               fit="scale"
               image={screenshot}
-              withWebp
+              itemProp="screenshot"
+              title={title}
             />
           </li>
         ))}

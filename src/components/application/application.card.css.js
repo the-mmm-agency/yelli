@@ -1,12 +1,11 @@
+import styled from '@emotion/styled'
 import {
   Card as MuiCard,
   CardActionArea,
   CardContent,
 } from '@material-ui/core'
-import styled from '@emotion/styled'
-
 import AppIcon from 'components/appIcon'
-import { shape, spacing, mq } from 'util/theme'
+import { mq, shape, spacing } from 'util/theme'
 
 export const Card = styled(MuiCard)`
   ${p =>
@@ -24,8 +23,9 @@ export const Card = styled(MuiCard)`
 
 export const ActionArea = styled(CardActionArea)`
   padding: ${spacing(0.75)};
+
   .MuiCardActionArea-focusHighlight {
-    ${shape};
+    ${shape}
   }
 `
 
@@ -35,6 +35,6 @@ export const Content = styled(CardContent)`
 `
 
 export const Icon = styled(AppIcon)`
-  margin-bottom: ${spacing(1)};
   width: 100%;
+  margin-bottom: ${spacing(1)};
 `

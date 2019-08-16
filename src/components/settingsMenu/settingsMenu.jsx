@@ -1,9 +1,8 @@
+import { css } from '@emotion/core'
 import { IconButton, Menu } from '@material-ui/core'
 import { SettingsOutlined as SettingsIcon } from '@material-ui/icons'
-import React, { useState } from 'react'
-import { css } from '@emotion/core'
-
 import ThemeToggle from 'components/themeToggle'
+import React, { useState } from 'react'
 
 const SettingsMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null)

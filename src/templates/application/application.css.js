@@ -1,10 +1,9 @@
-import { Divider as MuiDivider } from '@material-ui/core'
 import styled from '@emotion/styled'
-import Img from 'graphcms-image'
-
+import { Divider as MuiDivider } from '@material-ui/core'
 import AppIcon from 'components/appIcon'
 import HorizontalScroll from 'components/horizontalScroll'
-import { borders, spacing, radii, up } from 'util/theme'
+import Img from 'graphcms-image'
+import { borders, radii, spacing, up } from 'util/theme'
 
 export const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
@@ -12,9 +11,9 @@ export const Divider = styled(MuiDivider)`
 
 export const Icon = styled(AppIcon)`
   flex-grow: 1;
-  margin: ${spacing(2, 2, 0)};
-  height: ${spacing(14)};
   width: ${spacing(14)};
+  height: ${spacing(14)};
+  margin: ${spacing(2, 2, 0)};
 `
 
 export const Screenshots = styled(HorizontalScroll)`
@@ -27,13 +26,13 @@ export const Screenshots = styled(HorizontalScroll)`
 
 export const Screenshot = styled(Img)`
   ${up('md')} {
-    height: 45vw;
     width: 25vw;
+    height: 45vw;
   }
-  border: ${borders('standard')};
-  border-radius: ${radii('image')};
+  width: 200px;
+  height: 355px;
   margin-right: ${spacing(2)};
   margin-bottom: ${spacing(3)};
-  height: 355px;
-  width: 200px;
+  border: ${borders('standard')};
+  border-radius: ${radii('image')};
 `

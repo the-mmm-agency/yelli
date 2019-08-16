@@ -1,25 +1,24 @@
 import styled from '@emotion/styled'
-
 import { hidden } from 'styles/mixins.css'
-import { up, borders, sizes, zIndex } from 'util/theme'
+import { borders, sizes, up, zIndex } from 'util/theme'
 
 export const Nav = styled.nav`
-  ${hidden({ down: 'sm' })}
-  ${up('sm')} {
-    flex: 0 0 ${sizes('sizeDrawer')};
+  ${hidden({ down: 'sm' })} ${up('sm')} {
     z-index: ${zIndex('mobileStepper')};
+    flex: 0 0 ${sizes('sizeDrawer')};
+
     .MuiDrawer-paper {
-      border-left: ${borders('standard')};
-      overflow: hidden;
       width: ${sizes('sideDrawer')};
+      overflow: hidden;
+      border-left: ${borders('standard')};
     }
   }
 `
 
 export const LogoContainer = styled.div`
   ${up('sm')} {
-    border-bottom: ${borders('standard')};
     display: flex;
     height: 64px;
+    border-bottom: ${borders('standard')};
   }
 `
