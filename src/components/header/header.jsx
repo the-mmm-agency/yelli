@@ -7,10 +7,10 @@ import DesktopHeader from './header.desktop'
 
 const Header = ({ pathname }) => (
   <>
-    <Hidden mdUp implementation="css">
+    <Hidden mdUp>
       <MobileHeader pathname={pathname} />
     </Hidden>
-    <Hidden smDown implementation="css">
+    <Hidden smDown>
       <DesktopHeader />
     </Hidden>
   </>

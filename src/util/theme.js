@@ -36,6 +36,7 @@ export const palette = createAccessor('palette')
 export const sizes = createAccessor('sizes')
 export const radii = createAccessor('radii')
 export const shape = theme('shape')
+export const zIndex = theme('zIndex')
 export const typography = createAccessor('typography')
 
 export const spacing = (...args) => props =>

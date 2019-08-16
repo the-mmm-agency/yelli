@@ -7,7 +7,6 @@ import { borders, spacing } from 'util/theme'
 export const Name = styled(Typography)`
   border-bottom: ${borders('standard')};
   padding: ${spacing(2, 4)};
-  font-weight: 500;
   flex-grow: 1;
 `
 

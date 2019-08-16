@@ -1,15 +1,14 @@
-import { List } from '@material-ui/core'
+import {
+  Drawer as MuiDrawer,
+  List,
+} from '@material-ui/core'
 import {
   HomeOutlined as Home,
   SearchOutlined as Search,
 } from '@material-ui/icons'
 import React from 'react'
 
-import {
-  DrawerContainer,
-  Nav,
-  LogoContainer,
-} from './drawer.css'
+import { Nav, LogoContainer } from './drawer.css'
 import Categories from './drawer.categories'
 import DrawerLink from './drawer.link'
 
@@ -17,7 +16,7 @@ import Logo from 'components/logo'
 
 const Drawer = () => (
   <Nav aria-label="Site navigation">
-    <DrawerContainer variant="permanent">
+    <MuiDrawer variant="permanent">
       <LogoContainer>
         <Logo />
       </LogoContainer>
@@ -30,7 +29,7 @@ const Drawer = () => (
         />
       </List>
       <Categories />
-    </DrawerContainer>
+    </MuiDrawer>
   </Nav>
 )
 
