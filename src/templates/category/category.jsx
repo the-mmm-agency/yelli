@@ -2,24 +2,30 @@ import { Hidden } from '@material-ui/core'
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import AppGrid from 'templates/appGrid'
-import AppList from 'templates/appList'
+import Grid from 'templates/appGrid'
+import List from 'templates/appList'
 
 const Category = ({
   data: {
     graphcms: { applications },
   },
   pageContext: { name },
-}) => (
-  <>
-    <Hidden smUp implementation="css">
-      <AppList name={name} apps={applications} />
-    </Hidden>
-    <Hidden smDown implementation="css">
-      <AppGrid name={name} apps={applications} />
-    </Hidden>
-  </>
-)
+}) => {
+  const props = {
+    name,
+    apps: applications,
+  }
+  return (
+    <>
+      <Hidden implementation="css" mdUp>
+        <List {...props} />
+      </Hidden>
+      <Hidden implementation="css" smDown>
+        <Grid {...props} />
+      </Hidden>
+    </>
+  )
+}
 
 export const pageQuery = graphql`
   query categoryName($id: ID!) {

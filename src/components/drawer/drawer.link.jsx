@@ -27,7 +27,7 @@ const DrawerLink = ({ children, Icon, text, ...props }) => (
 )
 
 DrawerLink.propTypes = {
-  Icon: PropTypes.func.isRequired,
+  Icon: PropTypes.any.isRequired,
   text: PropTypes.string.isRequired,
 }
 

@@ -5,8 +5,14 @@ import {
 } from '@material-ui/core'
 import { ifProp } from 'styled-tools'
 import styled from '@emotion/styled'
+import HeadroomContainer from 'react-headroom'
 
+import { hidden } from 'styles/mixins.css'
 import { borders } from 'util/theme'
+
+export const Headroom = styled(HeadroomContainer)(
+  hidden({ up: 'md' })
+)
 
 export const AppBar = styled(MuiAppBar)`
   border-bottom: ${borders('standard')};
