@@ -1,4 +1,7 @@
-import { BottomNavigation, BottomNavigationAction } from '@material-ui/core'
+import {
+  BottomNavigation,
+  BottomNavigationAction,
+} from '@material-ui/core'
 import {
   Home,
   Search,
@@ -19,11 +22,16 @@ const Navigation = ({ pathname }) => {
     event.preventDefault()
     navigate(newValue, { replace: true })
   }
+
   const getIcon = (path, Match, NoMatch) =>
     path === pathname ? <Match /> : <NoMatch />
+
   return (
     <AppBar>
-      <BottomNavigation onChange={handleChange} value={pathname}>
+      <BottomNavigation
+        onChange={handleChange}
+        value={pathname}
+      >
         <BottomNavigationAction
           icon={getIcon('/', Home, HomeOutlined)}
           label="Home"
@@ -35,7 +43,11 @@ const Navigation = ({ pathname }) => {
           value="/top-apps"
         />
         <BottomNavigationAction
-          icon={getIcon('/categories', Category, CategoryOutlined)}
+          icon={getIcon(
+            '/categories',
+            Category,
+            CategoryOutlined
+          )}
           label="Categories"
           value="/categories"
         />

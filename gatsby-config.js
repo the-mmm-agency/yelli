@@ -1,25 +1,27 @@
+const fs = require('fs')
 const path = require('path')
+
+const dirs = Object.values(
+  fs.readdirSync('./src/').map(dir => {
+    if (!fs.lstatSync(`./src/${dir}`).isDirectory()) return
+    return {
+      [dir]: path.join(__dirname, 'src', dir),
+    }
+  })
+).reduce((r, c) => Object.assign(r, c), {})
 
 module.exports = {
   siteMetadata: {
     title: 'Yelli',
-    description: 'The hottest progressive web app directory on the market',
+    description:
+      'The hottest progressive web app directory on the market',
     author: '@brettm12345',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
     {
       resolve: 'gatsby-plugin-root-import',
-      options: {
-        components: path.join(__dirname, 'src', 'components'),
-        images: path.join(__dirname, 'src', 'images'),
-        pages: path.join(__dirname, 'src', 'pages'),
-        styles: path.join(__dirname, 'src', 'styles'),
-        templates: path.join(__dirname, 'src', 'templates'),
-        themes: path.join(__dirname, 'src', 'themes'),
-        util: path.join(__dirname, 'src', 'util'),
-        views: path.join(__dirname, 'src', 'views'),
-      },
+      options: dirs,
     },
     {
       resolve: 'gatsby-source-filesystem',

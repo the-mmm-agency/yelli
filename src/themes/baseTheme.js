@@ -1,4 +1,10 @@
+import { theme } from 'styled-tools'
+
 const BaseTheme = {
+  borders: {
+    standard: props =>
+      `1px solid ${theme('palette.divider')(props)}`,
+  },
   overrides: {
     MuiCard: {
       root: {
@@ -60,7 +66,6 @@ const BaseTheme = {
       letterSpacing: '0.05em',
     },
     body1: {
-      lineHeight: 1.8,
       letterSpacing: '0.02em',
     },
     body2: {

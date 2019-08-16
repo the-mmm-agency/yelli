@@ -15,7 +15,7 @@ export const query = graphql`
   query topList {
     top: graphcms {
       applications(first: 30, orderBy: rank_ASC) {
-        ...AppCard
+        ...Application
       }
     }
   }

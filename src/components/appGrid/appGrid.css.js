@@ -1,13 +1,12 @@
 import { Typography } from '@material-ui/core'
-import { theme } from 'styled-tools'
 import styled from '@emotion/styled'
 
 import Flex from 'components/flex'
-import { spacing } from 'util/theme'
+import { borders, spacing } from 'util/theme'
 
 export const Name = styled(Typography)`
-  border-bottom: 1px solid ${theme('palette.divider')};
-  padding: ${spacing(2)} ${spacing(4)};
+  border-bottom: ${borders('standard')};
+  padding: ${spacing(2, 4)};
   font-weight: 500;
   flex-grow: 1;
 `

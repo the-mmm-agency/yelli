@@ -1,11 +1,9 @@
 import styled from '@emotion/styled'
-import { theme } from 'styled-tools'
 
-import { up, down } from 'util/theme'
+import { sizes, up, down } from 'util/theme'
 
 const Content = styled.main`
   display: flex;
-  margin-top: 64px;
   flex-direction: column;
   flex: 1 1 100%;
   max-width: 100vw;
@@ -16,8 +14,9 @@ const Content = styled.main`
     padding-bottom: 100px;
   }
   ${up('md')} {
-    max-width: calc(100vw - ${theme('sizes.sideDrawer')});
-    margin-left: ${theme('sizes.sideDrawer')};
+    margin-top: 64px;
+    max-width: calc(100vw - ${sizes('sideDrawer')});
+    margin-left: ${sizes('sideDrawer')};
   }
 `
 

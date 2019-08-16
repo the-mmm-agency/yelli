@@ -1,11 +1,17 @@
 import { css } from '@emotion/core'
 
-const overrides = theme => css`
+const overrides = ({
+  palette: {
+    background: { paper },
+    input,
+  },
+  shadows,
+}) => css`
   .MuiList-root {
-    background-color: ${theme.palette.background.paper};
+    background-color: ${paper};
   }
   .MuiAppBar-root {
-    background-color: ${theme.palette.background.paper};
+    background-color: ${paper};
   }
   .MuiCardContent-root {
     & > * {
@@ -13,7 +19,6 @@ const overrides = theme => css`
       text-overflow: ellipsis;
       white-space: nowrap;
     }
-    padding: ${theme.spacing(2)} ${theme.spacing(2)} ${theme.spacing(1)};
   }
   .MuiBottomNavigationAction-root {
     svg {
@@ -22,8 +27,8 @@ const overrides = theme => css`
   }
   .MuiInput-root.Mui-focused,
   .MuiInputBase-root.Mui-focused {
-    background-color: ${theme.palette.input.focus};
-    box-shadow: ${theme.shadows[3]};
+    background-color: ${input.focus};
+    box-shadow: ${shadows[3]};
   }
 `
 

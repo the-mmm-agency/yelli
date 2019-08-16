@@ -1,20 +1,24 @@
 import { css } from '@emotion/core'
 import { darken } from '@material-ui/core/styles/colorManipulator'
 
-const scrollbars = theme => css`
-  ${theme.breakpoints.up('sm')} {
+const scrollbars = ({
+  palette: {
+    scrollbar: { thumb, track },
+  },
+  breakpoints: { up },
+}) => css`
+  ${up('sm')} {
     ::-webkit-scrollbar {
-      background: ${theme.palette.scrollbar.track};
+      background: ${track};
     }
     ::-webkit-scrollbar-thumb {
       &:hover {
-        background: ${darken(theme.palette.scrollbar.thumb, 0.18)};
+        background: ${darken(thumb, 0.18)};
       }
-      background: ${theme.palette.scrollbar.thumb};
+      background: ${thumb};
     }
     html {
-      scrollbar-color: ${theme.palette.scrollbar.thumb}
-        ${theme.palette.scrollbar.track};
+      scrollbar-color: ${thumb} ${track};
       scrollbar-width: thin;
     }
   }

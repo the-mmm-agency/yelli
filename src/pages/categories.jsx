@@ -12,7 +12,11 @@ const Categories = ({
 }) => (
   <>
     <SEO title="Categories" />
-    <Flex bgcolor="background.paper" flexWrap="wrap" padding={1}>
+    <Flex
+      bgcolor="background.paper"
+      flexWrap="wrap"
+      padding={1}
+    >
       {categories.map(({ id, ...category }) => (
         <CategoryCard key={id} {...category} />
       ))}

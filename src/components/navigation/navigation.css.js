@@ -1,14 +1,12 @@
 import { AppBar as MuiAppBar } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { palette } from 'styled-tools'
 
-import { up } from 'util/theme'
+import { hidden } from 'styles/mixins.css'
+import { borders } from 'util/theme'
 
 const AppBar = styled(MuiAppBar)`
-  ${up('md')} {
-    display: none;
-  }
-  border-top: 1px solid ${palette('divider')};
+  ${hidden({ up: 'md' })}
+  border-top: ${borders('standard')};
   bottom: 0;
   top: auto;
 `

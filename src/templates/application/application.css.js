@@ -1,11 +1,10 @@
 import { Divider as MuiDivider } from '@material-ui/core'
 import styled from '@emotion/styled'
-import { theme } from 'styled-tools'
 import Img from 'graphcms-image'
 
 import AppIcon from 'components/appIcon'
 import HorizontalScroll from 'components/horizontalScroll'
-import { spacing, up } from 'util/theme'
+import { borders, spacing, up } from 'util/theme'
 
 export const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
@@ -13,7 +12,7 @@ export const Divider = styled(MuiDivider)`
 
 export const Icon = styled(AppIcon)`
   flex-grow: 1;
-  margin: ${spacing(2)} ${spacing(2)} 0;
+  margin: ${spacing(2, 2, 0)};
   height: ${spacing(14)};
   width: ${spacing(14)};
 `
@@ -31,7 +30,7 @@ export const Screenshot = styled(Img)`
     height: 45vw;
     width: 25vw;
   }
-  border: 1px solid ${theme('palette.divider')};
+  border: ${borders('standard')};
   border-radius: 15px;
   margin-right: ${spacing(2)};
   margin-bottom: ${spacing(3)};

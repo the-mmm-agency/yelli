@@ -4,7 +4,7 @@ import { graphql, navigate } from 'gatsby'
 import Fuse from 'fuse.js'
 import createPersistedState from 'use-persisted-state'
 
-import AppComponent from 'components/appComponent'
+import Application from 'components/application'
 import SearchBar from 'components/searchBar'
 import Flex from 'components/flex'
 import SEO from 'components/seo'
@@ -16,7 +16,9 @@ const Search = ({
     graphcms: { applications },
   },
 }) => {
-  const [searchString, setSearchString] = useSearchString('')
+  const [searchString, setSearchString] = useSearchString(
+    ''
+  )
   const options = {
     shouldSort: true,
     threshold: 0.5,
@@ -37,7 +39,9 @@ const Search = ({
     ],
   }
   const fuse = new Fuse(applications, options)
-  const matchingApps = fuse.search(searchString).slice(0, 15)
+  const matchingApps = fuse
+    .search(searchString)
+    .slice(0, 15)
   const handleKeyDown = ({ key }) => {
     if (key === 'Enter') {
       navigate(`/app/${matchingApps[0].slug}`)
@@ -57,7 +61,11 @@ const Search = ({
       <Divider />
       <List css={{ minHeight: '100vh' }}>
         {matchingApps.map(app => (
-          <AppComponent {...app} variant="list" key={app.id} />
+          <Application
+            {...app}
+            variant="list"
+            key={app.id}
+          />
         ))}
       </List>
     </Flex>
@@ -68,7 +76,7 @@ export const query = graphql`
   query {
     graphcms {
       applications {
-        ...AppCard
+        ...Application
       }
     }
   }

@@ -1,31 +1,19 @@
-import { ArrowBack as BackIcon } from '@material-ui/icons'
+import { Hidden } from '@material-ui/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { AppBar, LogoButton, BackButton, Toolbar } from './header.css'
-
-import Link from 'components/link'
-import UserMenu from 'components/userMenu'
-import Logo from 'components/logo'
+import MobileHeader from './header.mobile'
+import DesktopHeader from './header.desktop'
 
 const Header = ({ pathname }) => (
-  <AppBar>
-    <Toolbar>
-      <BackButton
-        color="primary"
-        hidden={pathname === '/'}
-        onClick={() => {
-          window.history.back()
-        }}
-      >
-        <BackIcon />
-      </BackButton>
-      <LogoButton component={Link} to="/">
-        <Logo />
-      </LogoButton>
-      <UserMenu />
-    </Toolbar>
-  </AppBar>
+  <>
+    <Hidden mdUp implementation="css">
+      <MobileHeader pathname={pathname} />
+    </Hidden>
+    <Hidden smDown implementation="css">
+      <DesktopHeader />
+    </Hidden>
+  </>
 )
 
 Header.propTypes = {

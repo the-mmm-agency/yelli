@@ -1,6 +1,9 @@
 import { css } from '@emotion/core'
 
-const globalStyle = theme => css`
+const globalStyle = ({
+  palette: { background, primary, text },
+  transitions,
+}) => css`
   * {
     @media (prefers-reduced-motion: reduce) {
       animation: none !important;
@@ -20,8 +23,11 @@ const globalStyle = theme => css`
     height: auto;
   }
   body {
-    transition: ${theme.transitions.create(['color', 'background-color'])};
-    background-color: ${theme.palette.background.default};
+    transition: ${transitions.create([
+      'color',
+      'background-color',
+    ])};
+    background-color: ${background.default};
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -31,11 +37,11 @@ const globalStyle = theme => css`
     list-style: none;
   }
   ::selection {
-    background: ${theme.palette.primary.main};
+    background: ${primary.main};
     color: white;
   }
   ::placeholder {
-    color: ${theme.palette.text.placeholder};
+    color: ${text.placeholder};
   }
 `
 

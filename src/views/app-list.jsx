@@ -2,7 +2,7 @@ import { List } from '@material-ui/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import AppComponent from 'components/appComponent'
+import Application from 'components/application'
 import ListHeader from 'components/listHeader'
 
 const AppList = ({ name, apps }) => (
@@ -10,7 +10,7 @@ const AppList = ({ name, apps }) => (
     <ListHeader>{name}</ListHeader>
     <List>
       {apps.map(app => (
-        <AppComponent key={app.id} variant="list" {...app} />
+        <Application key={app.id} variant="list" {...app} />
       ))}
     </List>
   </>

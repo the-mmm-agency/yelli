@@ -15,7 +15,7 @@ export const query = graphql`
   query newApps {
     latest: graphcms {
       applications(first: 30, orderBy: createdAt_ASC) {
-        ...AppCard
+        ...Application
       }
     }
   }

@@ -18,7 +18,9 @@ export const shouldUpdateScroll = ({
   routerProps: { location },
   getSavedScrollPosition,
 }) => {
-  const scroll = (position = { top: 0, left: 0, behavior: 'auto' }) => {
+  const scroll = (
+    position = { top: 0, left: 0, behavior: 'auto' }
+  ) => {
     window.setTimeout(() => window.scrollTo(position), 200)
   }
   if (location.action === 'PUSH') {
@@ -29,7 +31,7 @@ export const shouldUpdateScroll = ({
       scroll({
         top: savedPosition[1],
         left: savedPosition[0],
-        behavior: 'smooth',
+        behavior: 'auto',
       })
     } else {
       scroll()

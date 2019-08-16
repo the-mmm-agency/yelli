@@ -27,8 +27,11 @@ const Category = ({
 export const pageQuery = graphql`
   query categoryName($id: ID!) {
     graphcms {
-      applications(where: { category: { id: $id } }, orderBy: rank_ASC) {
-        ...AppCard
+      applications(
+        where: { category: { id: $id } }
+        orderBy: rank_ASC
+      ) {
+        ...Application
       }
     }
   }

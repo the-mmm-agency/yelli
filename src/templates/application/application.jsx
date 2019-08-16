@@ -2,7 +2,12 @@ import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons'
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import { Divider, Icon, Screenshots, Screenshot } from './application.css'
+import {
+  Divider,
+  Icon,
+  Screenshots,
+  Screenshot,
+} from './application.css'
 
 import Button from 'components/button'
 import Flex from 'components/flex'
@@ -12,7 +17,14 @@ import SEO from 'components/seo'
 const Application = ({
   data: {
     graphcms: {
-      application: { category, description, icon, screenshots, title, url },
+      application: {
+        category,
+        description,
+        icon,
+        screenshots,
+        title,
+        url,
+      },
     },
   },
 }) => (
@@ -26,7 +38,11 @@ const Application = ({
       <Flex pt={{ xs: 1, md: 2 }} pl={{ xs: 1, md: 2 }}>
         <Icon title={title} itemprop="image" image={icon} />
         <Flex flexDirection="column" mt={2} mx={1}>
-          <Typography component="h1" itemProp="name" variant="h6">
+          <Typography
+            component="h1"
+            itemProp="name"
+            variant="h6"
+          >
             {title}
           </Typography>
           <Typography

@@ -3,16 +3,21 @@ import PropTypes from 'prop-types'
 
 import { Name, Grid } from './appGrid.css'
 
-import AppComponent from 'components/appComponent'
+import Application from 'components/application'
 
 const AppGrid = ({ name, apps }) => (
   <>
     <Name component="h1" variant="h5">
       {name}
     </Name>
-    <Grid as="ul" px={2} flexWrap="wrap" justifyContent="space-between">
+    <Grid
+      as="ul"
+      px={2}
+      flexWrap="wrap"
+      justifyContent="space-between"
+    >
       {apps.map(app => (
-        <AppComponent key={app.id} {...app} />
+        <Application key={app.id} {...app} />
       ))}
     </Grid>
   </>

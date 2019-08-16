@@ -2,7 +2,11 @@ import { graphql } from 'gatsby'
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ActionArea, Category, Icon } from './categoryCard.css'
+import {
+  ActionArea,
+  Category,
+  Icon,
+} from './categoryCard.css'
 
 import Link from 'components/link'
 import Typography from 'components/typography'
