@@ -1,12 +1,12 @@
 import { ButtonBase } from '@material-ui/core'
 import { ArrowBack as BackIcon } from '@material-ui/icons'
 import React from 'react'
+import Headroom from 'react-headroom'
 import PropTypes from 'prop-types'
 
 import {
   AppBar,
   BackButton,
-  Headroom,
   Toolbar,
 } from './header.mobile.css'
 

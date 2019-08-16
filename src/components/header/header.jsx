@@ -1,3 +1,4 @@
+import { Hidden } from '@material-ui/core'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -6,8 +7,12 @@ import DesktopHeader from './header.desktop'
 
 const Header = ({ pathname }) => (
   <>
-    <MobileHeader pathname={pathname} />
-    <DesktopHeader />
+    <Hidden mdUp>
+      <MobileHeader pathname={pathname} />
+    </Hidden>
+    <Hidden smDown>
+      <DesktopHeader />
+    </Hidden>
   </>
 )
 
