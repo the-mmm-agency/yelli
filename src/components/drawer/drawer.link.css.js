@@ -32,11 +32,11 @@ const ListItem = styled(MuiListItem)`
     background-color: ${fade('primary.main', 0.08)};
   }
 
-  margin-left: ${spacing(2)};
+  width: calc(100% - ${spacing(4)});
   margin-top: ${spacing(1)};
+  margin-left: ${spacing(2)};
   padding: ${spacing(0.8)};
   font-weight: 500;
-  width: calc(100% - ${spacing(4)});
   ${transitions(['background-color', 'color'], {
     duration: 'standard',
     easing: 'sharp',

@@ -14,11 +14,11 @@ export const SearchInput = styled(InputBase)`
   &:hover {
     background-color: ${palette('input.hover')};
   }
-  background-color: ${palette('input.default')};
+  flex-grow: 1;
   margin: ${spacing(4, 2)};
   padding: ${spacing(1)};
   font-weight: 500;
-  flex-grow: 1;
+  background-color: ${palette('input.default')};
   ${transitions(['background-color', 'box-shadow'])}
   ${shape}
 `

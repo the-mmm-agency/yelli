@@ -16,9 +16,9 @@ export const Card = styled(MuiCard)`
     })(p)}
   display: flex;
   flex-direction: column;
-  margin: ${spacing(1, 1, 0.5, 0)};
   min-width: 100px;
   max-width: 120px;
+  margin: ${spacing(1, 1, 0.5, 0)};
 `
 
 export const ActionArea = styled(CardActionArea)`
