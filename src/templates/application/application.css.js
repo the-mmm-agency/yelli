@@ -4,7 +4,7 @@ import Img from 'graphcms-image'
 
 import AppIcon from 'components/appIcon'
 import HorizontalScroll from 'components/horizontalScroll'
-import { borders, spacing, up } from 'util/theme'
+import { borders, spacing, radii, up } from 'util/theme'
 
 export const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
@@ -31,7 +31,7 @@ export const Screenshot = styled(Img)`
     width: 25vw;
   }
   border: ${borders('standard')};
-  border-radius: 15px;
+  border-radius: ${radii('image')};
   margin-right: ${spacing(2)};
   margin-bottom: ${spacing(3)};
   height: 355px;

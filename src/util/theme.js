@@ -1,4 +1,5 @@
 import facepaint from 'facepaint'
+import { css } from '@emotion/core'
 import {
   curry,
   prop,
@@ -22,16 +23,21 @@ export const transitions = (value, options = {}) => ({
   theme: { transitions },
 }) => {
   const option = propOrProp(options, transitions)
-  transitions.create(value, {
+  const transition = transitions.create(value, {
     duration: option('duration', 'standard'),
     easing: option('easing', 'easeInOut'),
   })
+  return css`
+    transition: ${transition};
+  `
 }
 export const borders = createAccessor('borders')
 export const palette = createAccessor('palette')
 export const sizes = createAccessor('sizes')
+export const radii = createAccessor('radii')
 export const shape = theme('shape')
 export const typography = createAccessor('typography')
+
 export const spacing = (...args) => props =>
   args.map(x => `${props.theme.spacing(x)}px`).join(' ')
 

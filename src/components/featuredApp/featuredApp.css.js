@@ -16,7 +16,6 @@ export const Card = styled(MuiCard)`
     max-width: 375px;
     width: calc(100% / 3 - ${spacing(4)});
   }
-  background: transparent;
   border: ${borders('standard')};
   margin: ${spacing(2, 1)};
   flex: 0 0 auto;

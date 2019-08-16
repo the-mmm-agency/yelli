@@ -3,7 +3,7 @@ import { SettingsOutlined as SettingsIcon } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { css } from '@emotion/core'
 
-import DarkThemeToggle from 'components/darkThemeToggle'
+import ThemeToggle from 'components/themeToggle'
 
 const SettingsMenu = () => {
   const [anchorEl, setAnchorEl] = useState(null)
@@ -35,7 +35,7 @@ const SettingsMenu = () => {
         onClose={handleClose}
         open={Boolean(anchorEl)}
       >
-        <DarkThemeToggle />
+        <ThemeToggle />
       </Menu>
     </>
   )

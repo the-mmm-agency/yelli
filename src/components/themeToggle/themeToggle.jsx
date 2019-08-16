@@ -10,7 +10,7 @@ import { ReactComponent as DarkIcon } from '@mdi/svg/svg/weather-night.svg'
 import { ReactComponent as LightIcon } from '@mdi/svg/svg/weather-sunny.svg'
 import useDarkMode from 'use-dark-mode'
 
-const DarkThemeToggle = () => {
+const ThemeToggle = () => {
   const darkMode = useDarkMode()
   const Icon = darkMode.value ? DarkIcon : LightIcon
   return (
@@ -35,4 +35,4 @@ const DarkThemeToggle = () => {
   )
 }
 
-export default DarkThemeToggle
+export default ThemeToggle

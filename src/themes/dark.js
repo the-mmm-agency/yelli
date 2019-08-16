@@ -1,10 +1,9 @@
 import {
   fade,
   darken,
-  lighten,
 } from '@material-ui/core/styles/colorManipulator'
 
-const DarkTheme = {
+const dark = {
   palette: {
     background: {
       default: '#212337',
@@ -16,16 +15,6 @@ const DarkTheme = {
       hover: darken('#191a2a', 0.12),
       focus: darken('#191a2a', 0.2),
     },
-    primary: {
-      dark: darken('#ff5370', 0.12),
-      light: lighten('#ff5370', 0.12),
-      main: '#ff5370',
-    },
-    secondary: {
-      dark: lighten('#89ddff', 0.12),
-      light: lighten('#89ddff', 0.12),
-      main: '#89ddff',
-    },
     scrollbar: {
       thumb: darken('#1e2132', 0.18),
       track: darken('#212337', 0.08),
@@ -36,9 +25,8 @@ const DarkTheme = {
       secondary: '#777fab',
       placeholder: '#afbeeeaa',
     },
-    tonalOffset: 0.2,
     type: 'dark',
   },
 }
 
-export default DarkTheme
+export default dark

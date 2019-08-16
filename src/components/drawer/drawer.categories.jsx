@@ -1,9 +1,4 @@
-import {
-  List,
-  ListSubheader,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core'
+import { List, ListSubheader } from '@material-ui/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import React from 'react'
 
@@ -30,24 +25,13 @@ const Categories = () => {
     <List
       subheader={<ListSubheader>Categories</ListSubheader>}
     >
-      {categories.map(category => (
+      {categories.map(({ id, name, slug }) => (
         <DrawerLink
-          key={category.id}
-          to={`/category/${category.slug}`}
-        >
-          <ListItemIcon style={{ color: 'inherit' }}>
-            <CategoryIcon name={category.name} />
-          </ListItemIcon>
-          <ListItemText
-            primary={category.name}
-            primaryTypographyProps={{
-              color: 'inherit',
-              style: {
-                fontWeight: 'inherit',
-              },
-            }}
-          />
-        </DrawerLink>
+          key={id}
+          to={`/category/${slug}`}
+          Icon={() => <CategoryIcon name={name} />}
+          text={name}
+        />
       ))}
     </List>
   )

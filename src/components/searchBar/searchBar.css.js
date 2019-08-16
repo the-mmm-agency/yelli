@@ -20,10 +20,7 @@ export const SearchInput = styled(InputBase)`
   padding: ${spacing(1)};
   font-weight: 500;
   flex-grow: 1;
-  transition: ${transitions([
-    'background-color',
-    'box-shadow',
-  ])};
+  ${transitions(['background-color', 'box-shadow'])};
   ${shape}
 `
 

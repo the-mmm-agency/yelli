@@ -1,9 +1,30 @@
+import {
+  darken,
+  lighten,
+} from '@material-ui/core/styles/colorManipulator'
 import { theme } from 'styled-tools'
 
-const BaseTheme = {
+const base = {
+  contrastThreshold: 3,
+  palette: {
+    primary: {
+      dark: darken('#ff5370', 0.12),
+      light: lighten('#ff5370', 0.12),
+      main: '#ff5370',
+    },
+    secondary: {
+      dark: lighten('#89ddff', 0.12),
+      light: lighten('#89ddff', 0.12),
+      main: '#89ddff',
+    },
+    tonalOffset: 0.2,
+  },
   borders: {
     standard: props =>
       `1px solid ${theme('palette.divider')(props)}`,
+  },
+  radii: {
+    image: '15px',
   },
   overrides: {
     MuiCard: {
@@ -85,4 +106,4 @@ const BaseTheme = {
   },
 }
 
-export default BaseTheme
+export default base

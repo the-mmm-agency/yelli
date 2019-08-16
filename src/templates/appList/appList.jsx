@@ -4,9 +4,11 @@ import PropTypes from 'prop-types'
 
 import Application from 'components/application'
 import ListHeader from 'components/listHeader'
+import SEO from 'components/seo'
 
 const AppList = ({ name, apps }) => (
   <>
+    <SEO title={name} />
     <ListHeader>{name}</ListHeader>
     <List>
       {apps.map(app => (

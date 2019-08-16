@@ -1,14 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 
-import SEO from 'components/seo'
-import AppList from 'views/app-list'
+import AppList from 'templates/appList'
 
 const TopApps = ({ data: { top } }) => (
-  <>
-    <SEO title="Top Apps" />
-    <AppList name="Top Apps" apps={top.applications} />
-  </>
+  <AppList name="Top Apps" apps={top.applications} />
 )
 
 export const query = graphql`

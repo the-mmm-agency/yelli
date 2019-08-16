@@ -1,22 +1,27 @@
 import React from 'react'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
-import { createMuiTheme, CssBaseline } from '@material-ui/core'
+import {
+  createMuiTheme,
+  CssBaseline,
+} from '@material-ui/core'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import useDarkMode from 'use-dark-mode'
 import { Global } from '@emotion/core'
+import { mergeDeepRight } from 'ramda'
 
-import BaseTheme from 'themes/baseTheme'
+import GlobalStyles from 'components/globalStyles'
 import noflash from 'styles/noflash.css'
 import fonts from 'styles/fonts.css'
-import GlobalStyles from 'components/globalStyles'
-import DarkTheme from 'themes/darkTheme'
-import LightTheme from 'themes/lightTheme'
+import base from 'themes/base'
+import dark from 'themes/dark'
+import light from 'themes/light'
 
 const ThemeProvider = ({ children }) => {
   const darkMode = useDarkMode()
-  const createTheme = theme => createMuiTheme({ ...BaseTheme, ...theme })
-  const darkTheme = createTheme(DarkTheme)
-  const lightTheme = createTheme(LightTheme)
+  const createTheme = theme =>
+    createMuiTheme(mergeDeepRight(base, theme))
+  const darkTheme = createTheme(dark)
+  const lightTheme = createTheme(light)
   const theme = darkMode.value ? darkTheme : lightTheme
   return (
     <>

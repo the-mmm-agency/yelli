@@ -1,11 +1,7 @@
+import { List } from '@material-ui/core'
 import {
-  List,
-  ListItemIcon,
-  ListItemText,
-} from '@material-ui/core'
-import {
-  HomeOutlined as HomeIcon,
-  SearchOutlined as SearchIcon,
+  HomeOutlined as Home,
+  SearchOutlined as Search,
 } from '@material-ui/icons'
 import React from 'react'
 
@@ -26,18 +22,12 @@ const Drawer = () => (
         <Logo />
       </LogoContainer>
       <List dense>
-        <DrawerLink to="/">
-          <ListItemIcon>
-            <HomeIcon />
-          </ListItemIcon>
-          <ListItemText>Home</ListItemText>
-        </DrawerLink>
-        <DrawerLink to="/search/">
-          <ListItemIcon>
-            <SearchIcon />
-          </ListItemIcon>
-          <ListItemText>Search</ListItemText>
-        </DrawerLink>
+        <DrawerLink to="/" Icon={Home} text="Home" />
+        <DrawerLink
+          to="/search"
+          Icon={Search}
+          text="Search"
+        />
       </List>
       <Categories />
     </DrawerContainer>

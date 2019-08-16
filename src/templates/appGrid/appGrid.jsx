@@ -4,9 +4,11 @@ import PropTypes from 'prop-types'
 import { Name, Grid } from './appGrid.css'
 
 import Application from 'components/application'
+import SEO from 'components/seo'
 
 const AppGrid = ({ name, apps }) => (
   <>
+    <SEO title={name} />
     <Name component="h1" variant="h5">
       {name}
     </Name>
