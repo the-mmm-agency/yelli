@@ -1,0 +1,4 @@
+{
+  "stylelint.autoFixOnSave": true,
+  "vsprettier.useStyleLint": true
+}

@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core'
 import Link from 'components/link'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { memo } from 'react'
 
 import { Icon, ListItem } from './application.listItem.css'
 
@@ -49,4 +49,4 @@ AppListItem.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-export default AppListItem
+export default memo(AppListItem)

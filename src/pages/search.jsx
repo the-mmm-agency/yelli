@@ -4,9 +4,8 @@ import Flex from 'components/flex'
 import SearchBar from 'components/searchBar'
 import SEO from 'components/seo'
 import { graphql, navigate } from 'gatsby'
-import React from 'react'
+import React, { useMemo } from 'react'
 import createPersistedState from 'use-persisted-state'
-import createFuse from 'util/createFuse'
 
 const useSearchString = createPersistedState('searchString')
 
@@ -16,8 +15,6 @@ const Search = ({
   },
 }) => {
   const [value, setValue] = useSearchString('')
-  const fuse = createFuse(applications)
-  const matchingApps = fuse.search(value).slice(0, 15)
   const handleChange = ({ target: { value } }) => {
     setValue(value)
   }
@@ -26,6 +23,15 @@ const Search = ({
       navigate(`/app/${matchingApps[0].slug}`)
     }
   }
+  const matchingApps = useMemo(
+    () =>
+      applications
+        .filter(({ title }) =>
+          title.toLowerCase().includes(value.toLowerCase())
+        )
+        .slice(0, 10),
+    [value]
+  )
   return (
     <Flex bgcolor="background.paper" flexDirection="column">
       <SEO title="Search" />

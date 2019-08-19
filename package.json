@@ -15,12 +15,9 @@
     "@mdi/svg": "^4.0.96",
     "@svgr/webpack": "^4.3.2",
     "babel-plugin-polished": "^1.1.0",
-    "classnames": "^2.2.6",
     "emotion-theming": "^10.0.14",
-    "eslint-plugin-emotion": "^10.0.14",
     "facepaint": "^1.2.1",
     "framer-motion": "^1.5.0",
-    "fuse.js": "^3.4.5",
     "gatsby": "^2.13.45",
     "gatsby-image": "^2.2.7",
     "gatsby-plugin-emotion": "^4.1.2",
@@ -61,6 +58,7 @@
     "eslint-config-prettier": "^6.0.0",
     "eslint-config-standard": "^13.0.1",
     "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-emotion": "^10.0.14",
     "eslint-plugin-fp": "^2.3.0",
     "eslint-plugin-import": "^2.18.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
@@ -74,11 +72,11 @@
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-unicorn": "^10.0.0",
     "prettier": "^1.18.2",
+    "stylelint": "^10.1.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylint": "^2.0.0"
+    "stylelint-config-styled-components": "^0.1.1"
   },
   "keywords": [
     "gatsby"

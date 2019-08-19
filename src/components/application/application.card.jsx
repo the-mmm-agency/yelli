@@ -1,7 +1,7 @@
 import Link from 'components/link'
 import Typography from 'components/typography'
 import PropTypes from 'prop-types'
-import React from 'react'
+import React, { memo } from 'react'
 
 import {
   ActionArea,
@@ -52,4 +52,4 @@ AppCard.propTypes = {
   title: PropTypes.string.isRequired,
 }
 
-export default AppCard
+export default memo(AppCard)

@@ -1,9 +1,7 @@
 import React from 'react'
 
 import Layout from './src/components/layout'
-import rootWrapper from './rootWrapper'
-
-export const wrapRootElement = rootWrapper
+import wrapRoot from './wrap-root-element'
 
 export const replaceComponentRenderer = ({ props }) => {
   const { component } = props.pageResources
@@ -19,7 +17,7 @@ export const shouldUpdateScroll = ({
   getSavedScrollPosition,
 }) => {
   const scroll = (
-    position = { top: 0, left: 0, behavior: 'auto' }
+    position = { behavior: 'auto', left: 0, top: 0 }
   ) => {
     window.setTimeout(() => window.scrollTo(position), 200)
   }
@@ -29,9 +27,9 @@ export const shouldUpdateScroll = ({
     const savedPosition = getSavedScrollPosition(location)
     if (savedPosition) {
       scroll({
-        top: savedPosition[1],
-        left: savedPosition[0],
         behavior: 'auto',
+        left: savedPosition[0],
+        top: savedPosition[1],
       })
     } else {
       scroll()
@@ -39,3 +37,5 @@ export const shouldUpdateScroll = ({
   }
   return false
 }
+
+export const wrapRootElement = wrapRoot
