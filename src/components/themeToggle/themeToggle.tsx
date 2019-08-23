@@ -12,7 +12,7 @@ import {
 import React from 'react'
 import useDarkMode from 'use-dark-mode'
 
-const ThemeToggle = () => {
+const ThemeToggle: React.FC = () => {
   const darkMode = useDarkMode()
   const Icon = darkMode.value ? DarkIcon : LightIcon
   return (
