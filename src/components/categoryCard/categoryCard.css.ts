@@ -6,7 +6,7 @@ import { palette } from 'util/theme'
 import { spacing } from 'util/theme'
 
 import CategoryIcon from 'components/categoryIcon'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const ActionArea = styled(CardActionArea)`
   padding: ${spacing(3)};

@@ -6,7 +6,12 @@ import { radii } from 'util/theme'
 import { spacing } from 'util/theme'
 import { up } from 'util/theme'
 
-import styled from '@emotion/styled'
+import Img from 'graphcms-image'
+import styled from 'util/styled'
+
+export const Banner = styled(Img)`
+  max-height: 200px;
+`
 
 export const Content = styled(CardContent)`
   padding: ${spacing(2, 2, 1)};
@@ -24,5 +29,6 @@ export const Card = styled(MuiCard)`
   max-width: 400px;
   margin: ${spacing(2, 1)};
   border: ${borders('standard')};
+  overflow: hidden;
   ${radii('default')};
 `.withComponent('li')

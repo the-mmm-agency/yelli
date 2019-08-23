@@ -1,5 +1,5 @@
 import Image from 'gatsby-image'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 const Img = styled(Image)`
   width: 56px;

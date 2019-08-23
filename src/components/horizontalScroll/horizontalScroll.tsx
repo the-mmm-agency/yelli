@@ -1,9 +1,12 @@
 import React from 'react'
 
 import Scroll from './horizontalScroll.css'
+import { WithChildren } from 'types'
 
-const HorizontalScroll = ({ children, ...props }) => (
-  <Scroll {...props}>{children}</Scroll>
+const HorizontalScroll: React.FC<
+  WithChildren<{ className?: string }>
+> = ({ children, className }) => (
+  <Scroll className={className}>{children}</Scroll>
 )
 
 export default HorizontalScroll

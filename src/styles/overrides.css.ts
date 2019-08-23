@@ -1,3 +1,5 @@
+import { Theme } from '@material-ui/core'
+
 import { css } from '@emotion/core'
 
 const overrides = ({
@@ -6,9 +8,14 @@ const overrides = ({
     input,
   },
   shadows,
-}) => css`
+  radii,
+}: Theme) => css`
   .MuiList-root {
     background-color: ${paper};
+  }
+
+  .MuiCardActionArea-root {
+    border-radius: ${radii.default}px;
   }
 
   .MuiAppBar-root {

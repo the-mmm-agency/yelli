@@ -3,7 +3,7 @@ import { AppBar as MuiAppBar } from '@material-ui/core'
 import { borders } from 'util/theme'
 import { hidden } from 'styles/mixins.css'
 
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 const AppBar = styled(MuiAppBar)`
   ${hidden({ up: 'md' })}

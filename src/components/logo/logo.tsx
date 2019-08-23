@@ -2,8 +2,11 @@ import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 
 import Img from './logo.css'
+import { FluidObject } from 'gatsby-image'
 
-const Logo = ({ ...props }) => {
+const Logo: React.FC<{ className?: string }> = ({
+  className,
+}) => {
   const { logo } = useStaticQuery(graphql`
     query {
       logo: file(relativePath: { eq: "yelli-logo.png" }) {
@@ -14,14 +17,20 @@ const Logo = ({ ...props }) => {
         }
       }
     }
-  `)
+  `) as {
+    logo: {
+      childImageSharp: {
+        fluid: FluidObject
+      }
+    }
+  }
 
   return (
     <Img
       fadeIn={false}
       fluid={logo.childImageSharp.fluid}
       loading="eager"
-      {...props}
+      className={className}
     />
   )
 }

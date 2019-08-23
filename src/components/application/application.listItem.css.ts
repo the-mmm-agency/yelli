@@ -3,7 +3,7 @@ import { ListItem as MuiListItem } from '@material-ui/core'
 import { spacing } from 'util/theme'
 
 import AppIcon from 'components/appIcon'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const Icon = styled(AppIcon)`
   width: 50px;

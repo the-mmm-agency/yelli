@@ -7,7 +7,7 @@ import { hidden } from 'styles/mixins.css'
 import { hiddenButton } from 'styles/mixins.css'
 
 import HeadroomContainer from 'react-headroom'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const Headroom = styled(HeadroomContainer)(
   hidden({ up: 'md' })

@@ -4,7 +4,7 @@ import { sizes } from 'util/theme'
 import { up } from 'util/theme'
 import { zIndex } from 'util/theme'
 
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const Nav = styled.nav`
   ${hidden({ down: 'sm' })} ${up('sm')} {

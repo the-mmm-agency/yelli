@@ -53,5 +53,5 @@ export type FeaturedAppsList = ListWithAppID<
 >
 
 export type ThemeProp = {
-  theme?: Theme
+  theme: Theme
 }

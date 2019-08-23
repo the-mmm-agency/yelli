@@ -2,7 +2,7 @@ import { Link as GatsbyLink } from 'gatsby'
 
 import { system } from 'util/system'
 
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 const Link = styled(GatsbyLink)`
   &:hover,

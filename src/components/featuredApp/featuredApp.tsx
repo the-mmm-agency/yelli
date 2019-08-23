@@ -1,11 +1,10 @@
 import { CardActionArea } from '@material-ui/core'
-import Img from 'components/img'
 import Typography from 'components/typography'
 import { graphql } from 'gatsby'
 import React from 'react'
 import { navigate } from 'gatsby'
 
-import { Card, Content } from './featuredApp.css'
+import { Banner, Card, Content } from './featuredApp.css'
 import { FeaturedAppProps } from 'types'
 
 const FeaturedApp: React.FC<FeaturedAppProps> = ({
@@ -20,13 +19,11 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
         navigate(`/app/${slug}`)
       }}
     >
-      <Img
+      <Banner
         withWebp
         alt="Featured app banner"
         fit="max"
-        height={{ md: 175, xs: '42vw' }}
         image={banner}
-        maxHeight={200}
         maxWidth={400}
         title={title}
       />

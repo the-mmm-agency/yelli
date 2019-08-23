@@ -4,7 +4,7 @@ import { borders } from 'util/theme'
 import { spacing } from 'util/theme'
 
 import Flex from 'components/flex'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const Name = styled(Typography)`
   flex-grow: 1;

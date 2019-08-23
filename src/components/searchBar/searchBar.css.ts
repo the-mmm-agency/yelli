@@ -6,7 +6,7 @@ import { radii } from 'util/theme'
 import { spacing } from 'util/theme'
 import { transitions } from 'util/theme'
 
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const SearchInput = styled(InputBase)`
   &:hover {

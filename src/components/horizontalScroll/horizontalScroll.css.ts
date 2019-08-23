@@ -1,7 +1,7 @@
 import { down } from 'util/theme'
 import { spacing } from 'util/theme'
 
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 const Scroll = styled.ul`
   ${down('sm')} {

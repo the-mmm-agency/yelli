@@ -2,7 +2,7 @@ import { down } from 'util/theme'
 import { sizes } from 'util/theme'
 import { up } from 'util/theme'
 
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 const Content = styled.main`
   display: flex;

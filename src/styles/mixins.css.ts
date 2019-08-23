@@ -39,7 +39,9 @@ export const hiddenButton = (hidden: boolean) =>
       `
     : null
 
-export const hidden = (breakpoint: Breakpoints) => props =>
+export const hidden = (breakpoint: Breakpoints) => (
+  props: ThemeProp
+) =>
   css`
     ${getBreakpoint(breakpoint)(props)} {
       display: none;

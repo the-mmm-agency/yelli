@@ -3,7 +3,7 @@ import React from 'react'
 import { Helmet, HelmetProps } from 'react-helmet'
 
 interface SeoProps {
-  description?: string
+  description?: string | null
   lang?: string
   meta?: HelmetProps['meta']
   title?: HelmetProps['title']

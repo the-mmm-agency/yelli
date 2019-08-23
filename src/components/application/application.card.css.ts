@@ -7,7 +7,7 @@ import { radii } from 'util/theme'
 import { spacing } from 'util/theme'
 
 import AppIcon from 'components/appIcon'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const Card = styled(MuiCard)`
   ${p =>

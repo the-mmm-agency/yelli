@@ -1,7 +1,7 @@
-import styled from '@emotion/styled'
-import { system } from 'util/system'
+import styled from 'util/styled'
+import { system, SystemProps } from 'util/system'
 
-const Flex = styled.div`
+const Flex = styled.div<SystemProps>`
   display: flex;
   ${system}
 `

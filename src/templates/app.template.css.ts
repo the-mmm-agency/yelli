@@ -8,7 +8,7 @@ import { up } from 'util/theme'
 import AppIcon from 'components/appIcon'
 import HorizontalScroll from 'components/horizontalScroll'
 import Img from 'graphcms-image'
-import styled from '@emotion/styled'
+import styled from 'util/styled'
 
 export const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
