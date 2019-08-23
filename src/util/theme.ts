@@ -1,6 +1,10 @@
+import { Borders } from '@material-ui/core/styles/createMuiTheme'
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'
+import { Radii } from '@material-ui/core/styles/createMuiTheme'
+import { Sizes } from '@material-ui/core/styles/createMuiTheme'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { ThemeProp } from 'types'
+import { ZIndex } from '@material-ui/core/styles/zIndex'
 
 import { css } from '@emotion/core'
 import { fade as muiFade } from '@material-ui/core/styles/colorManipulator'
@@ -48,16 +52,18 @@ export const transitions = (
   `
 }
 
-export const borders = createAccessor('borders')
+export const borders = (value: keyof Borders) =>
+  createAccessor('borders')(value)
 export const palette = createAccessor('palette')
-export const sizes = createAccessor('sizes')
-export const radii = (value: string) => (
+export const sizes = (value: keyof Sizes) =>
+  createAccessor('sizes')(value)
+export const radii = (value: keyof Radii) => (
   props: ThemeProp
 ) => css`
   border-radius: ${createAccessor('radii')(value)(props)}px;
 `
 
-export const zIndex = (value: keyof Theme['zIndex']) => (
+export const zIndex = (value: keyof ZIndex) => (
   props: ThemeProp
 ) => css`
   z-index: ${createAccessor('zIndex')(value)(props)};

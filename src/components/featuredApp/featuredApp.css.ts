@@ -2,6 +2,7 @@ import { Card as MuiCard } from '@material-ui/core'
 import { CardContent } from '@material-ui/core'
 
 import { borders } from 'util/theme'
+import { radii } from 'util/theme'
 import { spacing } from 'util/theme'
 import { up } from 'util/theme'
 
@@ -23,4 +24,5 @@ export const Card = styled(MuiCard)`
   max-width: 400px;
   margin: ${spacing(2, 1)};
   border: ${borders('standard')};
+  ${radii('default')};
 `.withComponent('li')

@@ -8,7 +8,7 @@ import styled from '@emotion/styled'
 
 export const Nav = styled.nav`
   ${hidden({ down: 'sm' })} ${up('sm')} {
-    flex: 0 0 ${sizes('sizeDrawer')};
+    flex: 0 0 ${sizes('sideDrawer')};
     ${zIndex('mobileStepper')};
 
     .MuiDrawer-paper {
