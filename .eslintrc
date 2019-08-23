@@ -2,79 +2,69 @@
   "globals": {
     "__PATH_PREFIX__": true
   },
-  "parser": "babel-eslint",
-  "extends": [
-    "standard",
-    "eslint:recommended",
-    "plugin:jsx-a11y/recommended",
-    "plugin:import/recommended",
-    "plugin:react/recommended",
-    "prettier",
-    "prettier/react",
-    "prettier/standard",
-    "plugin:unicorn/recommended",
-    "plugin:ramda/recommended"
-  ],
-  "plugins": [
-    "emotion",
-    "import",
-    "prettier",
-    "jsx-a11y",
-    "fp",
-    "standard",
-    "ramda",
-    "simple-import-sort",
-    "sort-keys-fix",
-    "unicorn"
-  ],
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "sourceType": "module",
     "ecmaFeatures": {
       "jsx": true
     }
   },
-  "env": {
-    "es6": true,
-    "node": true
-  },
+  "plugins": [
+    "@typescript-eslint",
+    "@typescript-eslint/tslint",
+    "emotion",
+    "fp",
+    "import",
+    "jsx-a11y",
+    "prettier",
+    "ramda",
+    "simple-import-sort",
+    "sort-keys-fix",
+    "standard",
+    "unicorn"
+  ],
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:ramda/recommended",
+    "plugin:react/recommended",
+    "plugin:unicorn/recommended",
+    "prettier",
+    "prettier/react",
+    "prettier/standard",
+    "standard"
+  ],
   "rules": {
-    "no-console": ["warn", { "allow": ["error", "warn"] }],
-
-    "jsx-a11y/label-has-associated-control": "off",
-
-    "quotes": ["error", "single"],
-
-    "prettier/prettier": "error",
-
-    "emotion/no-vanilla": "error",
+    "@typescript-eslint/tslint/config": "error",
     "emotion/import-from-emotion": "error",
+    "emotion/no-vanilla": "error",
     "emotion/styled-import": "error",
-
     "fp/no-arguments": "error",
     "fp/no-class": "error",
     "fp/no-delete": "error",
     "fp/no-events": "error",
     "fp/no-get-set": "error",
     "fp/no-loops": "error",
-    "fp/no-mutating-assign": "error",
     "fp/no-mutating-methods": "error",
     "fp/no-proxy": "error",
     "fp/no-this": "error",
     "fp/no-valueof-field": "error",
+    "jsx-a11y/label-has-associated-control": "off",
 
-    "react/prop-types": [
-      "error",
+    "no-console": [
+      "warn",
       {
-        "ignore": [
-          "data",
-          "children",
-          "pageContext",
-          "theme",
-          "location"
-        ]
+        "allow": ["error", "warn"]
       }
     ],
-    "react/prefer-stateless-function": "warn",
+    "prettier/prettier": "error",
+    "quotes": ["error", "single"],
     "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-sort-props": [
       "error",
@@ -82,15 +72,16 @@
         "shorthandFirst": true
       }
     ],
+    "react/prefer-stateless-function": "warn",
+    "react/prop-types": "off",
     "react/sort-prop-types": "error",
-
-    "sort-keys-fix/sort-keys-fix": "error",
-
     "simple-import-sort/sort": "error",
-
+    "sort-keys-fix/sort-keys-fix": "error",
     "unicorn/filename-case": [
       "error",
-      { "case": "camelCase" }
+      {
+        "case": "camelCase"
+      }
     ],
     "unicorn/prevent-abbreviations": "off"
   },
@@ -117,11 +108,9 @@
           ["pages", "./src/pages"],
           ["styles", "./src/styles"],
           ["templates", "./src/templates"],
-          ["themes", "./src/themes"],
-          ["util", "./src/util"],
-          ["views", "./src/views"]
+          ["util", "./src/util"]
         ],
-        "extensions": [".js", ".jsx"]
+        "extensions": [".ts", ".tsx"]
       }
     }
   },
@@ -133,12 +122,10 @@
         "gatsby-config.js",
         "gatsby-node.js",
         "gatsby-ssr.js",
-        "src/templates/*.js",
-        "src/templates/*.jsx",
-        "src/pages/*.js",
-        "src/pages/*.jsx",
-        "src/views/*.js",
-        "src/views/*.jsx"
+        "src/templates/*/*.ts",
+        "src/templates/*/*.tsx",
+        "src/pages/*.tsx",
+        "src/graphql-types.d.ts"
       ],
       "rules": {
         "unicorn/filename-case": [
@@ -150,15 +137,13 @@
     {
       "files": [
         "wrap-root-element.js",
-        "gatsby/browser/*.js",
-        "gatsby/ssr/*.js",
-        "gatsby/*.js",
         "gatsby-browser.js",
         "gatsby-config.js",
         "gatsby-node.js",
         "gatsby-ssr.js"
       ],
       "rules": {
+        "sort-keys-fix/sort-keys-fix": "off",
         "react/display-name": "off",
         "react/prop-types": "off"
       }

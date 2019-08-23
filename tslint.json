@@ -1,0 +1,13 @@
+{
+  "arrow-parens": [true, "ban-single-arg-parens"],
+  "linebreak-style": [true, "LF"],
+  "only-arrow-functions": true,
+  "semicolon": [true, "never", "ignore-interfaces"],
+  "trailing-comma": [
+    true,
+    {
+      "multiline": "always",
+      "singleline": "never"
+    }
+  ]
+}

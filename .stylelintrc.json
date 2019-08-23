@@ -8,6 +8,7 @@
   ],
   "rules": {
     "declaration-empty-line-before": null,
+    "function-whitespace-after": null,
     "function-name-case": null,
     "property-no-unknown": null,
     "font-family-no-missing-generic-family-keyword": null,

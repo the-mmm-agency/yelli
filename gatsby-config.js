@@ -19,6 +19,7 @@ module.exports = {
   },
   plugins: [
     'gatsby-plugin-react-helmet',
+    'gatsby-plugin-typescript',
     {
       resolve: 'gatsby-plugin-root-import',
       options: dirs,
@@ -41,13 +42,6 @@ module.exports = {
         background_color: '#212337',
         display: 'standalone',
         icon: 'src/images/yelli-logo.png',
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-svgr',
-      options: {
-        prettier: true,
-        svgo: false,
       },
     },
     {
