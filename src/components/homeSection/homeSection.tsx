@@ -1,14 +1,14 @@
 import { Button, Typography } from '@material-ui/core'
-import Flex from 'components/flex'
-import HorizontalScroll from 'components/horizontalScroll'
+import { navigate } from 'gatsby'
 import React from 'react'
 
+import HorizontalScroll from 'src/components/horizontalScroll'
+import Flex from 'src/elements/flex'
 import {
   ApplicationProps,
-  WithAppID,
   FeaturedAppProps,
-} from 'types'
-import { navigate } from 'gatsby'
+  WithAppID,
+} from 'src/types'
 
 interface AppProps<T> {
   apps: WithAppID<T>[]

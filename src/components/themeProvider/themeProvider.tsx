@@ -1,16 +1,17 @@
 import { Global } from '@emotion/core'
 import { CssBaseline } from '@material-ui/core'
 import { ThemeProvider as MuiThemeProvider } from '@material-ui/styles'
-import GlobalStyles from 'components/globalStyles'
 import { ThemeProvider as EmotionThemeProvider } from 'emotion-theming'
 import React, { memo } from 'react'
-import fonts from 'styles/fonts.css'
-import noflash from 'styles/noflash.css'
 import useDarkMode from 'use-dark-mode'
-import { ChildrenProps } from 'types'
-import { darkTheme, lightTheme } from 'theme'
 
-const ThemeProvider: React.FC<ChildrenProps> = ({
+import GlobalStyles from 'src/components/globalStyles'
+import fonts from 'src/styles/fonts.css'
+import noflash from 'src/styles/noflash.css'
+import { darkTheme, lightTheme } from 'src/theme'
+import { Children } from 'src/types'
+
+const ThemeProvider: React.FC<Children> = ({
   children,
 }) => {
   const darkMode = useDarkMode()

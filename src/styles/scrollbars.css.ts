@@ -1,14 +1,13 @@
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
-
-import { css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/core'
 import { darken } from '@material-ui/core/styles/colorManipulator'
+import { Theme } from '@material-ui/core/styles/createMuiTheme'
 
 const scrollbars = ({
   palette: {
     scrollbar: { thumb, track },
   },
   breakpoints: { up },
-}: Theme) => css`
+}: Theme): SerializedStyles => css`
   ${up('sm')} {
     ::-webkit-scrollbar {
       background: ${track};

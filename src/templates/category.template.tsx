@@ -1,34 +1,24 @@
 import { Hidden } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React from 'react'
-import Grid from 'templates/appGrid.template'
-import List from 'templates/appList.template'
-import { Category as CategoryType } from 'graphql-types'
+
+import Grid from 'src/templates/appGrid.template'
+import List from 'src/templates/appList.template'
 import {
-  ApplicationProps,
-  WithAppID,
   AppPageProps,
-} from 'types'
+  CategoryTemplateProps,
+} from 'src/types'
 
-interface CategoryProps {
+const Category: React.FC<CategoryTemplateProps> = ({
   data: {
-    graphcms: {
-      applications: WithAppID<ApplicationProps>[]
-    }
-  }
-  pageContext: Pick<CategoryType, 'name'>
-}
-
-const Category: React.FC<CategoryProps> = ({
-  data: {
-    graphcms: { applications },
+    graphcool: { allApplications },
   },
   pageContext: { name },
 }) => {
-  const props = {
-    apps: applications,
+  const props: AppPageProps = {
+    apps: allApplications,
     name,
-  } as AppPageProps
+  }
   return (
     <>
       <Hidden mdUp implementation="css">
@@ -42,10 +32,10 @@ const Category: React.FC<CategoryProps> = ({
 }
 
 export const pageQuery = graphql`
-  query categoryName($id: ID!) {
-    graphcms {
-      applications(
-        where: { category: { id: $id } }
+  query applicationsByCategory($id: ID!) {
+    graphcool {
+      allApplications(
+        filter: { category: { id: $id } }
         orderBy: rank_ASC
       ) {
         ...Application

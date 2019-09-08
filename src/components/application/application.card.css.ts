@@ -1,13 +1,12 @@
-import { Card as MuiCard } from '@material-ui/core'
-import { CardActionArea } from '@material-ui/core'
-import { CardContent } from '@material-ui/core'
+import {
+  Card as MuiCard,
+  CardActionArea,
+  CardContent,
+} from '@material-ui/core'
 
-import { mq } from 'util/theme'
-import { radii } from 'util/theme'
-import { spacing } from 'util/theme'
-
-import AppIcon from 'components/appIcon'
-import styled from 'util/styled'
+import AppIcon from 'src/components/appIcon'
+import styled from 'src/util/styled'
+import { mq, radii, spacing } from 'src/util/theme'
 
 export const Card = styled(MuiCard)`
   ${p =>

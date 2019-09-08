@@ -1,12 +1,11 @@
+import createMuiTheme, {
+  Theme,
+} from '@material-ui/core/styles/createMuiTheme'
 import { PaletteOptions } from '@material-ui/core/styles/createPalette'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
-
-import { dark } from './palette'
-import { light } from './palette'
 
 import borders from './borders'
-import createMuiTheme from '@material-ui/core/styles/createMuiTheme'
 import overrides from './overrides'
+import { dark, light } from './palette'
 import radii from './radii'
 import shape from './shape'
 import sizes from './sizes'
@@ -23,5 +22,5 @@ const createTheme = (palette: PaletteOptions): Theme =>
     typography,
   })
 
-export const lightTheme = createTheme(light)
-export const darkTheme = createTheme(dark)
+export const lightTheme: Theme = createTheme(light)
+export const darkTheme: Theme = createTheme(dark)

@@ -1,7 +1,5 @@
-import { down } from 'util/theme'
-import { spacing } from 'util/theme'
-
-import styled from 'util/styled'
+import styled from 'src/util/styled'
+import { down, spacing } from 'src/util/theme'
 
 const Scroll = styled.ul`
   ${down('sm')} {

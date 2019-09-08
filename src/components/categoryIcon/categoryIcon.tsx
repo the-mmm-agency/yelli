@@ -12,7 +12,9 @@ import {
 } from '@material-ui/icons'
 import { Newspaper } from 'mdi-material-ui'
 import React from 'react'
-import { Category } from 'graphql-types'
+
+import { Category } from 'src/graphql-types'
+import { WithClassName } from 'src/types'
 
 const Icons = {
   Business: DomainOutlined,
@@ -28,17 +30,11 @@ const Icons = {
   Travel: MapOutlined,
 }
 
-interface CategoryIconProps {
-  name: Category['name']
-  className?: string
-}
-
-const CategoryIcon: React.FC<CategoryIconProps> = ({
-  name,
-  className,
-}) => {
+const CategoryIcon: React.FC<
+  WithClassName<Pick<Category, 'name'>>
+> = ({ name, className }) => {
   const Icon = Icons[name]
-  return <Icon fill="currentColor" className={className} />
+  return <Icon className={className} fill="currentColor" />
 }
 
 export default CategoryIcon

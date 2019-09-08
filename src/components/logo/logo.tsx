@@ -1,36 +1,18 @@
-import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 
 import Img from './logo.css'
-import { FluidObject } from 'gatsby-image'
 
-const Logo: React.FC<{ className?: string }> = ({
-  className,
-}) => {
-  const { logo } = useStaticQuery(graphql`
-    query {
-      logo: file(relativePath: { eq: "yelli-logo.png" }) {
-        childImageSharp {
-          fluid(maxHeight: 56, quality: 100) {
-            ...GatsbyImageSharpFluid_withWebp
-          }
-        }
-      }
-    }
-  `) as {
-    logo: {
-      childImageSharp: {
-        fluid: FluidObject
-      }
-    }
-  }
+import { useLogo } from 'src/hooks/useLogo'
+import { ClassName } from 'src/types'
 
+const Logo: React.FC<ClassName> = ({ className }) => {
+  const logo = useLogo()
   return (
     <Img
-      fadeIn={false}
-      fluid={logo.childImageSharp.fluid}
-      loading="eager"
       className={className}
+      fadeIn={false}
+      fluid={logo}
+      loading="eager"
     />
   )
 }

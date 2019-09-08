@@ -1,21 +1,22 @@
-import { BordersProps } from '@material-ui/system'
-import { DisplayProps } from '@material-ui/system'
-import { FlexboxProps } from '@material-ui/system'
-import { PaletteProps } from '@material-ui/system'
-import { PositionsProps } from '@material-ui/system'
-import { SizingProps } from '@material-ui/system'
-import { SpacingProps } from '@material-ui/system'
-import { TypographyProps } from '@material-ui/system'
-
-import { borders } from '@material-ui/system'
-import { compose } from '@material-ui/system'
-import { display } from '@material-ui/system'
-import { flexbox } from '@material-ui/system'
-import { palette } from '@material-ui/system'
-import { positions } from '@material-ui/system'
-import { sizing } from '@material-ui/system'
-import { spacing } from '@material-ui/system'
-import { typography } from '@material-ui/system'
+import {
+  borders,
+  BordersProps,
+  compose,
+  display,
+  DisplayProps,
+  flexbox,
+  FlexboxProps,
+  palette,
+  PaletteProps,
+  positions,
+  PositionsProps,
+  sizing,
+  SizingProps,
+  spacing,
+  SpacingProps,
+  typography,
+  TypographyProps,
+} from '@material-ui/system'
 
 export const system = compose(
   borders,

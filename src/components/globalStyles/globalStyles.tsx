@@ -1,9 +1,10 @@
 import { Global } from '@emotion/core'
 import React from 'react'
-import globalStyles from 'styles/global.css'
-import overrides from 'styles/overrides.css'
-import scrollbars from 'styles/scrollbars.css'
-import { ThemeProp } from 'types'
+
+import globalStyles from 'src/styles/global.css'
+import overrides from 'src/styles/overrides.css'
+import scrollbars from 'src/styles/scrollbars.css'
+import { ThemeProp } from 'src/types'
 
 const GlobalStyles: React.FC<ThemeProp> = ({ theme }) => (
   <>

@@ -2,11 +2,12 @@ import {
   ListItemIcon,
   ListItemText,
 } from '@material-ui/core'
+import { navigate } from 'gatsby'
 import React, { memo } from 'react'
 
-import { ApplicationProps } from 'types'
-import { navigate } from 'gatsby'
 import { Icon, ListItem } from './application.listItem.css'
+
+import { ApplicationProps } from 'src/types'
 
 const AppListItem: React.FC<ApplicationProps> = ({
   category,
@@ -14,7 +15,7 @@ const AppListItem: React.FC<ApplicationProps> = ({
   icon,
   slug,
 }) => {
-  const handleClick = () => {
+  const handleClick = (): void => {
     navigate(`/app/${slug}`)
   }
   return (
@@ -25,7 +26,16 @@ const AppListItem: React.FC<ApplicationProps> = ({
       onClick={handleClick}
     >
       <ListItemIcon>
-        <Icon image={icon} maxWidth={50} title={title} />
+        <Icon
+          fixed={{
+            args: {
+              height: 50,
+              width: 50,
+            },
+            image: icon,
+          }}
+          title={title}
+        />
       </ListItemIcon>
       <ListItemText
         primary={title}

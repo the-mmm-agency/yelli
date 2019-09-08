@@ -1,6 +1,5 @@
+import { SerializedStyles, css } from '@emotion/core'
 import { Theme } from '@material-ui/core'
-
-import { css } from '@emotion/core'
 
 const overrides = ({
   palette: {
@@ -9,7 +8,7 @@ const overrides = ({
   },
   shadows,
   radii,
-}: Theme) => css`
+}: Theme): SerializedStyles => css`
   .MuiList-root {
     background-color: ${paper};
   }

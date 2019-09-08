@@ -1,21 +1,23 @@
-import { Borders } from '@material-ui/core/styles/createMuiTheme'
-import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'
-import { Radii } from '@material-ui/core/styles/createMuiTheme'
-import { Sizes } from '@material-ui/core/styles/createMuiTheme'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import { ThemeProp } from 'types'
-import { ZIndex } from '@material-ui/core/styles/zIndex'
-
-import { css } from '@emotion/core'
+import { SerializedStyles, css } from '@emotion/core'
 import { fade as muiFade } from '@material-ui/core/styles/colorManipulator'
-import { has } from 'ramda'
-import { keys as breakpoints } from '@material-ui/core/styles/createBreakpoints'
-import { path } from 'ramda'
-import { prop } from 'ramda'
-import { propOr } from 'ramda'
-
-import dotPath from 'util/dotPath'
+import {
+  Breakpoint,
+  keys as breakpoints,
+} from '@material-ui/core/styles/createBreakpoints'
+import {
+  Borders,
+  Radii,
+  Sizes,
+  Theme,
+} from '@material-ui/core/styles/createMuiTheme'
+import { Palette } from '@material-ui/core/styles/createPalette'
+import { Typography } from '@material-ui/core/styles/createTypography'
+import { ZIndex } from '@material-ui/core/styles/zIndex'
 import facepaint from 'facepaint'
+import { has, path, prop, propOr } from 'ramda'
+
+import { ThemeProp } from 'src/types'
+import dotPath from 'src/util/dotPath'
 
 const createAccessor = (key: keyof Theme) => (
   value: string
@@ -43,42 +45,53 @@ export const transitions = (
   }
 
   const transition = transitions.create(value, {
-    easing: getOption('easing', 'easeInOut'),
     delay: propOr(0, 'delay', options),
     duration: getOption('duration', 'standard'),
+    easing: getOption('easing', 'easeInOut'),
   })
   return css`
     transition: ${transition};
   `
 }
 
-export const borders = (value: keyof Borders) =>
-  createAccessor('borders')(value)
-export const palette = createAccessor('palette')
-export const sizes = (value: keyof Sizes) =>
-  createAccessor('sizes')(value)
-export const radii = (value: keyof Radii) => (
-  props: ThemeProp
-) => css`
+type ThemeFunc<T> = (props: ThemeProp) => T
+type ValueFunc<T, K> = (value: keyof T) => ThemeFunc<K>
+type FlexibleAccessor<T> = (
+  value: keyof T | string
+) => ThemeFunc<string>
+type Accessor<T> = ValueFunc<T, string>
+type CssAccessor<T> = ValueFunc<T, SerializedStyles>
+
+export const borders: Accessor<Borders> = createAccessor(
+  'borders'
+)
+export const palette: FlexibleAccessor<
+  Palette
+> = createAccessor('palette')
+export const sizes: Accessor<Sizes> = createAccessor(
+  'sizes'
+)
+export const radii: CssAccessor<
+  Radii
+> = value => props => css`
   border-radius: ${createAccessor('radii')(value)(props)}px;
 `
+export const typography: FlexibleAccessor<
+  Typography
+> = createAccessor('typography')
 
-export const zIndex = (value: keyof ZIndex) => (
-  props: ThemeProp
-) => css`
+export const zIndex: CssAccessor<
+  ZIndex
+> = value => props => css`
   z-index: ${createAccessor('zIndex')(value)(props)};
 `
-
-export const typography = createAccessor('typography')
 
 export const spacing = (...args: number[]) => (
   props: ThemeProp
 ): string =>
   args.map(x => `${props.theme.spacing(x)}px`).join(' ')
 
-type MediaQuery = (
-  value: Breakpoint
-) => (props: ThemeProp) => string
+type MediaQuery = (value: Breakpoint) => ThemeFunc<string>
 
 export const up: MediaQuery = value => props =>
   props.theme.breakpoints.up(value)
@@ -86,23 +99,32 @@ export const up: MediaQuery = value => props =>
 export const down: MediaQuery = value => props =>
   props.theme.breakpoints.down(value)
 
-export const between = (
+type Between = (
   lower: Breakpoint,
   upper: Breakpoint
-) => (props: ThemeProp): string =>
+) => ThemeFunc<string>
+
+export const between: Between = (lower, upper) => props =>
   props.theme.breakpoints.between(lower, upper)
 
-export const fade = (color: string, amount: number) => (
-  props: ThemeProp
-) =>
+type Fade = (
+  color: keyof Palette | string,
+  amount: number
+) => ThemeFunc<string>
+
+export const fade: Fade = (color, amount) => props =>
   muiFade(
     createAccessor('palette')(color)(props) as string,
     amount
   )
 
-export const mq = (value: Object | Object[]) => (
-  props: ThemeProp
-) =>
+type Mq = (
+  value: Record<string, any> | Record<string, any>[]
+) => ThemeFunc<
+  facepaint.DynamicStyle | facepaint.DynamicStyleFunction
+>
+
+export const mq: Mq = value => props =>
   facepaint(
     breakpoints.map((key: Breakpoint): string =>
       props.theme.breakpoints.up(key)

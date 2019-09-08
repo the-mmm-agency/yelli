@@ -1,40 +1,22 @@
 import { Divider, List } from '@material-ui/core'
-import Application from 'components/application'
-import Flex from 'components/flex'
-import SearchBar from 'components/searchBar'
-import SEO from 'components/seo'
 import { graphql, navigate } from 'gatsby'
 import React, { useMemo } from 'react'
 import createPersistedState from 'use-persisted-state'
 
-import { ApplicationsList } from 'types'
+import Application from 'src/components/application'
+import SearchBar from 'src/components/searchBar'
+import SEO from 'src/components/seo'
+import Flex from 'src/elements/flex'
+import { GraphCoolAppList } from 'src/types'
 
 const useSearchString = createPersistedState('searchString')
 
-interface SearchProps {
+const Search: React.FC<GraphCoolAppList> = ({
   data: {
-    graphcms: ApplicationsList
-  }
-}
-
-const Search: React.FC<SearchProps> = ({
-  data: {
-    graphcms: { applications },
+    graphcool: { allApplications: applications },
   },
 }) => {
   const [value, setValue] = useSearchString('')
-  const handleChange = ({
-    target: { value },
-  }: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(value)
-  }
-  const handleKeyDown = ({
-    key,
-  }: React.KeyboardEvent<HTMLInputElement>) => {
-    if (key === 'Enter') {
-      navigate(`/app/${matchingApps[0].slug}`)
-    }
-  }
   const matchingApps = useMemo(
     () =>
       applications
@@ -44,6 +26,18 @@ const Search: React.FC<SearchProps> = ({
         .slice(0, 10),
     [value]
   )
+  const handleChange = ({
+    target: { value },
+  }: React.ChangeEvent<HTMLInputElement>): void => {
+    setValue(value)
+  }
+  const handleKeyDown = ({
+    key,
+  }: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (key === 'Enter') {
+      navigate(`/app/${matchingApps[0].slug}`)
+    }
+  }
   return (
     <Flex bgcolor="background.paper" flexDirection="column">
       <SEO title="Search" />
@@ -68,8 +62,8 @@ const Search: React.FC<SearchProps> = ({
 
 export const query = graphql`
   query {
-    graphcms {
-      applications {
+    graphcool {
+      allApplications {
         ...Application
       }
     }

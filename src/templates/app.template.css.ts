@@ -1,14 +1,10 @@
 import { Divider as MuiDivider } from '@material-ui/core'
 
-import { borders } from 'util/theme'
-import { radii } from 'util/theme'
-import { spacing } from 'util/theme'
-import { up } from 'util/theme'
-
-import AppIcon from 'components/appIcon'
-import HorizontalScroll from 'components/horizontalScroll'
-import Img from 'graphcms-image'
-import styled from 'util/styled'
+import AppIcon from 'src/components/appIcon'
+import HorizontalScroll from 'src/components/horizontalScroll'
+import Img from 'src/components/img'
+import styled from 'src/util/styled'
+import { borders, radii, spacing, up } from 'src/util/theme'
 
 export const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
@@ -16,7 +12,7 @@ export const Divider = styled(MuiDivider)`
 
 export const Icon = styled(AppIcon)`
   flex-grow: 1;
-  width: ${spacing(14)};
+  max-width: ${spacing(14)};
   height: ${spacing(14)};
   margin: ${spacing(2, 2, 0)};
 `

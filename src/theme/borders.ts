@@ -1,7 +1,7 @@
 import { Borders } from '@material-ui/core/styles/createMuiTheme'
-import { ThemeProp } from 'types'
 
-import { palette } from 'util/theme'
+import { ThemeProp } from 'src/types'
+import { palette } from 'src/util/theme'
 
 const borders: Borders = {
   standard: (props: ThemeProp): string =>

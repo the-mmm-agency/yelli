@@ -1,6 +1,5 @@
-import Typography from 'components/typography'
-import React, { memo } from 'react'
 import { navigate } from 'gatsby'
+import React, { memo } from 'react'
 
 import {
   ActionArea,
@@ -9,7 +8,8 @@ import {
   Icon,
 } from './application.card.css'
 
-import { ApplicationProps } from 'types'
+import Typography from 'src/elements/typography'
+import { ApplicationProps } from 'src/types'
 
 const AppCard: React.FC<ApplicationProps> = ({
   category,
@@ -23,7 +23,7 @@ const AppCard: React.FC<ApplicationProps> = ({
         navigate(`/app/${slug}`)
       }}
     >
-      <Icon image={icon} title={title} />
+      <Icon icon={icon} title={title} />
       <Content>
         <Typography
           fontSize={{

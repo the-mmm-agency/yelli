@@ -1,5 +1,6 @@
 import { css } from '@emotion/core'
-import { darkTheme } from 'theme'
+
+import { darkTheme } from 'src/theme'
 
 const {
   palette: { background, text },

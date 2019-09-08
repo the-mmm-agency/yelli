@@ -1,10 +1,7 @@
 import { Typography } from '@material-ui/core'
 
-import { borders } from 'util/theme'
-import { palette } from 'util/theme'
-import { spacing } from 'util/theme'
-
-import styled from 'util/styled'
+import styled from 'src/util/styled'
+import { borders, palette, spacing } from 'src/util/theme'
 
 const ListHeader = styled(Typography)`
   padding: ${spacing(2)};

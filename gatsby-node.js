@@ -3,14 +3,10 @@ const path = require('path')
 exports.createPages = async ({ actions, graphql }) => {
   const { createPage } = actions
 
-  const generatePages = async (
-    type,
-    base,
-    query = ''
-  ) => {
+  const generatePages = async (type, base, query = '') => {
     const request = await graphql(`
       {
-        graphcms {
+        graphcool {
           ${type} {
            id
            slug
@@ -19,7 +15,8 @@ exports.createPages = async ({ actions, graphql }) => {
         }
       }
     `)
-    request.data.graphcms[type].forEach(
+
+    request.data.graphcool[type].forEach(
       ({ id, slug, ...rest }) => {
         createPage({
           component: path.resolve(
@@ -36,13 +33,6 @@ exports.createPages = async ({ actions, graphql }) => {
     )
   }
 
-  await generatePages(
-    'applications',
-    'app'
-  )
-  await generatePages(
-    'categories',
-    'category',
-    'name'
-  )
+  await generatePages('allApplications', 'app')
+  await generatePages('allCategories', 'category', 'name')
 }

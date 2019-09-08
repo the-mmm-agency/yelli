@@ -3,22 +3,20 @@ import React from 'react'
 
 import Card from './application.card'
 import ListItem from './application.listItem'
-import { ApplicationProps } from 'types'
 
-interface ApplicationPropsWithVariant
-  extends ApplicationProps {
-  variant?: 'card' | 'list'
-}
+import { ApplicationProps } from 'src/types'
 
 const Application: React.FC<
-  ApplicationPropsWithVariant
+  ApplicationProps & {
+    variant?: 'card' | 'list'
+  }
 > = ({ variant = 'card', ...props }) => {
   const Component = variant === 'list' ? ListItem : Card
   return <Component {...props} />
 }
 
 export const query = graphql`
-  fragment Application on GraphCMS_Application {
+  fragment Application on GraphCool_Application {
     id
     title
     slug
@@ -26,7 +24,7 @@ export const query = graphql`
       name
     }
     icon {
-      ...GraphCmsImg
+      ...Image
     }
   }
 `

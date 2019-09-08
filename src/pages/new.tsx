@@ -1,22 +1,20 @@
 import { graphql } from 'gatsby'
 import React from 'react'
-import AppList from 'templates/appList.template'
-import { ApplicationsList } from 'types'
 
-interface NewProps {
+import { GraphCoolAppList } from '../types'
+
+import AppList from 'src/templates/appList.template'
+
+const New: React.FC<GraphCoolAppList> = ({
   data: {
-    latest: ApplicationsList
-  }
-}
-
-const New: React.FC<NewProps> = ({ data: { latest } }) => (
-  <AppList apps={latest.applications} name="New Apps" />
-)
+    graphcool: { allApplications },
+  },
+}) => <AppList apps={allApplications} name="New Apps" />
 
 export const query = graphql`
-  query newApps {
-    latest: graphcms {
-      applications(first: 30, orderBy: createdAt_ASC) {
+  {
+    graphcool {
+      allApplications(first: 30, orderBy: createdAt_ASC) {
         ...Application
       }
     }

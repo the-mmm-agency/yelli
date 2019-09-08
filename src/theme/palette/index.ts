@@ -1,19 +1,22 @@
-import { PaletteColorOptions } from '@material-ui/core/styles/createPalette'
-import { PaletteOptions } from '@material-ui/core/styles/createPalette'
+import {
+  darken,
+  lighten,
+} from '@material-ui/core/styles/colorManipulator'
+import {
+  PaletteColorOptions,
+  PaletteOptions,
+} from '@material-ui/core/styles/createPalette'
 
-import { darken } from '@material-ui/core/styles/colorManipulator'
-import { darkMode } from './modes'
-import { lighten } from '@material-ui/core/styles/colorManipulator'
-import { lightMode } from './modes'
+import { darkMode, lightMode } from './modes'
 
 const augmentFactor = 0.12
 
 const createPaletteColor = (
   color: string
 ): PaletteColorOptions => ({
-  main: color,
   dark: darken(color, augmentFactor),
   light: lighten(color, augmentFactor),
+  main: color,
 })
 
 const base: PaletteOptions = {

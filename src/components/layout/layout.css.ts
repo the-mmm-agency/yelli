@@ -1,8 +1,5 @@
-import { down } from 'util/theme'
-import { sizes } from 'util/theme'
-import { up } from 'util/theme'
-
-import styled from 'util/styled'
+import styled from 'src/util/styled'
+import { down, sizes, up } from 'src/util/theme'
 
 const Content = styled.main`
   display: flex;

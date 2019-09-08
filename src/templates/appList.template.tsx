@@ -1,10 +1,10 @@
 import { List } from '@material-ui/core'
-import Application from 'components/application'
-import ListHeader from 'components/listHeader'
-import SEO from 'components/seo'
 import React from 'react'
 
-import { AppPageProps } from 'types'
+import Application from 'src/components/application'
+import ListHeader from 'src/components/listHeader'
+import SEO from 'src/components/seo'
+import { AppPageProps } from 'src/types'
 
 const AppList: React.FC<AppPageProps> = ({
   name,

@@ -1,11 +1,10 @@
+import { SerializedStyles, css } from '@emotion/core'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-
-import { css } from '@emotion/core'
 
 const globalStyle = ({
   palette: { background, primary, text },
   transitions,
-}: Theme) => css`
+}: Theme): SerializedStyles => css`
   * {
     @media (prefers-reduced-motion: reduce) {
       transition: none !important;

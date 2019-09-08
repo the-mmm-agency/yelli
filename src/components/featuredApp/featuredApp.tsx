@@ -1,11 +1,11 @@
 import { CardActionArea } from '@material-ui/core'
-import Typography from 'components/typography'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import React from 'react'
-import { navigate } from 'gatsby'
 
 import { Banner, Card, Content } from './featuredApp.css'
-import { FeaturedAppProps } from 'types'
+
+import Typography from 'src/elements/typography'
+import { FeaturedAppProps } from 'src/types'
 
 const FeaturedApp: React.FC<FeaturedAppProps> = ({
   title,
@@ -20,11 +20,13 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
       }}
     >
       <Banner
-        withWebp
         alt="Featured app banner"
-        fit="max"
-        image={banner}
-        maxWidth={400}
+        fluid={{
+          args: {
+            maxWidth: 400,
+          },
+          image: banner,
+        }}
         title={title}
       />
       <Content>
@@ -45,15 +47,13 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
 )
 
 export const query = graphql`
-  fragment FeaturedApp on GraphCMS_Application {
+  fragment FeaturedApp on GraphCool_Application {
     id
     title
     slug
     description
     banner {
-      handle
-      width
-      height
+      ...Image
     }
   }
 `

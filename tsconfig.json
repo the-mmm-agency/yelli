@@ -2,7 +2,16 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
+    "checkJs": false,
     "esModuleInterop": true,
+    "plugins": [
+      {
+        "name": "typescript-styled-plugin"
+      },
+      {
+        "name": "typescript-lit-html-plugin"
+      }
+    ],
     "jsx": "preserve",
     "lib": ["dom", "es2015", "es2017"],
     "module": "commonjs",
@@ -10,15 +19,22 @@
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
+    "resolveJsonModule": true,
     "paths": {
-      "*": ["src/*", "*"]
+      "src/*": ["./src/*"]
     },
     "preserveConstEnums": true,
     "removeComments": false,
     "strict": true,
+    "sourceMap": true,
     "target": "esnext",
     "typeRoots": ["./node_modules/@types", "./src/@types"]
   },
   "exclude": ["./node_modules"],
-  "include": ["./src/**/*"]
+  "include": [
+    "./src/**/*",
+    "gatsby/gatsby-types.ts",
+    "gatsby/getGatsbyImageProps.ts",
+    "gatsby/extendImageNode.ts"
+  ]
 }

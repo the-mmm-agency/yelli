@@ -1,14 +1,16 @@
 import { ListItem as MuiListItem } from '@material-ui/core'
 
-import { spacing } from 'util/theme'
+import Img from 'src/components/img'
+import styled from 'src/util/styled'
+import { radii, spacing } from 'src/util/theme'
 
-import AppIcon from 'components/appIcon'
-import styled from 'util/styled'
-
-export const Icon = styled(AppIcon)`
+export const Icon = styled(Img)`
   width: 50px;
   height: 50px;
   margin-right: ${spacing(3)};
+  img {
+    ${radii('image')};
+  }
 `
 
 export const ListItem = styled(MuiListItem)`

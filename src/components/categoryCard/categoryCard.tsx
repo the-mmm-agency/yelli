@@ -1,20 +1,20 @@
-import Typography from 'components/typography'
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import React from 'react'
 
 import {
-  ActionArea,
-  Category,
+  Card,
+  CardActionArea,
   Icon,
 } from './categoryCard.css'
-import { Category as CategoryType } from 'graphql-types'
-import { navigate } from 'gatsby'
+
+import Typography from 'src/elements/typography'
+import { Category } from 'src/graphql-types'
 
 const CategoryCard: React.FC<
-  Pick<CategoryType, 'name' | 'slug'>
+  Pick<Category, 'name' | 'slug'>
 > = ({ name, slug }) => (
-  <Category>
-    <ActionArea
+  <Card>
+    <CardActionArea
       onClick={() => {
         navigate(`/category/${slug}`)
       }}
@@ -23,12 +23,12 @@ const CategoryCard: React.FC<
       <Typography color="textPrimary" mt={1} variant="h6">
         {name}
       </Typography>
-    </ActionArea>
-  </Category>
+    </CardActionArea>
+  </Card>
 )
 
 export const query = graphql`
-  fragment CategoryCard on GraphCMS_Category {
+  fragment CategoryCard on GraphCool_Category {
     id
     name
     slug

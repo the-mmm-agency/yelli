@@ -1,7 +1,6 @@
-import { radii } from 'util/theme'
-
-import Img from 'graphcms-image'
-import styled from 'util/styled'
+import Img from 'src/components/img'
+import styled from 'src/util/styled'
+import { radii } from 'src/util/theme'
 
 const Icon = styled(Img)`
   img {

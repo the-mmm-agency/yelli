@@ -1,10 +1,32 @@
+import { GatsbyImageProps } from 'gatsby-image'
+import React from 'react'
+
 import Icon from './appIcon.css'
 
-Icon.defaultProps = {
-  alt: 'Application Icon',
-  fadeIn: false,
-  maxWidth: 200,
-  withWebp: true,
+import { Image } from 'src/graphql-types'
+
+type AppIconProps = Omit<
+  GatsbyImageProps,
+  'alt' | 'fadeIn' | 'fluid' | 'fixed'
+> & {
+  icon: Image
 }
 
-export default Icon
+const AppIcon: React.FC<AppIconProps> = ({
+  icon,
+  ...rest
+}) => (
+  <Icon
+    alt="Application Icon"
+    fadeIn={false}
+    fluid={{
+      args: {
+        maxWidth: 200,
+      },
+      image: icon,
+    }}
+    {...rest}
+  />
+)
+
+export default AppIcon

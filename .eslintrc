@@ -15,14 +15,12 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "@typescript-eslint/tslint",
     "emotion",
     "fp",
     "import",
     "jsx-a11y",
     "prettier",
     "ramda",
-    "simple-import-sort",
     "sort-keys-fix",
     "standard",
     "unicorn"
@@ -30,7 +28,8 @@
   "extends": [
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
-    "plugin:import/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
     "plugin:jsx-a11y/recommended",
     "plugin:ramda/recommended",
     "plugin:react/recommended",
@@ -41,10 +40,38 @@
     "standard"
   ],
   "rules": {
-    "@typescript-eslint/tslint/config": "error",
+    "arrow-body-style": ["error", "as-needed"],
+    "comma-dangle": "off",
+    "no-duplicate-imports": "error",
+    "no-unexpected-multiline": "off",
+    "no-console": [
+      "warn",
+      {
+        "allow": ["error", "warn"]
+      }
+    ],
+    "quotes": ["error", "single"],
+    "func-style": [
+      "error",
+      "declaration",
+      { "allowArrowFunctions": true }
+    ],
+    "prefer-arrow-callback": "error",
+
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "warn",
+      {
+        "allowExpressions": true,
+        "allowTypedFunctionExpressions": true
+      }
+    ],
+    "@typescript-eslint/member-delimiter-style": "off",
+
     "emotion/import-from-emotion": "error",
     "emotion/no-vanilla": "error",
     "emotion/styled-import": "error",
+
     "fp/no-arguments": "error",
     "fp/no-class": "error",
     "fp/no-delete": "error",
@@ -55,16 +82,16 @@
     "fp/no-proxy": "error",
     "fp/no-this": "error",
     "fp/no-valueof-field": "error",
+
+    "import/order": [
+      "error",
+      { "newlines-between": "always" }
+    ],
+
     "jsx-a11y/label-has-associated-control": "off",
 
-    "no-console": [
-      "warn",
-      {
-        "allow": ["error", "warn"]
-      }
-    ],
     "prettier/prettier": "error",
-    "quotes": ["error", "single"],
+
     "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-sort-props": [
       "error",
@@ -75,8 +102,9 @@
     "react/prefer-stateless-function": "warn",
     "react/prop-types": "off",
     "react/sort-prop-types": "error",
-    "simple-import-sort/sort": "error",
+
     "sort-keys-fix/sort-keys-fix": "error",
+
     "unicorn/filename-case": [
       "error",
       {
@@ -89,34 +117,45 @@
     "react": {
       "createClass": "createReactClass",
       "pragma": "React",
-      "version": "detect"
+      "version": "detect",
+      "propWrapperFunctions": [
+        "forbidExtraProps",
+        { "property": "freeze", "object": "Object" },
+        { "property": "myFavoriteWrapper" }
+      ],
+      "linkComponents": [
+        "Hyperlink",
+        { "name": "Link", "linkAttribute": "to" }
+      ]
     },
-    "propWrapperFunctions": [
-      "forbidExtraProps",
-      { "property": "freeze", "object": "Object" },
-      { "property": "myFavoriteWrapper" }
-    ],
-    "linkComponents": [
-      "Hyperlink",
-      { "name": "Link", "linkAttribute": "to" }
-    ],
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
     "import/resolver": {
       "alias": {
-        "map": [
-          ["components", "./src/components"],
-          ["images", "./src/images"],
-          ["pages", "./src/pages"],
-          ["styles", "./src/styles"],
-          ["templates", "./src/templates"],
-          ["util", "./src/util"]
-        ],
-        "extensions": [".ts", ".tsx"]
-      }
+        "map": [["src", "./src"]],
+        "extensions": [
+          ".ts",
+          ".tsx",
+          ".js",
+          ".jsx",
+          ".json"
+        ]
+      },
+      "typescript": {}
     }
   },
   "overrides": [
     {
+      "files": ["*.css.ts"],
+      "rules": {
+        "indent": "off"
+      }
+    },
+    {
       "files": [
+        "*-types.ts",
+        "*-types.d.ts",
         "wrap-root-element.js",
         "gatsby-browser.js",
         "gatsby-config.js",
@@ -143,9 +182,11 @@
         "gatsby-ssr.js"
       ],
       "rules": {
+        "@typescript-eslint/no-var-requires": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/camelcase": "off",
         "sort-keys-fix/sort-keys-fix": "off",
-        "react/display-name": "off",
-        "react/prop-types": "off"
+        "react/display-name": "off"
       }
     }
   ]

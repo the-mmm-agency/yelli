@@ -1,13 +1,11 @@
-import { Card as MuiCard } from '@material-ui/core'
-import { CardContent } from '@material-ui/core'
+import {
+  Card as MuiCard,
+  CardContent,
+} from '@material-ui/core'
 
-import { borders } from 'util/theme'
-import { radii } from 'util/theme'
-import { spacing } from 'util/theme'
-import { up } from 'util/theme'
-
-import Img from 'graphcms-image'
-import styled from 'util/styled'
+import Img from 'src/components/img'
+import styled from 'src/util/styled'
+import { borders, radii, spacing, up } from 'src/util/theme'
 
 export const Banner = styled(Img)`
   max-height: 200px;

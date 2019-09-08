@@ -1,5 +1,6 @@
 import Image from 'gatsby-image'
-import styled from 'util/styled'
+
+import styled from 'src/util/styled'
 
 const Img = styled(Image)`
   width: 56px;

@@ -1,10 +1,8 @@
 import { Typography } from '@material-ui/core'
 
-import { borders } from 'util/theme'
-import { spacing } from 'util/theme'
-
-import Flex from 'components/flex'
-import styled from 'util/styled'
+import Flex from 'src/elements/flex'
+import styled from 'src/util/styled'
+import { borders, spacing } from 'src/util/theme'
 
 export const Name = styled(Typography)`
   flex-grow: 1;

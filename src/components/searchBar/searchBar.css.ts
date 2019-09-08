@@ -1,12 +1,15 @@
-import { InputAdornment } from '@material-ui/core'
-import { InputBase } from '@material-ui/core'
+import {
+  InputAdornment,
+  InputBase,
+} from '@material-ui/core'
 
-import { palette } from 'util/theme'
-import { radii } from 'util/theme'
-import { spacing } from 'util/theme'
-import { transitions } from 'util/theme'
-
-import styled from 'util/styled'
+import styled from 'src/util/styled'
+import {
+  palette,
+  radii,
+  spacing,
+  transitions,
+} from 'src/util/theme'
 
 export const SearchInput = styled(InputBase)`
   &:hover {

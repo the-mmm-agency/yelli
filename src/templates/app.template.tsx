@@ -1,8 +1,4 @@
 import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons'
-import Button from 'components/button'
-import Flex from 'components/flex'
-import SEO from 'components/seo'
-import Typography from 'components/typography'
 import { graphql } from 'gatsby'
 import React from 'react'
 
@@ -13,28 +9,16 @@ import {
   Screenshots,
 } from './app.template.css'
 
-import { Application, Category } from 'graphql-types'
-import { GraphCmsImg } from 'types'
+import SEO from 'src/components/seo'
+import Button from 'src/elements/button'
+import Flex from 'src/elements/flex'
+import Typography from 'src/elements/typography'
+import { ApplicationTemplateProps } from 'src/types'
 
-interface ApplicationProps {
+const AppTemplate: React.FC<ApplicationTemplateProps> = ({
   data: {
-    graphcms: {
-      application: Pick<
-        Application,
-        'description' | 'title' | 'url'
-      > & {
-        category: Pick<Category, 'name'>
-        icon: GraphCmsImg
-        screenshots: GraphCmsImg[]
-      }
-    }
-  }
-}
-
-const AppTemplate: React.FC<ApplicationProps> = ({
-  data: {
-    graphcms: {
-      application: {
+    graphcool: {
+      Application: {
         category,
         description,
         icon,
@@ -49,7 +33,7 @@ const AppTemplate: React.FC<ApplicationProps> = ({
     <SEO description={description} title={title} />
     <Flex flexDirection="column">
       <Flex pl={{ md: 2, xs: 1 }} pt={{ md: 2, xs: 1 }}>
-        <Icon image={icon} title={title} />
+        <Icon icon={icon} title={title} />
         <Flex flexDirection="column" mt={2} mx={1}>
           <Typography component="h1" variant="h6">
             {title}
@@ -85,13 +69,16 @@ const AppTemplate: React.FC<ApplicationProps> = ({
       </Typography>
       <Divider variant="fullWidth" />
       <Screenshots>
-        {screenshots.map(screenshot => (
-          <li key={screenshot.handle}>
+        {screenshots.map(({ id, ...screenshot }) => (
+          <li key={id}>
             <Screenshot
-              withWebp
               alt="Application Screenshot"
-              fit="scale"
-              image={screenshot}
+              fluid={{
+                args: {
+                  maxWidth: 800,
+                },
+                image: screenshot,
+              }}
               title={title}
             />
           </li>
@@ -103,20 +90,20 @@ const AppTemplate: React.FC<ApplicationProps> = ({
 
 export const pageQuery = graphql`
   query ApplicationById($id: ID!) {
-    graphcms {
-      application(where: { id: $id }) {
+    graphcool {
+      Application(id: $id) {
         title
         category {
           name
         }
         icon {
-          ...GraphCmsImg
+          ...Image
         }
         description
         screenshots {
-          ...GraphCmsImg
+          id
+          ...Image
         }
-        url
       }
     }
   }

@@ -1,10 +1,12 @@
+import { InputBaseProps } from '@material-ui/core/InputBase'
 import { Search } from '@material-ui/icons'
 import React from 'react'
 
 import { Adornment, SearchInput } from './searchBar.css'
-import { InputBaseProps } from '@material-ui/core/InputBase'
 
-const SearchBar: React.FC<InputBaseProps> = props => (
+const SearchBar: React.FC<
+  Omit<InputBaseProps, 'placeholder' | 'startAdornment'>
+> = props => (
   <SearchInput
     placeholder="Just start typing…"
     startAdornment={

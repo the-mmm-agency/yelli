@@ -1,11 +1,12 @@
-import Drawer from 'components/drawer'
-import Header from 'components/header'
-import Navigation from 'components/navigation'
-import PageTransition from 'components/pageTransition'
 import React from 'react'
-import { PathnameProps, WithChildren } from 'types'
 
+import Drawer from './drawer'
+import Header from './header'
 import Content from './layout.css'
+import Navigation from './navigation'
+import PageTransition from './pageTransition'
+
+import { PathnameProps, WithChildren } from 'src/types'
 
 const Layout: React.FC<WithChildren<PathnameProps>> = ({
   children,

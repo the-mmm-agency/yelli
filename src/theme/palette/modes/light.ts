@@ -1,7 +1,8 @@
+import {
+  darken,
+  fade,
+} from '@material-ui/core/styles/colorManipulator'
 import { PaletteOptions } from '@material-ui/core/styles/createPalette'
-
-import { darken } from '@material-ui/core/styles/colorManipulator'
-import { fade } from '@material-ui/core/styles/colorManipulator'
 
 const light: PaletteOptions = {
   background: {

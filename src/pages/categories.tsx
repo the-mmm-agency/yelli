@@ -1,21 +1,22 @@
-import CategoryCard from 'components/categoryCard'
-import Flex from 'components/flex'
-import SEO from 'components/seo'
 import { graphql } from 'gatsby'
 import React from 'react'
-import { Category } from 'graphql-types'
+
+import CategoryCard from 'src/components/categoryCard'
+import SEO from 'src/components/seo'
+import Flex from 'src/elements/flex'
+import { Category } from 'src/graphql-types'
 
 interface CategoriesProps {
   data: {
-    graphcms: {
-      categories: Array<Category>
+    graphcool: {
+      allCategories: Category[]
     }
   }
 }
 
 const Categories: React.FC<CategoriesProps> = ({
   data: {
-    graphcms: { categories },
+    graphcool: { allCategories: categories },
   },
 }) => (
   <>
@@ -34,8 +35,8 @@ const Categories: React.FC<CategoriesProps> = ({
 
 export const query = graphql`
   query {
-    graphcms {
-      categories {
+    graphcool {
+      allCategories {
         ...CategoryCard
       }
     }

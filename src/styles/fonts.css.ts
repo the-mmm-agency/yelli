@@ -1,4 +1,5 @@
 import { fontFace } from 'polished'
+import { Styles } from 'polished/lib/types/style'
 import { mapObjIndexed } from 'ramda'
 
 type Weights = {
@@ -7,16 +8,18 @@ type Weights = {
   '600': string
 }
 
+// /* eslint-disable quote-props */
 const weights: Weights = {
-  '400': 'regular',
-  '500': 'medium',
-  '600': 'semibold',
+  400: 'regular',
+  500: 'medium',
+  600: 'semibold',
 }
+/* eslint-enable quote-props */
 
 const makeFontWeight = (
   fontWeight: keyof Weights,
   weight: string
-) =>
+): Styles =>
   fontFace({
     fileFormats: ['woff2', 'woff', 'otf'],
     fontDisplay: 'swap',

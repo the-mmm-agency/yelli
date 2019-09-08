@@ -1,18 +1,17 @@
-import { Card } from '@material-ui/core'
-import { CardActionArea } from '@material-ui/core'
+import {
+  Card as MuiCard,
+  CardActionArea as MuiCardActionArea,
+} from '@material-ui/core'
 
-import { borders } from 'util/theme'
-import { palette } from 'util/theme'
-import { spacing } from 'util/theme'
+import CategoryIcon from 'src/components/categoryIcon'
+import styled from 'src/util/styled'
+import { borders, palette, spacing } from 'src/util/theme'
 
-import CategoryIcon from 'components/categoryIcon'
-import styled from 'util/styled'
-
-export const ActionArea = styled(CardActionArea)`
+export const CardActionArea = styled(MuiCardActionArea)`
   padding: ${spacing(3)};
 `
 
-export const Category = styled(Card)`
+export const Card = styled(MuiCard)`
   flex: 0 0 calc(50% - ${spacing(2)});
   margin: ${spacing(1)};
   text-align: center;

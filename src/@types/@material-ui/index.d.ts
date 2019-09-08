@@ -1,8 +1,10 @@
-import { Palette } from '@material-ui/core/styles/createPalette'
-import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import { TypeBackground } from '@material-ui/core/styles/createPalette'
-import { TypeText } from '@material-ui/core/styles/createPalette'
+import {
+  Palette,
+  PaletteOptions,
+  TypeBackground,
+  TypeText,
+} from '@material-ui/core/styles/createPalette'
 
 declare module '@material-ui/core/styles/createPalette' {
   interface TypeText {

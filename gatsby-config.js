@@ -1,14 +1,4 @@
-const fs = require('fs')
 const path = require('path')
-
-const dirs = Object.values(
-  fs.readdirSync('./src/').map(dir => {
-    if (!fs.lstatSync(`./src/${dir}`).isDirectory()) return
-    return {
-      [dir]: path.join(__dirname, 'src', dir),
-    }
-  })
-).reduce((r, c) => Object.assign(r, c), {})
 
 module.exports = {
   siteMetadata: {
@@ -18,21 +8,18 @@ module.exports = {
     author: '@brettm12345',
   },
   plugins: [
-    'gatsby-plugin-react-helmet',
+    // Code Transformation
     'gatsby-plugin-typescript',
+    'gatsby-plugin-typescript-checker',
+    'gatsby-plugin-fastclick',
     {
       resolve: 'gatsby-plugin-root-import',
-      options: dirs,
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: `${__dirname}/src/images`,
+        src: path.join(__dirname, 'src'),
       },
     },
-    'gatsby-transformer-sharp',
-    'gatsby-plugin-sharp',
+
+    // Code Generation
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
@@ -45,6 +32,15 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-plugin-nprogress',
+      options: {
+        color: '#ff5370',
+        showSpinner: false,
+      },
+    },
+
+    // Libraries
+    {
       resolve: 'gatsby-plugin-material-ui',
       options: {
         stylesProvider: {
@@ -52,26 +48,48 @@ module.exports = {
         },
       },
     },
+    {
+      resolve: 'gatsby-plugin-sharp',
+      options: {
+        defaultQuality: 80,
+        stripMetadata: true,
+        useMozJpeg: true,
+      },
+    },
+    'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     'gatsby-plugin-polished',
     'gatsby-plugin-use-dark-mode',
+
+    // Sources
     {
-      resolve: 'gatsby-plugin-nprogress',
+      resolve: 'gatsby-source-filesystem',
       options: {
-        color: '#ff5370',
-        showSpinner: false,
+        name: 'images',
+        path: `${__dirname}/src/images`,
       },
     },
-    'gatsby-plugin-fastclick',
     {
       resolve: 'gatsby-source-graphql',
       options: {
-        typeName: 'GraphCMS',
-        fieldName: 'graphcms',
-        url:
-          'https://api-useast.graphcms.com/v1/cjyqkhvjb2pd501ffbfokgbte/master',
+        typeName: 'GraphCool',
+        fieldName: 'graphcool',
+        url: 'https://api.graph.cool/simple/v1/yelli',
       },
     },
+    {
+      resolve: 'gatsby-plugin-remote-images',
+      options: {
+        nodeType: 'GraphCool_File',
+        imagePath: 'url',
+        ext: '.png',
+      },
+    },
+
+    // Transformers
+    'gatsby-transformer-sharp',
+
+    // Build/Hosting
     'gatsby-plugin-playground',
     'gatsby-plugin-offline',
     'gatsby-plugin-preload-link-crossorigin',

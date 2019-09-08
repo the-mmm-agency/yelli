@@ -1,11 +1,9 @@
+import { SerializedStyles, css } from '@emotion/core'
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'
-import { ThemeProp } from 'types'
-
-import { between } from 'util/theme'
-import { css } from '@emotion/core'
-import { down } from 'util/theme'
 import { isNil } from 'ramda'
-import { up } from 'util/theme'
+
+import { ThemeProp } from 'src/types'
+import { between, down, up } from 'src/util/theme'
 
 interface Breakpoints {
   up?: Breakpoint
@@ -31,7 +29,9 @@ const getBreakpoint = (breakpoint: Breakpoints) => (
   }
 }
 
-export const hiddenButton = (hidden: boolean) =>
+export const hiddenButton = (
+  hidden: boolean
+): SerializedStyles | null =>
   hidden
     ? css`
         opacity: 0;
@@ -41,7 +41,7 @@ export const hiddenButton = (hidden: boolean) =>
 
 export const hidden = (breakpoint: Breakpoints) => (
   props: ThemeProp
-) =>
+): SerializedStyles =>
   css`
     ${getBreakpoint(breakpoint)(props)} {
       display: none;

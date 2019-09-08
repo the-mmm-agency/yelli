@@ -1,19 +1,19 @@
 import { Divider } from '@material-ui/core'
-import Application from 'components/application'
-import FeaturedApplication from 'components/featuredApp'
-import Flex from 'components/flex'
-import HomeSection from 'components/homeSection'
-import SEO from 'components/seo'
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import { FeaturedAppsList, ApplicationsList } from 'types'
+import Application from 'src/components/application'
+import FeaturedApplication from 'src/components/featuredApp'
+import HomeSection from 'src/components/homeSection'
+import SEO from 'src/components/seo'
+import Flex from 'src/elements/flex'
+import { AppList, FeaturedAppList } from 'src/types'
 
 interface HomeProps {
   data: {
-    featured: FeaturedAppsList
-    top: ApplicationsList
-    latest: ApplicationsList
+    featured: FeaturedAppList
+    top: AppList
+    latest: AppList
   }
 }
 
@@ -25,20 +25,20 @@ const Home: React.FC<HomeProps> = ({
     <Flex flexDirection="column" pt={1}>
       <HomeSection
         AppComponent={FeaturedApplication}
-        apps={featured.applications}
+        apps={featured.allApplications}
         title="Featured Apps"
       />
       <Divider variant="fullWidth" />
       <HomeSection
         AppComponent={Application}
-        apps={top.applications}
+        apps={top.allApplications}
         link="/top-apps"
         title="Top Apps"
       />
       <Divider variant="fullWidth" />
       <HomeSection
         AppComponent={Application}
-        apps={latest.applications}
+        apps={latest.allApplications}
         link="/new"
         title="New Apps"
       />
@@ -47,19 +47,19 @@ const Home: React.FC<HomeProps> = ({
 )
 
 export const query = graphql`
-  query homePage {
-    featured: graphcms {
-      applications(where: { featured: true }) {
+  {
+    featured: graphcool {
+      allApplications(filter: { featured: true }) {
         ...FeaturedApp
       }
     }
-    latest: graphcms {
-      applications(first: 15, orderBy: createdAt_DESC) {
+    latest: graphcool {
+      allApplications(first: 15, orderBy: createdAt_DESC) {
         ...Application
       }
     }
-    top: graphcms {
-      applications(first: 15, orderBy: rank_ASC) {
+    top: graphcool {
+      allApplications(first: 15, orderBy: rank_ASC) {
         ...Application
       }
     }

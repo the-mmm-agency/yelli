@@ -1,9 +1,10 @@
-import Application from 'components/application'
-import SEO from 'components/seo'
 import React from 'react'
 
 import { Grid, Name } from './appGrid.template.css'
-import { AppPageProps } from 'types'
+
+import Application from 'src/components/application'
+import SEO from 'src/components/seo'
+import { AppPageProps } from 'src/types'
 
 const AppGrid: React.FC<AppPageProps> = ({
   name,

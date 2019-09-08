@@ -32,29 +32,28 @@
     "gatsby-plugin-preload-link-crossorigin": "^1.0.2",
     "gatsby-plugin-ramda": "^1.0.0",
     "gatsby-plugin-react-helmet": "^3.1.2",
+    "gatsby-plugin-remote-images": "^1.0.7",
     "gatsby-plugin-root-import": "^2.0.5",
     "gatsby-plugin-sharp": "^2.2.9",
     "gatsby-plugin-typescript": "^2.1.3",
+    "gatsby-plugin-typescript-checker": "^1.1.1",
     "gatsby-plugin-use-dark-mode": "^1.1.2",
     "gatsby-source-filesystem": "^2.1.7",
     "gatsby-source-graphql": "^2.1.3",
     "gatsby-transformer-sharp": "^2.2.5",
     "mdi-material-ui": "^6.4.1",
     "polished": "^3.4.1",
-    "prop-types": "^15.7.2",
     "ramda": "^0.26.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-headroom": "^2.2.8",
     "react-helmet": "^5.2.1",
-    "stylelint-config-prettier": "^5.2.0",
     "typescript": "^3.5.3",
     "use-dark-mode": "^2.3.1",
     "webpack": "^4.39.2"
   },
   "devDependencies": {
     "@types/facepaint": "^1.2.0",
-    "@types/prop-types": "^15.7.1",
     "@types/ramda": "^0.26.19",
     "@types/react": "^16.9.2",
     "@types/react-dom": "^16.9.0",
@@ -78,20 +77,19 @@
     "eslint-plugin-promise": "^4.2.1",
     "eslint-plugin-ramda": "^2.5.1",
     "eslint-plugin-react": "^7.14.3",
-    "eslint-plugin-simple-import-sort": "^4.0.0",
     "eslint-plugin-sort-keys-fix": "^1.0.1",
     "eslint-plugin-standard": "^4.0.0",
     "eslint-plugin-unicorn": "^10.0.0",
     "prettier": "^1.18.2",
     "stylelint": "^10.1.0",
+    "stylelint-config-prettier": "^5.2.0",
     "stylelint-config-rational-order": "^0.1.2",
     "stylelint-config-recommended": "^2.2.0",
     "stylelint-config-standard": "^18.3.0",
-    "stylelint-config-styled-components": "^0.1.1"
+    "stylelint-config-styled-components": "^0.1.1",
+    "typescript-lit-html-plugin": "^0.9.0",
+    "typescript-styled-plugin": "^0.14.0"
   },
-  "workspaces": [
-    "packages/graphcms-image"
-  ],
   "keywords": [
     "gatsby"
   ],
@@ -99,16 +97,20 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.{js,jsx}",
+    "lint": "eslint src/**/*.{ts,tsx}",
+    "lint:fix": "eslint src/**/*.{ts,tsx} --fix",
+    "lint:styles": "stylelint src/**/*.css.ts",
+    "lint:styles:fix": "stylelint src/**/*.css.ts --fix",
+    "format": "prettier --write src/**/*.{ts,tsx}",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\""
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
+    "url": "https://github.com/brettm12345/yelli"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/brettm12345/yelli/issues"
   }
 }
