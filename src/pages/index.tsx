@@ -9,7 +9,7 @@ import SEO from 'src/components/seo'
 import Flex from 'src/elements/flex'
 import { AppList, FeaturedAppList } from 'src/types'
 
-interface HomeProps {
+type HomeProps = {
   data: {
     featured: FeaturedAppList
     top: AppList

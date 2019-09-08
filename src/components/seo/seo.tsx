@@ -1,45 +1,24 @@
-import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import { Helmet, HelmetProps } from 'react-helmet'
 
-interface SeoProps {
-  description?: string | null
-  lang?: string
-  meta?: HelmetProps['meta']
-  title?: HelmetProps['title']
-}
+import { useSiteMetadata } from 'src/hooks/useSiteMetadata'
 
-interface SiteQuery {
-  site: {
-    siteMetadata: {
-      title: string
-      description: string
-      author: string
-    }
-  }
-}
+type SeoProps = Partial<{
+  description: string | null
+  lang: string
+  meta: HelmetProps['meta']
+  title: HelmetProps['title']
+}>
 
 const SEO: React.FC<SeoProps> = ({
-  description = '',
+  description,
   lang = 'en',
   meta = [],
   title,
 }) => {
-  const { site } = useStaticQuery(
-    graphql`
-      query {
-        site {
-          siteMetadata {
-            title
-            description
-            author
-          }
-        }
-      }
-    `
-  ) as SiteQuery
+  const siteMetadata = useSiteMetadata()
   const metaDescription =
-    description || site.siteMetadata.description
+    description || siteMetadata.description
   return (
     <Helmet
       htmlAttributes={{
@@ -71,7 +50,7 @@ const SEO: React.FC<SeoProps> = ({
           name: 'twitter:card',
         },
         {
-          content: site.siteMetadata.author,
+          content: siteMetadata.author,
           name: 'twitter:creator',
         },
         {
@@ -93,7 +72,7 @@ const SEO: React.FC<SeoProps> = ({
         ...meta,
       ]}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s | ${siteMetadata.title}`}
     />
   )
 }

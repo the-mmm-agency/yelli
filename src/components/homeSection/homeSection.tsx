@@ -10,13 +10,14 @@ import {
   WithAppID,
 } from 'src/types'
 
-interface AppProps<T> {
+type AppProps<T> = {
   apps: WithAppID<T>[]
   AppComponent: React.FC<T & any>
 }
 
-interface HomeSectionProps
-  extends AppProps<ApplicationProps | FeaturedAppProps> {
+type HomeSectionProps = AppProps<
+  ApplicationProps | FeaturedAppProps
+> & {
   title: string
   link?: string
 }

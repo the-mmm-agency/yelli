@@ -1,18 +1,16 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
+import { WithGraphCool } from '../types'
+
 import CategoryCard from 'src/components/categoryCard'
 import SEO from 'src/components/seo'
 import Flex from 'src/elements/flex'
 import { Category } from 'src/graphql-types'
 
-interface CategoriesProps {
-  data: {
-    graphcool: {
-      allCategories: Category[]
-    }
-  }
-}
+type CategoriesProps = WithGraphCool<{
+  allCategories: Array<Omit<Category, 'applications'>>
+}>
 
 const Categories: React.FC<CategoriesProps> = ({
   data: {

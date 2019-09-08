@@ -26,7 +26,7 @@ export type ApplicationProps = Pick<
   'title' | 'slug' | 'icon' | 'category'
 >
 
-export interface AppPageProps {
+export type AppPageProps = {
   apps: WithAppID<ApplicationProps>[]
   name: string
 }
@@ -36,7 +36,7 @@ export type FeaturedAppProps = Pick<
   'description' | 'slug' | 'title' | 'banner'
 >
 
-export interface PathnameProps {
+export type PathnameProps = {
   pathname: string
 }
 

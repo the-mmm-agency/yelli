@@ -5,7 +5,7 @@ import { isNil } from 'ramda'
 import { ThemeProp } from 'src/types'
 import { between, down, up } from 'src/util/theme'
 
-interface Breakpoints {
+type Breakpoints = {
   up?: Breakpoint
   down?: Breakpoint
   between?: {
