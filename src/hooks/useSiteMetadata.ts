@@ -7,7 +7,9 @@ type SiteMetadata = {
 }
 
 export const useSiteMetadata = (): SiteMetadata => {
-  const data = useStaticQuery(
+  const data: {
+    site: { siteMetadata: SiteMetadata }
+  } = useStaticQuery(
     graphql`
       query {
         site {

@@ -28,7 +28,6 @@ export type Application = Node & {
   title: string
   screenshots: Array<Node & Image>
   icon: Image
-  manifest: any
   url: string
   featured: boolean
   banner: Image

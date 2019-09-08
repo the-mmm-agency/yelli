@@ -2,7 +2,6 @@ import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import {
   Palette,
   PaletteOptions,
-  TypeBackground,
   TypeText,
 } from '@material-ui/core/styles/createPalette'
 
