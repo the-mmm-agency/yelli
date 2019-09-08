@@ -1,6 +1,6 @@
 import { graphql } from 'gatsby'
 import Image, { GatsbyImageProps } from 'gatsby-image'
-import React from 'react'
+import React, { useMemo } from 'react'
 
 import {
   FixedArgs,
@@ -22,13 +22,19 @@ const Img: React.FC<ImgProps> = ({
   fixed,
   fluid,
   ...rest
-}) => (
-  <Image
-    fixed={fixed ? getFixed(fixed) : undefined}
-    fluid={fluid ? getFluid(fluid) : undefined}
-    {...rest}
-  />
-)
+}) => {
+  const fixedObj = useMemo(
+    () => (fixed ? getFixed(fixed) : undefined),
+    [fixed]
+  )
+  const fluidObj = useMemo(
+    () => (fluid ? getFluid(fluid) : undefined),
+    [fluid]
+  )
+  return (
+    <Image fixed={fixedObj} fluid={fluidObj} {...rest} />
+  )
+}
 
 export const fluid = graphql`
   fragment Image on GraphCool_File {
