@@ -1,5 +1,5 @@
 import { GatsbyImageProps } from 'gatsby-image'
-import React from 'react'
+import React, { memo } from 'react'
 
 import Icon from './appIcon.css'
 
@@ -7,7 +7,7 @@ import { Image } from 'src/graphql-types'
 
 type AppIconProps = Omit<
   GatsbyImageProps,
-  'alt' | 'fadeIn' | 'fluid' | 'fixed'
+  'alt' | 'fluid' | 'fixed'
 > & {
   icon: Image
 }
@@ -18,7 +18,6 @@ const AppIcon: React.FC<AppIconProps> = ({
 }) => (
   <Icon
     alt="Application Icon"
-    fadeIn={false}
     fluid={{
       args: {
         maxWidth: 200,
@@ -29,4 +28,4 @@ const AppIcon: React.FC<AppIconProps> = ({
   />
 )
 
-export default AppIcon
+export default memo(AppIcon)
