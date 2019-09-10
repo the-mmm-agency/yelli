@@ -1,49 +1,64 @@
 import { graphql } from 'gatsby'
-import Image, { GatsbyImageProps } from 'gatsby-image'
-import React, { useMemo } from 'react'
+import GatsbyImage, {
+  FixedObject,
+  FluidObject,
+  GatsbyImageProps,
+} from 'gatsby-image'
+import { has } from 'ramda'
+import React from 'react'
 
-import {
-  FixedArgs,
-  FluidArgs,
-  ImageProp,
-  getFixed,
-  getFluid,
-} from './getImageProps'
+import { Image as ImageProp } from 'src/graphql-types'
 
-type ImgProps = Omit<
+type ImageProps = Omit<
   GatsbyImageProps,
   'fluid' | 'fixed'
 > & {
-  fluid?: ImageProp<FluidArgs>
-  fixed?: ImageProp<FixedArgs>
+  image: ImageProp
 }
 
-const Img: React.FC<ImgProps> = ({
-  fixed,
-  fluid,
+const Image: React.FC<ImageProps> = ({
+  image,
   ...rest
 }) => {
-  const fixedObj = useMemo(
-    () => (fixed ? getFixed(fixed) : undefined),
-    [fixed]
-  )
-  const fluidObj = useMemo(
-    () => (fluid ? getFluid(fluid) : undefined),
-    [fluid]
-  )
-  return (
-    <Image fixed={fixedObj} fluid={fluidObj} {...rest} />
-  )
+  const {
+    imageFile: { childImageSharp: imgSharp },
+  } = image
+  if (has('fluid', imgSharp)) {
+    const { fluid } = imgSharp as { fluid: FluidObject }
+    return <GatsbyImage fluid={fluid} {...rest} />
+  }
+  const { fixed } = imgSharp as { fixed: FixedObject }
+  return <GatsbyImage fixed={fixed} {...rest} />
 }
 
-export const fluid = graphql`
-  fragment Image on GraphCool_File {
-    url
+export const imageFixed = graphql`
+  fragment ImageFixed on ImageSharpFixed {
+    base64
     width
     height
-    aspectRatio
-    base64
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
   }
 `
 
-export default Img
+export const imageFluid = graphql`
+  fragment ImageFluid on ImageSharpFluid {
+    base64
+    aspectRatio
+    src
+    srcSet
+    srcWebp
+    srcSetWebp
+    sizes
+  }
+`
+
+export const imageBase = graphql`
+  fragment ImageBase on GraphCool_File {
+    url
+  }
+`
+
+export default Image

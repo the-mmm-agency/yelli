@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core'
 import {
   HomeOutlined as Home,
-  SearchOutlined as Search,
+  PollOutlined as Poll,
 } from '@material-ui/icons'
 import React from 'react'
 
@@ -23,9 +23,9 @@ const Drawer: React.FC = () => (
       <List dense>
         <DrawerLink icon={<Home />} text="Home" to="/" />
         <DrawerLink
-          icon={<Search />}
-          text="Search"
-          to="/search"
+          icon={<Poll />}
+          text="Top Apps"
+          to="/top-apps"
         />
       </List>
       <Categories />

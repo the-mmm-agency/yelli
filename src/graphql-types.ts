@@ -1,28 +1,29 @@
 import { FixedObject, FluidObject } from 'gatsby-image'
 
-export type Image = {
-  width: number
-  height: number
-  aspectRatio: number
-  url: string
-  base64: string
-}
-
 export type Node = {
   id: string
 }
 
-type ImageSharp<T> = {
+type ChildImageSharp<T> = {
   childImageSharp: T
 }
 
-export type GatsbyImageFixed = ImageSharp<{
-  fixed: FixedObject
-}>
-
-export type GatsbyImageFluid = ImageSharp<{
+type Fluid = {
   fluid: FluidObject
-}>
+}
+
+type Fixed = {
+  fixed: FixedObject
+}
+
+export type ImageSharp = ChildImageSharp<Fluid | Fixed>
+export type ImageFluid = ChildImageSharp<Fluid>
+export type ImageFixed = ChildImageSharp<Fixed>
+
+export type Image = {
+  base64: string
+  imageFile: ImageSharp
+}
 
 export type Application = Node & {
   title: string

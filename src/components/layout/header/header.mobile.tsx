@@ -7,9 +7,9 @@ import {
   BackButton,
   Toolbar,
 } from './header.mobile.css'
-import SettingsMenu from './settingsMenu'
+import ThemeToggle from './header.themeToggle'
 
-import Logo from 'src/components/logo'
+import Search from 'src/components/search'
 import { PathnameProps } from 'src/types'
 
 const MobileHeader: React.FC<PathnameProps> = ({
@@ -28,8 +28,8 @@ const MobileHeader: React.FC<PathnameProps> = ({
         >
           <BackIcon />
         </BackButton>
-        <Logo />
-        <SettingsMenu />
+        <Search />
+        <ThemeToggle />
       </Toolbar>
     </AppBar>
   </Headroom>

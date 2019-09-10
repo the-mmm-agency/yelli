@@ -18,15 +18,11 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
       onClick={() => {
         navigate(`/app/${slug}`)
       }}
+      role="link"
     >
       <Banner
         alt="Featured app banner"
-        fluid={{
-          args: {
-            maxWidth: 400,
-          },
-          image: banner,
-        }}
+        image={banner}
         title={title}
       />
       <Content>
@@ -53,7 +49,17 @@ export const query = graphql`
     slug
     description
     banner {
-      ...Image
+      ...ImageBase
+      imageFile {
+        childImageSharp {
+          fluid(
+            maxWidth: 400
+            srcSetBreakpoints: [300, 320, 350, 375, 400]
+          ) {
+            ...ImageFluid
+          }
+        }
+      }
     }
   }
 `

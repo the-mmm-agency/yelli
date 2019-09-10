@@ -7,7 +7,6 @@ import HeadroomContainer from 'react-headroom'
 
 import { hidden, hiddenButton } from 'src/styles/mixins.css'
 import styled from 'src/util/styled'
-import { borders } from 'src/util/theme'
 
 export const Headroom = styled(HeadroomContainer)(
   hidden({ up: 'md' })
@@ -16,7 +15,6 @@ export const Headroom = styled(HeadroomContainer)(
 export const AppBar = styled(MuiAppBar)`
   width: 100%;
   margin-left: 0;
-  border-bottom: ${borders('standard')};
 `
 
 export const BackButton = styled(IconButton)<{

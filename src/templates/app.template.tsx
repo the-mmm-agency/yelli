@@ -9,6 +9,7 @@ import {
   Screenshots,
 } from './app.template.css'
 
+import Favorite from 'src/components/favorite'
 import SEO from 'src/components/seo'
 import Button from 'src/elements/button'
 import Flex from 'src/elements/flex'
@@ -28,6 +29,7 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
       },
     },
   },
+  pageContext: { id },
 }) => (
   <>
     <SEO description={description} title={title} />
@@ -35,9 +37,12 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
       <Flex pl={{ md: 2, xs: 1 }} pt={{ md: 2, xs: 1 }}>
         <Icon icon={icon} title={title} />
         <Flex flexDirection="column" mt={2} mx={1}>
-          <Typography component="h1" variant="h6">
-            {title}
-          </Typography>
+          <Flex>
+            <Typography component="h1" variant="h6">
+              {title}
+            </Typography>
+            <Favorite id={id} />
+          </Flex>
           <Typography
             gutterBottom
             color="textSecondary"
@@ -73,12 +78,7 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
           <li key={id}>
             <Screenshot
               alt="Application Screenshot"
-              fluid={{
-                args: {
-                  maxWidth: 800,
-                },
-                image: screenshot,
-              }}
+              image={screenshot}
               title={title}
             />
           </li>
@@ -97,13 +97,25 @@ export const pageQuery = graphql`
           name
         }
         icon {
-          ...Image
+          ...AppIcon
         }
-        description
         screenshots {
           id
-          ...Image
+          url
+
+          imageFile {
+            childImageSharp {
+              fluid(
+                maxWidth: 480
+                srcSetBreakpoints: [200, 360, 480]
+              ) {
+                ...ImageFluid
+              }
+            }
+          }
         }
+
+        description
       }
     }
   }

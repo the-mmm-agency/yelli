@@ -1,18 +1,21 @@
-import { graphql } from 'gatsby'
+import { graphql, navigate } from 'gatsby'
 import React from 'react'
 
 import Card from './application.card'
 import ListItem from './application.listItem'
 
-import { ApplicationProps } from 'src/types'
+import { AppProps } from 'src/types'
 
-const Application: React.FC<
-  ApplicationProps & {
-    variant?: 'card' | 'list'
+const Application: React.FC<AppProps> = ({
+  variant = 'card',
+  slug,
+  ...props
+}) => {
+  const handleClick = (): void => {
+    navigate(`/app/${slug}`)
   }
-> = ({ variant = 'card', ...props }) => {
   const Component = variant === 'list' ? ListItem : Card
-  return <Component {...props} />
+  return <Component handleClick={handleClick} {...props} />
 }
 
 export const query = graphql`
@@ -24,7 +27,7 @@ export const query = graphql`
       name
     }
     icon {
-      ...Image
+      ...AppIcon
     }
   }
 `

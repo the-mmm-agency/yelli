@@ -5,18 +5,18 @@ import React from 'react'
 import HorizontalScroll from 'src/components/horizontalScroll'
 import Flex from 'src/elements/flex'
 import {
-  ApplicationProps,
+  AppProps,
   FeaturedAppProps,
   WithAppID,
 } from 'src/types'
 
-type AppProps<T> = {
+type AppSection<T> = {
   apps: WithAppID<T>[]
   AppComponent: React.FC<T & any>
 }
 
-type HomeSectionProps = AppProps<
-  ApplicationProps | FeaturedAppProps
+type HomeSectionProps = AppSection<
+  AppProps | FeaturedAppProps
 > & {
   title: string
   link?: string

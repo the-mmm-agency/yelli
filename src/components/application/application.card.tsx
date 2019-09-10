@@ -1,4 +1,3 @@
-import { navigate } from 'gatsby'
 import React, { memo } from 'react'
 
 import {
@@ -9,20 +8,16 @@ import {
 } from './application.card.css'
 
 import Typography from 'src/elements/typography'
-import { ApplicationProps } from 'src/types'
+import { AppComponentProps } from 'src/types'
 
-const AppCard: React.FC<ApplicationProps> = ({
+const AppCard: React.FC<AppComponentProps> = ({
   category,
   title,
   icon,
-  slug,
+  handleClick,
 }) => (
   <Card>
-    <ActionArea
-      onClick={() => {
-        navigate(`/app/${slug}`)
-      }}
-    >
+    <ActionArea onClick={handleClick} role="link">
       <Icon icon={icon} title={title} />
       <Content>
         <Typography

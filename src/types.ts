@@ -4,7 +4,7 @@ import { ReactNode } from 'react'
 import { Application, Category } from './graphql-types'
 
 export type Children = {
-  children: ReactNode
+  children?: ReactNode
 }
 
 export type ClassName = {
@@ -21,13 +21,23 @@ export type WithGraphCool<T> = WithData<{
   graphcool: T
 }>
 
-export type ApplicationProps = Pick<
+export type AppComponentProps = Pick<
   Application,
-  'title' | 'slug' | 'icon' | 'category'
->
+  'title' | 'icon' | 'category'
+> & {
+  handleClick: () => void
+}
+
+export type AppProps = Omit<
+  AppComponentProps,
+  'handleClick'
+> & {
+  slug: string
+  variant?: 'card' | 'list'
+}
 
 export type AppPageProps = {
-  apps: WithAppID<ApplicationProps>[]
+  apps: WithAppID<AppProps>[]
   name: string
 }
 
@@ -44,7 +54,7 @@ type ListWithAppID<T> = {
   allApplications: Array<WithAppID<T>>
 }
 
-export type AppList = ListWithAppID<ApplicationProps>
+export type AppList = ListWithAppID<AppProps>
 
 export type FeaturedAppList = ListWithAppID<
   FeaturedAppProps
@@ -55,7 +65,7 @@ export type ThemeProp = {
 }
 
 export type CategoryTemplateProps = WithGraphCool<
-  ListWithAppID<ApplicationProps>
+  ListWithAppID<AppProps>
 > & {
   pageContext: Pick<Category, 'name'>
 }
@@ -72,4 +82,6 @@ export type ApplicationTemplateProps = WithGraphCool<{
     | 'title'
     | 'url'
   >
-}>
+}> & {
+  pageContext: Pick<Application, 'id'>
+}

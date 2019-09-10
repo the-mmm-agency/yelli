@@ -92,6 +92,8 @@
 
     "prettier/prettier": "error",
 
+    "ramda/prefer-ramda-boolean": "off",
+
     "react/jsx-fragments": ["error", "syntax"],
     "react/jsx-sort-props": [
       "error",
@@ -170,6 +172,17 @@
         "unicorn/filename-case": [
           "error",
           { "case": "kebabCase" }
+        ]
+      }
+    },
+    {
+      "files": ["src/pages/auth_callback.tsx"],
+      "rules": {
+        "unicorn/filename-case": [
+          "error",
+          {
+            "case": "snakeCase"
+          }
         ]
       }
     },

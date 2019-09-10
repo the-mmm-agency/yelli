@@ -14,7 +14,11 @@ const TopApps: React.FC<GraphCoolAppList> = ({
 export const query = graphql`
   {
     graphcool {
-      allApplications(first: 30, orderBy: rank_ASC) {
+      allApplications(
+        first: 30
+        orderBy: rank_ASC
+        filter: { published: true }
+      ) {
         ...Application
       }
     }

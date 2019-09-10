@@ -1,11 +1,11 @@
 import { graphql, useStaticQuery } from 'gatsby'
 import { FluidObject } from 'gatsby-image'
 
-import { GatsbyImageFluid } from 'src/graphql-types'
+import { ImageFluid } from 'src/graphql-types'
 
 export const useLogo = (): FluidObject => {
   const data: {
-    file: GatsbyImageFluid
+    file: ImageFluid
   } = useStaticQuery(graphql`
     query {
       file(relativePath: { eq: "yelli-logo.png" }) {

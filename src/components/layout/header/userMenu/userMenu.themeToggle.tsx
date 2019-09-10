@@ -1,8 +1,5 @@
 import {
-  ListItemIcon,
   ListItemSecondaryAction,
-  ListItemText,
-  MenuItem,
   Switch,
 } from '@material-ui/core'
 import {
@@ -12,20 +9,17 @@ import {
 import React from 'react'
 import useDarkMode from 'use-dark-mode'
 
+import UserMenuItem from './userMenu.item'
+
 const ThemeToggle: React.FC = () => {
   const darkMode = useDarkMode()
   const Icon = darkMode.value ? DarkIcon : LightIcon
   return (
-    <MenuItem onClick={darkMode.toggle}>
-      <ListItemIcon color="inherit">
-        <Icon fill="currentColor" />
-      </ListItemIcon>
-      <ListItemText
-        primary={`${
-          darkMode.value ? 'Dark' : 'Light'
-        } theme`}
-        primaryTypographyProps={{ variant: 'subtitle1' }}
-      />
+    <UserMenuItem
+      icon={<Icon fill="currentColor" />}
+      onClick={darkMode.toggle}
+      text={`${darkMode.value ? 'Dark' : 'Light'} theme`}
+    >
       <ListItemSecondaryAction>
         <Switch
           checked={darkMode.value}
@@ -33,7 +27,7 @@ const ThemeToggle: React.FC = () => {
           onChange={darkMode.toggle}
         />
       </ListItemSecondaryAction>
-    </MenuItem>
+    </UserMenuItem>
   )
 }
 

@@ -9,6 +9,10 @@ declare module '@material-ui/core/styles/createPalette' {
   interface TypeText {
     placeholder?: string
   }
+  export interface TypeBackground {
+    light: string
+    lightHover: string
+  }
   export interface TypeScrollbar {
     thumb: string
     track: string

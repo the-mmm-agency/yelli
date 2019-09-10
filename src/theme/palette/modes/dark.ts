@@ -7,6 +7,8 @@ import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 const dark: PaletteOptions = {
   background: {
     default: '#212337',
+    light: fade('#fff', 0.03),
+    lightHover: fade('#fff', 0.08),
     paper: '#1e2132',
   },
   divider: fade('#121523', 0.6),

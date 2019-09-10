@@ -1,3 +1,4 @@
+import { graphql } from 'gatsby'
 import { GatsbyImageProps } from 'gatsby-image'
 import React, { memo } from 'react'
 
@@ -15,17 +16,30 @@ type AppIconProps = Omit<
 const AppIcon: React.FC<AppIconProps> = ({
   icon,
   ...rest
-}) => (
-  <Icon
-    alt="Application Icon"
-    fluid={{
-      args: {
-        maxWidth: 200,
-      },
-      image: icon,
-    }}
-    {...rest}
-  />
-)
+}) => <Icon alt="Application Icon" image={icon} {...rest} />
+
+export const query = graphql`
+  fragment AppIcon on GraphCool_File {
+    ...ImageBase
+    imageFile {
+      childImageSharp {
+        fluid(
+          maxWidth: 200
+          srcSetBreakpoints: [
+            50
+            70
+            90
+            110
+            150
+            180
+            200
+          ]
+        ) {
+          ...ImageFluid
+        }
+      }
+    }
+  }
+`
 
 export default memo(AppIcon)

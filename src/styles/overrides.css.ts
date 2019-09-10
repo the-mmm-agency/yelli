@@ -4,9 +4,7 @@ import { Theme } from '@material-ui/core'
 const overrides = ({
   palette: {
     background: { paper },
-    input,
   },
-  shadows,
   radii,
 }: Theme): SerializedStyles => css`
   .MuiList-root {
@@ -33,12 +31,6 @@ const overrides = ({
     svg {
       font-size: 1.7rem;
     }
-  }
-
-  .MuiInput-root.Mui-focused,
-  .MuiInputBase-root.Mui-focused {
-    background-color: ${input.focus};
-    box-shadow: ${shadows[3]};
   }
 `
 

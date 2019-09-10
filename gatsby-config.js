@@ -1,5 +1,9 @@
 const path = require('path')
 
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
+
 module.exports = {
   siteMetadata: {
     title: 'Yelli',
@@ -10,7 +14,7 @@ module.exports = {
   plugins: [
     // Code Transformation
     'gatsby-plugin-typescript',
-    'gatsby-plugin-typescript-checker',
+    // 'gatsby-plugin-typescript-checker',
     'gatsby-plugin-fastclick',
     {
       resolve: 'gatsby-plugin-root-import',
@@ -51,6 +55,7 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-sharp',
       options: {
+        pngCompressionSpeed: 10,
         defaultQuality: 80,
         stripMetadata: true,
         useMozJpeg: true,
@@ -74,7 +79,7 @@ module.exports = {
       options: {
         typeName: 'GraphCool',
         fieldName: 'graphcool',
-        url: 'https://api.graph.cool/simple/v1/yelli',
+        url: process.env.API_URL,
       },
     },
     {
@@ -90,7 +95,6 @@ module.exports = {
     'gatsby-transformer-sharp',
 
     // Build/Hosting
-    'gatsby-plugin-playground',
     'gatsby-plugin-offline',
     'gatsby-plugin-preload-link-crossorigin',
     {

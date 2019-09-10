@@ -62,6 +62,12 @@ type FlexibleAccessor<T> = (
 type Accessor<T> = ValueFunc<T, string>
 type CssAccessor<T> = ValueFunc<T, SerializedStyles>
 
+export const shadows = (index: number) => (
+  props: ThemeProp
+): SerializedStyles => css`
+  box-shadow: ${props.theme.shadows[index]};
+`
+
 export const borders: Accessor<Borders> = createAccessor(
   'borders'
 )

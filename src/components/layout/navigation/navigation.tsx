@@ -4,13 +4,14 @@ import {
 } from '@material-ui/core'
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import {
+  AccountCircle,
+  AccountCircleOutlined,
   Category,
   CategoryOutlined,
   Home,
   HomeOutlined,
   Poll,
   PollOutlined,
-  Search,
 } from '@material-ui/icons'
 import { navigate } from 'gatsby'
 import React from 'react'
@@ -63,9 +64,13 @@ const Navigation: React.FC<PathnameProps> = ({
           value="/categories"
         />
         <BottomNavigationAction
-          icon={<Search />}
-          label="Search"
-          value="/search"
+          icon={getIcon(
+            './accountCircle',
+            AccountCircle,
+            AccountCircleOutlined
+          )}
+          label="Profile"
+          value="/profile"
         />
       </BottomNavigation>
     </AppBar>

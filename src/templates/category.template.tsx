@@ -35,7 +35,7 @@ export const pageQuery = graphql`
   query applicationsByCategory($id: ID!) {
     graphcool {
       allApplications(
-        filter: { category: { id: $id } }
+        filter: { category: { id: $id }, published: true }
         orderBy: rank_ASC
       ) {
         ...Application

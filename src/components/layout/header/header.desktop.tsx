@@ -1,12 +1,17 @@
 import React from 'react'
 
 import { AppBar, Toolbar } from './header.desktop.css'
-import SettingsMenu from './settingsMenu'
+import ThemeToggle from './header.themeToggle'
+import UserMenu from './userMenu'
+
+import Search from 'src/components/search'
 
 const DesktopHeader: React.FC = () => (
   <AppBar>
     <Toolbar>
-      <SettingsMenu />
+      <Search />
+      <ThemeToggle />
+      <UserMenu />
     </Toolbar>
   </AppBar>
 )
