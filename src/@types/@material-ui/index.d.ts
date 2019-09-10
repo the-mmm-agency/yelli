@@ -10,8 +10,8 @@ declare module '@material-ui/core/styles/createPalette' {
     placeholder?: string
   }
   export interface TypeBackground {
-    light: string
-    lightHover: string
+    darker: string
+    darkest: string
   }
   export interface TypeScrollbar {
     thumb: string
@@ -43,6 +43,7 @@ declare module '@material-ui/core/styles/createMuiTheme' {
   export interface Radii {
     default: number | string
     image: number | string
+    input: number | string
   }
   export interface Sizes {
     sideDrawer: number | string

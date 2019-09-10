@@ -34,7 +34,7 @@ export const Input = styled(InputBase)`
   padding: ${spacing(1)};
   margin-right: ${spacing(1)};
   margin-left: ${spacing(1)};
-  background-color: ${palette('background.light')};
+  background-color: ${palette('background.darkest')};
   border: ${borders('standard')};
   ${radii('default')};
   width: 100%;

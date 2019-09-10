@@ -3,7 +3,7 @@ import { Theme } from '@material-ui/core'
 
 const overrides = ({
   palette: {
-    background: { paper },
+    background: { paper, darker, darkest },
   },
   radii,
 }: Theme): SerializedStyles => css`
@@ -25,6 +25,14 @@ const overrides = ({
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+  }
+  .MuiOutlinedInput-root:hover
+    .MuiOutlinedInput-notchedOutline {
+    border-color: ${darker};
+  }
+  .MuiOutlinedInput-notchedOutline {
+    border-color: ${darkest};
+    border-radius: ${radii.input}px;
   }
 
   .MuiBottomNavigationAction-root {

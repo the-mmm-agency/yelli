@@ -1,19 +1,29 @@
 import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css'
 import 'filepond/dist/filepond.min.css'
-import { MenuItem, TextField } from '@material-ui/core'
+import {
+  Button,
+  MenuItem,
+  TextField,
+} from '@material-ui/core'
+import FilePondPluginImageCrop from 'filepond-plugin-image-crop'
 import FilePondPluginImagePreview from 'filepond-plugin-image-preview'
+import FilePondPluginImageTransform from 'filepond-plugin-image-transform'
 import { prop, sortBy } from 'ramda'
 import React from 'react'
-import { FilePond, registerPlugin } from 'react-filepond'
+import { registerPlugin } from 'react-filepond'
 
-import { Form } from './submitApp.css'
+import { FilePond, Form } from './submitApp.css'
 
 import Typography from 'src/elements/typography'
 import { Category } from 'src/graphql-types'
 import { useAppSubmissionForm } from 'src/hooks/useAppSubmissionForm'
 import { useCategories } from 'src/hooks/useCategories'
 
-registerPlugin(FilePondPluginImagePreview)
+registerPlugin(
+  FilePondPluginImagePreview,
+  FilePondPluginImageTransform,
+  FilePondPluginImageCrop
+)
 
 type Categories = Array<Omit<Category, 'applications'>>
 
@@ -29,6 +39,8 @@ const SubmitApp: React.FC = () => {
     slug,
     screenshots,
     title,
+    onSubmit,
+    url,
   } = useAppSubmissionForm()
   const categories = useCategories()
   return (
@@ -36,7 +48,11 @@ const SubmitApp: React.FC = () => {
       <Typography component="h2" m={2} variant="h6">
         Icon
       </Typography>
-      <FilePond {...icon} />
+      <FilePond
+        {...icon}
+        imageCropAspectRatio="1:1"
+        name="data"
+      />
       <TextField
         {...title}
         helperText="The title for your application"
@@ -49,7 +65,13 @@ const SubmitApp: React.FC = () => {
         helperText="The url friendly version of the application title. For example if you're adding Google Maps the slug would be google-maps"
         id="slug"
         label="Slug"
-        type="text"
+        variant="outlined"
+      />
+      <TextField
+        {...url}
+        helperText="The url of your application"
+        id="url"
+        label="Url"
         variant="outlined"
       />
       <TextField
@@ -60,7 +82,7 @@ const SubmitApp: React.FC = () => {
         variant="outlined"
       >
         {sortCategories(categories).map(({ id, name }) => (
-          <MenuItem key={id} value={name}>
+          <MenuItem key={id} value={id}>
             {name}
           </MenuItem>
         ))}
@@ -77,7 +99,17 @@ const SubmitApp: React.FC = () => {
       <Typography component="h2" m={2} variant="h6">
         Screenshots
       </Typography>
-      <FilePond {...screenshots} allowMultiple />
+      <FilePond
+        {...screenshots}
+        allowMultiple
+        imageCropAspectRatio="5:9"
+        name="data"
+      />
+      <Button
+        fullWidth
+        color="primary"
+        onClick={onSubmit}
+      />
     </Form>
   )
 }

@@ -107,7 +107,7 @@ export const pageQuery = graphql`
             childImageSharp {
               fluid(
                 maxWidth: 480
-                srcSetBreakpoints: [200, 360, 480]
+                srcSetBreakpoints: [200, 480]
               ) {
                 ...ImageFluid
               }

@@ -1,10 +1,39 @@
+import { FilePond as FilePondBase } from 'react-filepond'
+
 import styled from 'src/util/styled'
-import { spacing } from 'src/util/theme'
+import { borders, palette, spacing } from 'src/util/theme'
 
 export const Form = styled.form`
   display: flex;
   flex-direction: column;
   & > div {
     margin: ${spacing(2, 1)};
+  }
+`
+
+export const FilePond = styled(FilePondBase)`
+  .filepond--root {
+    font: inherit;
+    font-size: 1rem;
+  }
+  .filepond--drop-label {
+    color: ${palette('text.secondary')};
+  }
+  .filepond--label-action {
+    color: ${palette('primary.main')};
+    text-decoration-color: ${palette('primary.main')};
+  }
+  .filepond--panel-root {
+    background-color: ${palette('background.darker')};
+  }
+  .filepond--image-preview-wrapper {
+    border: ${borders('standard')};
+    transform: scale(1.02);
+  }
+  .filepond--image-preview {
+    background: ${palette('background.darkest')};
+  }
+  .filepond--image-preview-overlay {
+    display: none;
   }
 `

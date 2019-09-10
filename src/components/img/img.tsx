@@ -1,3 +1,4 @@
+import { useTheme } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import GatsbyImage, {
   FixedObject,
@@ -23,17 +24,30 @@ const Image: React.FC<ImageProps> = ({
   const {
     imageFile: { childImageSharp: imgSharp },
   } = image
+  const theme = useTheme()
+
   if (has('fluid', imgSharp)) {
     const { fluid } = imgSharp as { fluid: FluidObject }
-    return <GatsbyImage fluid={fluid} {...rest} />
+    return (
+      <GatsbyImage
+        backgroundColor={theme.palette.background.paper}
+        fluid={fluid}
+        {...rest}
+      />
+    )
   }
   const { fixed } = imgSharp as { fixed: FixedObject }
-  return <GatsbyImage fixed={fixed} {...rest} />
+  return (
+    <GatsbyImage
+      backgroundColor={theme.palette.background.paper}
+      fixed={fixed}
+      {...rest}
+    />
+  )
 }
 
 export const imageFixed = graphql`
   fragment ImageFixed on ImageSharpFixed {
-    base64
     width
     height
     src
@@ -45,7 +59,6 @@ export const imageFixed = graphql`
 
 export const imageFluid = graphql`
   fragment ImageFluid on ImageSharpFluid {
-    base64
     aspectRatio
     src
     srcSet

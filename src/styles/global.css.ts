@@ -48,7 +48,7 @@ const globalStyle = ({
   }
 
   ::placeholder {
-    color: ${text.placeholder};
+    color: ${text.placeholder} !important;
   }
 `
 
