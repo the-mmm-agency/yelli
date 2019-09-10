@@ -22,6 +22,7 @@ const light: PaletteOptions = {
     track: darken('#fbfcfd', 0.05),
   },
   text: {
+    alt: fade('#1b1d2c', 0.5),
     placeholder: '#090c17',
     primary: '#161a2a',
     secondary: fade('#161a2a', 0.5),

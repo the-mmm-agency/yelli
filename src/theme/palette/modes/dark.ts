@@ -22,6 +22,7 @@ const dark: PaletteOptions = {
     track: darken('#212337', 0.08),
   },
   text: {
+    alt: '#7c85b3',
     disabled: '#3c4361',
     placeholder: '#afbeeeaa',
     primary: '#ffffff',

@@ -3,7 +3,9 @@ import { Theme } from '@material-ui/core'
 
 const overrides = ({
   palette: {
-    background: { paper, darker, darkest },
+    background: { paper },
+    divider,
+    text,
   },
   radii,
 }: Theme): SerializedStyles => css`
@@ -18,7 +20,9 @@ const overrides = ({
   .MuiAppBar-root {
     background-color: ${paper};
   }
-
+  .MuiSelect-icon {
+    color: ${text.alt};
+  }
   .MuiCardContent-root {
     & > * {
       overflow: hidden;
@@ -28,10 +32,11 @@ const overrides = ({
   }
   .MuiOutlinedInput-root:hover
     .MuiOutlinedInput-notchedOutline {
-    border-color: ${darker};
+    border-color: ${divider};
   }
   .MuiOutlinedInput-notchedOutline {
-    border-color: ${darkest};
+    border-color: ${divider};
+    border-width: 2px;
     border-radius: ${radii.input}px;
   }
 

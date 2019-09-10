@@ -48,6 +48,7 @@ const Search: React.FC = () => {
           >
             <Hits hitComponent={SearchHit} />
             <Divider />
+
             <PoweredBy />
           </HitsWrapper>
         )}

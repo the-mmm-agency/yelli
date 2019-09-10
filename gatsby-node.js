@@ -65,6 +65,16 @@ exports.createPages = async ({
     )
   }
 
-  await generatePages('allApplications', 'app')
+  // await generatePages('allApplications', 'app')
   await generatePages('allCategories', 'category', 'name')
+}
+
+exports.onCreatePage = async ({
+  page,
+  actions: { createPage },
+}) => {
+  if (page.path.match(/^\/profile/)) {
+    page.matchPath = '/profile'
+    createPage(page)
+  }
 }

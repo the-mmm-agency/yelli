@@ -1,7 +1,7 @@
 import {
-  Box,
   ListItemIcon,
   ListItemText,
+  Typography,
 } from '@material-ui/core'
 import { FixedObject } from 'gatsby-image'
 import { has } from 'ramda'
@@ -9,7 +9,7 @@ import React from 'react'
 import { Hit } from 'react-instantsearch-core'
 import { Highlight, Snippet } from 'react-instantsearch-dom'
 
-import { Icon, ListItem } from './search.hit.css'
+import { Category, Icon, ListItem } from './search.hit.css'
 
 import Flex from 'src/elements/flex'
 import Link from 'src/elements/link'
@@ -58,42 +58,32 @@ const SearchHit: React.FC<HitProps> = ({ hit }) => {
           <ListItemText
             primary={
               <Flex>
-                <Highlight
-                  attribute="title"
-                  hit={hit}
-                  tagName="mark"
-                />{' '}
-                <Box
-                  bgcolor="background.default"
-                  color="text.secondary"
-                  component="span"
-                  fontSize="0.8rem"
-                  height="1.5rem"
-                  lineHeight={2.1}
-                  mx={1}
-                  px={1}
-                >
+                <Typography component="h6" variant="h6">
+                  <Highlight
+                    attribute="title"
+                    hit={hit}
+                    tagName="mark"
+                  />{' '}
+                </Typography>
+                <Category>
                   <Highlight
                     attribute="category.name"
                     hit={hit}
                     tagName="mark"
                   />
-                </Box>
+                </Category>
               </Flex>
             }
-            primaryTypographyProps={{
-              color: 'textPrimary',
-              variant: 'h6',
-            }}
             secondary={
               <Snippet
                 attribute="description"
                 hit={hit}
-                tagName="mark"
+                tagName="em"
               />
             }
             secondaryTypographyProps={{
               color: 'textSecondary',
+              component: 'p',
               variant: 'subtitle1',
             }}
           />

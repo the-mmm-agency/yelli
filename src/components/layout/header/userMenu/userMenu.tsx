@@ -31,7 +31,7 @@ const UserMenu: React.FC = () => {
           <UserIcon />
         </IconButton>
       </Tooltip>
-      <Menu {...bindMenu(popupState)}>
+      <Menu disablePortal {...bindMenu(popupState)}>
         <Items isAuthenticated={isAuthenticated()} />
       </Menu>
     </>

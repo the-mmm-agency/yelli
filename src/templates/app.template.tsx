@@ -92,30 +92,26 @@ export const pageQuery = graphql`
   query ApplicationById($id: ID!) {
     graphcool {
       Application(id: $id) {
-        title
         category {
           name
         }
+        description
         icon {
           ...AppIcon
         }
         screenshots {
           id
           url
-
           imageFile {
             childImageSharp {
-              fluid(
-                maxWidth: 480
-                srcSetBreakpoints: [200, 480]
-              ) {
+              fluid(srcSetBreakpoints: [200, 480]) {
                 ...ImageFluid
               }
             }
           }
         }
-
-        description
+        title
+        url
       }
     }
   }

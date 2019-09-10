@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { FilePondProps } from 'react-filepond'
 
-type OnLoad = (response: { id: string }) => void
+type OnLoad = (response: string) => void
 
 export type FilePond = FilePondProps & {
   id: string
@@ -9,8 +9,8 @@ export type FilePond = FilePondProps & {
 
 export const useFilePond = (): FilePond => {
   const [id, setId] = useState()
-  const onload: OnLoad = ({ id }) => {
-    setId(id)
+  const onload: OnLoad = response => {
+    setId(JSON.parse(response).id)
   }
   return {
     id,
@@ -29,8 +29,11 @@ export type FilePondMultiple = FilePondProps & {
 
 export const useFilePondMultiple = (): FilePondMultiple => {
   const [ids, setIds] = useState()
-  const onload: OnLoad = ({ id }) => {
-    setIds([...ids, id])
+  const onload: OnLoad = response => {
+    setIds([
+      ...(Array.isArray(ids) ? ids : []),
+      JSON.parse(response).id,
+    ])
   }
   return {
     ids,

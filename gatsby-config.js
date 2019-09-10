@@ -1,6 +1,8 @@
-const path = require('path')
+require('dotenv').config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 
-require('dotenv').config()
+const path = require('path')
 
 module.exports = {
   siteMetadata: {

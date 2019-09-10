@@ -10,17 +10,6 @@ import {
 } from './useFilePond'
 import { InputItem, useInput } from './useInput'
 
-type AppSubmissionForm = {
-  category: InputItem
-  description: InputItem
-  slug: InputItem
-  title: InputItem
-  icon: FilePond
-  screenshots: FilePondMultiple
-  url: InputItem
-  onSubmit: () => void
-}
-
 const CREATE_APP = gql`
   mutation createApp(
     $author: ID!
@@ -30,6 +19,7 @@ const CREATE_APP = gql`
     $screenshots: [ID!]
     $slug: String!
     $title: String!
+    $url: String!
   ) {
     createApplication(
       authorId: $author
@@ -39,15 +29,32 @@ const CREATE_APP = gql`
       screenshotsIds: $screenshots
       slug: $slug
       title: $title
+      url: $url
     ) {
       id
     }
   }
 `
 
-export const useAppSubmissionForm = (): AppSubmissionForm => {
+type AppSubmissionForm = {
+  category: InputItem
+  description: InputItem
+  slug: InputItem
+  title: InputItem
+  icon: FilePond
+  screenshots: FilePondMultiple
+  loading: boolean
+  url: InputItem
+  onSubmit: () => void
+}
+
+export const useAppSubmissionForm = (
+  onClose: () => void
+): AppSubmissionForm => {
   const { userId } = useCurrentUserId()
-  const [createApp] = useMutation(CREATE_APP)
+  const [createApp, { loading }] = useMutation(CREATE_APP, {
+    onCompleted: onClose,
+  })
 
   const category = useInput()
   const description = useInput('')
@@ -76,6 +83,7 @@ export const useAppSubmissionForm = (): AppSubmissionForm => {
     category,
     description,
     icon,
+    loading,
     onSubmit,
     screenshots,
     slug,

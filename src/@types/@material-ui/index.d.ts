@@ -7,6 +7,7 @@ import {
 
 declare module '@material-ui/core/styles/createPalette' {
   interface TypeText {
+    alt?: string
     placeholder?: string
   }
   export interface TypeBackground {
