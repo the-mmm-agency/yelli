@@ -2,23 +2,22 @@ import ApolloClient from 'apollo-boost'
 import { Operation } from 'apollo-link'
 import fetch from 'isomorphic-fetch'
 
-const isBrowser = (): boolean =>
-  typeof window !== 'undefined'
+const isBrowser = typeof window !== 'undefined'
 
-const client = new ApolloClient({
-  fetch,
-  request: (operation: Operation) => {
-    if (isBrowser()) {
+const client = isBrowser
+  ? new ApolloClient({
+    fetch,
+    request: (operation: Operation) => {
       const token =
-        window.localStorage.getItem('token') || ''
+          window.localStorage.getItem('token') || ''
       operation.setContext({
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-    }
-  },
-  uri: process.env.API_URL,
-})
+    },
+    uri: process.env.API_URL,
+  })
+  : {}
 
 export default client

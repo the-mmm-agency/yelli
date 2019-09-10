@@ -1,7 +1,7 @@
-import { useAuth } from '@brettm12345/react-auth-hook'
 import { List } from '@material-ui/core'
 import React from 'react'
 
+import { useAuth } from 'src/auth'
 import Items from 'src/components/layout/header/userMenu/userMenu.items'
 import ListHeader from 'src/components/listHeader'
 import SEO from 'src/components/seo'

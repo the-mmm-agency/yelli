@@ -1,8 +1,9 @@
-import { useAuth } from '@brettm12345/react-auth-hook'
 import { Login as LoginIcon } from 'mdi-material-ui'
 import React from 'react'
 
 import UserMenuItem from './userMenu.item'
+
+import { useAuth } from 'src/auth'
 
 const Login: React.FC = () => {
   const { login } = useAuth()

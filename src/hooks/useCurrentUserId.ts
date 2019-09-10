@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/react-hooks'
-import { useAuth } from '@brettm12345/react-auth-hook'
 import gql from 'graphql-tag'
+
+import { useAuth } from 'src/auth'
 
 const GET_USER_ID = gql`
   query favorites($auth0UserId: String!) {

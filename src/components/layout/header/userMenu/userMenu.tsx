@@ -1,4 +1,3 @@
-import { useAuth } from '@brettm12345/react-auth-hook'
 import { IconButton, Tooltip } from '@material-ui/core'
 import { AccountCircleOutlined as UserIcon } from '@material-ui/icons'
 import {
@@ -10,6 +9,8 @@ import React from 'react'
 
 import { Menu } from './userMenu.css'
 import Items from './userMenu.items'
+
+import { useAuth } from 'src/auth'
 
 const UserMenu: React.FC = () => {
   const popupState = usePopupState({

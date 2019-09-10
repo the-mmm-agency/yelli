@@ -7,6 +7,7 @@ import {
   DialogActions,
   DialogTitle,
   MenuItem,
+  NoSsr,
   TextField,
   useMediaQuery,
   useTheme,
@@ -68,111 +69,113 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
   )
 
   return (
-    <Dialog
-      aria-labelledby="dialog-title"
-      fullScreen={fullscreen}
-      onClose={onClose}
-      open={open}
-    >
-      <DialogTitle id="dialog-title">
-        Submit your app
-      </DialogTitle>
-      <DialogContent dividers>
-        <TextField
-          {...title}
-          helperText="The title for your application"
-          id="title"
-          label="Title"
-          variant="outlined"
-        />
-        <TextField
-          {...slug}
-          helperText="The url friendly version of the application title. For example if you're adding Google Maps the slug would be google-maps"
-          id="slug"
-          label="Slug"
-          variant="outlined"
-        />
-        <TextField
-          {...url}
-          helperText="The url of your application"
-          id="url"
-          label="Url"
-          variant="outlined"
-        />
-        <TextField
-          {...category}
-          select
-          helperText="The application category"
-          label="Category"
-          variant="outlined"
-        >
-          {sortCategories(categories).map(
-            ({ id, name }) => (
-              <MenuItem key={id} value={id}>
-                {name}
-              </MenuItem>
-            )
-          )}
-        </TextField>
-        <TextField
-          {...description}
-          multiline
-          helperText="A nice description for your application"
-          id="description"
-          label="Description"
-          type="text"
-          variant="outlined"
-        />
-        <Typography
-          color="textSecondary"
-          component="label"
-          id="icon-label"
-          my={2}
-          variant="h6"
-        >
-          Icon
-        </Typography>
-        <FilePond
-          {...icon}
-          aria-labelledby="icon-label"
-          imageCropAspectRatio="1:1"
-          name="data"
-        />
-        <Typography
-          color="textSecondary"
-          component="label"
-          id="screenshots-label"
-          my={2}
-          variant="h6"
-        >
-          Screenshots
-        </Typography>
-        <FilePond
-          {...screenshots}
-          allowMultiple
-          aria-labelledby="screenshots-label"
-          imageCropAspectRatio="5:9"
-          name="data"
-        />
-      </DialogContent>
-      <DialogActions>
-        <Button color="primary" onClick={onClose}>
-          Close
-        </Button>
-        <Box position="relative">
-          <Button
-            color="secondary"
-            disabled={loading}
-            onClick={onSubmit}
+    <NoSsr>
+      <Dialog
+        aria-labelledby="dialog-title"
+        fullScreen={fullscreen}
+        onClose={onClose}
+        open={open}
+      >
+        <DialogTitle id="dialog-title">
+          Submit your app
+        </DialogTitle>
+        <DialogContent dividers>
+          <TextField
+            {...title}
+            helperText="The title for your application"
+            id="title"
+            label="Title"
+            variant="outlined"
+          />
+          <TextField
+            {...slug}
+            helperText="The url friendly version of the application title. For example if you're adding Google Maps the slug would be google-maps"
+            id="slug"
+            label="Slug"
+            variant="outlined"
+          />
+          <TextField
+            {...url}
+            helperText="The url of your application"
+            id="url"
+            label="Url"
+            variant="outlined"
+          />
+          <TextField
+            {...category}
+            select
+            helperText="The application category"
+            label="Category"
+            variant="outlined"
           >
-            Submit App
+            {sortCategories(categories).map(
+              ({ id, name }) => (
+                <MenuItem key={id} value={id}>
+                  {name}
+                </MenuItem>
+              )
+            )}
+          </TextField>
+          <TextField
+            {...description}
+            multiline
+            helperText="A nice description for your application"
+            id="description"
+            label="Description"
+            type="text"
+            variant="outlined"
+          />
+          <Typography
+            color="textSecondary"
+            component="label"
+            id="icon-label"
+            my={2}
+            variant="h6"
+          >
+            Icon
+          </Typography>
+          <FilePond
+            {...icon}
+            aria-labelledby="icon-label"
+            imageCropAspectRatio="1:1"
+            name="data"
+          />
+          <Typography
+            color="textSecondary"
+            component="label"
+            id="screenshots-label"
+            my={2}
+            variant="h6"
+          >
+            Screenshots
+          </Typography>
+          <FilePond
+            {...screenshots}
+            allowMultiple
+            aria-labelledby="screenshots-label"
+            imageCropAspectRatio="5:9"
+            name="data"
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button color="primary" onClick={onClose}>
+            Close
           </Button>
-          {loading && (
-            <SubmitProgress color="secondary" size={16} />
-          )}
-        </Box>
-      </DialogActions>
-    </Dialog>
+          <Box position="relative">
+            <Button
+              color="secondary"
+              disabled={loading}
+              onClick={onSubmit}
+            >
+              Submit App
+            </Button>
+            {loading && (
+              <SubmitProgress color="secondary" size={16} />
+            )}
+          </Box>
+        </DialogActions>
+      </Dialog>
+    </NoSsr>
   )
 }
 

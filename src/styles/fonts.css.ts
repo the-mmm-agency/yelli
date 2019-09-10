@@ -17,8 +17,8 @@ const weights: Weights = {
 /* eslint-enable quote-props */
 
 const makeFontWeight = (
-  fontWeight: keyof Weights,
-  weight: string
+  weight: keyof Weights,
+  fontWeight: string
 ): Styles =>
   fontFace({
     fileFormats: ['woff2', 'woff', 'otf'],

@@ -35,6 +35,7 @@ export const Category = styled.span`
   border-radius: 4px;
   mark {
     color: ${palette('primary.main')};
+    background: transparent;
   }
 `
 

@@ -1,10 +1,11 @@
-import { useAuth } from '@brettm12345/react-auth-hook'
 import { IconButton, Tooltip } from '@material-ui/core'
 import { StarBorder } from '@material-ui/icons'
-import React, { useMemo } from 'react'
+import React, { useEffect } from 'react'
 
 import { Star } from './favorite.css'
 
+import { useAuth } from 'src/auth'
+import { useBoolean } from 'src/hooks/useBoolean'
 import { useFavorite } from 'src/hooks/useFavorite'
 
 type FavoriteProps = {
@@ -13,9 +14,20 @@ type FavoriteProps = {
 
 const Favorite: React.FC<FavoriteProps> = ({ id }) => {
   const { toggle, check, loading } = useFavorite()
+  const {
+    value,
+    toggle: toggleState,
+    setValue,
+  } = useBoolean(false)
   const { isAuthenticated } = useAuth()
-  const hasFavorite = useMemo(() => check(id), [loading])
+  useEffect(() => {
+    if (!loading) {
+      setValue(check(id))
+    }
+  }, [loading])
+
   const handleClick = (): void => {
+    toggleState()
     toggle(id)
   }
   return (
@@ -28,7 +40,7 @@ const Favorite: React.FC<FavoriteProps> = ({ id }) => {
         disabled={!isAuthenticated()}
         onClick={handleClick}
       >
-        {hasFavorite ? <Star /> : <StarBorder />}
+        {value ? <Star /> : <StarBorder />}
       </IconButton>
     </Tooltip>
   )

@@ -24,20 +24,23 @@ export const HitsWrapper = styled(motion.div)`
   .ais-Hits-list {
     padding-inline-start: ${spacing(1)};
   }
+  position: fixed;
+  top: 64px;
+  width: 100vw;
   max-height: 80vh;
-  position: absolute;
-  top: calc(100% + 0.5em);
-  width: calc(100vw - ${spacing(0.5)});
+  overflow: hidden scroll;
+  background-color: ${palette('input.default')} !important;
   ${down('sm')} {
-    left: ${spacing(-7)};
+    left: 0;
   }
   ${up('md')} {
+    position: absolute;
     right: 0;
     width: 80vw;
-    max-width: 50em;
+    overflow: hidden;
+    border: ${borders('standard')};
     ${radii('default')};
+    ${shadows(12)};
+    max-width: 50em;
   }
-  border: ${borders('standard')};
-  background-color: ${palette('input.default')} !important;
-  ${shadows(12)};
 `

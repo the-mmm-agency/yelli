@@ -65,7 +65,7 @@ exports.createPages = async ({
     )
   }
 
-  // await generatePages('allApplications', 'app')
+  await generatePages('allApplications', 'app')
   await generatePages('allCategories', 'category', 'name')
 }
 
@@ -73,8 +73,16 @@ exports.onCreatePage = async ({
   page,
   actions: { createPage },
 }) => {
+  if (page.path.match(/^\/auth_callback/)) {
+    page.matchPath = '/auth_callback'
+    createPage(page)
+  }
   if (page.path.match(/^\/profile/)) {
     page.matchPath = '/profile'
+    createPage(page)
+  }
+  if (page.path.match(/^\/favorites/)) {
+    page.matchPath = '/favorites'
     createPage(page)
   }
 }

@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 
 import Favorites from './userMenu.favorites'
 import Login from './userMenu.login'
@@ -20,4 +20,4 @@ const Items: React.FC<ItemsProps> = ({ isAuthenticated }) =>
     <Login />
   )
 
-export default memo(Items)
+export default Items

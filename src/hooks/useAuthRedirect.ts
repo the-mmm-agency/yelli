@@ -1,9 +1,13 @@
-import { useAuth } from '@brettm12345/react-auth-hook'
-import { useLayoutEffect } from 'react'
+import { useEffect } from 'react'
+
+import { useAuth } from 'src/auth'
+
+const isBrowser = typeof window !== 'undefined'
 
 export const useAuthRedirect = (): void => {
+  if (!isBrowser) return
   const { isAuthenticated, login } = useAuth()
-  return useLayoutEffect((): void => {
+  return useEffect((): void => {
     if (!isAuthenticated()) login()
-  }, [isAuthenticated()])
+  }, [])
 }

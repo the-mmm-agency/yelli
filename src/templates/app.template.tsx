@@ -1,3 +1,4 @@
+import { NoSsr } from '@material-ui/core'
 import { OpenInNewOutlined as OpenIcon } from '@material-ui/icons'
 import { graphql } from 'gatsby'
 import React from 'react'
@@ -41,7 +42,9 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
             <Typography component="h1" variant="h6">
               {title}
             </Typography>
-            <Favorite id={id} />
+            <NoSsr>
+              <Favorite id={id} />
+            </NoSsr>
           </Flex>
           <Typography
             gutterBottom
