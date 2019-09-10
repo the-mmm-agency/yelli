@@ -837,10 +837,10 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@brettm12345/react-auth-hook@1.0.6":
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/@brettm12345/react-auth-hook/-/react-auth-hook-1.0.6.tgz#afb4bae0aac55d5f2c12bc10a473c7be66cbdc7a"
-  integrity sha512-UnXQr8TMwELFM5z0vUgadao7TCLEUcDIk9OYWNZBYS4jpcS01widHx+ATk4hnWGv34pGggwesDeqhHA7arpbBQ==
+"@brettm12345/react-auth-hook@1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@brettm12345/react-auth-hook/-/react-auth-hook-1.1.3.tgz#e9c77fbc74dccda1ddb52595c4e3ec0726461804"
+  integrity sha512-ApHanpAy2VM3k204s9gIxt+GjZcHLtFIMQ+xiiY9ayxXOCrMHno8GdZSQ0sPGxg5oeN0egqb0TeFOWZWV6vkjg==
   dependencies:
     auth0-js "^9.11.3"
     immer "^3.2.0"

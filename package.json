@@ -7,7 +7,7 @@
   "dependencies": {
     "@apollo/react-hooks": "^3.1.0",
     "@babel/core": "^7.0.0",
-    "@brettm12345/react-auth-hook": "1.0.6",
+    "@brettm12345/react-auth-hook": "1.1.3",
     "@emotion/core": "^10.0.15",
     "@emotion/styled": "^10.0.15",
     "@material-ui/core": "^4.3.2",
