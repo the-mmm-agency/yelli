@@ -1,18 +1,18 @@
 import {
+  ListItem,
   ListItemIcon,
   ListItemText,
-  MenuItem,
 } from '@material-ui/core'
-import { MenuItemProps } from '@material-ui/core/MenuItem'
+import { ListItemProps } from '@material-ui/core/ListItem'
 import React from 'react'
 
 import { WithChildren } from 'src/types'
 
 type UserMenuItemProps = WithChildren<
-  MenuItemProps & {
+  ListItemProps & {
     icon: React.ReactElement
     onClick?: (
-      event: React.MouseEvent<HTMLLIElement, MouseEvent>
+      event: React.MouseEvent<any, MouseEvent>
     ) => void
     text: string
   }
@@ -24,7 +24,7 @@ const UserMenuItem: React.FC<UserMenuItemProps> = ({
   onClick,
   text,
 }) => (
-  <MenuItem button onClick={onClick}>
+  <ListItem button onClick={onClick}>
     <ListItemIcon color="inherit">{icon}</ListItemIcon>
     <ListItemText
       primary={text}
@@ -33,7 +33,7 @@ const UserMenuItem: React.FC<UserMenuItemProps> = ({
       }}
     />
     {children}
-  </MenuItem>
+  </ListItem>
 )
 
 export default UserMenuItem

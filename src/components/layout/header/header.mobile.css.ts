@@ -7,6 +7,7 @@ import HeadroomContainer from 'react-headroom'
 
 import { hidden, hiddenButton } from 'src/styles/mixins.css'
 import styled from 'src/util/styled'
+import { spacing } from 'src/util/theme'
 
 export const Headroom = styled(HeadroomContainer)(
   hidden({ up: 'md' })
@@ -23,4 +24,5 @@ export const BackButton = styled(IconButton)<{
 
 export const Toolbar = styled(MuiToolbar)`
   justify-content: space-between;
+  padding: ${spacing(1, 2)};
 `

@@ -64,6 +64,7 @@ export const useFavorite = (): UseFavorite => {
       ids: string[]
     ): Promise<ExecutionResult<any>> =>
       setFavorites({
+        refetchQueries: [GET_USER],
         variables: {
           favorites: ids,
           userId,
