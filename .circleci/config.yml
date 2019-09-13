@@ -23,9 +23,7 @@ commands:
       - run:
           name: Gatsby Build
           command: yarn build
-    codechecks:
-      steps:
-        - run:
+      - run:
           name: Run codechecks
           command: ./node_modules/.bin/codechecks
 workflows:
@@ -48,7 +46,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - gatsby-build
-      - codechecks
       - run:
           name: Netlify Deploy
           command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir=public
@@ -57,7 +54,6 @@ jobs:
     working_directory: ~/repo
     steps:
       - gatsby-build
-      - codechecks
       - run:
           name: Netlify Deploy
           command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=public
