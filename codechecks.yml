@@ -1,2 +1,5 @@
 checks:
   - name: typecov
+  - name: lighthouse-keeper
+    options:
+      buildPath: ./public
