@@ -1,10 +1,11 @@
-import { SerializedStyles, css } from '@emotion/core'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import fonts from './fonts.css'
+import overrides from './overrides.css'
+import scrollbars from './scrollbars.css'
 
-const globalStyle = ({
-  palette: { background, primary, text },
-  transitions,
-}: Theme): SerializedStyles => css`
+import { createGlobalStyle } from 'src/util/styled'
+import { palette } from 'src/util/theme'
+
+const GlobalStyle = createGlobalStyle`
   * {
     @media (prefers-reduced-motion: reduce) {
       transition: none !important;
@@ -28,11 +29,7 @@ const globalStyle = ({
   }
 
   body {
-    background-color: ${background.default};
-    transition: ${transitions.create([
-      'color',
-      'background-color',
-    ])};
+    background-color: ${palette('background.default')};
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
@@ -44,12 +41,15 @@ const globalStyle = ({
 
   ::selection {
     color: white;
-    background: ${primary.main};
+    background: ${palette('primary.main')};
   }
 
   ::placeholder {
-    color: ${text.placeholder} !important;
+    color: ${palette('text.placeholder')} !important;
   }
+  ${fonts}
+  ${overrides}
+  ${scrollbars}
 `
 
-export default globalStyle
+export default GlobalStyle

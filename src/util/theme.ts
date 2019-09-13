@@ -1,5 +1,8 @@
-import { SerializedStyles, css } from '@emotion/core'
-import { fade as muiFade } from '@material-ui/core/styles/colorManipulator'
+import {
+  darken as muiDarken,
+  fade as muiFade,
+  lighten as muiLighten,
+} from '@material-ui/core/styles/colorManipulator'
 import {
   Breakpoint,
   keys as breakpoints,
@@ -15,27 +18,59 @@ import { Typography } from '@material-ui/core/styles/createTypography'
 import { ZIndex } from '@material-ui/core/styles/zIndex'
 import facepaint from 'facepaint'
 import { has, path, prop, propOr } from 'ramda'
+import { FlattenInterpolation } from 'styled-components'
 
 import { ThemeProp } from 'src/types'
 import dotPath from 'src/util/dotPath'
+import { css } from 'src/util/styled'
 
-const createAccessor = (key: keyof Theme) => (
-  value: string
-) => (props: ThemeProp): string =>
+// Theme Accessors
+type ThemeFunc<T> = (props: ThemeProp) => T
+
+const createAccessor = <T>(key: keyof Theme) => (
+  value: keyof T | string
+): ThemeFunc<string> => props =>
   dotPath(value, path(['theme', key], props))
 
-export const transitions = (
+type Css = FlattenInterpolation<ThemeProp>
+type CssFunc<T> = (value: T) => Css
+
+type CssAccessor<T> = CssFunc<keyof T>
+
+export const borders = createAccessor<Borders>('borders')
+export const palette = createAccessor<Palette>('palette')
+export const sizes = createAccessor<Sizes>('sizes')
+export const typography = createAccessor<Typography>(
+  'typography'
+)
+export const shadows: CssFunc<number> = value => css`
+  box-shadow: ${(props): string =>
+    props.theme.shadows[value]};
+`
+export const radii: CssAccessor<Radii> = value => css`
+  border-radius: ${createAccessor('radii')(value)}px;
+`
+export const zIndex: CssAccessor<ZIndex> = value => css`
+  z-index: ${createAccessor('zIndex')(value)};
+`
+
+type Transitions = (
   value: string | string[],
-  options: Partial<{
+  options?: Partial<{
     duration: number | string
     easing: string
     delay: number | string
-  }> = {}
-) => ({ theme: { transitions } }: ThemeProp) => {
-  const getOption = (
+  }>
+) => ThemeFunc<Css>
+export const transitions: Transitions = (
+  value,
+  options = {}
+) => ({ theme: { transitions } }) => {
+  type GetOption = (
     key: 'duration' | 'easing',
     fallback: string
-  ): string => {
+  ) => string
+  const getOption: GetOption = (key, fallback) => {
     const obj = prop(key, transitions)
     if (has(key, options)) {
       const option = prop(key, options) as string
@@ -43,7 +78,6 @@ export const transitions = (
     }
     return propOr(fallback, fallback, obj)
   }
-
   const transition = transitions.create(value, {
     delay: propOr(0, 'delay', options),
     duration: getOption('duration', 'standard'),
@@ -54,54 +88,19 @@ export const transitions = (
   `
 }
 
-type ThemeFunc<T> = (props: ThemeProp) => T
-type ValueFunc<T, K> = (value: keyof T) => ThemeFunc<K>
-type FlexibleAccessor<T> = (
-  value: keyof T | string
-) => ThemeFunc<string>
-type Accessor<T> = ValueFunc<T, string>
-type CssAccessor<T> = ValueFunc<T, SerializedStyles>
-
-export const shadows = (index: number) => (
-  props: ThemeProp
-): SerializedStyles => css`
-  box-shadow: ${props.theme.shadows[index]};
-`
-
-export const borders: Accessor<Borders> = createAccessor(
-  'borders'
-)
-export const palette: FlexibleAccessor<
-  Palette
-> = createAccessor('palette')
-export const sizes: Accessor<Sizes> = createAccessor(
-  'sizes'
-)
-export const radii: CssAccessor<
-  Radii
-> = value => props => css`
-  border-radius: ${createAccessor('radii')(value)(props)}px;
-`
-export const typography: FlexibleAccessor<
-  Typography
-> = createAccessor('typography')
-
-export const zIndex: CssAccessor<
-  ZIndex
-> = value => props => css`
-  z-index: ${createAccessor('zIndex')(value)(props)};
-`
-
+// Theme Functions
+export const pxToRem = (
+  px: number
+): ThemeFunc<string> => props =>
+  props.theme.typography.pxToRem(px)
 export const spacing = (...args: number[]) => (
   props: ThemeProp
 ): string =>
   args.map(x => `${props.theme.spacing(x)}px`).join(' ')
 
 type MediaQuery = (value: Breakpoint) => ThemeFunc<string>
-
 export const up: MediaQuery = value => props =>
   props.theme.breakpoints.up(value)
-
 export const down: MediaQuery = value => props =>
   props.theme.breakpoints.down(value)
 
@@ -113,16 +112,17 @@ type Between = (
 export const between: Between = (lower, upper) => props =>
   props.theme.breakpoints.between(lower, upper)
 
-type Fade = (
+const paletteFunc = <T>(
+  func: (color: string, value: T) => string
+) => (
   color: keyof Palette | string,
-  amount: number
-) => ThemeFunc<string>
+  value: T
+): ThemeFunc<string> => props =>
+  func(palette(color)(props), value)
 
-export const fade: Fade = (color, amount) => props =>
-  muiFade(
-    createAccessor('palette')(color)(props) as string,
-    amount
-  )
+export const fade = paletteFunc<number>(muiFade)
+export const darken = paletteFunc<number>(muiDarken)
+export const lighten = paletteFunc<number>(muiLighten)
 
 type Mq = (
   value: Record<string, any> | Record<string, any>[]

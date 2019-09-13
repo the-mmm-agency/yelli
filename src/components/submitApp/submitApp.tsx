@@ -85,28 +85,24 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
             helperText="The title for your application"
             id="title"
             label="Title"
-            variant="outlined"
           />
           <TextField
             {...slug}
             helperText="The url friendly version of the application title. For example if you're adding Google Maps the slug would be google-maps"
             id="slug"
             label="Slug"
-            variant="outlined"
           />
           <TextField
             {...url}
             helperText="The url of your application"
             id="url"
             label="Url"
-            variant="outlined"
           />
           <TextField
             {...category}
             select
             helperText="The application category"
             label="Category"
-            variant="outlined"
           >
             {sortCategories(categories).map(
               ({ id, name }) => (
@@ -123,7 +119,6 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
             id="description"
             label="Description"
             type="text"
-            variant="outlined"
           />
           <Typography
             color="textSecondary"
@@ -137,6 +132,7 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
           <FilePond
             {...icon}
             aria-labelledby="icon-label"
+            id="icon"
             imageCropAspectRatio="1:1"
             name="data"
           />
@@ -153,6 +149,7 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
             {...screenshots}
             allowMultiple
             aria-labelledby="screenshots-label"
+            id="screenshots"
             imageCropAspectRatio="5:9"
             name="data"
           />

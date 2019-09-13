@@ -6,7 +6,7 @@ import {
 import { HandleAuthTokenOptions } from './handleAuthResult'
 
 export interface SetAuthSessionOptions
-  extends HandleAuthTokenOptions {
+  extends Omit<HandleAuthTokenOptions, 'apolloClient'> {
   authResult: Auth0DecodedHash
 }
 

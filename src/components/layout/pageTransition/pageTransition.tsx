@@ -1,4 +1,8 @@
-import { AnimatePresence, motion } from 'framer-motion'
+import {
+  AnimatePresence,
+  Variant,
+  motion,
+} from 'framer-motion'
 import React from 'react'
 
 import { PathnameProps, WithChildren } from 'src/types'
@@ -7,7 +11,7 @@ const duration = 0.2
 
 export const scrollDuration = duration * 1000
 
-const enter = {
+const enter: Variant = {
   opacity: 1,
   transition: {
     delay: duration,
@@ -17,14 +21,14 @@ const enter = {
   y: 0,
 }
 
-const exit = {
+const exit: Variant = {
   opacity: 0,
   transition: {
     duration,
   },
 }
 
-const initial = {
+const initial: Variant = {
   ...exit,
   y: 20,
 }

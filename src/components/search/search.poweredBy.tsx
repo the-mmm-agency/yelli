@@ -5,7 +5,13 @@ import { Link } from './search.poweredBy.css'
 import Flex from 'src/elements/flex'
 
 const PoweredBy: React.FC = () => (
-  <Flex justifyContent="flex-end" pr={1} pt={1} width={1}>
+  <Flex
+    color="text.primary"
+    justifyContent="flex-end"
+    pr={1}
+    pt={1}
+    width={1}
+  >
     <Link
       aria-label="search by Algolia"
       href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=localhost&amp;utm_campaign=poweredby"

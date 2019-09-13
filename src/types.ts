@@ -1,7 +1,11 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import { ReactNode } from 'react'
+import { ReactChild, ReactNode } from 'react'
 
 import { Application, Category } from './graphql-types'
+
+export type Child = {
+  children?: ReactChild
+}
 
 export type Children = {
   children?: ReactNode
@@ -25,7 +29,7 @@ export type AppComponentProps = Pick<
   Application,
   'title' | 'icon' | 'category'
 > & {
-  handleClick: () => void
+  to: string
 }
 
 export type AppProps = Omit<

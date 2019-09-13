@@ -29,4 +29,4 @@ export const Card = styled(MuiCard)`
   border: ${borders('standard')};
   overflow: hidden;
   ${radii('default')};
-`.withComponent('li')
+`

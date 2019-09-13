@@ -1,7 +1,9 @@
+import { ApolloClient } from 'apollo-boost'
 import Auth0, {
   Auth0DecodedHash,
   Auth0Error,
 } from 'auth0-js'
+import gql from 'graphql-tag'
 
 import { AuthAction, Maybe } from './authReducer'
 import { setAuthSession } from './setAuthSession'
@@ -9,6 +11,7 @@ import { setAuthSession } from './setAuthSession'
 export interface HandleAuthTokenOptions {
   dispatch: React.Dispatch<AuthAction>
   error?: Maybe<Auth0Error | Auth0.Auth0ParseHashError>
+  apolloClient: ApolloClient<any>
   auth0Client: Auth0.WebAuth
   authResult: Maybe<Auth0DecodedHash>
 }
@@ -16,6 +19,7 @@ export interface HandleAuthTokenOptions {
 export const handleAuthResult = async ({
   dispatch,
   auth0Client,
+  apolloClient,
   error,
   authResult,
 }: HandleAuthTokenOptions): Promise<boolean | void> => {
@@ -28,6 +32,31 @@ export const handleAuthResult = async ({
       auth0Client,
       authResult,
       dispatch,
+    })
+
+    const result = await apolloClient.mutate({
+      mutation: gql`
+        mutation authenticate($idToken: String!) {
+          authenticateUser(idToken: $idToken) {
+            id
+            token
+          }
+        }
+      `,
+      variables: {
+        idToken: authResult.idToken,
+      },
+    })
+    window.localStorage.setItem(
+      'token',
+      result.data.authenticateUser.token
+    )
+    dispatch({
+      id: result.data.authenticateUser.id,
+      type: 'SET_USER_ID',
+    })
+    dispatch({
+      type: 'TOGGLE_AUTHENTICATING',
     })
 
     return true

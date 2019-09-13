@@ -9,10 +9,10 @@ export const Icon = styled(Img)`
   height: 50px;
   margin-right: ${spacing(3)};
   img {
-    ${radii('image')};
+    ${radii('heavy')};
   }
 `
 
 export const ListItem = styled(MuiListItem)`
   padding: ${spacing(2)};
-`
+` as typeof MuiListItem

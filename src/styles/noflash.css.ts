@@ -1,12 +1,11 @@
-import { css } from '@emotion/core'
-
 import { darkTheme } from 'src/theme'
+import { createGlobalStyle } from 'src/util/styled'
 
 const {
   palette: { background, text },
 } = darkTheme
 
-const noflash = css`
+const noflash = createGlobalStyle`
   body.dark-mode {
     color: ${text.primary};
     background-color: ${background.default};
@@ -15,7 +14,7 @@ const noflash = css`
       background-color: ${background.paper};
     }
 
-    .MuiPaper-root:not(.MuiCard-root) {
+    .MuiPaper-root:not(.MuiCard-root):not(.MuiSnackbarContent-root) {
       color: ${text.primary};
       background-color: ${background.paper};
     }

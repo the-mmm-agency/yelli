@@ -1,44 +1,35 @@
 import { IconButton, Tooltip } from '@material-ui/core'
 import { StarBorder } from '@material-ui/icons'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { Star } from './favorite.css'
 
 import { useAuth } from 'src/auth'
-import { useBoolean } from 'src/hooks/useBoolean'
 import { useFavorite } from 'src/hooks/useFavorite'
 
 type FavoriteProps = {
   id: string
+  title: string
 }
 
-const Favorite: React.FC<FavoriteProps> = ({ id }) => {
-  const { toggle, check, loading } = useFavorite()
-  const {
-    value,
-    toggle: toggleState,
-    setValue,
-  } = useBoolean(false)
+const Favorite: React.FC<FavoriteProps> = ({
+  id,
+  title,
+}) => {
   const { isAuthenticated } = useAuth()
-  useEffect(() => {
-    if (!loading) {
-      setValue(check(id))
-    }
-  }, [loading])
-
-  const handleClick = (): void => {
-    toggleState()
-    toggle(id)
-  }
+  const [value, toggle] = useFavorite(id, title)
+  const label = `${
+    value ? 'Remove from' : 'Add to'
+  } favorites`
   return (
-    <Tooltip title="Add to favorites">
+    <Tooltip title={label}>
       <IconButton
-        aria-label="Add to favorites"
+        aria-label={label}
         css={{
           marginTop: -10,
         }}
         disabled={!isAuthenticated()}
-        onClick={handleClick}
+        onClick={toggle}
       >
         {value ? <Star /> : <StarBorder />}
       </IconButton>

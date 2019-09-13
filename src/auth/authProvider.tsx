@@ -1,6 +1,6 @@
+import { useApolloClient } from '@apollo/react-hooks'
 import Auth0 from 'auth0-js'
-import React, { useEffect } from 'react'
-import { useImmerReducer } from 'use-immer'
+import React, { useEffect, useReducer } from 'react'
 
 import {
   AuthAction,
@@ -8,6 +8,8 @@ import {
   authReducer,
 } from './authReducer'
 import { handleAuthResult } from './handleAuthResult'
+
+import isBrowser from 'src/util/isBrowser'
 
 export interface AuthContext {
   state: AuthState
@@ -34,12 +36,10 @@ export const AuthProvider: React.FC<AuthProvider> = ({
   navigate,
   children,
 }) => {
-  // Holds the initial entry point URL to the page
-  const callbackDomain =
-    typeof window !== 'undefined'
-      ? `${window.location.protocol}//${window.location.host}`
-      : 'http://localhost:3000'
-
+  const callbackDomain = isBrowser()
+    ? `${window.location.protocol}//${window.location.host}`
+    : 'http://localhost:3000'
+  const apolloClient = useApolloClient()
   const auth0Client = new Auth0.WebAuth({
     audience: `https://${auth0Domain}/api/v2/`,
     clientID: auth0ClientId,
@@ -49,14 +49,12 @@ export const AuthProvider: React.FC<AuthProvider> = ({
     scope: 'openid profile email',
   })
 
-  // Reducer for containing the authentication state
-  const [state, dispatch] = useImmerReducer<
-    AuthState,
-    AuthAction
-  >(authReducer, {
+  const [state, dispatch] = useReducer(authReducer, {
     authResult: null,
     expiresOn: null,
+    isAuthenticating: false,
     user: null,
+    userId: null,
   })
 
   const [contextValue, setContextValue] = React.useState<
@@ -83,6 +81,7 @@ export const AuthProvider: React.FC<AuthProvider> = ({
         })
       } else {
         handleAuthResult({
+          apolloClient,
           auth0Client,
           authResult,
           dispatch,

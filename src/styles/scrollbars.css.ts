@@ -1,27 +1,22 @@
-import { SerializedStyles, css } from '@emotion/core'
-import { darken } from '@material-ui/core/styles/colorManipulator'
-import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { css } from 'src/util/styled'
+import { darken, palette, up } from 'src/util/theme'
 
-const scrollbars = ({
-  palette: {
-    scrollbar: { thumb, track },
-  },
-  breakpoints: { up },
-}: Theme): SerializedStyles => css`
+const scrollbars = css`
   ${up('sm')} {
     ::-webkit-scrollbar {
-      background: ${track};
+      background: ${palette('scrollbar.track')};
     }
 
     ::-webkit-scrollbar-thumb {
       &:hover {
-        background: ${darken(thumb, 0.18)};
+        background: ${darken('scrollbar.thumb', 0.18)};
       }
-      background: ${thumb};
+      background: ${palette('scrollbar.thumb')};
     }
 
     html {
-      scrollbar-color: ${thumb} ${track};
+      scrollbar-color: ${palette('scrollbar.thumb')}
+        ${palette('scrollbar.track')};
       scrollbar-width: thin;
     }
   }

@@ -1,4 +1,4 @@
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 
 import {
@@ -7,6 +7,7 @@ import {
   Icon,
 } from './categoryCard.css'
 
+import Link from 'src/elements/link'
 import Typography from 'src/elements/typography'
 import { Category } from 'src/graphql-types'
 
@@ -15,9 +16,8 @@ const CategoryCard: React.FC<
 > = ({ name, slug }) => (
   <Card>
     <CardActionArea
-      onClick={() => {
-        navigate(`/category/${slug}`)
-      }}
+      component={Link}
+      to={`/category/${slug}`}
     >
       <Icon name={name} />
       <Typography color="textPrimary" mt={1} variant="h6">

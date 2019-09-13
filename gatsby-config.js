@@ -2,37 +2,27 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const path = require('path')
+const siteMetadata = require('./siteMetadata.json')
 
 module.exports = {
-  siteMetadata: {
-    title: 'Yelli',
-    description:
-      'The hottest progressive web app directory on the market',
-    author: '@brettm12345',
-  },
+  siteMetadata,
   plugins: [
     // Code Transformation
     'gatsby-plugin-typescript',
-    // 'gatsby-plugin-typescript-checker',
+    'gatsby-plugin-typescript-checker',
     'gatsby-plugin-fastclick',
-    {
-      resolve: 'gatsby-plugin-root-import',
-      options: {
-        src: path.join(__dirname, 'src'),
-      },
-    },
+    'gatsby-plugin-root-import',
 
     // Code Generation
     {
-      resolve: 'gatsby-plugin-manifest',
+      resolve: 'gatsby-plugin-favicon',
       options: {
-        name: 'Yelli',
-        short_name: 'Yelli',
+        logo: 'src/images/yelli-logo.png',
+        appName: siteMetadata.title,
+        appDescription: siteMetadata.description,
         start_url: '/',
         background_color: '#212337',
         display: 'standalone',
-        icon: 'src/images/yelli-logo.png',
       },
     },
     {
@@ -61,8 +51,13 @@ module.exports = {
         useMozJpeg: true,
       },
     },
+    {
+      resolve: 'gatsby-plugin-styled-components',
+      options: {
+        pure: true,
+      },
+    },
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-emotion',
     'gatsby-plugin-polished',
     'gatsby-plugin-use-dark-mode',
 
@@ -80,14 +75,6 @@ module.exports = {
         typeName: 'GraphCool',
         fieldName: 'graphcool',
         url: process.env.API_URL,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-remote-images',
-      options: {
-        nodeType: 'GraphCool_File',
-        imagePath: 'url',
-        ext: '.png',
       },
     },
 

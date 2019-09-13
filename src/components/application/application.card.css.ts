@@ -28,7 +28,7 @@ export const ActionArea = styled(CardActionArea)`
   .MuiCardActionArea-focusHighlight {
     ${radii('default')}
   }
-`
+` as typeof CardActionArea
 
 export const Content = styled(CardContent)`
   padding: 0;

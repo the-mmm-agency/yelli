@@ -1,5 +1,5 @@
 declare module 'material-ui-popup-state' {
-  import React, { SyntheticEvent } from 'react'
+  import { ReactNode, SyntheticEvent } from 'react'
 
   export type Variant = 'popover' | 'popper'
 
@@ -98,8 +98,33 @@ declare module 'material-ui-popup-state' {
 
   export type PopupStateProps = {
     popupId?: string
-    children?: (props: PopupState) => React.ReactNode
+    children?: (props: PopupState) => ReactNode
     variant: Variant
     parentPopupState?: PopupState
   }
+}
+
+declare module 'material-ui-popup-state/hooks' {
+  import {
+    PopupState,
+    Variant,
+  } from 'material-ui-popup-state'
+
+  type UsePopupStateArgs = {
+    parentPopupState?: PopupState
+    popupId?: string
+    variant: Variant
+  }
+  export function usePopupState(
+    args: UsePopupStateArgs
+  ): PopupState
+  export {
+    anchorRef,
+    bindTrigger,
+    bindToggle,
+    bindHover,
+    bindMenu,
+    bindPopover,
+    bindPopper,
+  } from 'material-ui-popup-state'
 }

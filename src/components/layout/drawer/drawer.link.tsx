@@ -4,7 +4,9 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 
-import { Link, ListItem } from './drawer.link.css'
+import { ListItem } from './drawer.link.css'
+
+import Link from 'src/elements/link'
 
 type DrawerLinkProps = {
   icon: React.ReactElement
@@ -17,14 +19,16 @@ const DrawerLink: React.FC<DrawerLinkProps> = ({
   text,
   to,
 }) => (
-  <li>
-    <Link activeClassName="active" to={to}>
-      <ListItem button dense>
-        <ListItemIcon>{icon}</ListItemIcon>
-        <ListItemText primary={text} />
-      </ListItem>
-    </Link>
-  </li>
+  <ListItem
+    button
+    dense
+    activeClassName="active"
+    component={Link}
+    to={to}
+  >
+    <ListItemIcon>{icon}</ListItemIcon>
+    <ListItemText primary={text} />
+  </ListItem>
 )
 
 export default DrawerLink

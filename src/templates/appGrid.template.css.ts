@@ -15,4 +15,4 @@ export const Grid = styled(Flex)`
     flex: 2 0 auto;
     content: '';
   }
-`.withComponent('ul')
+`

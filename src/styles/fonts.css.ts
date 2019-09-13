@@ -2,6 +2,8 @@ import { fontFace } from 'polished'
 import { Styles } from 'polished/lib/types/style'
 import { mapObjIndexed } from 'ramda'
 
+import { css } from 'src/util/styled'
+
 type Weights = {
   '400': string
   '500': string
@@ -31,4 +33,5 @@ const makeFontWeight = (
   })
 
 const fonts = mapObjIndexed(makeFontWeight, weights)
-export default fonts
+
+export default css(fonts)

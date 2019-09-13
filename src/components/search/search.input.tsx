@@ -3,6 +3,7 @@ import { InputBaseProps } from '@material-ui/core/InputBase'
 import { Search as SearchIcon } from '@material-ui/icons'
 import React from 'react'
 import { connectSearchBox } from 'react-instantsearch-dom'
+import { useDebouncedCallback } from 'use-debounce/lib'
 
 import { Adornment, Form, Input } from './search.input.css'
 
@@ -18,11 +19,13 @@ const SearchInput: React.FC<SearchInputProps> = ({
   currentRefinement,
   ...rest
 }) => {
-  const handleChange = (
-    event: React.ChangeEvent<HTMLInputElement>
-  ): void => {
-    refine(event.target.value)
-  }
+  const [handleChange] = useDebouncedCallback(
+    (value): void => {
+      refine(value)
+    },
+    600,
+    { leading: true }
+  )
   const isLoading =
     currentRefinement !== '' && isSearchStalled
 
@@ -33,7 +36,11 @@ const SearchInput: React.FC<SearchInputProps> = ({
         endAdornment={
           isLoading && <CircularProgress size="1rem" />
         }
-        onChange={handleChange}
+        onChange={(
+          event: React.ChangeEvent<HTMLInputElement>
+        ) => {
+          handleChange(event.target.value)
+        }}
         placeholder="Search…"
         startAdornment={
           <Adornment position="start">

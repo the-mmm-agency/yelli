@@ -4,12 +4,7 @@ import {
 } from '@material-ui/core'
 
 import styled from 'src/util/styled'
-import {
-  palette,
-  radii,
-  spacing,
-  transitions,
-} from 'src/util/theme'
+import { palette, radii, spacing } from 'src/util/theme'
 
 export const SearchInput = styled(InputBase)`
   &:hover {
@@ -20,7 +15,6 @@ export const SearchInput = styled(InputBase)`
   padding: ${spacing(1)};
   font-weight: 500;
   background-color: ${palette('input.default')};
-  ${transitions(['background-color', 'box-shadow'])}
   ${radii('default')}
 `
 

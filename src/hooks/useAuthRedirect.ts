@@ -1,13 +1,16 @@
 import { useEffect } from 'react'
 
 import { useAuth } from 'src/auth'
-
-const isBrowser = typeof window !== 'undefined'
+import isBrowser from 'src/util/isBrowser'
 
 export const useAuthRedirect = (): void => {
-  if (!isBrowser) return
-  const { isAuthenticated, login } = useAuth()
+  if (!isBrowser()) return
+  const {
+    isAuthenticated,
+    isAuthenticating,
+    login,
+  } = useAuth()
   return useEffect((): void => {
-    if (!isAuthenticated()) login()
+    if (!isAuthenticated() && !isAuthenticating) login()
   }, [])
 }

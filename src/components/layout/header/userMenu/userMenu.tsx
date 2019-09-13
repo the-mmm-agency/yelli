@@ -1,4 +1,8 @@
-import { IconButton, Tooltip } from '@material-ui/core'
+import {
+  IconButton,
+  NoSsr,
+  Tooltip,
+} from '@material-ui/core'
 import { AccountCircleOutlined as UserIcon } from '@material-ui/icons'
 import {
   bindMenu,
@@ -10,14 +14,11 @@ import React from 'react'
 import { Menu } from './userMenu.css'
 import Items from './userMenu.items'
 
-import { useAuth } from 'src/auth'
-
 const UserMenu: React.FC = () => {
   const popupState = usePopupState({
     popupId: 'user-menu',
     variant: 'popover',
   })
-  const { isAuthenticated } = useAuth()
   return (
     <>
       <Tooltip
@@ -32,9 +33,11 @@ const UserMenu: React.FC = () => {
           <UserIcon />
         </IconButton>
       </Tooltip>
-      <Menu disablePortal {...bindMenu(popupState)}>
-        <Items isAuthenticated={isAuthenticated()} />
-      </Menu>
+      <NoSsr defer>
+        <Menu {...bindMenu(popupState)}>
+          <Items />
+        </Menu>
+      </NoSsr>
     </>
   )
 }

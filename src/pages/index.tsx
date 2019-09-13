@@ -49,17 +49,27 @@ const Home: React.FC<HomeProps> = ({
 export const query = graphql`
   {
     featured: graphcool {
-      allApplications(filter: { featured: true }) {
+      allApplications(
+        filter: { featured: true, published: true }
+      ) {
         ...FeaturedApp
       }
     }
     latest: graphcool {
-      allApplications(first: 15, orderBy: createdAt_DESC) {
+      allApplications(
+        first: 15
+        orderBy: createdAt_DESC
+        filter: { published: true }
+      ) {
         ...Application
       }
     }
     top: graphcool {
-      allApplications(first: 15, orderBy: rank_ASC) {
+      allApplications(
+        first: 15
+        orderBy: rank_ASC
+        filter: { published: true }
+      ) {
         ...Application
       }
     }

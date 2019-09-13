@@ -6,10 +6,10 @@ import Items from 'src/components/layout/header/userMenu/userMenu.items'
 import ListHeader from 'src/components/listHeader'
 import SEO from 'src/components/seo'
 import Flex from 'src/elements/flex'
-import { useAuthRedirect } from 'src/hooks/useAuthRedirect'
+import { css } from 'src/util/styled'
+import { borders, spacing } from 'src/util/theme'
 
 const Profile: React.FC = () => {
-  useAuthRedirect()
   const { user } = useAuth()
   return (
     <>
@@ -22,8 +22,15 @@ const Profile: React.FC = () => {
         <ListHeader>
           {user !== null ? user.name : 'Profile'}
         </ListHeader>
-        <List>
-          <Items isAuthenticated />
+        <List
+          css={css`
+            .MuiListItem-root {
+              padding: ${spacing(2)};
+              border-bottom: ${borders('standard')};
+            }
+          `}
+        >
+          <Items />
         </List>
       </Flex>
     </>

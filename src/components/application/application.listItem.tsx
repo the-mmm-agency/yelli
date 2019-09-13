@@ -6,20 +6,21 @@ import React, { memo } from 'react'
 
 import { Icon, ListItem } from './application.listItem.css'
 
+import Link from 'src/elements/link'
 import { AppComponentProps } from 'src/types'
 
 const AppListItem: React.FC<AppComponentProps> = ({
   category,
   title,
   icon,
-  handleClick,
+  to,
 }) => (
   <ListItem
     button
     disableGutters
     divider
-    onClick={handleClick}
-    role="link"
+    component={Link}
+    to={to}
   >
     <ListItemIcon>
       <Icon image={icon} title={title} />
@@ -33,6 +34,7 @@ const AppListItem: React.FC<AppComponentProps> = ({
       secondary={category.name}
       secondaryTypographyProps={{
         color: 'textSecondary',
+        component: 'p',
         variant: 'subtitle1',
       }}
     />

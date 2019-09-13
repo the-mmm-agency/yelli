@@ -1,8 +1,9 @@
 {
   "compilerOptions": {
+    "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "checkJs": false,
+    "checkJs": true,
     "esModuleInterop": true,
     "plugins": [
       {
@@ -12,7 +13,7 @@
         "name": "typescript-lit-html-plugin"
       }
     ],
-    "jsx": "preserve",
+    "jsx": "react",
     "lib": ["dom", "es2015", "es2017"],
     "module": "commonjs",
     "noEmit": true,
@@ -26,10 +27,10 @@
     "preserveConstEnums": true,
     "removeComments": false,
     "strict": true,
+    "skipLibCheck": true,
     "sourceMap": true,
     "target": "esnext",
-    "typeRoots": ["./node_modules/@types", "./src/@types"]
+    "typeRoots": ["./src/@types", "./node_modules/@types"]
   },
-  "exclude": ["./node_modules"],
   "include": ["./src/**/*"]
 }

@@ -5,12 +5,12 @@ import Login from './userMenu.login'
 import Logout from './userMenu.logout'
 import SubmitApp from './userMenu.submitApp'
 
-type ItemsProps = {
-  isAuthenticated: boolean
-}
+import { useAuth } from 'src/auth'
 
-const Items: React.FC<ItemsProps> = ({ isAuthenticated }) =>
-  isAuthenticated ? (
+const Items: React.FC = () => {
+  const { isAuthenticated } = useAuth()
+
+  return isAuthenticated() ? (
     <>
       <Favorites />
       <SubmitApp />
@@ -19,5 +19,6 @@ const Items: React.FC<ItemsProps> = ({ isAuthenticated }) =>
   ) : (
     <Login />
   )
+}
 
 export default Items

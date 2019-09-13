@@ -1,23 +1,23 @@
 import { useApolloClient } from '@apollo/react-hooks'
-import {
-  Auth0DecodedHash,
-  Auth0UserProfile,
-} from 'auth0-js'
-import gql from 'graphql-tag'
+import { useSnackbar } from 'notistack'
 import React from 'react'
 
 import { AuthContext } from './authProvider'
-import { Maybe } from './authReducer'
+import { AuthState, Maybe } from './authReducer'
 import { handleAuthResult } from './handleAuthResult'
 
-export interface UseAuth {
+import isBrowser from 'src/util/isBrowser'
+
+export interface UseAuth
+  extends Pick<
+    AuthState,
+    'user' | 'authResult' | 'isAuthenticating'
+  > {
   login: () => void
   logout: () => void
   handleAuth: () => void
   isAuthenticated: () => boolean
   userId: Maybe<string>
-  user: Maybe<Auth0UserProfile>
-  authResult: Maybe<Auth0DecodedHash>
 }
 
 export const useAuth = (): UseAuth => {
@@ -28,13 +28,12 @@ export const useAuth = (): UseAuth => {
     callbackDomain,
     navigate,
   } = React.useContext(AuthContext)
-
   const apolloClient = useApolloClient()
+  const { enqueueSnackbar } = useSnackbar()
 
   const login = (): void => {
     auth0Client.authorize()
   }
-
   const logout = (): void => {
     auth0Client.logout({ returnTo: callbackDomain })
     dispatch({ type: 'LOGOUT_USER' })
@@ -42,10 +41,11 @@ export const useAuth = (): UseAuth => {
   }
 
   const handleAuth = (): void => {
-    if (typeof window !== 'undefined') {
+    if (isBrowser()) {
       auth0Client.parseHash(async (error, authResult) => {
         if (
           (await handleAuthResult({
+            apolloClient,
             auth0Client,
             authResult,
             dispatch,
@@ -54,44 +54,31 @@ export const useAuth = (): UseAuth => {
           authResult &&
           authResult !== null
         ) {
-          const result = await apolloClient.mutate({
-            mutation: gql`
-              mutation authenticate($idToken: String!) {
-                authenticateUser(idToken: $idToken) {
-                  token
-                }
-              }
-            `,
-            variables: {
-              idToken: authResult.idToken,
-            },
-          })
-          window.localStorage.setItem(
-            'token',
-            result.data.authenticateUser.token
-          )
+          dispatch({ type: 'TOGGLE_AUTHENTICATING' })
           navigate('/')
+          enqueueSnackbar('Login success', {
+            variant: 'success',
+          })
         }
       })
     }
   }
 
   const isAuthenticated = (): boolean => {
-    if (typeof window === 'undefined') return false
+    if (!isBrowser()) return false
     return state.expiresOn
       ? new Date().getTime() < state.expiresOn
       : false
   }
 
-  const userId = state.user !== null ? state.user.sub : null
-
   return {
     authResult: state.authResult,
     handleAuth,
     isAuthenticated,
+    isAuthenticating: state.isAuthenticating,
     login,
     logout,
     user: state.user,
-    userId,
+    userId: state.userId,
   }
 }

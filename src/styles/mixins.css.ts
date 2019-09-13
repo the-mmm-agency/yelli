@@ -1,8 +1,12 @@
-import { SerializedStyles, css } from '@emotion/core'
 import { Breakpoint } from '@material-ui/core/styles/createBreakpoints'
 import { isNil } from 'ramda'
+import {
+  FlattenInterpolation,
+  SimpleInterpolation,
+} from 'styled-components'
 
 import { ThemeProp } from 'src/types'
+import { css } from 'src/util/styled'
 import { between, down, up } from 'src/util/theme'
 
 type Breakpoints = {
@@ -31,7 +35,7 @@ const getBreakpoint = (breakpoint: Breakpoints) => (
 
 export const hiddenButton = (
   hidden: boolean
-): SerializedStyles | null =>
+): SimpleInterpolation | null =>
   hidden
     ? css`
         opacity: 0;
@@ -41,7 +45,7 @@ export const hiddenButton = (
 
 export const hidden = (breakpoint: Breakpoints) => (
   props: ThemeProp
-): SerializedStyles =>
+): FlattenInterpolation<ThemeProp> =>
   css`
     ${getBreakpoint(breakpoint)(props)} {
       display: none;

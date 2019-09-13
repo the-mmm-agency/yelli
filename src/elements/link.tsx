@@ -1,16 +1,22 @@
-import { Link as GatsbyLink } from 'gatsby'
+import { GatsbyLinkProps, Link as GatsbyLink } from 'gatsby'
+import React, { forwardRef } from 'react'
 
 import styled from 'src/util/styled'
-import { system } from 'src/util/system'
 
-const Link = styled(GatsbyLink)`
+const StyledLink = styled(GatsbyLink)`
   &:hover,
   &:focus {
     text-decoration: none;
   }
   color: inherit;
   text-decoration: none;
-  ${system}
 `
+
+const Link = forwardRef<
+  HTMLAnchorElement,
+  Omit<GatsbyLinkProps<{}>, 'innerRef' | 'ref'>
+>((props, ref) => (
+  <StyledLink innerRef={ref as Function} {...props} />
+))
 
 export default Link

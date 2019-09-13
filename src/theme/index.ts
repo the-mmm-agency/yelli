@@ -6,6 +6,7 @@ import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 import borders from './borders'
 import overrides from './overrides'
 import { dark, light } from './palette'
+import props from './props'
 import radii from './radii'
 import shape from './shape'
 import sizes from './sizes'
@@ -16,6 +17,7 @@ const createTheme = (palette: PaletteOptions): Theme =>
     borders,
     overrides,
     palette,
+    props,
     radii,
     shape,
     sizes,

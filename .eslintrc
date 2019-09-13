@@ -15,7 +15,6 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "emotion",
     "fp",
     "import",
     "jsx-a11y",
@@ -34,14 +33,16 @@
     "plugin:ramda/recommended",
     "plugin:react/recommended",
     "plugin:unicorn/recommended",
+    "standard",
     "prettier",
     "prettier/react",
-    "prettier/standard",
-    "standard"
+    "prettier/standard"
   ],
   "rules": {
     "arrow-body-style": ["error", "as-needed"],
     "comma-dangle": "off",
+    "indent": "off",
+    "no-case-declarations": "off",
     "no-duplicate-imports": "error",
     "no-unexpected-multiline": "off",
     "lines-between-class-members": "off",
@@ -68,10 +69,6 @@
       }
     ],
     "@typescript-eslint/member-delimiter-style": "off",
-
-    "emotion/import-from-emotion": "error",
-    "emotion/no-vanilla": "error",
-    "emotion/styled-import": "error",
 
     "fp/no-arguments": "error",
     "fp/no-class": "error",
@@ -104,6 +101,7 @@
     ],
     "react/prefer-stateless-function": "warn",
     "react/prop-types": "off",
+    "react/display-name": "off",
     "react/sort-prop-types": "error",
 
     "sort-keys-fix/sort-keys-fix": "error",
@@ -127,7 +125,6 @@
         { "property": "myFavoriteWrapper" }
       ],
       "linkComponents": [
-        "Hyperlink",
         { "name": "Link", "linkAttribute": "to" }
       ]
     },
@@ -150,9 +147,11 @@
   },
   "overrides": [
     {
-      "files": ["*.css.ts"],
+      "files": ["src/@types/**/*.d.ts"],
       "rules": {
-        "indent": "off"
+        "import/order": "off",
+        "import/no-duplicates": "off",
+        "no-duplicate-imports": "off"
       }
     },
     {

@@ -1,5 +1,4 @@
 import { ListItem as MuiListItem } from '@material-ui/core'
-import { Link as GatsbyLink } from 'gatsby'
 
 import styled from 'src/util/styled'
 import {
@@ -10,30 +9,20 @@ import {
   transitions,
 } from 'src/util/theme'
 
-export const Link = styled(GatsbyLink)`
+export const ListItem = styled(MuiListItem)`
+  &:focus,
+  &:hover {
+    background-color: ${fade('primary.main', 0.08)};
+  }
+  &.active {
+    background-color: ${fade('primary.main', 0.24)};
+  }
   &.active,
   &:focus,
   &:hover {
     color: ${palette('primary.main')};
     font-weight: 600;
-    text-decoration: none;
   }
-  color: inherit;
-  text-decoration: none;
-  &.active {
-    background-color: ${fade('primary.main', 0.24)};
-  }
-  &:hover {
-    background-color: ${fade('primary.main', 0.08)};
-  }
-`
-
-export const ListItem = styled(MuiListItem)`
-  &,
-  &:hover {
-    background-color: inherit;
-  }
-
   .MuiListItemIcon-root {
     color: inherit;
   }

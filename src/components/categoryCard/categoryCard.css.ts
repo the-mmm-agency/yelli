@@ -9,7 +9,7 @@ import { borders, palette, spacing } from 'src/util/theme'
 
 export const CardActionArea = styled(MuiCardActionArea)`
   padding: ${spacing(3)};
-`
+` as typeof MuiCardActionArea
 
 export const Card = styled(MuiCard)`
   flex: 0 0 calc(50% - ${spacing(2)});

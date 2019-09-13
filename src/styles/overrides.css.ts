@@ -1,27 +1,32 @@
-import { SerializedStyles, css } from '@emotion/core'
-import { Theme } from '@material-ui/core'
+import { css } from 'src/util/styled'
+import { palette, radii } from 'src/util/theme'
 
-const overrides = ({
-  palette: {
-    background: { paper },
-    divider,
-    text,
-  },
-  radii,
-}: Theme): SerializedStyles => css`
+const overrides = css`
   .MuiList-root {
-    background-color: ${paper};
+    background-color: ${palette('background.paper')};
   }
-
+  .MuiSnackbarContent-root {
+    &.success {
+      background-color: ${palette('validation.success')};
+    }
+    &.warning {
+      background-color: ${palette('validation.warning')};
+    }
+    &.info {
+      background-color: ${palette('validation.info')};
+    }
+    &.error {
+      background-color: ${palette('validation.error')};
+    }
+  }
   .MuiCardActionArea-root {
-    border-radius: ${radii.default}px;
+    ${radii('default')}
   }
-
   .MuiAppBar-root {
-    background-color: ${paper};
+    background-color: ${palette('background.paper')};
   }
   .MuiSelect-icon {
-    color: ${text.alt};
+    color: ${palette('text.alt')};
   }
   .MuiCardContent-root {
     & > * {
@@ -30,16 +35,15 @@ const overrides = ({
       text-overflow: ellipsis;
     }
   }
-  .MuiOutlinedInput-root:hover
-    .MuiOutlinedInput-notchedOutline {
-    border-color: ${divider};
-  }
   .MuiOutlinedInput-notchedOutline {
-    border-color: ${divider};
     border-width: 2px;
-    border-radius: ${radii.input}px;
+    ${radii('light')};
+    border-color: ${palette('divider')};
   }
-
+  .MuiOutlinedInput-root:hover:not(.Mui-focused)
+    .MuiOutlinedInput-notchedOutline {
+    border-color: ${palette('divider')} !important;
+  }
   .MuiBottomNavigationAction-root {
     svg {
       font-size: 1.7rem;

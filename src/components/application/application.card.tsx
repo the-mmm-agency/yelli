@@ -7,6 +7,7 @@ import {
   Icon,
 } from './application.card.css'
 
+import Link from 'src/elements/link'
 import Typography from 'src/elements/typography'
 import { AppComponentProps } from 'src/types'
 
@@ -14,10 +15,10 @@ const AppCard: React.FC<AppComponentProps> = ({
   category,
   title,
   icon,
-  handleClick,
+  to,
 }) => (
   <Card>
-    <ActionArea onClick={handleClick} role="link">
+    <ActionArea component={Link} to={to}>
       <Icon icon={icon} title={title} />
       <Content>
         <Typography

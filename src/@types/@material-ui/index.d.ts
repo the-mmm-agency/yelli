@@ -6,6 +6,12 @@ import {
 } from '@material-ui/core/styles/createPalette'
 
 declare module '@material-ui/core/styles/createPalette' {
+  interface TypeValidation {
+    warning: string
+    error: string
+    success: string
+    info: string
+  }
   interface TypeText {
     alt?: string
     placeholder?: string
@@ -28,9 +34,10 @@ declare module '@material-ui/core/styles/createPalette' {
   }
   interface Palette {
     scrollbar: TypeScrollbar
-    input: TypeInput
+    validation: TypeValidation
   }
   interface PaletteOptions {
+    validation?: TypeValidation
     modes?: PaletteModes
     scrollbar?: Partial<TypeScrollbar>
     input?: Partial<TypeInput>
@@ -42,9 +49,9 @@ declare module '@material-ui/core/styles/createMuiTheme' {
     standard: any
   }
   export interface Radii {
+    light: number | string
     default: number | string
-    image: number | string
-    input: number | string
+    heavy: number | string
   }
   export interface Sizes {
     sideDrawer: number | string

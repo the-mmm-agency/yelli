@@ -4,7 +4,7 @@ import { radii } from 'src/util/theme'
 
 const Icon = styled(Img)`
   img {
-    ${radii('image')};
+    ${radii('heavy')};
   }
 `
 

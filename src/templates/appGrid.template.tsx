@@ -16,6 +16,7 @@ const AppGrid: React.FC<AppPageProps> = ({
       {name}
     </Name>
     <Grid
+      as="ul"
       flexWrap="wrap"
       justifyContent="space-between"
       px={2}

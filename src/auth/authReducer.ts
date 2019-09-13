@@ -3,14 +3,19 @@ import {
   Auth0Error,
   Auth0UserProfile,
 } from 'auth0-js'
-import { Draft } from 'immer'
+
+import isBrowser from 'src/util/isBrowser'
 
 export type Maybe<T> = T | null
 
 export type AuthState = {
   user: Maybe<Auth0UserProfile>
+  userId: Maybe<string>
   authResult: Maybe<Auth0DecodedHash>
   expiresOn: Maybe<number>
+  isAuthenticating: boolean
+  error?: Maybe<Error | Auth0Error>
+  errorType?: Maybe<string>
 }
 
 export type AuthAction =
@@ -21,6 +26,7 @@ export type AuthAction =
     }
   | { type: 'LOGOUT_USER' }
   | { type: 'TOGGLE_AUTHENTICATING' }
+  | { type: 'SET_USER_ID'; id: string }
   | {
       type: 'AUTH_ERROR'
       errorType: string
@@ -28,9 +34,9 @@ export type AuthAction =
     }
 
 export const authReducer = (
-  state: Draft<AuthState>,
+  state: AuthState,
   action: AuthAction
-) => {
+): AuthState => {
   switch (action.type) {
     case 'LOGIN_USER':
       const { authResult, user } = action
@@ -39,7 +45,7 @@ export const authReducer = (
         ? authResult.expiresIn * 1000 + new Date().getTime()
         : null
 
-      if (typeof window !== 'undefined') {
+      if (isBrowser()) {
         window.localStorage.setItem(
           'EXPIRES_ON',
           JSON.stringify(expiresOn)
@@ -50,26 +56,38 @@ export const authReducer = (
         )
       }
       return {
+        ...state,
         authResult,
         expiresOn,
         user,
       }
-
     case 'LOGOUT_USER':
-      if (typeof window !== 'undefined') {
+      if (isBrowser()) {
         window.localStorage.removeItem('EXPIRES_ON')
         window.localStorage.removeItem('AUTH0_USER')
       }
       return {
+        ...state,
         authResult: null,
         expiresOn: null,
         user: null,
       }
+    case 'TOGGLE_AUTHENTICATING':
+      return {
+        ...state,
+        isAuthenticating: !state.isAuthenticating,
+      }
+    case 'SET_USER_ID':
+      const { id } = action
+      return {
+        ...state,
+        userId: id,
+      }
     case 'AUTH_ERROR':
       const { errorType, error } = action
       return {
+        ...state,
         authResult: null,
-        authenticating: false,
         error,
         errorType,
         expiresOn: null,

@@ -1,6 +1,6 @@
-import { Hidden } from '@material-ui/core'
+import { useMediaQuery, useTheme } from '@material-ui/core'
 import { graphql } from 'gatsby'
-import React from 'react'
+import React, { memo } from 'react'
 
 import Grid from 'src/templates/appGrid.template'
 import List from 'src/templates/appList.template'
@@ -19,16 +19,11 @@ const Category: React.FC<CategoryTemplateProps> = ({
     apps: allApplications,
     name,
   }
-  return (
-    <>
-      <Hidden mdUp implementation="css">
-        <List {...props} />
-      </Hidden>
-      <Hidden smDown implementation="css">
-        <Grid {...props} />
-      </Hidden>
-    </>
+  const theme = useTheme()
+  const matches = useMediaQuery(
+    theme.breakpoints.down('sm')
   )
+  return matches ? <List {...props} /> : <Grid {...props} />
 }
 
 export const pageQuery = graphql`
@@ -44,4 +39,4 @@ export const pageQuery = graphql`
   }
 `
 
-export default Category
+export default memo(Category)

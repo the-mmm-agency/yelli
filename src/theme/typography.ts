@@ -20,13 +20,21 @@ const typography: TypographyOptions = {
     'Arial',
     'sans-serif',
   ].join(','),
-  fontSize: 14,
+  h1: {
+    fontWeight: 400,
+  },
+  h2: {
+    fontWeight: 400,
+  },
   h5: {
     letterSpacing: '0.035em',
   },
   h6: {
     fontWeight: 500,
     letterSpacing: '0.03em',
+  },
+  overline: {
+    fontWeight: 700,
   },
   subtitle1: {
     fontWeight: 500,

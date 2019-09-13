@@ -11,7 +11,7 @@ const Logout: React.FC = () => {
     <UserMenuItem
       icon={<LogoutIcon />}
       onClick={logout}
-      text="logout"
+      text="Logout"
     />
   )
 }

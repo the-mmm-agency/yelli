@@ -2,9 +2,10 @@ import { CircularProgress } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React from 'react'
 
+import { useFavorites } from '../hooks/useFavorite'
+
 import Flex from 'src/elements/flex'
 import { useAuthRedirect } from 'src/hooks/useAuthRedirect'
-import { useFavorite } from 'src/hooks/useFavorite'
 import AppList from 'src/templates/appList.template'
 import { GraphCoolAppList } from 'src/types'
 
@@ -14,7 +15,7 @@ const Favorites: React.FC<GraphCoolAppList> = ({
   },
 }) => {
   useAuthRedirect()
-  const { check, loading } = useFavorite()
+  const { check, loading } = useFavorites()
   return loading ? (
     <Flex height="75vh">
       <CircularProgress

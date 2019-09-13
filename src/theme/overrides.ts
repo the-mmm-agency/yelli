@@ -3,7 +3,7 @@ import { Overrides } from '@material-ui/core/styles/overrides'
 const overrides: Overrides = {
   MuiAppBar: {
     root: {
-      boxShadow: 'none',
+      boxShadow: 'none !important',
     },
   },
   MuiBottomNavigation: {

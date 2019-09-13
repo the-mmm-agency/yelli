@@ -42,8 +42,8 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
             <Typography component="h1" variant="h6">
               {title}
             </Typography>
-            <NoSsr>
-              <Favorite id={id} />
+            <NoSsr defer>
+              <Favorite id={id} title={title} />
             </NoSsr>
           </Flex>
           <Typography

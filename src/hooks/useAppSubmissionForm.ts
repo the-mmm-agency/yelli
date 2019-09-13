@@ -1,7 +1,7 @@
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
+import { useSnackbar } from 'notistack'
 
-import { useCurrentUserId } from './useCurrentUserId'
 import {
   FilePond,
   FilePondMultiple,
@@ -9,6 +9,8 @@ import {
   useFilePondMultiple,
 } from './useFilePond'
 import { InputItem, useInput } from './useInput'
+
+import { useAuth } from 'src/auth'
 
 const CREATE_APP = gql`
   mutation createApp(
@@ -31,7 +33,7 @@ const CREATE_APP = gql`
       title: $title
       url: $url
     ) {
-      id
+      title
     }
   }
 `
@@ -51,11 +53,22 @@ type AppSubmissionForm = {
 export const useAppSubmissionForm = (
   onClose: () => void
 ): AppSubmissionForm => {
-  const { userId } = useCurrentUserId()
+  const { userId } = useAuth()
+  const { enqueueSnackbar } = useSnackbar()
   const [createApp, { loading }] = useMutation(CREATE_APP, {
-    onCompleted: onClose,
+    onCompleted: ({ createApplication: { title } }) => {
+      onClose()
+      enqueueSnackbar(`Successfully created ${title}`, {
+        variant: 'success',
+      })
+    },
+    onError: () => {
+      enqueueSnackbar(
+        'There was an error creating your application',
+        { variant: 'error' }
+      )
+    },
   })
-
   const category = useInput()
   const description = useInput('')
   const icon = useFilePond()

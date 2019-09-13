@@ -12,6 +12,7 @@ export const Divider = styled(MuiDivider)`
 
 export const Icon = styled(AppIcon)`
   flex-grow: 1;
+  flex-shrink: 0;
   max-width: ${spacing(14)};
   height: ${spacing(14)};
   margin: ${spacing(2, 2, 0)};
@@ -34,5 +35,5 @@ export const Screenshot = styled(Img)`
   margin-right: ${spacing(2)};
   margin-bottom: ${spacing(3)};
   border: ${borders('standard')};
-  ${radii('image')};
+  ${radii('heavy')};
 `

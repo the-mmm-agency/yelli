@@ -22,6 +22,12 @@ const createPaletteColor = (
 const base: PaletteOptions = {
   primary: createPaletteColor('#ff5370'),
   secondary: createPaletteColor('#89ddff'),
+  validation: {
+    error: '#ff5370',
+    info: '#6796e6',
+    success: '#77e0c6',
+    warning: '#deb86e',
+  },
 }
 
 const createPalette = (

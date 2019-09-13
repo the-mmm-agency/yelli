@@ -23,12 +23,12 @@ export const Root = styled.div`
 export const HitsWrapper = styled(motion.div)`
   .ais-Hits-list {
     padding-inline-start: ${spacing(1)};
+    max-height: 80vh;
+    overflow: hidden scroll;
   }
   position: fixed;
   top: 64px;
   width: 100vw;
-  max-height: 80vh;
-  overflow: hidden scroll;
   background-color: ${palette('input.default')} !important;
   ${down('sm')} {
     left: 0;

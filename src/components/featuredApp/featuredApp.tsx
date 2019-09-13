@@ -1,9 +1,10 @@
 import { CardActionArea } from '@material-ui/core'
-import { graphql, navigate } from 'gatsby'
+import { graphql } from 'gatsby'
 import React from 'react'
 
 import { Banner, Card, Content } from './featuredApp.css'
 
+import Link from 'src/elements/link'
 import Typography from 'src/elements/typography'
 import { FeaturedAppProps } from 'src/types'
 
@@ -13,12 +14,11 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
   description,
   slug,
 }) => (
-  <Card>
+  <Card as="li">
     <CardActionArea
-      onClick={() => {
-        navigate(`/app/${slug}`)
-      }}
+      component={Link}
       role="link"
+      to={`/app/${slug}`}
     >
       <Banner
         alt="Featured app banner"

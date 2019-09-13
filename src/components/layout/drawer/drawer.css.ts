@@ -3,9 +3,10 @@ import styled from 'src/util/styled'
 import { borders, sizes, up, zIndex } from 'src/util/theme'
 
 export const Nav = styled.nav`
-  ${hidden({ down: 'sm' })} ${up('sm')} {
+  ${hidden({ down: 'sm' })};
+  ${up('sm')} {
     flex: 0 0 ${sizes('sideDrawer')};
-    ${zIndex('mobileStepper')};
+    ${zIndex('drawer')};
 
     .MuiDrawer-paper {
       width: ${sizes('sideDrawer')};

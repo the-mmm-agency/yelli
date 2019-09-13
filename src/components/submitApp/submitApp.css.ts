@@ -35,6 +35,10 @@ export const FilePond = styled(FilePondBase)`
     color: ${palette('primary.main')};
     text-decoration-color: ${palette('primary.main')};
   }
+  .filepond--browser.filepond--browser {
+    z-index: 9999;
+    height: 100%;
+  }
   .filepond--panel-root {
     background-color: ${palette('background.darker')};
   }

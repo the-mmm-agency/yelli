@@ -9,6 +9,7 @@ export type FilePond = FilePondProps & {
 
 export const useFilePond = (): FilePond => {
   const [id, setId] = useState()
+
   const onload: OnLoad = response => {
     setId(JSON.parse(response).id)
   }
