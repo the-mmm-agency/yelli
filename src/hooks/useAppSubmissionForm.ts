@@ -1,6 +1,7 @@
 import { useMutation } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { useSnackbar } from 'notistack'
+import { FormEvent } from 'react'
 
 import {
   FilePond,
@@ -38,6 +39,8 @@ const CREATE_APP = gql`
   }
 `
 
+type OnSubmit = (event: FormEvent<HTMLFormElement>) => void
+
 type AppSubmissionForm = {
   category: InputItem
   description: InputItem
@@ -47,7 +50,7 @@ type AppSubmissionForm = {
   screenshots: FilePondMultiple
   loading: boolean
   url: InputItem
-  onSubmit: () => void
+  onSubmit: OnSubmit
 }
 
 export const useAppSubmissionForm = (
@@ -69,6 +72,7 @@ export const useAppSubmissionForm = (
       )
     },
   })
+
   const category = useInput()
   const description = useInput('')
   const icon = useFilePond()
@@ -77,7 +81,8 @@ export const useAppSubmissionForm = (
   const title = useInput('')
   const url = useInput('')
 
-  const onSubmit = (): void => {
+  const onSubmit: OnSubmit = event => {
+    event.preventDefault()
     createApp({
       variables: {
         author: userId,

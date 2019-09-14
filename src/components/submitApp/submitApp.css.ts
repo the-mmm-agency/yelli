@@ -7,20 +7,13 @@ import { FilePond as FilePondBase } from 'react-filepond'
 import styled from 'src/util/styled'
 import { borders, palette, spacing } from 'src/util/theme'
 
-export const DialogContent = styled(MuiDialogContent)`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
-  .MuiFormControl-root {
-    width: 100%;
-    margin: ${spacing(1.5, 1)};
-    .MuiFormHelperText-contained {
-      margin: 8px 0 0;
-      color: ${palette('text.alt')};
-      font-weight: 500;
-      font-size: 0.875rem;
-      line-height: inherit;
-    }
-  }
+`
+
+export const DialogContent = styled(MuiDialogContent)`
+  overflow: hidden scroll;
 `
 
 export const FilePond = styled(FilePondBase)`

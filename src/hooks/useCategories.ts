@@ -2,7 +2,8 @@ import { graphql, useStaticQuery } from 'gatsby'
 
 import { Category } from 'src/graphql-types'
 
-type Categories = Array<Omit<Category, 'applications'>>
+type Categories = Omit<Category, 'applications'>[]
+
 export const useCategories = (): Categories => {
   const data: {
     graphcool: {
@@ -12,7 +13,7 @@ export const useCategories = (): Categories => {
     graphql`
       query {
         graphcool {
-          allCategories {
+          allCategories(orderBy: name_ASC) {
             id
             name
             slug

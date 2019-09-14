@@ -10,6 +10,9 @@ commands:
       - restore_cache:
           keys:
             - yarn-cache-{{ checksum "yarn.lock" }}
+            - always-
+      - restore_cache:
+          keys:
       - run:
           name: Install Dependencies
           command: yarn install
@@ -23,6 +26,10 @@ commands:
       - run:
           name: Gatsby Build
           command: GATSBY_CPU_COUNT=2 yarn build
+      - save_cache:
+          key: always
+          paths:
+            - ./public
       - run:
           name: Run codechecks
           command: ./node_modules/.bin/codechecks

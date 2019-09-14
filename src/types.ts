@@ -68,6 +68,8 @@ export type ThemeProp = {
   theme: Theme
 }
 
+export type PropFunc<T = string> = (props: ThemeProp) => T
+
 export type CategoryTemplateProps = WithGraphCool<
   ListWithAppID<AppProps>
 > & {

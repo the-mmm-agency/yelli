@@ -24,23 +24,19 @@ declare module '@material-ui/core/styles/createPalette' {
     thumb: string
     track: string
   }
-  export interface TypeInput {
-    default: string
-    focus: string
-    hover: string
-  }
   export interface PaletteModes {
     [k: string]: Partial<Omit<PaletteOptions, 'modes'>>
   }
   interface Palette {
+    border: string
     scrollbar: TypeScrollbar
     validation: TypeValidation
   }
   interface PaletteOptions {
+    border?: string
     validation?: TypeValidation
     modes?: PaletteModes
     scrollbar?: Partial<TypeScrollbar>
-    input?: Partial<TypeInput>
   }
 }
 

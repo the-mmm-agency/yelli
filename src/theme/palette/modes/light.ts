@@ -6,17 +6,13 @@ import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 
 const light: PaletteOptions = {
   background: {
-    darker: fade('#000', 0.03),
-    darkest: fade('#000', 0.08),
+    darker: '#f4f4f7',
+    darkest: darken('#f4f4f7', 0.06),
     default: '#fbfcfd',
     paper: '#ffffff',
   },
+  border: fade('#000', 0.2),
   divider: fade('#202124', 0.1),
-  input: {
-    default: '#f4f4f7',
-    focus: darken('#f4f4f7', 0.08),
-    hover: darken('#f4f4f7', 0.06),
-  },
   scrollbar: {
     thumb: darken('#fbfcfd', 0.12),
     track: darken('#fbfcfd', 0.05),

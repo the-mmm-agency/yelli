@@ -1,5 +1,10 @@
 import { css } from 'src/util/styled'
-import { palette, radii } from 'src/util/theme'
+import {
+  palette,
+  pxToRem,
+  radii,
+  spacing,
+} from 'src/util/theme'
 
 const overrides = css`
   .MuiList-root {
@@ -35,10 +40,28 @@ const overrides = css`
       text-overflow: ellipsis;
     }
   }
-  .MuiOutlinedInput-notchedOutline {
-    border-width: 2px;
+  .MuiFormControl-root {
+    width: 100%;
+    margin: ${spacing(1.5, 1)};
+  }
+  .MuiFormHelperText-contained {
+    margin: ${spacing(1, 0, 0)};
+    color: ${palette('text.alt')};
+    font-weight: 500;
+    font-size: ${pxToRem(14)};
+    line-height: inherit;
+  }
+  .MuiOutlinedInput-root {
+    background-color: ${palette('background.darkest')};
     ${radii('light')};
-    border-color: ${palette('divider')};
+  }
+  .MuiInputLabel-outlined {
+    color: ${palette('placeholder')};
+    font-weight: 500;
+  }
+  .MuiOutlinedInput-notchedOutline {
+    ${radii('light')};
+    border-color: ${palette('border')};
   }
   .MuiOutlinedInput-root:hover:not(.Mui-focused)
     .MuiOutlinedInput-notchedOutline {
