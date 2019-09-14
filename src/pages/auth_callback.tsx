@@ -17,7 +17,7 @@ const Auth0CallbackPage: React.FC = () => {
       justifyContent="center"
       p={10}
     >
-      <Typography mb={16} variant="h1">
+      <Typography mb={16} variant="h2">
         Logging you in...
       </Typography>
       <CircularProgress size={100} />
