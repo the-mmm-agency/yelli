@@ -11,6 +11,9 @@ commands:
           keys:
             - yarn-cache-{{ checksum "yarn.lock" }}
             - always-
+      - restore_cache:
+          keys:
+            - always-
       - run:
           name: Install Dependencies
           command: yarn install
@@ -53,7 +56,10 @@ jobs:
       - gatsby-build
       - run:
           name: Netlify Deploy
-          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --dir=public
+          command:
+            ./node_modules/.bin/netlify deploy --site
+            $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN
+            --dir=public
   release:
     executor: node-executor
     working_directory: ~/repo
@@ -61,4 +67,7 @@ jobs:
       - gatsby-build
       - run:
           name: Netlify Deploy
-          command: ./node_modules/.bin/netlify deploy --site $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN --prod --dir=public
+          command:
+            ./node_modules/.bin/netlify deploy --site
+            $NETLIFY_SITE_ID --auth $NETLIFY_ACCESS_TOKEN
+            --prod --dir=public
