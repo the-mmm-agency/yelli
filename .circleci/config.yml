@@ -10,10 +10,9 @@ commands:
       - restore_cache:
           keys:
             - yarn-cache-{{ checksum "yarn.lock" }}
-            - always-
       - restore_cache:
           keys:
-            - always-
+            - public-
       - run:
           name: Install Dependencies
           command: yarn install
