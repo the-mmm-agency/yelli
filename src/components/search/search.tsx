@@ -1,8 +1,4 @@
-import {
-  Divider,
-  NoSsr,
-  Typography,
-} from '@material-ui/core'
+import { Divider, Typography } from '@material-ui/core'
 import algoliasearch from 'algoliasearch/lite'
 import { AnimatePresence } from 'framer-motion'
 import React, { useRef, useState } from 'react'
@@ -70,26 +66,24 @@ const Search: React.FC = () => {
         onBlur={focus.setFalse}
         onFocus={focus.setTrue}
       />
-      <NoSsr defer>
-        <AnimatePresence>
-          {showHits && (
-            <HitsWrapper
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.9 }}
-              initial={{ opacity: 0, scale: 0.9 }}
-              transition={{
-                duration: 0.1,
-                type: 'spring',
-              }}
-            >
-              <Results />
-              <Hits hitComponent={Hit(handleClick)} />
-              <Divider />
-              <PoweredBy />
-            </HitsWrapper>
-          )}
-        </AnimatePresence>
-      </NoSsr>
+      <AnimatePresence>
+        {showHits && (
+          <HitsWrapper
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.9 }}
+            transition={{
+              duration: 0.1,
+              type: 'spring',
+            }}
+          >
+            <Results />
+            <Hits hitComponent={Hit(handleClick)} />
+            <Divider />
+            <PoweredBy />
+          </HitsWrapper>
+        )}
+      </AnimatePresence>
     </InstantSearch>
   )
 }

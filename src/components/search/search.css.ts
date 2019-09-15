@@ -29,7 +29,9 @@ export const HitsWrapper = styled(motion.div)`
   position: fixed;
   top: 64px;
   width: 100vw;
-  background-color: ${palette('input.default')} !important;
+  background-color: ${palette(
+    'background.darker'
+  )} !important;
   ${down('sm')} {
     left: 0;
   }
