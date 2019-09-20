@@ -36,10 +36,9 @@ export const handleAuthResult = async ({
 
     const result = await apolloClient.mutate({
       mutation: gql`
-        mutation authenticate($idToken: String!) {
-          authenticateUser(idToken: $idToken) {
+        mutation($idToken: String!) {
+          authenticate(idToken: $idToken) {
             id
-            token
           }
         }
       `,
@@ -47,12 +46,9 @@ export const handleAuthResult = async ({
         idToken: authResult.idToken,
       },
     })
-    window.localStorage.setItem(
-      'token',
-      result.data.authenticateUser.token
-    )
+    window.localStorage.setItem('token', authResult.idToken)
     dispatch({
-      id: result.data.authenticateUser.id,
+      id: result.data.authenticate.id,
       type: 'SET_USER_ID',
     })
     dispatch({

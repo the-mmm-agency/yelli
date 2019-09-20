@@ -8,12 +8,13 @@ const client = isBrowser()
   ? new ApolloClient({
       fetch,
       request: (operation: Operation) => {
-        const token =
-          window.localStorage.getItem('token') || ''
+        const token = window.localStorage.getItem('token')
         operation.setContext({
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
+          headers: token
+            ? {
+                Authorization: `Bearer ${token}`,
+              }
+            : {},
         })
       },
       uri: process.env.API_URL,

@@ -6,17 +6,17 @@ import { GraphCoolAppList } from 'src/types'
 
 const New: React.FC<GraphCoolAppList> = ({
   data: {
-    graphcool: { allApplications },
+    graphcool: { applications },
   },
-}) => <AppList apps={allApplications} name="New Apps" />
+}) => <AppList apps={applications} name="New Apps" />
 
 export const query = graphql`
   {
     graphcool {
-      allApplications(
+      applications(
         first: 30
-        orderBy: createdAt_ASC
-        filter: { published: true }
+        orderBy: { createdAt: asc }
+        where: { published: { equals: true } }
       ) {
         ...Application
       }

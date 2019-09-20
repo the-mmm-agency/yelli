@@ -20,7 +20,7 @@ import { ApplicationTemplateProps } from 'src/types'
 const AppTemplate: React.FC<ApplicationTemplateProps> = ({
   data: {
     graphcool: {
-      Application: {
+      application: {
         category,
         description,
         icon,
@@ -94,7 +94,7 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
 export const pageQuery = graphql`
   query ApplicationById($id: ID!) {
     graphcool {
-      Application(id: $id) {
+      application(where: { id: $id }) {
         category {
           name
         }

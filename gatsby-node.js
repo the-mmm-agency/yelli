@@ -65,6 +65,6 @@ exports.createPages = async ({
     )
   }
 
-  await generatePages('allApplications', 'app')
-  await generatePages('allCategories', 'category', 'name')
+  await generatePages('applications', 'app')
+  await generatePages('categories', 'category', 'name')
 }

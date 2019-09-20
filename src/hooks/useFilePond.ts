@@ -19,7 +19,7 @@ export const useFilePond = (): FilePond => {
       process: {
         onload,
       },
-      url: process.env.FILE_URL,
+      url: process.env.API_URL,
     },
   }
 }

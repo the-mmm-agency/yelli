@@ -39,6 +39,8 @@
     "filepond-plugin-image-edit": "^1.4.0",
     "filepond-plugin-image-preview": "^4.4.0",
     "filepond-plugin-image-transform": "^3.4.3",
+    "fp-ts": "^2.0.5",
+    "fp-ts-local-storage": "^0.2.0",
     "framer-motion": "^1.5.0",
     "gatsby": "^2.13.45",
     "gatsby-image": "^2.2.7",

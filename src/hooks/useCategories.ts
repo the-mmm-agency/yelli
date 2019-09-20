@@ -7,13 +7,13 @@ type Categories = Omit<Category, 'applications'>[]
 export const useCategories = (): Categories => {
   const data: {
     graphcool: {
-      allCategories: Categories
+      categories: Categories
     }
   } = useStaticQuery(
     graphql`
       query {
         graphcool {
-          allCategories(orderBy: name_ASC) {
+          categories {
             id
             name
             slug
@@ -22,5 +22,5 @@ export const useCategories = (): Categories => {
       }
     `
   )
-  return data.graphcool.allCategories
+  return data.graphcool.categories
 }

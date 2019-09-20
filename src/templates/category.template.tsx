@@ -11,14 +11,17 @@ import {
 
 const Category: React.FC<CategoryTemplateProps> = ({
   data: {
-    graphcool: { allApplications },
+    graphcool: {
+      category: { applications },
+    },
   },
   pageContext: { name },
 }) => {
   const props: AppPageProps = {
-    apps: allApplications,
+    apps: applications,
     name,
   }
+  console.log(applications)
   const theme = useTheme()
   const matches = useMediaQuery(
     theme.breakpoints.down('sm')
@@ -29,11 +32,13 @@ const Category: React.FC<CategoryTemplateProps> = ({
 export const pageQuery = graphql`
   query applicationsByCategory($id: ID!) {
     graphcool {
-      allApplications(
-        filter: { category: { id: $id }, published: true }
-        orderBy: rank_ASC
-      ) {
-        ...Application
+      category(where: { id: $id }) {
+        applications(
+          where: { published: { equals: true } }
+          orderBy: { rank: asc }
+        ) {
+          ...Application
+        }
       }
     }
   }

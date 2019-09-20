@@ -55,7 +55,7 @@ export type PathnameProps = {
 }
 
 type ListWithAppID<T> = {
-  allApplications: Array<WithAppID<T>>
+  applications: Array<WithAppID<T>>
 }
 
 export type AppList = ListWithAppID<AppProps>
@@ -70,16 +70,16 @@ export type ThemeProp = {
 
 export type PropFunc<T = string> = (props: ThemeProp) => T
 
-export type CategoryTemplateProps = WithGraphCool<
-  ListWithAppID<AppProps>
-> & {
+export type CategoryTemplateProps = WithGraphCool<{
+  category: ListWithAppID<AppProps>
+}> & {
   pageContext: Pick<Category, 'name'>
 }
 
 export type GraphCoolAppList = WithGraphCool<AppList>
 
 export type ApplicationTemplateProps = WithGraphCool<{
-  Application: Pick<
+  application: Pick<
     Application,
     | 'category'
     | 'description'

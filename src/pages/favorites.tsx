@@ -11,7 +11,7 @@ import { GraphCoolAppList } from 'src/types'
 
 const Favorites: React.FC<GraphCoolAppList> = ({
   data: {
-    graphcool: { allApplications },
+    graphcool: { applications },
   },
 }) => {
   useAuthRedirect()
@@ -25,7 +25,7 @@ const Favorites: React.FC<GraphCoolAppList> = ({
     </Flex>
   ) : (
     <AppList
-      apps={allApplications.filter(({ id }) => check(id))}
+      apps={applications.filter(({ id }) => check(id))}
       name="Favorites"
     />
   )
@@ -34,7 +34,7 @@ const Favorites: React.FC<GraphCoolAppList> = ({
 export const query = graphql`
   {
     graphcool {
-      allApplications(filter: { published: true }) {
+      applications(where: { published: { equals: true } }) {
         ...Application
       }
     }

@@ -25,20 +25,20 @@ const Home: React.FC<HomeProps> = ({
     <Flex flexDirection="column" pt={1}>
       <HomeSection
         AppComponent={FeaturedApplication}
-        apps={featured.allApplications}
+        apps={featured.applications}
         title="Featured Apps"
       />
       <Divider variant="fullWidth" />
       <HomeSection
         AppComponent={Application}
-        apps={top.allApplications}
+        apps={top.applications}
         link="/top-apps"
         title="Top Apps"
       />
       <Divider variant="fullWidth" />
       <HomeSection
         AppComponent={Application}
-        apps={latest.allApplications}
+        apps={latest.applications}
         link="/new"
         title="New Apps"
       />
@@ -49,26 +49,29 @@ const Home: React.FC<HomeProps> = ({
 export const query = graphql`
   {
     featured: graphcool {
-      allApplications(
-        filter: { featured: true, published: true }
+      applications(
+        where: {
+          featured: { equals: true }
+          published: { equals: true }
+        }
       ) {
         ...FeaturedApp
       }
     }
     latest: graphcool {
-      allApplications(
+      applications(
         first: 15
-        orderBy: createdAt_DESC
-        filter: { published: true }
+        orderBy: { createdAt: asc }
+        where: { published: { equals: true } }
       ) {
         ...Application
       }
     }
     top: graphcool {
-      allApplications(
+      applications(
         first: 15
-        orderBy: rank_ASC
-        filter: { published: true }
+        orderBy: { rank: asc }
+        where: { published: { equals: true } }
       ) {
         ...Application
       }

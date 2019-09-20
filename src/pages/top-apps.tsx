@@ -7,17 +7,17 @@ import AppList from 'src/templates/appList.template'
 
 const TopApps: React.FC<GraphCoolAppList> = ({
   data: {
-    graphcool: { allApplications },
+    graphcool: { applications },
   },
-}) => <AppList apps={allApplications} name="Top Apps" />
+}) => <AppList apps={applications} name="Top Apps" />
 
 export const query = graphql`
   {
     graphcool {
-      allApplications(
+      applications(
         first: 30
-        orderBy: rank_ASC
-        filter: { published: true }
+        orderBy: { rank: asc }
+        where: { published: { equals: true } }
       ) {
         ...Application
       }

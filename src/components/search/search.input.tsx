@@ -23,7 +23,7 @@ const SearchInput: React.FC<SearchInputProps> = ({
     (value): void => {
       refine(value)
     },
-    600,
+    300,
     { leading: true }
   )
   const isLoading =

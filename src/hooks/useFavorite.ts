@@ -1,7 +1,7 @@
 import { useMutation, useQuery } from '@apollo/react-hooks'
 import gql from 'graphql-tag'
 import { useSnackbar } from 'notistack'
-import { has, pluck, without } from 'ramda'
+import { has, pluck } from 'ramda'
 import { useEffect } from 'react'
 
 import { useAuth } from 'src/auth'
@@ -9,10 +9,9 @@ import { action } from 'src/components/favorite'
 import { useBoolean } from 'src/hooks/useBoolean'
 import isBrowser from 'src/util/isBrowser'
 
-const GET_USER = gql`
-  query favorites($userId: ID!) {
-    User(id: $userId) {
-      id
+const GET_FAVORITES = gql`
+  query($userId: ID!) {
+    me {
       favorites {
         id
       }
@@ -20,9 +19,9 @@ const GET_USER = gql`
   }
 `
 
-const ADD_FAVORITE = gql`
-  mutation setFavorites($userId: ID!, $favorites: [ID!]!) {
-    updateUser(id: $userId, favoritesIds: $favorites) {
+const FAVORITE = gql`
+  mutation($id: ID!) {
+    favorite(id: $id) {
       favorites {
         id
       }
@@ -43,18 +42,15 @@ export const useFavorites = (): {
       favorites: [],
       loading: true,
     }
-  const { userId } = useAuth()
-  const { data, loading } = useQuery(GET_USER, {
+  const { isAuthenticated } = useAuth()
+  const { data, loading } = useQuery(GET_FAVORITES, {
     fetchPolicy: 'network-only',
-    skip: userId === null,
+    skip: isAuthenticated(),
     ssr: false,
-    variables: {
-      userId,
-    },
   })
   const favorites: string[] =
-    userId !== null && !loading && data && has('User', data)
-      ? getIds(data.User.favorites)
+    isAuthenticated() && !loading && data && has('me', data)
+      ? getIds(data.me.favorites)
       : []
   const check = (id: string): boolean =>
     favorites.includes(id)
@@ -69,16 +65,15 @@ export const useFavorite = (
   id: string,
   title: string
 ): [boolean, VoidFunction] => {
-  const { userId } = useAuth()
   const { enqueueSnackbar } = useSnackbar()
-  const { check, favorites, loading } = useFavorites()
+  const { check, loading } = useFavorites()
   const {
     value: hasFavorite,
     setFalse,
     setTrue,
     setValue,
   } = useBoolean(false)
-  const [setFavorites] = useMutation(ADD_FAVORITE, {
+  const [favorite] = useMutation(FAVORITE, {
     onCompleted: (): void => {
       enqueueSnackbar(
         `${hasFavorite ? 'Added' : 'Removed'} ${title} ${
@@ -99,21 +94,20 @@ export const useFavorite = (
   }, [loading])
 
   if (!loading) {
-    const updateFavorites = (ids: string[]): void => {
-      setFavorites({
+    const updateFavorites = (id: string): void => {
+      favorite({
         variables: {
-          favorites: ids,
-          userId,
+          id,
         },
       })
     }
     const add: VoidFunction = () => {
       setTrue()
-      updateFavorites([...favorites, id])
+      updateFavorites(id)
     }
     const remove: VoidFunction = () => {
       setFalse()
-      updateFavorites(without([id], favorites))
+      updateFavorites(id)
     }
     const toggle: VoidFunction = () =>
       hasFavorite ? remove() : add()

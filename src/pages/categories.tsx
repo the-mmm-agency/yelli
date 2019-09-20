@@ -9,12 +9,12 @@ import Flex from 'src/elements/flex'
 import { Category } from 'src/graphql-types'
 
 type CategoriesProps = WithGraphCool<{
-  allCategories: Array<Omit<Category, 'applications'>>
+  categories: Array<Omit<Category, 'applications'>>
 }>
 
 const Categories: React.FC<CategoriesProps> = ({
   data: {
-    graphcool: { allCategories: categories },
+    graphcool: { categories },
   },
 }) => (
   <>
@@ -34,7 +34,7 @@ const Categories: React.FC<CategoriesProps> = ({
 export const query = graphql`
   query {
     graphcool {
-      allCategories {
+      categories {
         ...CategoryCard
       }
     }
