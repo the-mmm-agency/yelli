@@ -109,7 +109,7 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
               label="Category"
             >
               {categories.map(({ id, name }) => (
-                <MenuItem key={id} value={id}>
+                <MenuItem key={id} value={name}>
                   {name}
                 </MenuItem>
               ))}

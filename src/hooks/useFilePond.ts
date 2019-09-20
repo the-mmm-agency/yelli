@@ -1,25 +1,57 @@
+import { useApolloClient } from '@apollo/react-hooks'
+import { ApolloClient, gql } from 'apollo-boost'
 import { useState } from 'react'
-import { FilePondProps } from 'react-filepond'
-
-type OnLoad = (response: string) => void
+import {
+  ActualFileObject,
+  FilePondProps,
+  ProgressServerConfigFunction,
+} from 'react-filepond'
 
 export type FilePond = FilePondProps & {
   id: string
 }
 
-export const useFilePond = (): FilePond => {
-  const [id, setId] = useState()
+const process = (
+  file: ActualFileObject,
+  load: (p: string | { [key: string]: any }) => void,
+  progress: ProgressServerConfigFunction,
+  client: ApolloClient<any>,
+  update: (id: string) => void
+): void => {
+  client
+    .mutate({
+      mutation: gql`
+        mutation($file: Upload!) {
+          uploadImage(image: $file) {
+            id
+          }
+        }
+      `,
+      variables: {
+        file,
+      },
+    })
+    .then(response => {
+      progress(false, 100, 100)
+      load(response.data.uploadImage.id)
+    })
+}
 
-  const onload: OnLoad = response => {
-    setId(JSON.parse(response).id)
-  }
+export const useFilePond = (): FilePond => {
+  const [id, setId] = useState('')
+
+  const client = useApolloClient()
   return {
     id,
     server: {
-      process: {
-        onload,
-      },
-      url: process.env.API_URL,
+      process: (
+        _fieldName,
+        file,
+        _metadata,
+        load,
+        _error,
+        progress
+      ) => process(file, load, progress, client, setId),
     },
   }
 }
@@ -30,19 +62,21 @@ export type FilePondMultiple = FilePondProps & {
 
 export const useFilePondMultiple = (): FilePondMultiple => {
   const [ids, setIds] = useState()
-  const onload: OnLoad = response => {
-    setIds([
-      ...(Array.isArray(ids) ? ids : []),
-      JSON.parse(response).id,
-    ])
+  const update = (id: string): void => {
+    setIds(Array.isArray(ids) ? [...ids, id] : [id])
   }
+  const client = useApolloClient()
   return {
     ids,
     server: {
-      process: {
-        onload,
-      },
-      url: process.env.FILE_URL,
+      process: (
+        _fieldName,
+        file,
+        _metadata,
+        load,
+        _error,
+        progress
+      ) => process(file, load, progress, client, update),
     },
   }
 }

@@ -11,8 +11,6 @@ import {
 } from './useFilePond'
 import { InputItem, useInput } from './useInput'
 
-import { useAuth } from 'src/auth'
-
 const CREATE_APP = gql`
   mutation createApp(
     $author: ID!
@@ -25,11 +23,10 @@ const CREATE_APP = gql`
     $url: String!
   ) {
     createApplication(
-      authorId: $author
-      categoryId: $category
+      category: $category
       description: $description
-      iconId: $icon
-      screenshotsIds: $screenshots
+      icon: $icon
+      screenshots: $screenshots
       slug: $slug
       title: $title
       url: $url
@@ -56,7 +53,6 @@ type AppSubmissionForm = {
 export const useAppSubmissionForm = (
   onClose: () => void
 ): AppSubmissionForm => {
-  const { userId } = useAuth()
   const { enqueueSnackbar } = useSnackbar()
   const [createApp, { loading }] = useMutation(CREATE_APP, {
     onCompleted: ({ createApplication: { title } }) => {
@@ -85,7 +81,6 @@ export const useAppSubmissionForm = (
     event.preventDefault()
     createApp({
       variables: {
-        author: userId,
         category: category.value,
         description: description.value,
         icon: icon.id,

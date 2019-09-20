@@ -1,23 +1,24 @@
-import ApolloClient from 'apollo-boost'
-import { Operation } from 'apollo-link'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { ApolloClient } from 'apollo-client'
+import { createUploadLink } from 'apollo-upload-client'
 import fetch from 'isomorphic-fetch'
 
 import isBrowser from 'src/util/isBrowser'
 
 const client = isBrowser()
   ? new ApolloClient({
-      fetch,
-      request: (operation: Operation) => {
-        const token = window.localStorage.getItem('token')
-        operation.setContext({
-          headers: token
-            ? {
-                Authorization: `Bearer ${token}`,
-              }
-            : {},
-        })
-      },
-      uri: process.env.API_URL,
+      cache: new InMemoryCache(),
+      link: createUploadLink({
+        fetch,
+        headers: window.localStorage.getItem('token')
+          ? {
+              Authorization: `Bearer ${window.localStorage.getItem(
+                'token'
+              )}`,
+            }
+          : {},
+        uri: process.env.API_URL,
+      }),
     })
   : {}
 
