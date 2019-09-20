@@ -34,6 +34,7 @@ const process = (
     .then(response => {
       progress(false, 100, 100)
       load(response.data.uploadImage.id)
+      update(response.data.upload.id)
     })
 }
 
