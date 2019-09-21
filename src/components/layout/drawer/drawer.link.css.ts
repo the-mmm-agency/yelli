@@ -17,12 +17,6 @@ export const ListItem = styled(MuiListItem)`
   &.active {
     background-color: ${fade('primary.main', 0.24)};
   }
-  &.active,
-  &:focus,
-  &:hover {
-    color: ${palette('primary.main')};
-    font-weight: 600;
-  }
   .MuiListItemIcon-root {
     color: inherit;
   }
@@ -31,12 +25,19 @@ export const ListItem = styled(MuiListItem)`
     color: inherit;
     font-weight: inherit;
   }
-
+  &.MuiListItem-root {
+    color: ${palette('text.secondary')};
+    &.active,
+    &:focus,
+    &:hover {
+      color: ${palette('primary.main')};
+    }
+  }
   width: calc(100% - ${spacing(4)});
   margin-top: ${spacing(1)};
   margin-left: ${spacing(2)};
   padding: ${spacing(0.8)};
-  font-weight: 500;
+  font-weight: 600;
   ${transitions(['background-color', 'color'], {
     duration: 'standard',
     easing: 'sharp',

@@ -164,7 +164,11 @@ const SubmitApp: React.FC<SubmitAppProps> = ({
               Close
             </Button>
             <Box position="relative">
-              <Button color="secondary" disabled={loading}>
+              <Button
+                color="secondary"
+                disabled={loading}
+                type="submit"
+              >
                 Submit App
               </Button>
               {loading && (

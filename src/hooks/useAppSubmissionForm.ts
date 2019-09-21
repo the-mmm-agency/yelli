@@ -13,11 +13,10 @@ import { InputItem, useInput } from './useInput'
 
 const CREATE_APP = gql`
   mutation createApp(
-    $author: ID!
-    $category: ID!
+    $category: String!
     $description: String!
-    $icon: ID!
-    $screenshots: [ID!]
+    $icon: String!
+    $screenshots: [String!]
     $slug: String!
     $title: String!
     $url: String!
@@ -83,7 +82,7 @@ export const useAppSubmissionForm = (
       variables: {
         category: category.value,
         description: description.value,
-        icon: icon.id,
+        icon: icon.serverId,
         screenshots: screenshots.ids,
         slug: slug.value,
         title: title.value,

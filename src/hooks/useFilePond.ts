@@ -8,7 +8,7 @@ import {
 } from 'react-filepond'
 
 export type FilePond = FilePondProps & {
-  id: string
+  serverId: string
 }
 
 const process = (
@@ -21,7 +21,7 @@ const process = (
   client
     .mutate({
       mutation: gql`
-        mutation($file: Upload!) {
+        mutation upload($file: Upload!) {
           uploadImage(image: $file) {
             id
           }
@@ -34,7 +34,7 @@ const process = (
     .then(response => {
       progress(false, 100, 100)
       load(response.data.uploadImage.id)
-      update(response.data.upload.id)
+      update(response.data.uploadImage.id)
     })
 }
 
@@ -43,7 +43,6 @@ export const useFilePond = (): FilePond => {
 
   const client = useApolloClient()
   return {
-    id,
     server: {
       process: (
         _fieldName,
@@ -54,6 +53,7 @@ export const useFilePond = (): FilePond => {
         progress
       ) => process(file, load, progress, client, setId),
     },
+    serverId: id,
   }
 }
 

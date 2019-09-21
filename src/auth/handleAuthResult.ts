@@ -34,28 +34,40 @@ export const handleAuthResult = async ({
       dispatch,
     })
 
-    const result = await apolloClient.mutate({
-      mutation: gql`
-        mutation($idToken: String!) {
-          authenticate(idToken: $idToken) {
-            id
+    try {
+      const result = await apolloClient.mutate({
+        mutation: gql`
+          mutation auth($idToken: String!) {
+            authenticate(idToken: $idToken) {
+              id
+            }
           }
-        }
-      `,
-      variables: {
-        idToken: authResult.idToken,
-      },
-    })
-    window.localStorage.setItem('token', authResult.idToken)
-    dispatch({
-      id: result.data.authenticate.id,
-      type: 'SET_USER_ID',
-    })
-    dispatch({
-      type: 'TOGGLE_AUTHENTICATING',
-    })
+        `,
+        variables: {
+          idToken: authResult.idToken,
+        },
+      })
+      window.localStorage.setItem(
+        'token',
+        authResult.idToken
+      )
+      dispatch({
+        id: result.data.authenticate.id,
+        type: 'SET_USER_ID',
+      })
+      dispatch({
+        type: 'TOGGLE_AUTHENTICATING',
+      })
 
-    return true
+      return true
+    } catch (error_) {
+      dispatch({
+        error: error_,
+        errorType: 'handleAuthResult',
+        type: 'AUTH_ERROR',
+      })
+      return false
+    }
   } else if (error) {
     dispatch({
       error,

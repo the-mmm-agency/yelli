@@ -38,11 +38,11 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
       <Flex pl={{ md: 2, xs: 1 }} pt={{ md: 2, xs: 1 }}>
         <Icon icon={icon} title={title} />
         <Flex flexDirection="column" mt={2} mx={1}>
-          <Flex>
+          <Flex height="2em">
             <Typography component="h1" variant="h6">
               {title}
             </Typography>
-            <NoSsr defer>
+            <NoSsr>
               <Favorite id={id} title={title} />
             </NoSsr>
           </Flex>

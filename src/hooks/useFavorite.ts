@@ -10,7 +10,7 @@ import { useBoolean } from 'src/hooks/useBoolean'
 import isBrowser from 'src/util/isBrowser'
 
 const GET_FAVORITES = gql`
-  query($userId: ID!) {
+  query myFavorites {
     me {
       favorites {
         id
@@ -20,7 +20,7 @@ const GET_FAVORITES = gql`
 `
 
 const FAVORITE = gql`
-  mutation($id: ID!) {
+  mutation favorite($id: ID!) {
     favorite(id: $id) {
       favorites {
         id
@@ -45,7 +45,7 @@ export const useFavorites = (): {
   const { isAuthenticated } = useAuth()
   const { data, loading } = useQuery(GET_FAVORITES, {
     fetchPolicy: 'network-only',
-    skip: isAuthenticated(),
+    skip: !isAuthenticated(),
     ssr: false,
   })
   const favorites: string[] =

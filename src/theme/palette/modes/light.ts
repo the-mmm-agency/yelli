@@ -6,8 +6,8 @@ import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 
 const light: PaletteOptions = {
   background: {
-    darker: '#f4f4f7',
-    darkest: darken('#f4f4f7', 0.06),
+    darker: '#F4F6F8',
+    darkest: '#F4F6F8',
     default: '#fbfcfd',
     paper: '#ffffff',
   },
@@ -18,10 +18,10 @@ const light: PaletteOptions = {
     track: darken('#fbfcfd', 0.05),
   },
   text: {
-    alt: fade('#1b1d2c', 0.5),
+    alt: '#5a6270',
     placeholder: '#090c17',
     primary: '#161a2a',
-    secondary: fade('#161a2a', 0.5),
+    secondary: '#5a6270',
   },
 }
 

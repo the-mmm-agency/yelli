@@ -3,7 +3,6 @@ import React, { useEffect } from 'react'
 
 import { useAuth } from 'src/auth'
 import Flex from 'src/elements/flex'
-import Typography from 'src/elements/typography'
 
 const Auth0CallbackPage: React.FC = () => {
   const { handleAuth } = useAuth()
@@ -15,11 +14,8 @@ const Auth0CallbackPage: React.FC = () => {
       alignItems="center"
       flexDirection="column"
       justifyContent="center"
-      p={10}
+      minHeight="90vh"
     >
-      <Typography mb={16} variant="h2">
-        Logging you in...
-      </Typography>
       <CircularProgress size={100} />
     </Flex>
   )

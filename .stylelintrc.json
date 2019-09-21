@@ -15,6 +15,7 @@
     "media-feature-name-no-unknown": [
       true,
       {
+        "severity": "warning",
         "ignoreMediaFeatureNames": ["display-mode"]
       }
     ]

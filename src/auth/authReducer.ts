@@ -85,6 +85,8 @@ export const authReducer = (
       }
     case 'AUTH_ERROR':
       const { errorType, error } = action
+      window.localStorage.removeItem('EXPIRES_ON')
+      window.localStorage.removeItem('AUTH0_USER')
       return {
         ...state,
         authResult: null,

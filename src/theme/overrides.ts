@@ -6,6 +6,7 @@ const overrides: Overrides = {
       boxShadow: 'none !important',
     },
   },
+
   MuiBottomNavigation: {
     root: {
       height: 68,
@@ -26,6 +27,11 @@ const overrides: Overrides = {
     root: {
       background: 'transparent',
       boxShadow: 'none',
+    },
+  },
+  MuiDrawer: {
+    paper: {
+      zIndex: 1000,
     },
   },
   MuiList: {

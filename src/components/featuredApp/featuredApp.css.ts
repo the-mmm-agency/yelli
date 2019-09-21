@@ -5,7 +5,13 @@ import {
 
 import Img from 'src/components/img'
 import styled from 'src/util/styled'
-import { borders, radii, spacing, up } from 'src/util/theme'
+import {
+  borders,
+  palette,
+  radii,
+  spacing,
+  up,
+} from 'src/util/theme'
 
 export const Banner = styled(Img)`
   max-height: 200px;
@@ -21,6 +27,7 @@ export const Card = styled(MuiCard)`
     min-width: 350px;
     max-width: 375px;
   }
+  background-color: ${palette('background.darker')};
   flex: 0 0 auto;
   width: calc(100% - ${spacing(4)});
   min-width: 300px;

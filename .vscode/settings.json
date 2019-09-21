@@ -1,6 +1,5 @@
 {
   "stylelint.autoFixOnSave": true,
-  "vsprettier.useStyleLint": true,
   "eslint.enable": true,
   "importSorter.importStringConfiguration.trailingComma": "multiLine",
   "importSorter.sortConfiguration.customOrderingRules.rules": [

@@ -1,9 +1,7 @@
-import Img from 'gatsby-image'
 import React from 'react'
 import { Hit } from 'react-instantsearch-core'
 import { Highlight, Snippet } from 'react-instantsearch-dom'
 
-import getIcon from './getIcon'
 import {
   Category,
   Content,
@@ -42,7 +40,10 @@ const SearchHit: (
     to={`/app/${hit.slug}`}
   >
     <Icon>
-      <Img fixed={getIcon(hit)} />
+      <img
+        alt={`${hit.title} icon`}
+        src={`https://imageproxy1234.herokuapp.com/50/${hit.icon.url}`}
+      />
     </Icon>
     <Content>
       <Flex>
