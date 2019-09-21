@@ -48,7 +48,7 @@ module.exports = {
         pngCompressionSpeed: 10,
         defaultQuality: 80,
         stripMetadata: true,
-        useMozJpeg: true,
+        useMozJpeg: false,
       },
     },
     {

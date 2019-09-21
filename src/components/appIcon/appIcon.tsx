@@ -23,7 +23,7 @@ export const query = graphql`
     ...ImageBase
     imageFile {
       childImageSharp {
-        fluid(srcSetBreakpoints: [50, 100, 150, 200]) {
+        fluid(srcSetBreakpoints: [100, 200]) {
           ...ImageFluid
         }
       }
