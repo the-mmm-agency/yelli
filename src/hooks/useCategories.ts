@@ -13,7 +13,7 @@ export const useCategories = (): Categories => {
     graphql`
       query {
         graphcool {
-          categories(orderBy: { name: { asc }}) {
+          categories {
             id
             name
             slug
