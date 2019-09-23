@@ -50,6 +50,8 @@ module.exports = {
         appName: siteMetadata.title,
         appDescription: siteMetadata.description,
         start_url: '/',
+        background: '#212337',
+        theme_color: '#212337',
         background_color: '#212337',
         display: 'standalone',
       },
