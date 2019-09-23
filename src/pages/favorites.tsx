@@ -1,7 +1,7 @@
 import { useQuery } from '@apollo/react-hooks'
 import { CircularProgress } from '@material-ui/core'
 import gql from 'graphql-tag'
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import Flex from 'src/elements/flex'
 import { useAuthRedirect } from 'src/hooks/useAuthRedirect'
@@ -12,7 +12,7 @@ import isBrowser from 'src/util/isBrowser'
 const Favorites: React.FC = () => {
   if (!isBrowser()) return null
   useAuthRedirect()
-  const { data, loading } = useQuery<{
+  const { data, loading, refetch } = useQuery<{
     me: {
       favorites: WithAppID<AppProps>[]
     }
@@ -28,15 +28,13 @@ const Favorites: React.FC = () => {
               name
             }
             icon {
-              fluid(
-                srcSetBreakpoints: [50, 100, 150, 200]
-              ) {
-                aspectRatio
+              fixed(width: 50, height: 50) {
+                width
+                height
                 src
                 srcSet
                 srcWebp
                 srcSetWebp
-                sizes
               }
             }
           }
@@ -47,6 +45,11 @@ const Favorites: React.FC = () => {
       ssr: false,
     }
   )
+  useEffect(() => {
+    if (!loading) {
+      refetch()
+    }
+  }, [])
   return loading || !data || !data.me ? (
     <Flex height="75vh">
       <CircularProgress
