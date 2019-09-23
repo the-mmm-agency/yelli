@@ -1,6 +1,8 @@
 import {
   BottomNavigation,
   BottomNavigationAction,
+  Slide,
+  useScrollTrigger,
 } from '@material-ui/core'
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import {
@@ -38,42 +40,45 @@ const Navigation: React.FC<PathnameProps> = ({
   ): React.ReactElement =>
     path === pathname ? <Match /> : <NoMatch />
 
+  const trigger = useScrollTrigger()
   return (
-    <AppBar>
-      <BottomNavigation
-        onChange={handleChange}
-        value={pathname}
-      >
-        <BottomNavigationAction
-          icon={getIcon('/', Home, HomeOutlined)}
-          label="Home"
-          value="/"
-        />
-        <BottomNavigationAction
-          icon={getIcon('/top-apps', Poll, PollOutlined)}
-          label="Top apps"
-          value="/top-apps"
-        />
-        <BottomNavigationAction
-          icon={getIcon(
-            '/categories',
-            Category,
-            CategoryOutlined
-          )}
-          label="Categories"
-          value="/categories"
-        />
-        <BottomNavigationAction
-          icon={getIcon(
-            './accountCircle',
-            AccountCircle,
-            AccountCircleOutlined
-          )}
-          label="Profile"
-          value="/profile"
-        />
-      </BottomNavigation>
-    </AppBar>
+    <Slide appear={false} direction="up" in={!trigger}>
+      <AppBar>
+        <BottomNavigation
+          onChange={handleChange}
+          value={pathname}
+        >
+          <BottomNavigationAction
+            icon={getIcon('/', Home, HomeOutlined)}
+            label="Home"
+            value="/"
+          />
+          <BottomNavigationAction
+            icon={getIcon('/top-apps', Poll, PollOutlined)}
+            label="Top apps"
+            value="/top-apps"
+          />
+          <BottomNavigationAction
+            icon={getIcon(
+              '/categories',
+              Category,
+              CategoryOutlined
+            )}
+            label="Categories"
+            value="/categories"
+          />
+          <BottomNavigationAction
+            icon={getIcon(
+              './accountCircle',
+              AccountCircle,
+              AccountCircleOutlined
+            )}
+            label="Profile"
+            value="/profile"
+          />
+        </BottomNavigation>
+      </AppBar>
+    </Slide>
   )
 }
 

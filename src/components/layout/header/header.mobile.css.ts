@@ -7,13 +7,14 @@ import HeadroomContainer from 'react-headroom'
 
 import { hidden, hiddenButton } from 'src/styles/mixins.css'
 import styled from 'src/util/styled'
-import { spacing } from 'src/util/theme'
+import { borders, spacing } from 'src/util/theme'
 
 export const Headroom = styled(HeadroomContainer)(
   hidden({ up: 'md' })
 )
 
 export const AppBar = styled(MuiAppBar)`
+  border-bottom: ${borders('standard')};
   width: 100%;
   margin-left: 0;
 `

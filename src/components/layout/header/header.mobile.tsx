@@ -1,6 +1,6 @@
+import { Slide, useScrollTrigger } from '@material-ui/core'
 import { ArrowBack as BackIcon } from '@material-ui/icons'
 import React from 'react'
-import Headroom from 'react-headroom'
 
 import {
   AppBar,
@@ -14,25 +14,29 @@ import { PathnameProps } from 'src/types'
 
 const MobileHeader: React.FC<PathnameProps> = ({
   pathname,
-}) => (
-  <Headroom>
-    <AppBar position="relative">
-      <Toolbar>
-        <BackButton
-          aria-label="Go home"
-          color="primary"
-          hidden={pathname === '/'}
-          onClick={() => {
-            window.history.back()
-          }}
-        >
-          <BackIcon />
-        </BackButton>
-        <Search />
-        <ThemeToggle />
-      </Toolbar>
-    </AppBar>
-  </Headroom>
-)
+}) => {
+  const trigger = useScrollTrigger()
+
+  return (
+    <Slide appear={false} direction="down" in={!trigger}>
+      <AppBar>
+        <Toolbar>
+          <BackButton
+            aria-label="Go home"
+            color="primary"
+            hidden={pathname === '/'}
+            onClick={() => {
+              window.history.back()
+            }}
+          >
+            <BackIcon />
+          </BackButton>
+          <Search />
+          <ThemeToggle />
+        </Toolbar>
+      </AppBar>
+    </Slide>
+  )
+}
 
 export default MobileHeader
