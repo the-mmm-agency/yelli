@@ -27,6 +27,7 @@ const applications = `{
         name
       }
       description
+      slug
       title
     }
   }
