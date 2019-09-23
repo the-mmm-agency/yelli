@@ -1,19 +1,19 @@
 import { graphql } from 'gatsby'
 import React from 'react'
 
-import { GraphCoolAppList } from '../types'
+import { AppList as Props } from '../types'
 
 import AppList from 'src/templates/appList.template'
 
-const TopApps: React.FC<GraphCoolAppList> = ({
+const TopApps: React.FC<Props> = ({
   data: {
-    graphcool: { applications },
+    yelli: { applications },
   },
 }) => <AppList apps={applications} name="Top Apps" />
 
 export const query = graphql`
   {
-    graphcool {
+    yelli {
       applications(
         first: 30
         orderBy: { rank: asc }

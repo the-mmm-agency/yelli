@@ -4,6 +4,29 @@ require('dotenv').config({
 
 const siteMetadata = require('./siteMetadata.json')
 
+const applications = `{
+  yelli {
+    applications(where: { published: { equals: true }}) {
+      objectID: id
+      icon {
+        fixed(width: 50, height: 50) {
+          width
+          height
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+        }
+      }
+      category {
+        name
+      }
+      description
+      title
+    }
+  }
+}`
+
 module.exports = {
   siteMetadata,
   plugins: [
@@ -72,9 +95,25 @@ module.exports = {
     {
       resolve: 'gatsby-source-graphql',
       options: {
-        typeName: 'GraphCool',
-        fieldName: 'graphcool',
+        typeName: 'Yelli',
+        fieldName: 'yelli',
         url: process.env.API_URL,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: [
+          {
+            query: applications,
+            transformer: ({ data }) =>
+              data.yelli.applications,
+          },
+        ],
+        chunkSize: 10000,
       },
     },
 
@@ -88,12 +127,13 @@ module.exports = {
       resolve: 'gatsby-plugin-netlify',
       options: {
         allPageHeaders: [
-          'Link: fonts/proxima-nova-regular.woff2; rel=preload; as=font; type=font/woff2',
-          'Link: fonts/proxima-nova-medium.woff2; rel=preload; as=font; type=font/woff2',
-          'Link: fonts/proxima-nova-semibold.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/jost-light.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/jost-regular.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/jost-medium.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/jost-semibold.woff2; rel=preload; as=font; type=font/woff2',
+          'Link: fonts/jost-bold.woff2; rel=preload; as=font; type=font/woff2',
         ],
       },
     },
-    'gatsby-plugin-netlify-cache',
   ],
 }

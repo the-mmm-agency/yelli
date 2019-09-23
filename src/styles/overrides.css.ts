@@ -47,7 +47,6 @@ const overrides = css`
   .MuiFormHelperText-contained {
     margin: ${spacing(1, 0, 0)};
     color: ${palette('text.alt')};
-    font-weight: 500;
     font-size: ${pxToRem(14)};
     line-height: inherit;
   }
@@ -57,7 +56,6 @@ const overrides = css`
   }
   .MuiInputLabel-outlined {
     color: ${palette('placeholder')};
-    font-weight: 500;
   }
   .MuiOutlinedInput-notchedOutline {
     ${radii('light')};

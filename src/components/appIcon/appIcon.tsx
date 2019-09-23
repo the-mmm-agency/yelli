@@ -6,27 +6,22 @@ import Icon from './appIcon.css'
 
 import { Image } from 'src/graphql-types'
 
-type AppIconProps = Omit<
-  GatsbyImageProps,
-  'alt' | 'fluid' | 'fixed'
-> & {
+interface Props
+  extends Omit<
+    GatsbyImageProps,
+    'alt' | 'fluid' | 'fixed'
+  > {
   icon: Image
 }
 
-const AppIcon: React.FC<AppIconProps> = ({
-  icon,
-  ...rest
-}) => <Icon alt="Application Icon" image={icon} {...rest} />
+const AppIcon: React.FC<Props> = ({ icon, ...rest }) => (
+  <Icon alt="Application Icon" image={icon} {...rest} />
+)
 
 export const query = graphql`
-  fragment AppIcon on GraphCool_File {
-    ...ImageBase
-    imageFile {
-      childImageSharp {
-        fluid(srcSetBreakpoints: [100, 200]) {
-          ...ImageFluid
-        }
-      }
+  fragment AppIcon on Yelli_File {
+    fluid(maxWidth: 200) {
+      ...Fluid
     }
   }
 `

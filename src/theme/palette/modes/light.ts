@@ -19,6 +19,7 @@ const light: PaletteOptions = {
   },
   text: {
     alt: '#5a6270',
+    disabled: '#aaaaaa',
     placeholder: '#090c17',
     primary: '#161a2a',
     secondary: '#5a6270',

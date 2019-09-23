@@ -11,7 +11,7 @@ import {
 
 const Category: React.FC<CategoryTemplateProps> = ({
   data: {
-    graphcool: {
+    yelli: {
       category: { applications },
     },
   },
@@ -21,7 +21,6 @@ const Category: React.FC<CategoryTemplateProps> = ({
     apps: applications,
     name,
   }
-  console.log(applications)
   const theme = useTheme()
   const matches = useMediaQuery(
     theme.breakpoints.down('sm')
@@ -31,11 +30,10 @@ const Category: React.FC<CategoryTemplateProps> = ({
 
 export const pageQuery = graphql`
   query applicationsByCategory($id: ID!) {
-    graphcool {
+    yelli {
       category(where: { id: $id }) {
         applications(
           where: { published: { equals: true } }
-          orderBy: { rank: asc }
         ) {
           ...Application
         }

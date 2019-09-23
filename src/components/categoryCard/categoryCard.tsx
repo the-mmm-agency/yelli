@@ -28,7 +28,7 @@ const CategoryCard: React.FC<
 )
 
 export const query = graphql`
-  fragment CategoryCard on GraphCool_Category {
+  fragment CategoryCard on Yelli_Category {
     id
     name
     slug

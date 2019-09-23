@@ -26,7 +26,7 @@ export const ListItem = styled(MuiListItem)`
     font-weight: inherit;
   }
   &.MuiListItem-root {
-    color: ${palette('text.secondary')};
+    color: ${palette('text.alt')};
     &.active,
     &:focus,
     &:hover {
@@ -37,7 +37,7 @@ export const ListItem = styled(MuiListItem)`
   margin-top: ${spacing(1)};
   margin-left: ${spacing(2)};
   padding: ${spacing(0.8)};
-  font-weight: 600;
+  font-weight: 500;
   ${transitions(['background-color', 'color'], {
     duration: 'standard',
     easing: 'sharp',

@@ -26,13 +26,10 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
         title={title}
       />
       <Content>
-        <Typography fontWeight={600} variant="body1">
-          {title}
-        </Typography>
+        <Typography variant="body1">{title}</Typography>
         <Typography
           gutterBottom
           color="textSecondary"
-          fontWeight={600}
           variant="body2"
         >
           {description}
@@ -43,22 +40,17 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
 )
 
 export const query = graphql`
-  fragment FeaturedApp on GraphCool_Application {
+  fragment FeaturedApp on Yelli_Application {
     id
     title
     slug
     description
     banner {
-      ...ImageBase
-      imageFile {
-        childImageSharp {
-          fluid(
-            maxWidth: 400
-            srcSetBreakpoints: [300, 320, 350, 375, 400]
-          ) {
-            ...ImageFluid
-          }
-        }
+      fluid(
+        sizes: "(max-width: 960px) 30vw, 100vw"
+        srcSetBreakpoints: [300, 320, 350, 375, 400]
+      ) {
+        ...Fluid
       }
     }
   }

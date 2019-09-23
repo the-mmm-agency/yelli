@@ -24,9 +24,11 @@ import facepaint from 'facepaint'
 import { has, path, prop, propOr } from 'ramda'
 import { FlattenInterpolation } from 'styled-components'
 
-import { PropFunc, ThemeProp } from 'src/types'
+import { ThemeProp } from 'src/types'
 import dotPath from 'src/util/dotPath'
 import { css } from 'src/util/styled'
+
+type PropFunc<T = string> = (props: ThemeProp) => T
 
 interface Accessor<T> {
   (value: keyof T): PropFunc

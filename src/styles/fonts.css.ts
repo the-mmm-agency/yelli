@@ -4,19 +4,15 @@ import { mapObjIndexed } from 'ramda'
 
 import { css } from 'src/util/styled'
 
-type Weights = {
-  '400': string
-  '500': string
-  '600': string
-}
+type Weights = Record<300 | 400 | 500 | 600 | 700, string>
 
-// /* eslint-disable quote-props */
 const weights: Weights = {
+  300: 'light',
   400: 'regular',
   500: 'medium',
   600: 'semibold',
+  700: 'bold',
 }
-/* eslint-enable quote-props */
 
 const makeFontWeight = (
   weight: keyof Weights,
@@ -25,8 +21,8 @@ const makeFontWeight = (
   fontFace({
     fileFormats: ['woff2', 'woff', 'otf'],
     fontDisplay: 'swap',
-    fontFamily: 'proxima-nova',
-    fontFilePath: `/fonts/proxima-nova-${weight}`,
+    fontFamily: 'jost',
+    fontFilePath: `/fonts/jost-${weight}`,
     fontStyle: 'normal',
     fontWeight,
     unicodeRange: 'U+0020—007F',

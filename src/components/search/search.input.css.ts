@@ -2,11 +2,13 @@ import {
   InputAdornment,
   InputBase,
 } from '@material-ui/core'
-import { Search } from '@material-ui/icons'
 
+import { ThemeProp } from 'src/types'
 import styled from 'src/util/styled'
 import {
   borders,
+  down,
+  fade,
   palette,
   radii,
   spacing,
@@ -20,30 +22,44 @@ export const Form = styled.form`
   align-items: center;
 `
 
-export const Adornment = styled(InputAdornment)`
+export const Kbd = styled.kbd`
+  padding: ${spacing(0.5)} 0.5em;
+  margin: ${spacing(0.5)};
+  border: 1px solid ${fade('text.disabled', 0.6)};
+  color: ${palette('text.secondary')};
+  ${down('sm')} {
+    opacity: 0;
+  }
+  ${radii('light')};
+  font-family: ${(props: ThemeProp) =>
+    props.theme.typography.fontFamily};
+`
+export const StartAdornment = styled(InputAdornment).attrs({
+  position: 'start',
+})`
   margin-right: ${spacing(2)};
   margin-left: ${spacing(1)};
-`
-
-export const SearchIcon = styled(Search)`
-  width: 1em;
-  pointer-events: none;
+  ${down('sm')} {
+    margin-right: ${spacing(-2)};
+    opacity: 0;
+  }
 `
 
 export const Input = styled(InputBase)`
-  padding: ${spacing(1)};
-  margin-right: ${spacing(1)};
-  margin-left: ${spacing(1)};
+  padding: ${spacing(0.25)};
+  margin: 0 ${spacing(1)};
   background-color: ${palette('background.darkest')};
   border: ${borders('standard')};
-  ${radii('default')};
+  ${radii('light')};
   width: 100%;
   ${up('md')} {
+    padding: ${spacing(0.5)};
     input {
       &:hover,
       &:focus {
         width: 200px;
       }
+      margin: 0;
       width: 120px;
       ${transitions('width')};
     }

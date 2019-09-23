@@ -5,7 +5,7 @@ import {
 } from 'framer-motion'
 import React from 'react'
 
-import { PathnameProps, WithChildren } from 'src/types'
+import { PathnameProps } from 'src/types'
 
 const duration = 0.2
 
@@ -34,7 +34,7 @@ const initial: Variant = {
 }
 
 const PageTransition: React.FC<
-  WithChildren<PathnameProps>
+  React.PropsWithChildren<PathnameProps>
 > = ({ children, pathname }) => (
   <AnimatePresence>
     <motion.div

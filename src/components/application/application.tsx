@@ -16,7 +16,7 @@ const Application: React.FC<AppProps> = ({
 }
 
 export const query = graphql`
-  fragment Application on GraphCool_Application {
+  fragment Application on Yelli_Application {
     id
     title
     slug

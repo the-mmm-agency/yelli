@@ -18,6 +18,9 @@ export const Banner = styled(Img)`
 `
 
 export const Content = styled(CardContent)`
+  & > * {
+    font-weight: 500;
+  }
   padding: ${spacing(2, 2, 1)};
 `
 

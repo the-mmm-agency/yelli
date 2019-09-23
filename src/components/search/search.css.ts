@@ -1,3 +1,4 @@
+import { Typography } from '@material-ui/core'
 import { motion } from 'framer-motion'
 
 import styled from 'src/util/styled'
@@ -5,6 +6,7 @@ import {
   borders,
   down,
   palette,
+  pxToRem,
   radii,
   shadows,
   spacing,
@@ -13,21 +15,18 @@ import {
 
 export const Root = styled.div`
   position: relative;
-  display: grid;
-  grid-gap: 1em;
+  display: flex;
   ${down('sm')} {
-    width: 90%;
+    flex-grow: 1;
   }
 `
 
-export const HitsWrapper = styled(motion.div)`
-  .ais-Hits-list {
-    padding-inline-start: ${spacing(1)};
-    max-height: 80vh;
-    overflow: hidden scroll;
-  }
+export const HitsWrapper = styled(motion.ul)`
   position: fixed;
-  top: 64px;
+  padding-inline-start: 0;
+  max-height: 80vh;
+  overflow: hidden scroll;
+  top: 50px;
   width: 100vw;
   background-color: ${palette(
     'background.darker'
@@ -45,4 +44,13 @@ export const HitsWrapper = styled(motion.div)`
     ${shadows(12)};
     max-width: 50em;
   }
+`
+export const Help = styled(Typography)`
+  ${down('sm')} {
+    display: none;
+  }
+  color: ${palette('text.primary')};
+  font-size: ${pxToRem(12)};
+  padding: ${spacing(1, 2)};
+  background-color: ${palette('background.default')};
 `

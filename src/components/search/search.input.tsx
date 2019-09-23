@@ -1,57 +1,106 @@
-import { CircularProgress } from '@material-ui/core'
+import {
+  IconButton,
+  InputAdornment,
+} from '@material-ui/core'
 import { InputBaseProps } from '@material-ui/core/InputBase'
-import { Search as SearchIcon } from '@material-ui/icons'
+import {
+  Close as CloseIcon,
+  Search as SearchIcon,
+} from '@material-ui/icons'
 import React from 'react'
-import { connectSearchBox } from 'react-instantsearch-dom'
-import { useDebouncedCallback } from 'use-debounce/lib'
+import { UseNumber } from 'react-hanger'
 
-import { Adornment, Form, Input } from './search.input.css'
+import {
+  Input,
+  Kbd,
+  StartAdornment,
+} from './search.input.css'
 
-interface SearchInputProps extends InputBaseProps {
+interface Props extends InputBaseProps {
   refine: (query: string) => void
-  currentRefinement: string
-  isSearchStalled: boolean
+  onBlur: () => void
+  handleReturn: () => void
+  handleEsc: () => void
+  selected: UseNumber
+  hasFocus: boolean
+  query: string
 }
 
-const SearchInput: React.FC<SearchInputProps> = ({
+const SearchInput: React.FC<Props> = ({
   refine,
-  isSearchStalled,
-  currentRefinement,
+  hasFocus,
+  onBlur,
+  query,
+  selected,
+  handleReturn,
+  handleEsc,
   ...rest
 }) => {
-  const [handleChange] = useDebouncedCallback(
-    (value): void => {
-      refine(value)
-    },
-    300,
-    { leading: true }
-  )
-  const isLoading =
-    currentRefinement !== '' && isSearchStalled
+  const handleKeyDown = (
+    event: React.KeyboardEvent
+  ): void => {
+    switch (event.key) {
+      case 'ArrowDown':
+        event.preventDefault()
+        selected.increase()
+        break
+      case 'ArrowUp':
+        event.preventDefault()
+        selected.decrease()
+        break
+      case 'Enter':
+        event.preventDefault()
+        handleReturn()
+        break
+      case 'Escape':
+        event.preventDefault()
+        handleEsc()
+        break
+    }
+  }
+
+  const handleChange = (
+    event: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    refine(event.target.value)
+  }
+
+  const hideClear = !hasFocus || query === ''
 
   return (
-    <Form>
-      <Input
-        aria-label="Search"
-        endAdornment={
-          isLoading && <CircularProgress size="1rem" />
-        }
-        onChange={(
-          event: React.ChangeEvent<HTMLInputElement>
-        ) => {
-          handleChange(event.target.value)
-        }}
-        placeholder="Search…"
-        startAdornment={
-          <Adornment position="start">
-            <SearchIcon color="primary" />
-          </Adornment>
-        }
-        {...rest}
-        type="text"
-      />
-    </Form>
+    <Input
+      aria-label="Search"
+      endAdornment={
+        <InputAdornment position="end">
+          {hideClear ? (
+            <Kbd>/</Kbd>
+          ) : (
+            <IconButton
+              color="primary"
+              onClick={handleEsc}
+              size="small"
+            >
+              <CloseIcon />
+            </IconButton>
+          )}
+        </InputAdornment>
+      }
+      inputProps={{
+        onBlur,
+        onKeyDown: handleKeyDown,
+      }}
+      onChange={handleChange}
+      placeholder="Search…"
+      startAdornment={
+        <StartAdornment>
+          <SearchIcon color="primary" />
+        </StartAdornment>
+      }
+      {...rest}
+      type="text"
+      value={query}
+    />
   )
 }
 
-export default connectSearchBox(SearchInput)
+export default SearchInput

@@ -4,21 +4,17 @@ import {
   ListItemText,
 } from '@material-ui/core'
 import { ListItemProps } from '@material-ui/core/ListItem'
-import React from 'react'
+import React, { ReactElement } from 'react'
 
-import { WithChildren } from 'src/types'
+interface Props extends ListItemProps {
+  icon: ReactElement
+  onClick?: (
+    event: React.MouseEvent<any, MouseEvent>
+  ) => void
+  text: string
+}
 
-type UserMenuItemProps = WithChildren<
-  ListItemProps & {
-    icon: React.ReactElement
-    onClick?: (
-      event: React.MouseEvent<any, MouseEvent>
-    ) => void
-    text: string
-  }
->
-
-const UserMenuItem: React.FC<UserMenuItemProps> = ({
+const UserMenuItem: React.FC<Props> = ({
   children,
   icon,
   onClick,

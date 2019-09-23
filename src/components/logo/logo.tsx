@@ -3,9 +3,10 @@ import React from 'react'
 import Img from './logo.css'
 
 import { useLogo } from 'src/hooks/useLogo'
-import { ClassName } from 'src/types'
 
-const Logo: React.FC<ClassName> = ({ className }) => {
+const Logo: React.FC<{ className?: string }> = ({
+  className,
+}) => {
   const logo = useLogo()
   return (
     <Img

@@ -12,7 +12,7 @@ const typography: TypographyOptions = {
     letterSpacing: '0.05em',
   },
   fontFamily: [
-    'proxima-nova',
+    'jost',
     '-apple-system',
     'BlinkMacSystemFont',
     '"Segoe UI"',
@@ -20,12 +20,6 @@ const typography: TypographyOptions = {
     'Arial',
     'sans-serif',
   ].join(','),
-  h1: {
-    fontWeight: 400,
-  },
-  h2: {
-    fontWeight: 400,
-  },
   h5: {
     letterSpacing: '0.035em',
   },

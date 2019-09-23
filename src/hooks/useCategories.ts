@@ -6,13 +6,13 @@ type Categories = Omit<Category, 'applications'>[]
 
 export const useCategories = (): Categories => {
   const data: {
-    graphcool: {
+    yelli: {
       categories: Categories
     }
   } = useStaticQuery(
     graphql`
       query {
-        graphcool {
+        yelli {
           categories {
             id
             name
@@ -22,5 +22,5 @@ export const useCategories = (): Categories => {
       }
     `
   )
-  return data.graphcool.categories
+  return data.yelli.categories
 }

@@ -15,7 +15,8 @@ const GlobalStyle = createGlobalStyle`
 
   html {
     overflow-y: scroll;
-    text-rendering: geometricPrecision;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: subpixel-antialiased !important;
   }
 
   html > * {
@@ -46,6 +47,7 @@ const GlobalStyle = createGlobalStyle`
 
   ::placeholder {
     color: ${palette('text.placeholder')} !important;
+    font-weight: 500;
   }
   ${fonts}
   ${overrides}

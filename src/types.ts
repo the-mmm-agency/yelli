@@ -1,46 +1,31 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
-import { ReactChild, ReactNode } from 'react'
 
-import { Application, Category } from './graphql-types'
-
-export type Child = {
-  children?: ReactChild
-}
-
-export type Children = {
-  children?: ReactNode
-}
-
-export type ClassName = {
-  className?: string
-}
-
-export type WithAppID<T> = T & Pick<Application, 'id'>
-export type WithChildren<T> = T & Children
-export type WithClassName<T> = T & ClassName
-export type WithData<T> = {
-  data: T
-}
-export type WithGraphCool<T> = WithData<{
-  graphcool: T
-}>
-
-export type AppComponentProps = Pick<
+import {
   Application,
-  'title' | 'icon' | 'category'
-> & {
+  Category,
+  Node,
+} from './graphql-types'
+
+export type WithAppID<T> = T & Node
+
+export interface WithYelli<T> {
+  data: {
+    yelli: T
+  }
+}
+
+export interface AppComponentProps
+  extends Pick<Application, 'title' | 'icon' | 'category'> {
   to: string
 }
 
-export type AppProps = Omit<
-  AppComponentProps,
-  'handleClick'
-> & {
+export interface AppProps
+  extends Omit<AppComponentProps, 'handleClick'> {
   slug: string
   variant?: 'card' | 'list'
 }
 
-export type AppPageProps = {
+export interface AppPageProps {
   apps: WithAppID<AppProps>[]
   name: string
 }
@@ -54,40 +39,37 @@ export type PathnameProps = {
   pathname: string
 }
 
-type ListWithAppID<T> = {
-  applications: Array<WithAppID<T>>
+export interface AppListBase {
+  applications: WithAppID<AppProps>[]
 }
-
-export type AppList = ListWithAppID<AppProps>
-
-export type FeaturedAppList = ListWithAppID<
-  FeaturedAppProps
->
 
 export type ThemeProp = {
   theme: Theme
 }
 
-export type PropFunc<T = string> = (props: ThemeProp) => T
-
-export type CategoryTemplateProps = WithGraphCool<{
-  category: ListWithAppID<AppProps>
+export type CategoryTemplateProps = WithYelli<{
+  category: AppListBase
 }> & {
   pageContext: Pick<Category, 'name'>
 }
 
-export type GraphCoolAppList = WithGraphCool<AppList>
+export type AppList = WithYelli<AppListBase>
 
-export type ApplicationTemplateProps = WithGraphCool<{
-  application: Pick<
-    Application,
-    | 'category'
-    | 'description'
-    | 'icon'
-    | 'screenshots'
-    | 'title'
-    | 'url'
-  >
-}> & {
-  pageContext: Pick<Application, 'id'>
+export interface AppTemplateProps
+  extends WithYelli<{
+    application: Pick<
+      Application,
+      | 'category'
+      | 'description'
+      | 'icon'
+      | 'screenshots'
+      | 'title'
+      | 'url'
+    >
+  }> {
+  pageContext: Node
+}
+
+export interface FeaturedAppList {
+  applications: WithAppID<FeaturedAppProps>[]
 }

@@ -7,17 +7,17 @@ import FeaturedApplication from 'src/components/featuredApp'
 import HomeSection from 'src/components/homeSection'
 import SEO from 'src/components/seo'
 import Flex from 'src/elements/flex'
-import { AppList, FeaturedAppList } from 'src/types'
+import { AppListBase, FeaturedAppList } from 'src/types'
 
-type HomeProps = {
+interface Props {
   data: {
     featured: FeaturedAppList
-    top: AppList
-    latest: AppList
+    top: AppListBase
+    latest: AppListBase
   }
 }
 
-const Home: React.FC<HomeProps> = ({
+const Home: React.FC<Props> = ({
   data: { featured, top, latest },
 }) => (
   <>
@@ -48,7 +48,7 @@ const Home: React.FC<HomeProps> = ({
 
 export const query = graphql`
   {
-    featured: graphcool {
+    featured: yelli {
       applications(
         where: {
           featured: { equals: true }
@@ -58,7 +58,7 @@ export const query = graphql`
         ...FeaturedApp
       }
     }
-    latest: graphcool {
+    latest: yelli {
       applications(
         first: 15
         orderBy: { createdAt: asc }
@@ -67,7 +67,7 @@ export const query = graphql`
         ...Application
       }
     }
-    top: graphcool {
+    top: yelli {
       applications(
         first: 15
         orderBy: { rank: asc }

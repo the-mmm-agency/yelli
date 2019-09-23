@@ -1,49 +1,39 @@
 import React from 'react'
-import { Hit } from 'react-instantsearch-core'
 import { Highlight, Snippet } from 'react-instantsearch-dom'
 
+import { AppHit } from './search'
 import {
   Category,
   Content,
   Description,
   Icon,
-  ListItem,
+  MenuItem,
   Title,
 } from './search.hit.css'
 
+import Img from 'src/components/img'
 import Flex from 'src/elements/flex'
 import Link from 'src/elements/link'
-import { Application } from 'src/graphql-types'
 
 type Props = {
-  hit: Hit<
-    Pick<
-      Application,
-      'id' | 'title' | 'category' | 'slug' | 'description'
-    > & {
-      icon: {
-        url: string
-      }
-    }
-  >
+  selected: boolean
+  onClick: () => void
+  hit: AppHit
 }
 
-const SearchHit: (
-  onClick: VoidFunction
-) => React.FC<Props> = onClick => ({ hit }) => (
-  <ListItem
-    button
-    disableGutters
-    divider
+const SearchHit: React.FC<Props> = ({
+  hit,
+  onClick,
+  selected,
+}) => (
+  <MenuItem
     component={Link}
     onClick={onClick}
+    selected={selected}
     to={`/app/${hit.slug}`}
   >
     <Icon>
-      <img
-        alt={`${hit.title} icon`}
-        src={`https://imageproxy1234.herokuapp.com/50/${hit.icon.url}`}
-      />
+      <Img alt={`${hit.title} icon`} image={hit.icon} />
     </Icon>
     <Content>
       <Flex>
@@ -54,7 +44,7 @@ const SearchHit: (
             tagName="mark"
           />{' '}
         </Title>
-        <Category component="span" variant="overline">
+        <Category>
           <Highlight
             attribute="category.name"
             hit={hit}
@@ -70,7 +60,7 @@ const SearchHit: (
         />
       </Description>
     </Content>
-  </ListItem>
+  </MenuItem>
 )
 
 export default SearchHit

@@ -1,6 +1,6 @@
 import { useState } from 'react'
 
-type UseBoolean = {
+export type UseBoolean = {
   setFalse: VoidFunction
   setTrue: VoidFunction
   toggle: VoidFunction

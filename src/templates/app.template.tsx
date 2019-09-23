@@ -6,20 +6,20 @@ import React from 'react'
 import {
   Divider,
   Icon,
+  LaunchApp,
   Screenshot,
   Screenshots,
 } from './app.template.css'
 
 import Favorite from 'src/components/favorite'
 import SEO from 'src/components/seo'
-import Button from 'src/elements/button'
 import Flex from 'src/elements/flex'
 import Typography from 'src/elements/typography'
-import { ApplicationTemplateProps } from 'src/types'
+import { AppTemplateProps } from 'src/types'
 
-const AppTemplate: React.FC<ApplicationTemplateProps> = ({
+const AppTemplate: React.FC<AppTemplateProps> = ({
   data: {
-    graphcool: {
+    yelli: {
       application: {
         category,
         description,
@@ -53,16 +53,10 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
           >
             {category.name}
           </Typography>
-          <Button
-            color="primary"
-            href={url}
-            mt="auto"
-            size="small"
-            variant="outlined"
-          >
+          <LaunchApp href={url}>
             <OpenIcon fontSize="inherit" />
             &nbsp; Launch App
-          </Button>
+          </LaunchApp>
         </Flex>
       </Flex>
       <Typography
@@ -93,24 +87,24 @@ const AppTemplate: React.FC<ApplicationTemplateProps> = ({
 
 export const pageQuery = graphql`
   query ApplicationById($id: ID!) {
-    graphcool {
+    yelli {
       application(where: { id: $id }) {
         category {
           name
         }
         description
         icon {
-          ...AppIcon
+          fixed(width: 112, height: 112) {
+            ...Fixed
+          }
         }
         screenshots {
           id
-          url
-          imageFile {
-            childImageSharp {
-              fluid(srcSetBreakpoints: [200, 480]) {
-                ...ImageFluid
-              }
-            }
+          fluid(
+            srcSetBreakpoints: [200, 250, 300, 350, 400]
+            sizes: "(max-width: 960px) 200px, 25vw"
+          ) {
+            ...Fluid
           }
         }
         title

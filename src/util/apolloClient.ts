@@ -24,7 +24,7 @@ const client = isBrowser()
       link: authLink.concat(
         createUploadLink({
           fetch,
-          uri: process.env.API_URL,
+          uri: 'https://yelli-api.herokuapp.com',
         })
       ),
     })

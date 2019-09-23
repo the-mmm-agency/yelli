@@ -36,7 +36,7 @@ const AppCard: React.FC<AppComponentProps> = ({
             md: 'body2.fontSize',
             xs: 'caption.fontSize',
           }}
-          fontWeight={600}
+          fontWeight={500}
         >
           {category.name}
         </Typography>

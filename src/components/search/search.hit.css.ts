@@ -1,6 +1,6 @@
 import {
-  ListItem as MuiListItem,
   ListItemIcon,
+  MenuItem as MuiMenuItem,
   Typography,
 } from '@material-ui/core'
 
@@ -15,12 +15,17 @@ import {
   spacing,
 } from 'src/util/theme'
 
-export const ListItem = styled(MuiListItem)`
+export const MenuItem = styled(MuiMenuItem).attrs({
+  divider: true,
+})`
   width: 100%;
-  padding: ${spacing(1)};
-` as typeof MuiListItem
+  padding: ${spacing(1, 2)};
+` as typeof MuiMenuItem
 
-export const Category = styled(Typography)`
+export const Category = styled(Typography).attrs({
+  component: 'span',
+  variant: 'overline',
+})`
   span {
     padding: 0;
   }
@@ -29,12 +34,14 @@ export const Category = styled(Typography)`
     background: transparent;
   }
   height: 2em;
+  font-weight: 500;
   margin: ${spacing(0, 1)};
   padding: ${spacing(0, 1)};
   line-height: 2em;
   color: ${palette('text.secondary')};
   background-color: ${palette('background.default')};
   font-size: ${pxToRem(13)};
+  text-transform: uppercase;
   vertical-align: middle;
   box-sizing: border-box;
   border: ${borders('standard')};

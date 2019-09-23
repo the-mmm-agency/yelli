@@ -1,36 +1,5 @@
 const path = require('path')
 
-const {
-  createRemoteFileNode,
-} = require('gatsby-source-filesystem')
-
-exports.createResolvers = ({
-  actions: { createNode },
-  cache,
-  createNodeId,
-  createResolvers,
-  store,
-  reporter,
-}) =>
-  createResolvers({
-    GraphCool_File: {
-      imageFile: {
-        type: 'File',
-        resolve: ({ url }) =>
-          createRemoteFileNode({
-            url,
-            store,
-            cache,
-            createNode,
-            createNodeId,
-            reporter,
-            ext: '.png',
-            name: 'image',
-          }),
-      },
-    },
-  })
-
 exports.createPages = async ({
   actions: { createPage },
   graphql,
@@ -38,7 +7,7 @@ exports.createPages = async ({
   const generatePages = async (type, base, query = '') => {
     const request = await graphql(`
       {
-        graphcool {
+        yelli {
           ${type} {
            id
            slug
@@ -48,7 +17,7 @@ exports.createPages = async ({
       }
     `)
 
-    request.data.graphcool[type].forEach(
+    request.data.yelli[type].forEach(
       ({ id, slug, ...rest }) => {
         createPage({
           component: path.resolve(

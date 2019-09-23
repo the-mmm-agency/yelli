@@ -5,6 +5,10 @@ import {
 import { PaletteOptions } from '@material-ui/core/styles/createPalette'
 
 const dark: PaletteOptions = {
+  action: {
+    hover: '#7c85b320',
+    selected: '#717cb450',
+  },
   background: {
     darker: '#1b1d2c',
     darkest: '#191a2a',

@@ -1,44 +1,11 @@
 import { FixedObject, FluidObject } from 'gatsby-image'
 
-export type Node = {
+export interface Node {
   id: string
 }
 
-type ChildImageSharp<T> = {
-  childImageSharp: T
-}
-
-type Fluid = {
-  fluid: FluidObject
-}
-
-type Fixed = {
-  fixed: FixedObject
-}
-
-export type ImageSharp = ChildImageSharp<Fluid | Fixed>
-export type ImageFluid = ChildImageSharp<Fluid>
-export type ImageFixed = ChildImageSharp<Fixed>
-
-export type Image = {
-  base64: string
-  imageFile: ImageSharp
-}
-
-export type Application = Node & {
-  title: string
-  screenshots: Array<Node & Image>
-  icon: Image
-  url: string
-  featured: boolean
-  banner: Image
-  rank: number
-  category: Category
-  slug: string
-  description: string
-}
-
-export type Category = Node & {
+export interface Category extends Node {
+  applications: Application[]
   name:
     | 'Business'
     | 'Entertainment'
@@ -51,7 +18,34 @@ export type Category = Node & {
     | 'Social'
     | 'Tools'
     | 'Travel'
+  slug:
+    | 'business'
+    | 'entertainment'
+    | 'food'
+    | 'games'
+    | 'lifestyle'
+    | 'music'
+    | 'news'
+    | 'shopping'
+    | 'social'
+    | 'tools'
+    | 'travel'
+}
 
-  applications: Array<Application>
+export interface Image extends Node {
+  fixed: FixedObject
+  fluid: FluidObject
+}
+
+export interface Application extends Node {
+  banner: Image
+  category: Category
+  description: string
+  featured: boolean
+  icon: Image
+  rank: number
+  screenshots: Image[]
   slug: string
+  title: string
+  url: string
 }
