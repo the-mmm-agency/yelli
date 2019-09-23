@@ -121,7 +121,6 @@ module.exports = {
               data.yelli.applications,
           },
         ],
-        chunkSize: 10000,
       },
     },
 
