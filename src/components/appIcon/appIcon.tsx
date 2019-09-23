@@ -1,25 +1,13 @@
 import { graphql } from 'gatsby'
-import { GatsbyImageProps } from 'gatsby-image'
-import React, { memo } from 'react'
+import { memo } from 'react'
 
-import Icon from './appIcon.css'
-
-import { Image } from 'src/graphql-types'
-
-interface Props
-  extends Omit<
-    GatsbyImageProps,
-    'alt' | 'fluid' | 'fixed'
-  > {
-  icon: Image
-}
-
-const AppIcon: React.FC<Props> = ({ icon, ...rest }) => (
-  <Icon alt="Application Icon" image={icon} {...rest} />
-)
+import AppIcon from './appIcon.css'
 
 export const query = graphql`
   fragment AppIcon on Yelli_File {
+    fixed(width: 50, height: 50) {
+      ...Fixed
+    }
     fluid(maxWidth: 200) {
       ...Fluid
     }

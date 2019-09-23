@@ -23,7 +23,7 @@ const AppListItem: React.FC<AppComponentProps> = ({
     to={to}
   >
     <ListItemIcon>
-      <Icon image={icon} title={title} />
+      <Icon fixed={icon.fixed} title={title} />
     </ListItemIcon>
     <ListItemText
       primary={title}

@@ -19,7 +19,7 @@ const AppCard: React.FC<AppComponentProps> = ({
 }) => (
   <Card>
     <ActionArea component={Link} to={to}>
-      <Icon icon={icon} title={title} />
+      <Icon fluid={icon.fluid} title={title} />
       <Content>
         <Typography
           fontSize={{

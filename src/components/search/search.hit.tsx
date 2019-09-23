@@ -1,3 +1,4 @@
+import Img from 'gatsby-image'
 import React from 'react'
 import { Highlight, Snippet } from 'react-instantsearch-dom'
 
@@ -11,7 +12,6 @@ import {
   Title,
 } from './search.hit.css'
 
-import Img from 'src/components/img'
 import Flex from 'src/elements/flex'
 import Link from 'src/elements/link'
 
@@ -33,7 +33,10 @@ const SearchHit: React.FC<Props> = ({
     to={`/app/${hit.slug}`}
   >
     <Icon>
-      <Img alt={`${hit.title} icon`} image={hit.icon} />
+      <Img
+        alt={`${hit.title} icon`}
+        fixed={hit.icon.fixed}
+      />
     </Icon>
     <Content>
       <Flex>

@@ -106,6 +106,7 @@
 
     "sort-keys-fix/sort-keys-fix": "error",
 
+    "unicorn/consistent-function-scoping": "off",
     "unicorn/filename-case": [
       "error",
       {

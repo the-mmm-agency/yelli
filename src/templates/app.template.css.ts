@@ -2,10 +2,10 @@ import {
   Button,
   Divider as MuiDivider,
 } from '@material-ui/core'
+import Img from 'gatsby-image'
 
 import AppIcon from 'src/components/appIcon'
 import HorizontalScroll from 'src/components/horizontalScroll'
-import Img from 'src/components/img'
 import styled from 'src/util/styled'
 import {
   borders,

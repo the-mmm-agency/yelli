@@ -2,7 +2,12 @@ require('dotenv').config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
-const siteMetadata = require('./siteMetadata.json')
+const siteMetadata = {
+  title: 'Yelli',
+  description:
+    'The hottest progressive web app directory on the market',
+  author: '@brettm12345',
+}
 
 const applications = `{
   yelli {
@@ -135,5 +140,6 @@ module.exports = {
         ],
       },
     },
+    'gatsby-plugin-netlify-cache',
   ],
 }

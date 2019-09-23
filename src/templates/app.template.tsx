@@ -36,7 +36,7 @@ const AppTemplate: React.FC<AppTemplateProps> = ({
     <SEO description={description} title={title} />
     <Flex flexDirection="column">
       <Flex pl={{ md: 2, xs: 1 }} pt={{ md: 2, xs: 1 }}>
-        <Icon icon={icon} title={title} />
+        <Icon fluid={icon.fluid} title={title} />
         <Flex flexDirection="column" mt={2} mx={1}>
           <Flex height="2em">
             <Typography component="h1" variant="h6">
@@ -71,11 +71,11 @@ const AppTemplate: React.FC<AppTemplateProps> = ({
       </Typography>
       <Divider variant="fullWidth" />
       <Screenshots>
-        {screenshots.map(({ id, ...screenshot }) => (
+        {screenshots.map(({ id, fluid }) => (
           <li key={id}>
             <Screenshot
               alt="Application Screenshot"
-              image={screenshot}
+              fluid={fluid}
               title={title}
             />
           </li>

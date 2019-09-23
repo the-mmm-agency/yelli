@@ -24,10 +24,10 @@ const client = isBrowser()
       link: authLink.concat(
         createUploadLink({
           fetch,
-          uri: 'https://yelli-api.herokuapp.com',
+          uri: process.env.API_URL,
         })
       ),
     })
-  : {}
+  : ({} as ApolloClient<any>)
 
 export default client

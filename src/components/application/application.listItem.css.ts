@@ -1,6 +1,6 @@
 import { ListItem as MuiListItem } from '@material-ui/core'
+import Img from 'gatsby-image'
 
-import Img from 'src/components/img'
 import styled from 'src/util/styled'
 import { radii, spacing } from 'src/util/theme'
 

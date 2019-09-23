@@ -22,7 +22,7 @@ const FeaturedApp: React.FC<FeaturedAppProps> = ({
     >
       <Banner
         alt="Featured app banner"
-        image={banner}
+        fluid={banner.fluid}
         title={title}
       />
       <Content>

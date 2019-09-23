@@ -2,8 +2,8 @@ import {
   Card as MuiCard,
   CardContent,
 } from '@material-ui/core'
+import Img from 'gatsby-image'
 
-import Img from 'src/components/img'
 import styled from 'src/util/styled'
 import {
   borders,
