@@ -1,5 +1,17 @@
 const path = require('path')
 
+const fs = require('fs-extra')
+
+exports.onPreExtractQueries = async () => {
+  await fs.copy(
+    path.join(__dirname, 'fragments.js'),
+    path.join(
+      __dirname,
+      '.cache/fragments/yelli-fragments.js'
+    )
+  )
+}
+
 exports.createPages = async ({
   actions: { createPage },
   graphql,

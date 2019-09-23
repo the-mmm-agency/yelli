@@ -87,6 +87,7 @@ export const authReducer = (
       const { errorType, error } = action
       window.localStorage.removeItem('EXPIRES_ON')
       window.localStorage.removeItem('AUTH0_USER')
+      window.localStorage.removeItem('token')
       return {
         ...state,
         authResult: null,
