@@ -73,6 +73,7 @@ export const Title = styled(Typography)`
 
 export const Description = styled(Typography)`
   color: ${palette('text.primary')};
+  white-space: pre-wrap;
   em {
     font-style: normal;
     border-bottom: 2px solid ${palette('primary.main')};

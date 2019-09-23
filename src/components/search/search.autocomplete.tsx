@@ -41,6 +41,7 @@ const Autocomplete: React.FC<Props> = ({
     refine('')
     const { current } = inputRef as any
     current.blur()
+    selected.setValue(-1)
   }
 
   const handleReturn = (): void => {

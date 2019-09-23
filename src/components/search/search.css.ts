@@ -16,6 +16,7 @@ import {
 export const Root = styled.div`
   position: relative;
   display: flex;
+  margin-right: auto;
   ${down('sm')} {
     flex-grow: 1;
   }
@@ -31,12 +32,9 @@ export const HitsWrapper = styled(motion.ul)`
   background-color: ${palette(
     'background.darker'
   )} !important;
-  ${down('sm')} {
-    left: 0;
-  }
+  left: 0;
   ${up('md')} {
     position: absolute;
-    right: 0;
     width: 80vw;
     overflow: hidden;
     border: ${borders('standard')};

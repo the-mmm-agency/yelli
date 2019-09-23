@@ -57,10 +57,10 @@ export const Input = styled(InputBase)`
     input {
       &:hover,
       &:focus {
-        width: 200px;
+        width: 400px;
       }
       margin: 0;
-      width: 120px;
+      width: 300px;
       ${transitions('width')};
     }
   }

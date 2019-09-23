@@ -1,6 +1,7 @@
+import { Toolbar } from '@material-ui/core'
 import React from 'react'
 
-import { AppBar, Toolbar } from './header.desktop.css'
+import { AppBar } from './header.desktop.css'
 import ThemeToggle from './header.themeToggle'
 import UserMenu from './userMenu'
 
