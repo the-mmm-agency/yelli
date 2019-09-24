@@ -24,12 +24,12 @@ export const LaunchApp = styled(Button).attrs({
   size: 'small',
   variant: 'outlined',
 })`
+  margin-top: ${spacing(1)};
   span {
     svg {
       width: 1.5em;
       height: 1.5em;
     }
-    margin-top: auto;
     font-size: ${pxToRem(13)};
   }
 `
