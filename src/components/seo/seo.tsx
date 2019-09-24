@@ -73,7 +73,26 @@ const SEO: React.FC<SeoProps> = ({
       ]}
       title={title}
       titleTemplate={`%s | ${siteMetadata.title}`}
-    />
+    >
+      <link
+        as="font"
+        href="/fonts/jost-regular.woff2"
+        rel="preload"
+        type="font/woff2"
+      />
+      <link
+        as="font"
+        href="/fonts/jost-medium.woff2"
+        rel="preload"
+        type="font/woff2"
+      />
+      <link
+        as="font"
+        href="/fonts/jost-semibold.woff2"
+        rel="preload"
+        type="font/woff2"
+      />
+    </Helmet>
   )
 }
 

@@ -130,18 +130,6 @@ module.exports = {
     // Build/Hosting
     'gatsby-plugin-offline',
     'gatsby-plugin-preload-link-crossorigin',
-    {
-      resolve: 'gatsby-plugin-netlify',
-      options: {
-        allPageHeaders: [
-          'Link: fonts/jost-light.woff2; rel=preload; as=font; type=font/woff2',
-          'Link: fonts/jost-regular.woff2; rel=preload; as=font; type=font/woff2',
-          'Link: fonts/jost-medium.woff2; rel=preload; as=font; type=font/woff2',
-          'Link: fonts/jost-semibold.woff2; rel=preload; as=font; type=font/woff2',
-          'Link: fonts/jost-bold.woff2; rel=preload; as=font; type=font/woff2',
-        ],
-      },
-    },
     'gatsby-plugin-netlify-cache',
   ],
 }
