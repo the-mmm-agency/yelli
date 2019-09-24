@@ -47,13 +47,11 @@ export type ThemeProp = {
   theme: Theme
 }
 
-export type CategoryTemplateProps = WithYelli<{
-  category: AppListBase
-}> & {
+export type AppList = WithYelli<AppListBase>
+
+export interface CategoryTemplateProps extends AppList {
   pageContext: Pick<Category, 'name'>
 }
-
-export type AppList = WithYelli<AppListBase>
 
 export interface AppTemplateProps
   extends WithYelli<{

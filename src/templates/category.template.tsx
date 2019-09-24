@@ -11,9 +11,7 @@ import {
 
 const Category: React.FC<CategoryTemplateProps> = ({
   data: {
-    yelli: {
-      category: { applications },
-    },
+    yelli: { applications },
   },
   pageContext: { name },
 }) => {
@@ -29,14 +27,15 @@ const Category: React.FC<CategoryTemplateProps> = ({
 }
 
 export const pageQuery = graphql`
-  query applicationsByCategory($id: ID!) {
+  query applicationsByCategory($id: String!) {
     yelli {
-      category(where: { id: $id }) {
-        applications(
-          where: { published: { equals: true } }
-        ) {
-          ...Application
+      applications(
+        where: {
+          published: { equals: true }
+          category: { id: { equals: $id } }
         }
+      ) {
+        ...Application
       }
     }
   }
