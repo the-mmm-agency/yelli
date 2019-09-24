@@ -41,22 +41,6 @@ module.exports = {
     'gatsby-plugin-typescript-checker',
     'gatsby-plugin-fastclick',
     'gatsby-plugin-root-import',
-    {
-      resolve: 'gatsby-plugin-import',
-      options: {
-        libraryName: '@material-ui/core',
-        libraryDirectory: 'esm',
-        camel2DashComponentName: false,
-      },
-    },
-    {
-      resolve: 'gatsby-plugin-import',
-      options: {
-        libraryName: '@material-ui/icons',
-        libraryDirectory: 'esm',
-        camel2DashComponentName: false,
-      },
-    },
 
     // Code Generation
     {

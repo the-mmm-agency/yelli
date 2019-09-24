@@ -6888,11 +6888,6 @@ gatsby-plugin-favicon@^3.1.6:
     html-react-parser "^0.6.4"
     lodash "^4.17.11"
 
-gatsby-plugin-import@^2.1.5:
-  version "2.1.5"
-  resolved "https://registry.yarnpkg.com/gatsby-plugin-import/-/gatsby-plugin-import-2.1.5.tgz#6d1a6fbf6566f236db52584672e1d26de2f19480"
-  integrity sha512-KvaSHprTGsZCT9gFCRau3u400hNdDUJG53OpCYSbuBDYRpqX18sq6qok0bzcGk2CVAJVvQugHIYpo774B2vNNw==
-
 gatsby-plugin-manifest@^2.2.18:
   version "2.2.18"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-manifest/-/gatsby-plugin-manifest-2.2.18.tgz#96bea26e35a8d74ebb74dff8c5c1ae85e7b0c556"
