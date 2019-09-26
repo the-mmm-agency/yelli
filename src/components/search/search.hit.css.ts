@@ -26,6 +26,19 @@ export const Category = styled(Typography).attrs({
   component: 'span',
   variant: 'overline',
 })`
+  box-sizing: border-box;
+  height: 2em;
+  margin: ${spacing(0, 1)};
+  padding: ${spacing(0, 1)};
+  color: ${palette('text.secondary')};
+  font-weight: 500;
+  font-size: ${pxToRem(13)};
+  line-height: 2em;
+  text-transform: uppercase;
+  vertical-align: middle;
+  background-color: ${palette('background.default')};
+  border: ${borders('standard')};
+  ${radii('light')};
   span {
     padding: 0;
   }
@@ -33,19 +46,6 @@ export const Category = styled(Typography).attrs({
     color: ${palette('primary.main')};
     background: transparent;
   }
-  height: 2em;
-  font-weight: 500;
-  margin: ${spacing(0, 1)};
-  padding: ${spacing(0, 1)};
-  line-height: 2em;
-  color: ${palette('text.secondary')};
-  background-color: ${palette('background.default')};
-  font-size: ${pxToRem(13)};
-  text-transform: uppercase;
-  vertical-align: middle;
-  box-sizing: border-box;
-  border: ${borders('standard')};
-  ${radii('light')};
 `
 
 export const Icon = styled(ListItemIcon)`

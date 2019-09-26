@@ -1,19 +1,21 @@
 import React from 'react'
 
-import { Link } from './search.poweredBy.css'
-
 import Flex from 'src/elements/flex'
 
 const PoweredBy: React.FC = () => (
   <Flex
+    as="li"
     color="text.primary"
     justifyContent="flex-end"
     pr={1}
     pt={1}
     width={1}
   >
-    <Link
+    <a
       aria-label="search by Algolia"
+      css={{
+        color: 'inherit',
+      }}
       href="https://www.algolia.com/?utm_source=react-instantsearch&amp;utm_medium=website&amp;utm_content=localhost&amp;utm_campaign=poweredby"
       rel="noopener noreferrer"
       target="_blank"
@@ -36,7 +38,7 @@ const PoweredBy: React.FC = () => (
           fill="currentColor"
         />
       </svg>
-    </Link>
+    </a>
   </Flex>
 )
 

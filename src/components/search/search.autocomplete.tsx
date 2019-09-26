@@ -1,5 +1,3 @@
-import { Divider } from '@material-ui/core'
-import { AnimatePresence } from 'framer-motion'
 import { navigate } from 'gatsby'
 import React, { useRef } from 'react'
 import { useNumber } from 'react-hanger'
@@ -7,11 +5,8 @@ import { useHotkeys } from 'react-hotkeys-hook'
 import { connectAutoComplete } from 'react-instantsearch-core'
 
 import { AppHit } from './search'
-import { Help, HitsWrapper } from './search.css'
-import HitComponent from './search.hit'
+import Hits from './search.hits'
 import Input from './search.input'
-import PoweredBy from './search.poweredBy'
-import Results from './search.results'
 
 import { UseBoolean } from 'src/hooks/useBoolean'
 
@@ -34,8 +29,6 @@ const Autocomplete: React.FC<Props> = ({
     upperLimit: hits.length - 1,
   })
 
-  const showHits = query.length > 0 && focus.value
-
   const handleClick = (): void => {
     focus.setFalse()
     refine('')
@@ -57,6 +50,8 @@ const Autocomplete: React.FC<Props> = ({
     current.focus()
   })
 
+  const showHits = query.length > 0 && focus.value
+
   return (
     <>
       <Input
@@ -70,36 +65,12 @@ const Autocomplete: React.FC<Props> = ({
         refine={refine}
         selected={selected}
       />
-      <AnimatePresence>
-        {showHits && (
-          <HitsWrapper
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            initial={{ opacity: 0, scale: 0.9 }}
-            transition={{
-              duration: 0.1,
-              type: 'spring',
-            }}
-          >
-            <Help>
-              Press <b>enter</b> to select, <b>↑↓</b> to
-              navigate, <b>esc</b> to dismiss
-            </Help>
-            <Results />
-            {hits.map((hit, index) => (
-              <HitComponent
-                hit={hit}
-                key={hit.objectID}
-                onClick={handleClick}
-                selected={index === selected.value}
-              />
-            ))}
-
-            <Divider />
-            <PoweredBy />
-          </HitsWrapper>
-        )}
-      </AnimatePresence>
+      <Hits
+        hits={hits}
+        onClick={handleClick}
+        open={showHits}
+        selected={selected.value}
+      />
     </>
   )
 }

@@ -52,8 +52,8 @@ export const Screenshots = styled(HorizontalScroll)`
 export const Screenshot = styled(Img)`
   ${up('md')} {
     width: 25vw;
-    height: auto;
     max-width: 400px;
+    height: auto;
   }
   width: 200px;
   height: 355px;
