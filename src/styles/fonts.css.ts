@@ -4,9 +4,9 @@ import { mapObjIndexed } from 'ramda'
 
 import { css } from 'src/util/styled'
 
-type Weights = Record<300 | 400 | 500 | 600 | 700, string>
+type Weight = 300 | 400 | 500 | 600 | 700
 
-const weights: Weights = {
+const weights: Record<Weight, string> = {
   300: 'light',
   400: 'regular',
   500: 'medium',
@@ -15,7 +15,7 @@ const weights: Weights = {
 }
 
 const makeFontWeight = (
-  weight: keyof Weights,
+  weight: Weight,
   fontWeight: string
 ): Styles =>
   fontFace({

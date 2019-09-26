@@ -1,10 +1,4 @@
-import {
-  BottomNavigation,
-  BottomNavigationAction,
-  Slide,
-  useScrollTrigger,
-} from '@material-ui/core'
-import { SvgIconProps } from '@material-ui/core/SvgIcon'
+import { BottomNavigation } from '@material-ui/core'
 import {
   AccountCircle,
   AccountCircleOutlined,
@@ -19,7 +13,9 @@ import { navigate } from 'gatsby'
 import React from 'react'
 
 import AppBar from './navigation.css'
+import NavigationItem from './navigation.item'
 
+import HideOnScroll from 'src/components/hideOnScroll'
 import { PathnameProps } from 'src/types'
 
 const Navigation: React.FC<PathnameProps> = ({
@@ -32,53 +28,40 @@ const Navigation: React.FC<PathnameProps> = ({
     event.preventDefault()
     navigate(newValue, { replace: true })
   }
-
-  const getIcon = (
-    path: string,
-    Match: React.ComponentType<SvgIconProps>,
-    NoMatch: React.ComponentType<SvgIconProps>
-  ): React.ReactElement =>
-    path === pathname ? <Match /> : <NoMatch />
-
-  const trigger = useScrollTrigger()
   return (
-    <Slide appear={false} direction="up" in={!trigger}>
+    <HideOnScroll direction="up">
       <AppBar>
         <BottomNavigation
           onChange={handleChange}
           value={pathname}
         >
-          <BottomNavigationAction
-            icon={getIcon('/', Home, HomeOutlined)}
+          <NavigationItem
+            Filled={Home}
+            Outlined={HomeOutlined}
             label="Home"
-            value="/"
+            path="/"
           />
-          <BottomNavigationAction
-            icon={getIcon('/top-apps', Poll, PollOutlined)}
-            label="Top apps"
-            value="/top-apps"
+          <NavigationItem
+            Filled={Poll}
+            Outlined={PollOutlined}
+            label="Top Apps"
+            path="/top-apps"
           />
-          <BottomNavigationAction
-            icon={getIcon(
-              '/categories',
-              Category,
-              CategoryOutlined
-            )}
+          <NavigationItem
+            Filled={Category}
+            Outlined={CategoryOutlined}
             label="Categories"
-            value="/categories"
+            path="/categories"
           />
-          <BottomNavigationAction
-            icon={getIcon(
-              './accountCircle',
-              AccountCircle,
-              AccountCircleOutlined
-            )}
+          <NavigationItem
+            Filled={AccountCircle}
+            Outlined={AccountCircleOutlined}
             label="Profile"
-            value="/profile"
+            path="/profile"
           />
         </BottomNavigation>
       </AppBar>
-    </Slide>
+    </HideOnScroll>
   )
 }
 

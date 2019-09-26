@@ -9,29 +9,29 @@ const siteMetadata = {
   author: '@brettm12345',
 }
 
-const applications = `{
-  yelli {
-    applications(where: { published: { equals: true }}) {
-      objectID: id
-      icon {
-        fixed(width: 50, height: 50) {
-          width
-          height
-          src
-          srcSet
-          srcWebp
-          srcSetWebp
-        }
-      }
-      category {
-        name
-      }
-      description
-      slug
-      title
-    }
-  }
-}`
+// const applications = `{
+//   yelli {
+//     applications(where: { published: { equals: true }}) {
+//       objectID: id
+//       icon {
+//         fixed(width: 50, height: 50) {
+//           width
+//           height
+//           src
+//           srcSet
+//           srcWebp
+//           srcSetWebp
+//         }
+//       }
+//       category {
+//         name
+//       }
+//       description
+//       slug
+//       title
+//     }
+//   }
+// }`
 
 module.exports = {
   siteMetadata,
