@@ -12,7 +12,7 @@ export default ({ element }) => (
     <ApolloProvider client={client}>
       <SnackbarProvider
         anchorOrigin={{
-          horizontal: 'right',
+          horizontal: 'center',
           vertical: 'bottom',
         }}
         classes={{
