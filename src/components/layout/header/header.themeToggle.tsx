@@ -34,7 +34,7 @@ const ThemeToggle: React.FC = () => {
             css={{ display: 'flex' }}
             exit={{ opacity: 0, y: 10 }}
             key={String(valueState)}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.3 }}
           >
             {valueState ? <DarkIcon /> : <LightIcon />}
           </motion.div>

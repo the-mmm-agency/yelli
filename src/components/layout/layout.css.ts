@@ -11,7 +11,6 @@ const Content = styled.main`
     @media all and (display-mode: standalone) {
       padding-bottom: 64px;
     }
-    padding-bottom: 100px;
   }
 
   ${up('md')} {
