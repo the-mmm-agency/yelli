@@ -23,10 +23,10 @@ const Navigation: React.FC<PathnameProps> = ({
 }) => {
   const handleChange = (
     event: React.MouseEvent<HTMLButtonElement>,
-    newValue: string
+    value: string
   ): void => {
     event.preventDefault()
-    navigate(newValue, { replace: true })
+    navigate(value, { replace: true })
   }
   return (
     <HideOnScroll direction="up">
@@ -36,28 +36,36 @@ const Navigation: React.FC<PathnameProps> = ({
           value={pathname}
         >
           <NavigationItem
-            Filled={Home}
-            Outlined={HomeOutlined}
+            icon={{
+              default: Home,
+              selected: HomeOutlined,
+            }}
             label="Home"
-            path="/"
+            value="/"
           />
           <NavigationItem
-            Filled={Poll}
-            Outlined={PollOutlined}
+            icon={{
+              default: Poll,
+              selected: PollOutlined,
+            }}
             label="Top Apps"
-            path="/top-apps"
+            value="/top-apps"
           />
           <NavigationItem
-            Filled={Category}
-            Outlined={CategoryOutlined}
+            icon={{
+              default: Category,
+              selected: CategoryOutlined,
+            }}
             label="Categories"
-            path="/categories"
+            value="/categories"
           />
           <NavigationItem
-            Filled={AccountCircle}
-            Outlined={AccountCircleOutlined}
+            icon={{
+              default: AccountCircle,
+              selected: AccountCircleOutlined,
+            }}
             label="Profile"
-            path="/profile"
+            value="/profile"
           />
         </BottomNavigation>
       </AppBar>

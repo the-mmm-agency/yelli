@@ -1,32 +1,25 @@
 import { BottomNavigationAction } from '@material-ui/core'
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
-import { Location } from '@reach/router'
 import React from 'react'
 
-interface Props
-  extends Record<
-    'Filled' | 'Outlined',
+interface Props {
+  label: React.ReactNode
+  icon: Record<
+    'default' | 'selected',
     React.ComponentType<SvgIconProps>
-  > {
-  path: string
-  label: string
+  >
+  selected?: boolean
+  value: string
 }
 
 const NavigationItem: React.FC<Props> = ({
-  Filled,
-  Outlined,
-  path,
-  label,
-}) => (
-  <Location>
-    {({ location: { pathname } }) => (
-      <BottomNavigationAction
-        icon={path === pathname ? <Filled /> : <Outlined />}
-        label={label}
-        value={path}
-      />
-    )}
-  </Location>
-)
+  icon,
+  ...props
+}) => {
+  const Icon = icon[props.selected ? 'default' : 'selected']
+  return (
+    <BottomNavigationAction icon={<Icon />} {...props} />
+  )
+}
 
 export default NavigationItem
