@@ -26,11 +26,11 @@ export const LaunchApp = styled(Button).attrs({
 })`
   margin-top: ${spacing(1)};
   span {
+    font-size: ${pxToRem(13)};
     svg {
       width: 1.5em;
       height: 1.5em;
     }
-    font-size: ${pxToRem(13)};
   }
 `
 
