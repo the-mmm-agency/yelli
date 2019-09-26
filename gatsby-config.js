@@ -130,6 +130,7 @@ module.exports = {
     // Build/Hosting
     'gatsby-plugin-offline',
     'gatsby-plugin-preload-link-crossorigin',
+    'gatsby-plugin-netlify',
     'gatsby-plugin-netlify-cache',
   ],
 }

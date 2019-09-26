@@ -9,9 +9,6 @@ const noflash = createGlobalStyle`
   body.dark-mode {
     color: ${text.primary};
     background-color: ${background.default};
-    .MuiTypography-body1, .MuiTypography-body2, ::placeholder(), .MuiFormHelperText-contained,  .MuiInputLabel-outlined {
-      text-shadow: 0.01em 0 0 currentColor;
-    }
 
     .MuiDrawer-paper {
       background-color: ${background.paper};

@@ -6,33 +6,15 @@ import {
 } from 'mdi-material-ui'
 import React from 'react'
 import useDarkMode from 'use-dark-mode'
-import { useDebouncedCallback } from 'use-debounce/lib'
 
-const Icon: React.FC<{ isDark: boolean }> = ({
-  isDark,
-}) => (
-  <AnimatePresence exitBeforeEnter>
-    <motion.div
-      animate={{ opacity: 1, y: 0 }}
-      css={{ display: 'flex' }}
-      exit={{ opacity: 0, y: 10 }}
-      key={String(isDark)}
-      transition={{ duration: 0.6 }}
-    >
-      {isDark ? <DarkIcon /> : <LightIcon />}
-    </motion.div>
-  </AnimatePresence>
-)
+import { useBoolean } from 'src/hooks/useBoolean'
 
 const ThemeToggle: React.FC = () => {
   const { toggle, value } = useDarkMode()
-  const [handleClick] = useDebouncedCallback(
-    (): void => {
-      toggle()
-    },
-    600,
-    { leading: true }
-  )
+  const {
+    toggle: toggleState,
+    value: valueState,
+  } = useBoolean(value)
   return (
     <Tooltip
       placement="bottom"
@@ -41,9 +23,22 @@ const ThemeToggle: React.FC = () => {
       <IconButton
         aria-label="Switch day/night theme"
         color="primary"
-        onClick={handleClick}
+        onClick={toggleState}
       >
-        <Icon isDark={value} />
+        <AnimatePresence
+          exitBeforeEnter
+          onExitComplete={toggle}
+        >
+          <motion.div
+            animate={{ opacity: 1, y: 0 }}
+            css={{ display: 'flex' }}
+            exit={{ opacity: 0, y: 10 }}
+            key={String(valueState)}
+            transition={{ duration: 0.6 }}
+          >
+            {valueState ? <DarkIcon /> : <LightIcon />}
+          </motion.div>
+        </AnimatePresence>
       </IconButton>
     </Tooltip>
   )

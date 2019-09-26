@@ -3,7 +3,7 @@ import overrides from './overrides.css'
 import scrollbars from './scrollbars.css'
 
 import { createGlobalStyle } from 'src/util/styled'
-import { palette } from 'src/util/theme'
+import { palette, transitions } from 'src/util/theme'
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -23,10 +23,18 @@ const GlobalStyle = createGlobalStyle`
     overflow-y: hidden;
   }
 
-  html,
-  body {
+  html, body {
     height: auto;
     overflow-x: hidden;
+  }
+
+  body,
+  .MuiAppBar-root,
+  .MuiDrawer-paper,
+  .MuiList-root,
+  .MuiInputBase-root,
+  .MuiDivider-root {
+    ${transitions(['background-color', 'color'])};
   }
 
   body {
