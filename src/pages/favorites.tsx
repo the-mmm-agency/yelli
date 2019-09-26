@@ -9,6 +9,31 @@ import AppList from 'src/templates/appList.template'
 import { AppProps, WithAppID } from 'src/types'
 import isBrowser from 'src/util/isBrowser'
 
+const FAVORITES = gql`
+  query favorites {
+    me {
+      favorites {
+        id
+        title
+        slug
+        category {
+          name
+        }
+        icon {
+          fixed(width: 50, height: 50) {
+            width
+            height
+            src
+            srcSet
+            srcWebp
+            srcSetWebp
+          }
+        }
+      }
+    }
+  }
+`
+
 const Favorites: React.FC = () => {
   if (!isBrowser()) return null
   useAuthRedirect()
@@ -16,35 +41,9 @@ const Favorites: React.FC = () => {
     me: {
       favorites: WithAppID<AppProps>[]
     }
-  }>(
-    gql`
-      query favorites {
-        me {
-          favorites {
-            id
-            title
-            slug
-            category {
-              name
-            }
-            icon {
-              fixed(width: 50, height: 50) {
-                width
-                height
-                src
-                srcSet
-                srcWebp
-                srcSetWebp
-              }
-            }
-          }
-        }
-      }
-    `,
-    {
-      ssr: false,
-    }
-  )
+  }>(FAVORITES, {
+    ssr: false,
+  })
   useEffect(() => {
     if (!loading) {
       refetch()

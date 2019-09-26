@@ -81,7 +81,7 @@ export const useFavorite = (
         } favorites`,
         {
           action,
-          autoHideDuration: 2000,
+          autoHideDuration: 1500,
         }
       )
     },
