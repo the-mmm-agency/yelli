@@ -2,6 +2,8 @@ import { BottomNavigationAction } from '@material-ui/core'
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import React from 'react'
 
+import { Link } from './navigation.item.css'
+
 interface Props {
   label: React.ReactNode
   icon: Record<
@@ -16,9 +18,15 @@ const NavigationItem: React.FC<Props> = ({
   icon,
   ...props
 }) => {
-  const Icon = icon[props.selected ? 'default' : 'selected']
+  const { selected, value } = props
+  const Icon = icon[selected ? 'default' : 'selected']
   return (
-    <BottomNavigationAction icon={<Icon />} {...props} />
+    <BottomNavigationAction
+      component={Link}
+      icon={<Icon />}
+      to={value}
+      {...props}
+    />
   )
 }
 
