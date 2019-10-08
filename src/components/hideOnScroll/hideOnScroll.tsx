@@ -10,7 +10,7 @@ const HideOnScroll: React.FC<Props> = ({
   direction = 'down',
   children,
 }) => {
-  const trigger = useScrollTrigger()
+  const trigger = useScrollTrigger({ threshold: 50 })
   return (
     <Slide
       appear={false}
