@@ -14,11 +14,7 @@ const TopApps: React.FC<Props> = ({
 export const query = graphql`
   {
     yelli {
-      applications(
-        first: 30
-        orderBy: { rank: asc }
-        where: { published: { equals: true } }
-      ) {
+      applications(first: 30, orderBy: rank_DESC) {
         ...Application
       }
     }

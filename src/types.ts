@@ -35,17 +35,18 @@ export type FeaturedAppProps = Pick<
   'description' | 'slug' | 'title' | 'banner'
 >
 
-export type PathnameProps = {
+export interface PathnameProps {
   pathname: string
 }
 
-export interface AppListBase {
-  applications: WithAppID<AppProps>[]
-}
+export type Applications<T = AppProps> = WithAppID<T>[]
 
-export type ThemeProp = {
-  theme: Theme
-}
+export type AppListBase = Record<
+  'applications',
+  Applications
+>
+
+export type ThemeProp = Record<'theme', Theme>
 
 export type AppList = WithYelli<AppListBase>
 
@@ -68,6 +69,7 @@ export interface AppTemplateProps
   pageContext: Node
 }
 
-export interface FeaturedAppList {
-  applications: WithAppID<FeaturedAppProps>[]
-}
+export type FeaturedAppList = Record<
+  'applications',
+  Applications<FeaturedAppProps>
+>

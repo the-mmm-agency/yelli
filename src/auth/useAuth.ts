@@ -3,21 +3,17 @@ import { useSnackbar } from 'notistack'
 import React from 'react'
 
 import { AuthContext } from './authProvider'
-import { AuthState, Maybe } from './authReducer'
+import { AuthState } from './authReducer'
 import { handleAuthResult } from './handleAuthResult'
 
 import isBrowser from 'src/util/isBrowser'
 
 export interface UseAuth
-  extends Pick<
-    AuthState,
-    'user' | 'authResult' | 'isAuthenticating'
-  > {
+  extends Pick<AuthState, 'authResult'> {
   login: () => void
   logout: () => void
   handleAuth: () => void
   isAuthenticated: () => boolean
-  userId: Maybe<string>
 }
 
 export const useAuth = (): UseAuth => {
@@ -46,7 +42,6 @@ export const useAuth = (): UseAuth => {
         if (
           (await handleAuthResult({
             apolloClient,
-            auth0Client,
             authResult,
             dispatch,
             error,
@@ -54,7 +49,6 @@ export const useAuth = (): UseAuth => {
           authResult &&
           authResult !== null
         ) {
-          dispatch({ type: 'TOGGLE_AUTHENTICATING' })
           navigate('/')
           enqueueSnackbar('Login success', {
             variant: 'success',
@@ -64,21 +58,14 @@ export const useAuth = (): UseAuth => {
     }
   }
 
-  const isAuthenticated = (): boolean => {
-    if (!isBrowser()) return false
-    return state.expiresOn
-      ? new Date().getTime() < state.expiresOn
-      : false
-  }
+  const isAuthenticated = (): boolean =>
+    isBrowser() && !!window.localStorage.getItem('token')
 
   return {
     authResult: state.authResult,
     handleAuth,
     isAuthenticated,
-    isAuthenticating: state.isAuthenticating,
     login,
     logout,
-    user: state.user,
-    userId: state.userId,
   }
 }

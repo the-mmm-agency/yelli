@@ -1,0 +1,3 @@
+query checkFavorite($id: ID!) {
+  hasFavorite(id: $id)
+}

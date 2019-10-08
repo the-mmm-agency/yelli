@@ -12,6 +12,31 @@ exports.onPreExtractQueries = async () => {
   )
 }
 
+exports.onCreateWebpackConfig = ({ actions }) => {
+  actions.setWebpackConfig({
+    resolve: {
+      extensions: [
+        'ts',
+        'tsx',
+        'json',
+        'js',
+        'jsx',
+        'gql',
+        'graphql',
+      ],
+    },
+    module: {
+      rules: [
+        {
+          test: /\.(graphql|gql)$/,
+          exclude: /node_modules/,
+          loader: 'graphql-tag/loader',
+        },
+      ],
+    },
+  })
+}
+
 exports.createPages = async ({
   actions: { createPage },
   graphql,

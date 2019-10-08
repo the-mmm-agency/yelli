@@ -1,0 +1,21 @@
+mutation createApp(
+  $category: String!
+  $description: String!
+  $icon: String!
+  $screenshots: [String!]
+  $slug: String!
+  $title: String!
+  $url: String!
+) {
+  createApplication(
+    category: $category
+    description: $description
+    icon: $icon
+    screenshots: $screenshots
+    slug: $slug
+    title: $title
+    url: $url
+  ) {
+    title
+  }
+}

@@ -9,29 +9,29 @@ const siteMetadata = {
   author: '@brettm12345',
 }
 
-// const applications = `{
-//   yelli {
-//     applications(where: { published: { equals: true }}) {
-//       objectID: id
-//       icon {
-//         fixed(width: 50, height: 50) {
-//           width
-//           height
-//           src
-//           srcSet
-//           srcWebp
-//           srcSetWebp
-//         }
-//       }
-//       category {
-//         name
-//       }
-//       description
-//       slug
-//       title
-//     }
-//   }
-// }`
+const applications = `{
+  yelli {
+    applications {
+      objectID: id
+      icon {
+        fixed(width: 50, height: 50) {
+          width
+          height
+          src
+          srcSet
+          srcWebp
+          srcSetWebp
+        }
+      }
+      category {
+        name
+      }
+      description
+      slug
+      title
+    }
+  }
+}`
 
 module.exports = {
   siteMetadata,
@@ -108,21 +108,21 @@ module.exports = {
         url: process.env.API_URL,
       },
     },
-    // {
-    //   resolve: 'gatsby-plugin-algolia',
-    //   options: {
-    //     appId: process.env.ALGOLIA_APP_ID,
-    //     apiKey: process.env.ALGOLIA_API_KEY,
-    //     indexName: process.env.ALGOLIA_INDEX_NAME,
-    //     queries: [
-    //       {
-    //         query: applications,
-    //         transformer: ({ data }) =>
-    //           data.yelli.applications,
-    //       },
-    //     ],
-    //   },
-    // },
+    {
+      resolve: 'gatsby-plugin-algolia',
+      options: {
+        appId: process.env.ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_API_KEY,
+        indexName: process.env.ALGOLIA_INDEX_NAME,
+        queries: [
+          {
+            query: applications,
+            transformer: ({ data }) =>
+              data.yelli.applications,
+          },
+        ],
+      },
+    },
 
     // Transformers
     'gatsby-transformer-sharp',

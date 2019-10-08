@@ -1,15 +1,24 @@
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
 import { setContext } from 'apollo-link-context'
+import { ErrorResponse, onError } from 'apollo-link-error'
+import { ServerError } from 'apollo-link-http-common'
 import { createUploadLink } from 'apollo-upload-client'
 import fetch from 'isomorphic-fetch'
 
 import isBrowser from 'src/util/isBrowser'
 
+const errorLink = onError((errors: ErrorResponse) => {
+  if (
+    errors.networkError &&
+    (errors.networkError as ServerError).statusCode === 401
+  ) {
+    window.localStorage.removeItem('token')
+  }
+})
+
 const authLink = setContext((_, { headers }) => {
-  // get the authentication token from local storage if it exists
   const token = window.localStorage.getItem('token')
-  // return the headers to the context so httpLink can read them
   return {
     headers: {
       ...headers,
@@ -22,11 +31,14 @@ const client = isBrowser()
   ? new ApolloClient({
       cache: new InMemoryCache(),
       link: authLink.concat(
-        createUploadLink({
-          fetch,
-          uri: process.env.API_URL,
-        })
+        errorLink.concat(
+          createUploadLink({
+            fetch,
+            uri: process.env.API_URL,
+          })
+        )
       ),
+      ssrMode: false,
     })
   : ({} as ApolloClient<any>)
 

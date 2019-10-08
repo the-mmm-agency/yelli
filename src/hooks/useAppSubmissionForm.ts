@@ -1,5 +1,4 @@
 import { useMutation } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import { useSnackbar } from 'notistack'
 import { FormEvent } from 'react'
 
@@ -11,29 +10,7 @@ import {
 } from './useFilePond'
 import { InputItem, useInput } from './useInput'
 
-const CREATE_APP = gql`
-  mutation createApp(
-    $category: String!
-    $description: String!
-    $icon: String!
-    $screenshots: [String!]
-    $slug: String!
-    $title: String!
-    $url: String!
-  ) {
-    createApplication(
-      category: $category
-      description: $description
-      icon: $icon
-      screenshots: $screenshots
-      slug: $slug
-      title: $title
-      url: $url
-    ) {
-      title
-    }
-  }
-`
+import CREATE_APP from 'src/graphql/createApp.mutation.gql'
 
 type OnSubmit = (event: FormEvent<HTMLFormElement>) => void
 

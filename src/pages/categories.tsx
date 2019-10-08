@@ -32,7 +32,7 @@ const Categories: React.FC<CategoriesProps> = ({
 )
 
 export const query = graphql`
-  query {
+  query categories {
     yelli {
       categories {
         ...CategoryCard

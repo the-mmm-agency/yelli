@@ -11,13 +11,9 @@ const New: React.FC<Props> = ({
 }) => <AppList apps={applications} name="New Apps" />
 
 export const query = graphql`
-  {
+  query new {
     yelli {
-      applications(
-        first: 30
-        orderBy: { createdAt: asc }
-        where: { published: { equals: true } }
-      ) {
+      applications(first: 30, orderBy: createdAt_ASC) {
         ...Application
       }
     }

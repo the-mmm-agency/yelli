@@ -1,0 +1,44 @@
+fragment Fixed on Fixed {
+  width
+  height
+  src
+  srcSet
+  srcWebp
+  srcSetWebp
+}
+
+fragment Fluid on Fluid {
+  aspectRatio
+  src
+  srcSet
+  srcWebp
+  srcSetWebp
+  sizes
+}
+
+fragment AppIcon on Image {
+  fixed(width: 50, height: 50) {
+    ...Fixed
+  }
+  fluid(maxWidth: 200) {
+    ...Fluid
+  }
+}
+
+fragment Application on Application {
+  id
+  title
+  slug
+  category {
+    name
+  }
+  icon {
+    ...AppIcon
+  }
+}
+
+query favorites {
+  favorites {
+    ...Application
+  }
+}

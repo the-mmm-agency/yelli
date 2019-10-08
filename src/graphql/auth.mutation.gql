@@ -1,0 +1,5 @@
+mutation auth($idToken: String!) {
+  authenticate(idToken: $idToken) {
+    id
+  }
+}

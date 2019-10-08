@@ -1,11 +1,13 @@
 import { useApolloClient } from '@apollo/react-hooks'
-import { ApolloClient, gql } from 'apollo-boost'
+import { ApolloClient } from 'apollo-boost'
 import { useState } from 'react'
 import {
   ActualFileObject,
   FilePondProps,
   ProgressServerConfigFunction,
 } from 'react-filepond'
+
+import UPLOAD from 'src/graphql/upload.mutation.gql'
 
 export type FilePond = FilePondProps & {
   serverId: string
@@ -20,13 +22,7 @@ const process = (
 ): void => {
   client
     .mutate({
-      mutation: gql`
-        mutation upload($file: Upload!) {
-          uploadImage(image: $file) {
-            id
-          }
-        }
-      `,
+      mutation: UPLOAD,
       variables: {
         file,
       },

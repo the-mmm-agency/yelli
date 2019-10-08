@@ -49,30 +49,17 @@ const Home: React.FC<Props> = ({
 export const query = graphql`
   {
     featured: yelli {
-      applications(
-        where: {
-          featured: { equals: true }
-          published: { equals: true }
-        }
-      ) {
+      applications(where: { featured: true }) {
         ...FeaturedApp
       }
     }
     latest: yelli {
-      applications(
-        first: 15
-        orderBy: { createdAt: asc }
-        where: { published: { equals: true } }
-      ) {
+      applications(first: 15, orderBy: createdAt_DESC) {
         ...Application
       }
     }
     top: yelli {
-      applications(
-        first: 15
-        orderBy: { rank: asc }
-        where: { published: { equals: true } }
-      ) {
+      applications(first: 15, orderBy: rank_DESC) {
         ...Application
       }
     }
