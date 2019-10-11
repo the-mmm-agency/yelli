@@ -2,6 +2,7 @@ import { graphql } from 'gatsby'
 
 export const fluid = graphql`
   fragment Fixed on Yelli_Fixed {
+    base64
     width
     height
     src
@@ -14,6 +15,7 @@ export const fluid = graphql`
 export const fixed = graphql`
   fragment Fluid on Yelli_Fluid {
     aspectRatio
+    base64
     src
     srcSet
     srcWebp

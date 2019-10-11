@@ -5,10 +5,10 @@ import { Star as StarBase } from '@material-ui/icons'
 import styled from 'src/util/styled'
 
 export const IconButton = styled(MuiIconButton)`
+  min-width: 3rem;
+  min-height: 3rem;
   margin-top: -0.6rem;
   margin-left: -0.1rem;
-  min-height: 3rem;
-  min-width: 3rem;
 `
 
 export const Star = styled(StarBase)`

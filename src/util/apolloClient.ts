@@ -1,19 +1,22 @@
 import { InMemoryCache } from 'apollo-cache-inmemory'
 import { ApolloClient } from 'apollo-client'
 import { setContext } from 'apollo-link-context'
-import { ErrorResponse, onError } from 'apollo-link-error'
-import { ServerError } from 'apollo-link-http-common'
+import { onError } from 'apollo-link-error'
 import { createUploadLink } from 'apollo-upload-client'
 import fetch from 'isomorphic-fetch'
+import { oc } from 'ts-optchain'
 
 import isBrowser from 'src/util/isBrowser'
 
-const errorLink = onError((errors: ErrorResponse) => {
-  if (
-    errors.networkError &&
-    (errors.networkError as ServerError).statusCode === 401
-  ) {
-    window.localStorage.removeItem('token')
+const errorLink = onError(({ graphQLErrors }) => {
+  if (graphQLErrors) {
+    // eslint-disable-next-line fp/no-loops
+    for (const err of graphQLErrors) {
+      switch (oc(err).extensions.code()) {
+        case 'UNAUTHENTICATED':
+          window.localStorage.removeItem('token')
+      }
+    }
   }
 })
 
@@ -29,7 +32,18 @@ const authLink = setContext((_, { headers }) => {
 
 const client = isBrowser()
   ? new ApolloClient({
-      cache: new InMemoryCache(),
+      cache: new InMemoryCache({
+        cacheRedirects: {
+          Query: {
+            me: (_parent, _args, { getCacheKey }) => ({
+              favorites: getCacheKey({
+                __typename: 'User',
+              }),
+              ...getCacheKey({ __typename: 'User' }),
+            }),
+          },
+        },
+      }),
       link: authLink.concat(
         errorLink.concat(
           createUploadLink({

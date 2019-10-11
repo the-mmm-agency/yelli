@@ -15,6 +15,7 @@ const applications = `{
       objectID: id
       icon {
         fixed(width: 50, height: 50) {
+          base64
           width
           height
           src

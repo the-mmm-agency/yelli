@@ -1,6 +1,7 @@
 import { useQuery } from '@apollo/react-hooks'
 import { CircularProgress } from '@material-ui/core'
 import React from 'react'
+import { oc } from 'ts-optchain'
 
 import Flex from 'src/elements/flex'
 import FAVORITES from 'src/graphql/favorites.query.gql'
@@ -13,19 +14,25 @@ const Favorites: React.FC = () => {
   if (!isBrowser()) return null
 
   useAuthRedirect()
-  const { data, loading } = useQuery<
-    Record<'favorites', Applications>
-  >(FAVORITES)
+  const favorites = oc(
+    useQuery<{ me: { favorites: Applications } }>(
+      FAVORITES,
+      {
+        fetchPolicy: 'cache-and-network',
+        partialRefetch: true,
+      }
+    )
+  ).data.me.favorites()
 
-  return loading || !data || !data.favorites ? (
+  return favorites ? (
+    <AppList apps={favorites} name="Favorites" />
+  ) : (
     <Flex height="75vh">
       <CircularProgress
         css={{ margin: 'auto' }}
         size="5vw"
       />
     </Flex>
-  ) : (
-    <AppList apps={data.favorites} name="Favorites" />
   )
 }
 

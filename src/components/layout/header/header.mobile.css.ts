@@ -10,9 +10,9 @@ import { borders, spacing } from 'src/util/theme'
 
 export const AppBar = styled(MuiAppBar)`
   ${hidden({ up: 'md' })}
-  border-bottom: ${borders('standard')};
   width: 100%;
   margin-left: 0;
+  border-bottom: ${borders('standard')};
 `
 
 export const BackButton = styled(IconButton)<{

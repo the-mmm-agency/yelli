@@ -1,6 +1,8 @@
 import React from 'react'
 import { Helmet, HelmetProps } from 'react-helmet'
 
+import PreloadFont, { Weight } from './seo.preloadFont'
+
 import { useSiteMetadata } from 'src/hooks/useSiteMetadata'
 
 type SeoProps = Partial<{
@@ -74,24 +76,11 @@ const SEO: React.FC<SeoProps> = ({
       title={title}
       titleTemplate={`%s | ${siteMetadata.title}`}
     >
-      <link
-        as="font"
-        href="/fonts/jost-regular.woff2"
-        rel="preload"
-        type="font/woff2"
-      />
-      <link
-        as="font"
-        href="/fonts/jost-medium.woff2"
-        rel="preload"
-        type="font/woff2"
-      />
-      <link
-        as="font"
-        href="/fonts/jost-semibold.woff2"
-        rel="preload"
-        type="font/woff2"
-      />
+      {(['regular', 'medium', 'semibold'] as Weight[]).map(
+        weight => (
+          <PreloadFont key={weight} weight={weight} />
+        )
+      )}
     </Helmet>
   )
 }

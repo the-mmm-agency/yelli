@@ -21,7 +21,10 @@ const Category: React.FC<CategoryTemplateProps> = ({
   }
   const theme = useTheme()
   const matches = useMediaQuery(
-    theme.breakpoints.down('sm')
+    theme.breakpoints.down('sm'),
+    {
+      defaultMatches: false,
+    }
   )
   return matches ? <List {...props} /> : <Grid {...props} />
 }

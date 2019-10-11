@@ -1,11 +1,12 @@
 import { useApolloClient } from '@apollo/react-hooks'
-import { useSnackbar } from 'notistack'
+import { navigate } from 'gatsby'
 import React from 'react'
 
 import { AuthContext } from './authProvider'
 import { AuthState } from './authReducer'
 import { handleAuthResult } from './handleAuthResult'
 
+import { useSnackbar } from 'src/hooks/useSnackbar'
 import isBrowser from 'src/util/isBrowser'
 
 export interface UseAuth
@@ -22,10 +23,9 @@ export const useAuth = (): UseAuth => {
     dispatch,
     auth0Client,
     callbackDomain,
-    navigate,
   } = React.useContext(AuthContext)
   const apolloClient = useApolloClient()
-  const { enqueueSnackbar } = useSnackbar()
+  const { enqueue } = useSnackbar()
 
   const login = (): void => {
     auth0Client.authorize()
@@ -37,7 +37,7 @@ export const useAuth = (): UseAuth => {
   }
 
   const handleAuth = (): void => {
-    if (isBrowser()) {
+    if (isBrowser())
       auth0Client.parseHash(async (error, authResult) => {
         if (
           (await handleAuthResult({
@@ -50,12 +50,11 @@ export const useAuth = (): UseAuth => {
           authResult !== null
         ) {
           navigate('/')
-          enqueueSnackbar('Login success', {
+          enqueue('Login success', {
             variant: 'success',
           })
         }
       })
-    }
   }
 
   const isAuthenticated = (): boolean =>

@@ -4,7 +4,7 @@ import React from 'react'
 
 const FavoriteAction: React.ReactNode = (
   <Button
-    color="primary"
+    color="secondary"
     onClick={(): void => {
       navigate('/favorites')
     }}

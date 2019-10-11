@@ -1,5 +1,4 @@
 import { useMutation } from '@apollo/react-hooks'
-import { useSnackbar } from 'notistack'
 import { FormEvent } from 'react'
 
 import {
@@ -11,6 +10,7 @@ import {
 import { InputItem, useInput } from './useInput'
 
 import CREATE_APP from 'src/graphql/createApp.mutation.gql'
+import { useSnackbar } from 'src/hooks/useSnackbar'
 
 type OnSubmit = (event: FormEvent<HTMLFormElement>) => void
 
@@ -29,16 +29,16 @@ type AppSubmissionForm = {
 export const useAppSubmissionForm = (
   onClose: () => void
 ): AppSubmissionForm => {
-  const { enqueueSnackbar } = useSnackbar()
+  const { enqueue } = useSnackbar()
   const [createApp, { loading }] = useMutation(CREATE_APP, {
     onCompleted: ({ createApplication: { title } }) => {
       onClose()
-      enqueueSnackbar(`Successfully created ${title}`, {
+      enqueue(`Successfully created ${title}`, {
         variant: 'success',
       })
     },
     onError: () => {
-      enqueueSnackbar(
+      enqueue(
         'There was an error creating your application',
         { variant: 'error' }
       )

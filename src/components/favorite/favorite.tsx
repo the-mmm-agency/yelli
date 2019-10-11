@@ -17,18 +17,18 @@ const Favorite: React.FC<FavoriteProps> = ({
   title,
 }) => {
   const { isAuthenticated } = useAuth()
-  const [value, toggle] = useFavorite(id, title)
+  const [hasFavorite, handleClick] = useFavorite(id, title)
   const label = `${
-    value ? 'Remove from' : 'Add to'
+    hasFavorite ? 'Remove from' : 'Add to'
   } favorites`
   return (
     <Tooltip title={label}>
       <IconButton
         aria-label={label}
         disabled={!isAuthenticated()}
-        onClick={toggle}
+        onClick={handleClick}
       >
-        {value ? <Star /> : <StarBorder />}
+        {hasFavorite ? <Star /> : <StarBorder />}
       </IconButton>
     </Tooltip>
   )

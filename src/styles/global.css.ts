@@ -16,7 +16,6 @@ const GlobalStyle = createGlobalStyle`
   html {
     overflow-y: scroll;
     text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: subpixel-antialiased !important;
   }
 
   html > * {

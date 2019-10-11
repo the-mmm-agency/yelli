@@ -1,3 +1,7 @@
 query checkFavorite($id: ID!) {
-  hasFavorite(id: $id)
+  application(where: { id: $id }) {
+    __typename
+    id
+    favorite
+  }
 }

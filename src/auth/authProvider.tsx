@@ -1,5 +1,10 @@
 import Auth0 from 'auth0-js'
-import React, { useEffect, useReducer } from 'react'
+import React, {
+  Dispatch,
+  ReactNode,
+  useEffect,
+  useReducer,
+} from 'react'
 
 import {
   AuthAction,
@@ -9,38 +14,30 @@ import {
 
 import isBrowser from 'src/util/isBrowser'
 
+const domain = process.env.AUTH0_DOMAIN as string
+const clientID = process.env.AUTH0_CLIENT_ID as string
 export interface AuthContext {
   state: AuthState
-  dispatch: React.Dispatch<AuthAction>
+  dispatch: Dispatch<AuthAction>
   auth0Client: Auth0.WebAuth
   callbackDomain: string
-  navigate: any
 }
 
 export const AuthContext = React.createContext<AuthContext>(
   {} as AuthContext
 )
 
-export interface AuthProvider {
-  auth0Domain: string
-  auth0ClientId: string
-  navigate: any
-  children: React.ReactNode
-}
-
-export const AuthProvider: React.FC<AuthProvider> = ({
-  auth0Domain,
-  auth0ClientId,
-  navigate,
-  children,
-}) => {
+export const AuthProvider: React.FC<{
+  children: ReactNode
+}> = ({ children }) => {
   const callbackDomain = isBrowser()
     ? `${window.location.protocol}//${window.location.host}`
     : 'http://localhost:3000'
+
   const auth0Client = new Auth0.WebAuth({
-    audience: `https://${auth0Domain}/api/v2/`,
-    clientID: auth0ClientId,
-    domain: auth0Domain,
+    audience: `https://${domain}/api/v2/`,
+    clientID,
+    domain,
     redirectUri: `${callbackDomain}/auth_callback`,
     responseType: 'token id_token',
     scope: 'openid profile email',
@@ -56,7 +53,6 @@ export const AuthProvider: React.FC<AuthProvider> = ({
     auth0Client,
     callbackDomain,
     dispatch,
-    navigate,
     state,
   })
 

@@ -5,16 +5,27 @@ import {
   TypeText,
 } from '@material-ui/core/styles/createPalette'
 
+declare module '@material-ui/core/useMediaQuery' {
+  export default function useMediaQuery(
+    query: string | ((theme: Theme) => string),
+    options?: Options
+  ): boolean
+}
+
 declare module '@material-ui/core/styles/createPalette' {
-  interface TypeValidation {
-    warning: string
-    error: string
-    success: string
-    info: string
-  }
-  interface TypeText {
-    alt?: string
-    placeholder?: string
+  export type SnackbarVariant =
+    | 'default'
+    | 'success'
+    | 'info'
+    | 'warning'
+    | 'error'
+  export type Validation = Record<
+    string,
+    Omit<'default', SnackbarVariant>
+  >
+  export interface TypeText {
+    alt: string
+    placeholder: string
   }
   export interface TypeBackground {
     darker: string
@@ -32,11 +43,8 @@ declare module '@material-ui/core/styles/createPalette' {
     scrollbar: TypeScrollbar
     validation: TypeValidation
   }
-  interface PaletteOptions {
-    border?: string
-    validation?: TypeValidation
+  interface PaletteOptions extends Partial<Palette> {
     modes?: PaletteModes
-    scrollbar?: Partial<TypeScrollbar>
   }
 }
 

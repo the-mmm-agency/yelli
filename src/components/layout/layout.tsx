@@ -6,6 +6,7 @@ import Content from './layout.css'
 import Navigation from './navigation'
 import PageTransition from './pageTransition'
 
+import Snackbar from 'src/components/snackbar'
 import { PathnameProps } from 'src/types'
 
 const Layout: React.FC<
@@ -17,6 +18,7 @@ const Layout: React.FC<
     <PageTransition pathname={pathname}>
       <Content>{children}</Content>
     </PageTransition>
+    <Snackbar />
     <Navigation pathname={pathname} />
   </>
 )

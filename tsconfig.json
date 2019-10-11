@@ -5,18 +5,14 @@
     "baseUrl": ".",
     "checkJs": true,
     "esModuleInterop": true,
-    "plugins": [
-      {
-        "name": "typescript-styled-plugin"
-      },
-      {
-        "name": "typescript-lit-html-plugin"
-      }
-    ],
     "jsx": "react",
     "lib": ["dom", "es2015", "es2017"],
     "module": "commonjs",
     "noEmit": true,
+    "plugins": [
+      { "transform": "ts-optchain/transform" },
+      { "name": "typescript-styled-plugin" }
+    ],
     "noImplicitAny": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
