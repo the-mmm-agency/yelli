@@ -36,7 +36,7 @@ const initial: Variant = {
 const PageTransition: React.FC<
   React.PropsWithChildren<PathnameProps>
 > = ({ children, pathname }) => (
-  <AnimatePresence>
+  <AnimatePresence exitBeforeEnter>
     <motion.div
       animate="enter"
       exit="exit"
