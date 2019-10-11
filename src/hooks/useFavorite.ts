@@ -18,7 +18,7 @@ export const useFavorite = (
   const { data } = useQuery<{
     application: { favorite: boolean }
   }>(CHECK_FAVORITE, {
-    fetchPolicy: 'cache-only',
+    fetchPolicy: 'cache-first',
     skip: !isAuthenticated(),
     variables: { id },
   })
