@@ -10,6 +10,12 @@ const overrides = css`
   .MuiList-root {
     background-color: ${palette('background.paper')};
   }
+  .MuiSkeleton-rect {
+    ${radii('default')}
+  }
+  .MuiSkeleton-text {
+    border-radius: 0;
+  }
   .MuiSnackbarContent-root {
     &.success {
       background-color: ${palette('validation.success')};

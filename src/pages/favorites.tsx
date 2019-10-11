@@ -1,9 +1,7 @@
 import { useQuery } from '@apollo/react-hooks'
-import { CircularProgress } from '@material-ui/core'
 import React from 'react'
 import { oc } from 'ts-optchain'
 
-import Flex from 'src/elements/flex'
 import FAVORITES from 'src/graphql/favorites.query.gql'
 import { useAuthRedirect } from 'src/hooks/useAuthRedirect'
 import AppList from 'src/templates/appList.template'
@@ -19,21 +17,11 @@ const Favorites: React.FC = () => {
       FAVORITES,
       {
         fetchPolicy: 'cache-and-network',
-        partialRefetch: true,
       }
     )
   ).data.me.favorites()
 
-  return favorites ? (
-    <AppList apps={favorites} name="Favorites" />
-  ) : (
-    <Flex height="75vh">
-      <CircularProgress
-        css={{ margin: 'auto' }}
-        size="5vw"
-      />
-    </Flex>
-  )
+  return <AppList apps={favorites} name="Favorites" />
 }
 
 export default Favorites

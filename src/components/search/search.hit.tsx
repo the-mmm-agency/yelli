@@ -27,6 +27,7 @@ const SearchHit: React.FC<Props> = ({
   selected,
 }) => (
   <MenuItem
+    dense
     component={Link}
     onClick={onClick}
     selected={selected}

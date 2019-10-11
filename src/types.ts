@@ -1,3 +1,5 @@
+import { CardProps } from '@material-ui/core/Card'
+import { ListItemProps } from '@material-ui/core/ListItem'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 
 import {
@@ -22,12 +24,18 @@ export interface AppComponentProps
 export interface AppProps
   extends Omit<AppComponentProps, 'handleClick'> {
   slug: string
+  CardProps?: CardProps
+  ListItemProps?: ListItemProps
   variant?: 'card' | 'list'
 }
 
 export interface AppPageProps {
-  apps: WithAppID<AppProps>[]
+  apps?: WithAppID<AppProps>[]
+  loading?: boolean
+  numberOfSkeletons?: number
   name: string
+  CardProps?: CardProps
+  ListItemProps?: ListItemProps
 }
 
 export type FeaturedAppProps = Pick<

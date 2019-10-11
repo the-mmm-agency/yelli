@@ -9,10 +9,16 @@ import { AppProps } from 'src/types'
 const Application: React.FC<AppProps> = ({
   variant = 'card',
   slug,
+  ListItemProps,
+  CardProps,
   ...props
 }) => {
   const Component = variant === 'list' ? ListItem : Card
-  return <Component to={`/app/${slug}`} {...props} />
+  const rest =
+    variant === 'list' ? ListItemProps : CardProps
+  return (
+    <Component to={`/app/${slug}`} {...props} {...rest} />
+  )
 }
 
 export const query = graphql`
