@@ -30,7 +30,6 @@ export const Wrapper = styled(motion.ul).attrs({
     position: absolute;
     width: 80vw;
     max-width: 50em;
-    overflow: hidden;
     border: ${borders('standard')};
     ${radii('default')};
     ${shadows(12)};

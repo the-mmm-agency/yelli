@@ -3,10 +3,14 @@ import {
   palette,
   pxToRem,
   radii,
+  sizes,
   spacing,
 } from 'src/util/theme'
 
 const overrides = css`
+  .MuiMenu-paper {
+    min-width: ${sizes('sideDrawer')};
+  }
   .MuiList-root {
     background-color: ${palette('background.paper')};
   }

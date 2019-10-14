@@ -16,6 +16,7 @@ export const FAVORITES = gql`
     me {
       favorites {
         ...Application
+        favorite
       }
     }
   }

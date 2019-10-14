@@ -7,13 +7,7 @@ import Img from 'gatsby-image'
 import AppIcon from 'src/components/appIcon'
 import HorizontalScroll from 'src/components/horizontalScroll'
 import styled from 'src/util/styled'
-import {
-  borders,
-  pxToRem,
-  radii,
-  spacing,
-  up,
-} from 'src/util/theme'
+import { borders, radii, spacing, up } from 'src/util/theme'
 
 export const Divider = styled(MuiDivider)`
   margin-bottom: ${spacing(2)};
@@ -24,14 +18,8 @@ export const LaunchApp = styled(Button).attrs({
   size: 'small',
   variant: 'outlined',
 })`
-  margin-top: ${spacing(1)};
-  span {
-    font-size: ${pxToRem(13)};
-    svg {
-      width: 1.5em;
-      height: 1.5em;
-    }
-  }
+  width: 10rem;
+  margin-top: auto;
 `
 
 export const Icon = styled(AppIcon)`

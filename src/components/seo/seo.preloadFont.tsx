@@ -7,18 +7,15 @@ export type Weight =
   | 'semibold'
   | 'bold'
 
-interface Props {
-  weight: Weight
-}
-
-const PreloadFont: React.FC<Props> = ({ weight }) => (
+const renderPreload = (weight: Weight): React.ReactNode => (
   <link
     as="font"
     crossOrigin="anonymous"
     href={`/fonts/jost-${weight}.woff2`}
+    key={weight}
     rel="preload"
     type="font/woff2"
   />
 )
 
-export default PreloadFont
+export default renderPreload

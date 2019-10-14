@@ -2,27 +2,21 @@
 
 import { SnackbarProps } from '@material-ui/core/Snackbar'
 import { SnackbarContentProps } from '@material-ui/core/SnackbarContent'
-import { SnackbarVariant } from '@material-ui/core/styles/createPalette'
 import createUseContext from 'constate'
 import { ReactNode } from 'react'
 import { useArray, useBoolean } from 'react-hanger'
-import { oc } from 'ts-optchain'
 
 type Snack = Omit<
   SnackbarProps,
-  'open' | 'onClose' | 'onExit'
->
+  'open' | 'onClose' | 'onExit' | 'message'
+> &
+  SnackbarContentProps
 
 interface SnackOptions extends Omit<Snack, 'message'> {
-  key: string | number
-  variant: SnackbarVariant
-  persist: boolean
-  preventDuplicate: boolean
   children: ReactNode
-  action: SnackbarContentProps['action']
 }
 
-type Enqueue = (
+export type Enqueue = (
   message: string,
   options?: Partial<SnackOptions>
 ) => void
@@ -55,17 +49,14 @@ const useSnackbar = (): SnackbarContext => {
   }
 
   const enqueue: Enqueue = (message, options) => {
-    const args = oc(options)
-    queue.push(({
-      message,
-      ...options,
-      autoHideDuration: args.persist(undefined)
-        ? null
-        : args.autoHideDuration(undefined),
-    } as unknown) as Snack)
-    if (isOpen) close()
-    else if (snacks.length > 1) exit()
-    else open()
+    if (!snacks.find(snack => snack.message === message)) {
+      queue.push({
+        message,
+        ...options,
+      })
+      if (snacks.length > 1) exit()
+      else open()
+    }
   }
 
   return {

@@ -36,6 +36,7 @@ const SearchHit: React.FC<Props> = ({
     <Icon>
       <Img
         alt={`${hit.title} icon`}
+        fadeIn={false}
         fixed={hit.icon.fixed}
       />
     </Icon>

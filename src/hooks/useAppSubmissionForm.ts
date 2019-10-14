@@ -30,21 +30,6 @@ export const useAppSubmissionForm = (
   onClose: () => void
 ): AppSubmissionForm => {
   const { enqueue } = useSnackbar()
-  const [createApp, { loading }] = useMutation(CREATE_APP, {
-    onCompleted: ({ createApplication: { title } }) => {
-      onClose()
-      enqueue(`Successfully created ${title}`, {
-        variant: 'success',
-      })
-    },
-    onError: () => {
-      enqueue(
-        'There was an error creating your application',
-        { variant: 'error' }
-      )
-    },
-  })
-
   const category = useInput()
   const description = useInput('')
   const icon = useFilePond()
@@ -52,6 +37,16 @@ export const useAppSubmissionForm = (
   const slug = useInput('')
   const title = useInput('')
   const url = useInput('')
+
+  const [createApp, { loading }] = useMutation(CREATE_APP, {
+    onCompleted: ({ createApplication: { title } }) => {
+      onClose()
+      enqueue(`Created ${title}`)
+    },
+    onError: () => {
+      enqueue(`Error creating ${title}`)
+    },
+  })
 
   const onSubmit: OnSubmit = event => {
     event.preventDefault()

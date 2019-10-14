@@ -1,6 +1,6 @@
 import {
   IconButton,
-  NoSsr,
+  Menu,
   Tooltip,
 } from '@material-ui/core'
 import { AccountCircleOutlined as UserIcon } from '@material-ui/icons'
@@ -11,7 +11,6 @@ import {
 } from 'material-ui-popup-state/hooks'
 import React from 'react'
 
-import { Menu } from './userMenu.css'
 import Items from './userMenu.items'
 
 const UserMenu: React.FC = () => {
@@ -33,11 +32,9 @@ const UserMenu: React.FC = () => {
           <UserIcon />
         </IconButton>
       </Tooltip>
-      <NoSsr defer>
-        <Menu {...bindMenu(popupState)}>
-          <Items />
-        </Menu>
-      </NoSsr>
+      <Menu {...bindMenu(popupState)}>
+        <Items />
+      </Menu>
     </>
   )
 }

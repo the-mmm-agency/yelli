@@ -51,6 +51,8 @@ export const Category = styled(Typography).attrs({
 export const Icon = styled(ListItemIcon)`
   margin-right: ${spacing(3)};
   img {
+    width: 50px;
+    height: 50px;
     ${radii('heavy')};
   }
 `

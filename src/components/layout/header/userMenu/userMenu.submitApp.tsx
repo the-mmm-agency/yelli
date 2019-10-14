@@ -1,4 +1,3 @@
-import { NoSsr } from '@material-ui/core'
 import { PencilBoxOutline as Pencil } from 'mdi-material-ui'
 import React from 'react'
 
@@ -16,12 +15,10 @@ const SubmitAppItem: React.FC = () => {
         onClick={open.setTrue}
         text="Submit your app"
       />
-      <NoSsr>
-        <SubmitApp
-          onClose={open.setFalse}
-          open={open.value}
-        />
-      </NoSsr>
+      <SubmitApp
+        onClose={open.setFalse}
+        open={open.value}
+      />
     </>
   )
 }

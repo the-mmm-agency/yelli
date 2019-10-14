@@ -1,10 +1,11 @@
-import { Button } from '@material-ui/core'
 import Auth0 from 'auth0-js'
 import React, {
   Dispatch,
   ReactNode,
+  createContext,
   useEffect,
   useReducer,
+  useState,
 } from 'react'
 
 import {
@@ -12,7 +13,6 @@ import {
   AuthState,
   authReducer,
 } from './authReducer'
-import { handleAuthResult } from './handleAuthResult'
 
 import { useSnackbar } from 'src/hooks/useSnackbar'
 import isBrowser from 'src/util/isBrowser'
@@ -26,9 +26,17 @@ export interface AuthContext {
   callbackDomain: string
 }
 
-export const AuthContext = React.createContext<AuthContext>(
-  {} as AuthContext
-)
+const DEFAULT_STATE = {
+  authResult: null,
+  expiresAt: null,
+  isAuthenticating: false,
+}
+export const AuthContext = createContext<AuthContext>({
+  auth0: (null as unknown) as Auth0.WebAuth,
+  callbackDomain: 'http://localhost:8000',
+  dispatch: () => {},
+  state: DEFAULT_STATE,
+})
 
 export const AuthProvider: React.FC<{
   children: ReactNode
@@ -49,13 +57,12 @@ export const AuthProvider: React.FC<{
 
   const { enqueue } = useSnackbar()
 
-  const [state, dispatch] = useReducer(authReducer, {
-    authResult: null,
-    expiresAt: null,
-    isAuthenticating: false,
-  })
+  const [state, dispatch] = useReducer(
+    authReducer,
+    DEFAULT_STATE
+  )
 
-  const [contextValue, setContextValue] = React.useState<
+  const [contextValue, setContextValue] = useState<
     AuthContext
   >({
     auth0,
@@ -65,38 +72,37 @@ export const AuthProvider: React.FC<{
   })
 
   useEffect(() => {
-    setContextValue({ ...contextValue, state })
+    setContextValue((contextValue: AuthContext) => ({
+      ...contextValue,
+      state,
+    }))
   }, [state])
 
   useEffect(() => {
-    if (isBrowser() && !state.isAuthenticating) {
+    if (
+      isBrowser() &&
+      !state.isAuthenticating &&
+      !!window.localStorage.getItem('token')
+    ) {
       dispatch({ type: 'START_AUTHENTICATING' })
-      auth0.checkSession({}, (err, authResult) => {
-        if (err) {
-          enqueue('Silent auth failed. Login required', {
-            action: (
-              <Button
-                color="secondary"
-                onClick={() => {
-                  auth0.authorize({
-                    scope: 'offline_access',
-                  })
-                }}
-              >
-                login
-              </Button>
-            ),
+      auth0.checkSession({}, (error, authResult) => {
+        if (error) {
+          dispatch({
+            auth0,
+            enqueue,
+            error,
+            errorType: 'checkSession',
+            type: 'AUTH_ERROR',
           })
         } else {
-          handleAuthResult({
+          dispatch({
             authResult,
-            dispatch,
+            type: 'LOGIN_USER',
           })
         }
-        dispatch({ type: 'STOP_AUTHENTICATING' })
       })
     }
-  }, [isBrowser()])
+  }, [])
 
   return (
     <AuthContext.Provider value={contextValue}>

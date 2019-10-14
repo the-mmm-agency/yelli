@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet, HelmetProps } from 'react-helmet'
 
-import PreloadFont, { Weight } from './seo.preloadFont'
+import renderPreload, { Weight } from './seo.preloadFont'
 
 import { useSiteMetadata } from 'src/hooks/useSiteMetadata'
 
@@ -18,6 +18,11 @@ const SEO: React.FC<SeoProps> = ({
   meta = [],
   title,
 }) => {
+  const preloadWeights: Weight[] = [
+    'regular',
+    'medium',
+    'semibold',
+  ]
   const siteMetadata = useSiteMetadata()
   const metaDescription =
     description || siteMetadata.description
@@ -76,11 +81,7 @@ const SEO: React.FC<SeoProps> = ({
       title={title}
       titleTemplate={`%s | ${siteMetadata.title}`}
     >
-      {(['regular', 'medium', 'semibold'] as Weight[]).map(
-        weight => (
-          <PreloadFont key={weight} weight={weight} />
-        )
-      )}
+      {preloadWeights.map(weight => renderPreload(weight))}
     </Helmet>
   )
 }

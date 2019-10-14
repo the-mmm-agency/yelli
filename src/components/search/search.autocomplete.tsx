@@ -23,7 +23,7 @@ const Autocomplete: React.FC<Props> = ({
   hits,
 }) => {
   const inputRef = useRef<HTMLInputElement>(null)
-  const selected = useNumber(-1, {
+  const selected = useNumber(0, {
     loop: true,
     lowerLimit: 0,
     upperLimit: hits.length - 1,
@@ -38,10 +38,10 @@ const Autocomplete: React.FC<Props> = ({
   }
 
   const handleReturn = (): void => {
-    if (selected.value > -1) {
-      navigate(`/app/${hits[selected.value].slug}`)
-      handleClick()
-    }
+    const slug =
+      hits[selected.value === -1 ? 0 : selected.value].slug
+    navigate(`/app/${slug}`)
+    handleClick()
   }
 
   useHotkeys('/, s', event => {

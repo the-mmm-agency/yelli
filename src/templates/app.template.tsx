@@ -53,15 +53,13 @@ const AppTemplate: React.FC<AppTemplateProps> = ({
           >
             {category.name}
           </Typography>
-          <LaunchApp href={url}>
-            <OpenIcon fontSize="inherit" />
+          <LaunchApp href={url} startIcon={<OpenIcon />}>
             &nbsp; Launch App
           </LaunchApp>
         </Flex>
       </Flex>
       <Typography
         component="p"
-        itemProp="description"
         maxWidth={{ md: 0.5, xs: 0.8 }}
         ml={{ sm: 5, xs: 4 }}
         my={{ sm: 3, xs: 2 }}
