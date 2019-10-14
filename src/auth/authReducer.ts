@@ -1,11 +1,11 @@
 import { Auth0DecodedHash, Auth0Error } from 'auth0-js'
 
-export type Maybe<T> = T | null
-
 export type AuthState = {
-  authResult: Maybe<Auth0DecodedHash>
-  error?: Maybe<Error | Auth0Error>
-  errorType?: Maybe<string>
+  authResult: Auth0DecodedHash | null
+  isAuthenticating: boolean
+  expiresAt: number | null
+  error?: Error | Auth0Error | null
+  errorType?: string | null
 }
 
 export type AuthAction =
@@ -14,7 +14,8 @@ export type AuthAction =
       authResult: Auth0DecodedHash
     }
   | { type: 'LOGOUT_USER' }
-  | { type: 'TOGGLE_AUTHENTICATING' }
+  | { type: 'START_AUTHENTICATING' }
+  | { type: 'STOP_AUTHENTICATING' }
   | { type: 'SET_USER_ID'; id: string }
   | {
       type: 'AUTH_ERROR'
@@ -38,6 +39,16 @@ export const authReducer = (
       return {
         ...state,
         authResult: null,
+      }
+    case 'START_AUTHENTICATING':
+      return {
+        ...state,
+        isAuthenticating: true,
+      }
+    case 'STOP_AUTHENTICATING':
+      return {
+        ...state,
+        isAuthenticating: false,
       }
     case 'AUTH_ERROR':
       const { errorType, error } = action

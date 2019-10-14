@@ -1,57 +1,31 @@
-import { ApolloClient } from 'apollo-boost'
 import Auth0, {
   Auth0DecodedHash,
   Auth0Error,
 } from 'auth0-js'
+import { oc } from 'ts-optchain'
 
-import { AuthAction, Maybe } from './authReducer'
-
-import { AUTH } from 'src/graphql/mutations'
+import { AuthAction } from './authReducer'
 
 export interface HandleAuthTokenOptions {
   dispatch: React.Dispatch<AuthAction>
-  error?: Maybe<Auth0Error | Auth0.Auth0ParseHashError>
-  apolloClient: ApolloClient<any>
-  authResult: Maybe<Auth0DecodedHash>
+  error?: Auth0Error | Auth0.Auth0ParseHashError | null
+  authResult: Auth0DecodedHash | null
 }
 
-export const handleAuthResult = async ({
+export const handleAuthResult = ({
   dispatch,
-  apolloClient,
   error,
   authResult,
-}: HandleAuthTokenOptions): Promise<boolean | void> => {
-  if (
-    authResult &&
-    authResult.accessToken &&
-    authResult.idToken
-  ) {
-    try {
-      await apolloClient.mutate({
-        mutation: AUTH,
-        variables: {
-          idToken: authResult.idToken,
-        },
-      })
-      window.localStorage.setItem(
-        'token',
-        authResult.idToken
-      )
-      return true
-    } catch (error_) {
-      dispatch({
-        error: error_,
-        errorType: 'handleAuthResult',
-        type: 'AUTH_ERROR',
-      })
-      return false
-    }
-  } else if (error) {
-    dispatch({
-      error,
-      errorType: 'handleAuthResult',
-      type: 'AUTH_ERROR',
-    })
+}: HandleAuthTokenOptions): string | false => {
+  const { idToken } = oc(authResult)
+  if (idToken()) {
+    window.localStorage.setItem('token', idToken(''))
+    return idToken('')
   }
+  dispatch({
+    error: error || new Error('No Token'),
+    errorType: 'handleAuthResult',
+    type: 'AUTH_ERROR',
+  })
   return false
 }

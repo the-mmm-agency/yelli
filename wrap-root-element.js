@@ -8,12 +8,10 @@ import { AuthProvider } from './src/auth'
 
 export default ({ element }) => (
   <ThemeProvider>
-    <ApolloProvider client={client}>
-      <AuthProvider>
-        <useSnackbar.Provider>
-          {element}
-        </useSnackbar.Provider>
-      </AuthProvider>
-    </ApolloProvider>
+    <useSnackbar.Provider>
+      <ApolloProvider client={client}>
+        <AuthProvider>{element}</AuthProvider>
+      </ApolloProvider>
+    </useSnackbar.Provider>
   </ThemeProvider>
 )
