@@ -1,4 +1,4 @@
-import { useMediaQuery, useTheme } from '@material-ui/core'
+import { Hidden } from '@material-ui/core'
 import { graphql } from 'gatsby'
 import React, { memo } from 'react'
 
@@ -19,14 +19,16 @@ const Category: React.FC<CategoryTemplateProps> = ({
     apps: applications,
     name,
   }
-  const theme = useTheme()
-  const matches = useMediaQuery(
-    theme.breakpoints.down('sm'),
-    {
-      defaultMatches: false,
-    }
+  return (
+    <>
+      <Hidden smDown implementation="css">
+        <Grid {...props} />
+      </Hidden>
+      <Hidden mdUp implementation="css">
+        <List {...props} />
+      </Hidden>
+    </>
   )
-  return matches ? <List {...props} /> : <Grid {...props} />
 }
 
 export const pageQuery = graphql`
