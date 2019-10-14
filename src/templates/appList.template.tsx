@@ -15,8 +15,8 @@ import { AppPageProps } from 'src/types'
 const AppList: React.FC<AppPageProps> = ({
   name,
   numberOfSkeletons = 20,
+  variant = 'list',
   apps,
-  ListItemProps,
 }) => (
   <>
     <SEO title={name} />
@@ -45,8 +45,7 @@ const AppList: React.FC<AppPageProps> = ({
         : apps.map(app => (
             <Application
               key={app.id}
-              ListItemProps={ListItemProps}
-              variant="list"
+              variant={variant}
               {...app}
             />
           ))}

@@ -7,7 +7,6 @@ import SEO from 'src/components/seo'
 import { AppPageProps } from 'src/types'
 
 const AppGrid: React.FC<AppPageProps> = ({
-  CardProps,
   name,
   apps,
 }) => (
@@ -24,11 +23,7 @@ const AppGrid: React.FC<AppPageProps> = ({
     >
       {apps &&
         apps.map(app => (
-          <Application
-            CardProps={CardProps}
-            key={app.id}
-            {...app}
-          />
+          <Application key={app.id} {...app} />
         ))}
     </Grid>
   </>

@@ -21,7 +21,7 @@ import {
 } from '@material-ui/core/styles/transitions'
 import { ZIndex } from '@material-ui/core/styles/zIndex'
 import facepaint from 'facepaint'
-import { has, path, prop, propOr } from 'ramda'
+import { path } from 'ramda'
 import { FlattenInterpolation } from 'styled-components'
 
 import { ThemeProp } from 'src/types'
@@ -76,25 +76,21 @@ type Transitions = (
 ) => PropFunc<Css>
 
 export const transitions: Transitions = (
-  value: string | string[],
+  value,
   options = {}
 ) => ({ theme: { transitions } }) => {
-  type GetOption = (
-    key: 'duration' | 'easing',
-    fallback: string
-  ) => string
-  const getOption: GetOption = (key, fallback) => {
-    const obj = prop(key, transitions)
-    if (has(key, options)) {
-      const option = prop(key, options) as string
-      return propOr(option, option, obj)
-    }
-    return propOr(fallback, fallback, obj)
-  }
+  const {
+    delay = 0,
+    duration = 'standard',
+    easing = 'easeInOut',
+  } = options
   const transition = transitions.create(value, {
-    delay: propOr(0, 'delay', options),
-    duration: getOption('duration', 'standard'),
-    easing: getOption('easing', 'easeInOut'),
+    delay,
+    duration:
+      transitions.duration[duration as keyof Duration] ||
+      duration,
+    easing:
+      transitions.easing[easing as keyof Easing] || easing,
   })
   return css`
     transition: ${transition};
@@ -105,26 +101,28 @@ export const transitions: Transitions = (
 export const pxToRem = (px: number): PropFunc => props =>
   props.theme.typography.pxToRem(px)
 
-export const spacing = (
-  ...args: number[]
-): PropFunc => props =>
-  args.map(x => `${props.theme.spacing(x)}px`).join(' ')
+export const spacing = (...args: number[]): PropFunc => ({
+  theme,
+}) => args.map(x => `${theme.spacing(x)}px`).join(' ')
 
 type MediaQuery = (value: Breakpoint) => PropFunc
 
-export const up: MediaQuery = value => props =>
-  props.theme.breakpoints.up(value)
+export const up: MediaQuery = value => ({
+  theme: { breakpoints },
+}) => breakpoints.up(value)
 
-export const down: MediaQuery = value => props =>
-  props.theme.breakpoints.down(value)
+export const down: MediaQuery = value => ({
+  theme: { breakpoints },
+}) => breakpoints.down(value)
 
 type Between = (
   lower: Breakpoint,
   upper: Breakpoint
 ) => PropFunc<string>
 
-export const between: Between = (lower, upper) => props =>
-  props.theme.breakpoints.between(lower, upper)
+export const between: Between = (lower, upper) => ({
+  theme: { breakpoints },
+}) => breakpoints.between(lower, upper)
 
 const paletteFunc = <T>(
   func: (color: string, value: T) => string

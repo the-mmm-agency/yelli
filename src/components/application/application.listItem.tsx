@@ -1,5 +1,6 @@
 import {
   ListItemIcon,
+  ListItemSecondaryAction,
   ListItemText,
 } from '@material-ui/core'
 import React, { memo } from 'react'
@@ -10,6 +11,7 @@ import Link from 'src/elements/link'
 import { AppComponentProps } from 'src/types'
 
 const AppListItem: React.FC<AppComponentProps> = ({
+  action,
   category,
   title,
   icon,
@@ -38,6 +40,11 @@ const AppListItem: React.FC<AppComponentProps> = ({
         variant: 'subtitle1',
       }}
     />
+    {action && (
+      <ListItemSecondaryAction>
+        {action}
+      </ListItemSecondaryAction>
+    )}
   </ListItem>
 )
 

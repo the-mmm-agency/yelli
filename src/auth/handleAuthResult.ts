@@ -6,7 +6,7 @@ import Auth0, {
 
 import { AuthAction, Maybe } from './authReducer'
 
-import AUTH from 'src/graphql/auth.mutation.gql'
+import { AUTH } from 'src/graphql/mutations'
 
 export interface HandleAuthTokenOptions {
   dispatch: React.Dispatch<AuthAction>

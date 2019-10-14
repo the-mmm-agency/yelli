@@ -2,7 +2,7 @@ import { useQuery } from '@apollo/react-hooks'
 import React from 'react'
 import { oc } from 'ts-optchain'
 
-import FAVORITES from 'src/graphql/favorites.query.gql'
+import { FAVORITES } from 'src/graphql/queries'
 import { useAuthRedirect } from 'src/hooks/useAuthRedirect'
 import AppList from 'src/templates/appList.template'
 import { Applications } from 'src/types'
@@ -21,7 +21,13 @@ const Favorites: React.FC = () => {
     )
   ).data.me.favorites()
 
-  return <AppList apps={favorites} name="Favorites" />
+  return (
+    <AppList
+      apps={favorites}
+      name="Favorites"
+      variant="favorite"
+    />
+  )
 }
 
 export default Favorites

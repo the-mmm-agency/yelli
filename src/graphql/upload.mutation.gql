@@ -1,5 +1,0 @@
-mutation upload($file: Upload!) {
-  upload(image: $file) {
-    id
-  }
-}

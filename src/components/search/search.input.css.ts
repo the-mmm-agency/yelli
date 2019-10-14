@@ -3,7 +3,6 @@ import {
   InputBase,
 } from '@material-ui/core'
 
-import { ThemeProp } from 'src/types'
 import styled from 'src/util/styled'
 import {
   borders,
@@ -23,16 +22,16 @@ export const Form = styled.form`
 `
 
 export const Kbd = styled.kbd`
-  padding: ${spacing(0.5)} 0.5em;
   margin: ${spacing(0.5)};
-  border: 1px solid ${fade('text.disabled', 0.6)};
+  padding: ${spacing(0.5)} 0.5em;
   color: ${palette('text.secondary')};
+  font-family: ${({ theme: { typography } }) =>
+    typography.fontFamily};
+  border: 1px solid ${fade('text.disabled', 0.6)};
   ${down('sm')} {
     opacity: 0;
   }
   ${radii('light')};
-  font-family: ${(props: ThemeProp) =>
-    props.theme.typography.fontFamily};
 `
 export const StartAdornment = styled(InputAdornment).attrs({
   position: 'start',
@@ -46,21 +45,21 @@ export const StartAdornment = styled(InputAdornment).attrs({
 `
 
 export const Input = styled(InputBase)`
-  padding: ${spacing(0.25)};
+  width: 100%;
   margin: 0 ${spacing(1)};
+  padding: ${spacing(0.25)};
   background-color: ${palette('background.darkest')};
   border: ${borders('standard')};
   ${radii('light')};
-  width: 100%;
   ${up('md')} {
     padding: ${spacing(0.5)};
     input {
+      width: 300px;
       &:hover,
       &:focus {
         width: 400px;
       }
       margin: 0;
-      width: 300px;
       ${transitions('width')};
     }
   }

@@ -1,3 +1,0 @@
-mutation favorite($id: ID!) {
-  toggleFavorite(id: $id)
-}

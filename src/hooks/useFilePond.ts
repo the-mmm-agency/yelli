@@ -7,7 +7,7 @@ import {
   ProgressServerConfigFunction,
 } from 'react-filepond'
 
-import UPLOAD from 'src/graphql/upload.mutation.gql'
+import { UPLOAD } from 'src/graphql/mutations'
 
 export type FilePond = FilePondProps & {
   serverId: string
@@ -60,7 +60,7 @@ export type FilePondMultiple = FilePondProps & {
 export const useFilePondMultiple = (): FilePondMultiple => {
   const [ids, setIds] = useState()
   const update = (id: string): void => {
-    setIds(Array.isArray(ids) ? [...ids, id] : [id])
+    setIds(Array.isArray(ids) ? [...ids, { id }] : [{ id }])
   }
   const client = useApolloClient()
   return {

@@ -1,6 +1,5 @@
-import { CardProps } from '@material-ui/core/Card'
-import { ListItemProps } from '@material-ui/core/ListItem'
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
+import { ReactNode } from 'react'
 
 import {
   Application,
@@ -18,24 +17,24 @@ export interface WithYelli<T> {
 
 export interface AppComponentProps
   extends Pick<Application, 'title' | 'icon' | 'category'> {
+  action?: ReactNode
   to: string
 }
 
+type AppVariant = 'card' | 'list' | 'favorite'
 export interface AppProps
   extends Omit<AppComponentProps, 'handleClick'> {
+  id: string
   slug: string
-  CardProps?: CardProps
-  ListItemProps?: ListItemProps
-  variant?: 'card' | 'list'
+  variant?: AppVariant
 }
 
 export interface AppPageProps {
   apps?: WithAppID<AppProps>[]
+  variant?: AppVariant
   loading?: boolean
   numberOfSkeletons?: number
   name: string
-  CardProps?: CardProps
-  ListItemProps?: ListItemProps
 }
 
 export type FeaturedAppProps = Pick<

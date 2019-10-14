@@ -1,7 +1,0 @@
-query checkFavorite($id: ID!) {
-  application(where: { id: $id }) {
-    __typename
-    id
-    favorite
-  }
-}

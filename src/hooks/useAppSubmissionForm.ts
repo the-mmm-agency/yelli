@@ -9,7 +9,7 @@ import {
 } from './useFilePond'
 import { InputItem, useInput } from './useInput'
 
-import CREATE_APP from 'src/graphql/createApp.mutation.gql'
+import { CREATE_APP } from 'src/graphql/mutations'
 import { useSnackbar } from 'src/hooks/useSnackbar'
 
 type OnSubmit = (event: FormEvent<HTMLFormElement>) => void
@@ -59,7 +59,9 @@ export const useAppSubmissionForm = (
       variables: {
         category: category.value,
         description: description.value,
-        icon: icon.serverId,
+        icon: {
+          id: icon.serverId,
+        },
         screenshots: screenshots.ids,
         slug: slug.value,
         title: title.value,
