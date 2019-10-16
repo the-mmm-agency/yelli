@@ -8,12 +8,14 @@ import isBrowser from 'src/util/isBrowser'
 
 const authLink = setContext((_, { headers }) => {
   const token = window.localStorage.getItem('token')
-  return {
-    headers: {
-      ...headers,
-      Authorization: token ? `Bearer ${token}` : '',
-    },
-  }
+  return token
+    ? {
+        headers: {
+          ...headers,
+          authorization: token,
+        },
+      }
+    : headers
 })
 
 const uploadLink = createUploadLink({

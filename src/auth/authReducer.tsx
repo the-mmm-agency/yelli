@@ -95,7 +95,6 @@ export const authReducer = (
           ),
         }
       )
-      console.error(error)
       return {
         authResult: null,
         error,
