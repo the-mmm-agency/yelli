@@ -36,7 +36,7 @@
     "apollo-link-http": "^1.5.16",
     "apollo-upload-client": "^11.0.0",
     "auth0-js": "^9.11.3",
-    "axios": "^0.19.0",
+    "axios": "^0.21.0",
     "babel-plugin-polished": "^1.1.0",
     "babel-plugin-styled-components": "^1.10.6",
     "constate": "^1.2.0",
