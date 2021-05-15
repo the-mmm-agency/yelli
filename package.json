@@ -58,7 +58,7 @@
     "gatsby-plugin-fastclick": "^1.0.1",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-manifest": "^2.2.21",
-    "gatsby-plugin-material-ui": "^2.1.4",
+    "gatsby-plugin-material-ui": "2.1.10",
     "gatsby-plugin-netlify": "^2.1.19",
     "gatsby-plugin-netlify-cache": "^1.2.0",
     "gatsby-plugin-nprogress": "^2.1.10",
