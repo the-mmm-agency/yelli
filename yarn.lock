@@ -1764,10 +1764,10 @@
     apollo-link-http-common "^0.2.4"
     graphql "^14.5.3"
 
-"@types/auth0-js@^9.10.6":
-  version "9.10.6"
-  resolved "https://registry.yarnpkg.com/@types/auth0-js/-/auth0-js-9.10.6.tgz#9782ac28ea9cff5a2594b780fd3fd0caa615d1e6"
-  integrity sha512-tPdhjqzQRJOdILFLssr/zrinjNvYsKKrEzS74XK80ZkQJKejjTERbIh3+T5niFKxx3XYPB3140ys8Y4Q2UFwHw==
+"@types/auth0-js@9.14.6":
+  version "9.14.6"
+  resolved "https://registry.yarnpkg.com/@types/auth0-js/-/auth0-js-9.14.6.tgz#a1b0cdaf1c5a7062480455d9b255326bdc748117"
+  integrity sha512-dQrWP1G5PO5onJcDdto803OKvw1mplNBoRTdMJzRemfLyKSMAShiVBVD12jZ8VbB1RRDlg6R2eheEH/sxv1ZtQ==
 
 "@types/axios@^0.14.0":
   version "0.14.0"
