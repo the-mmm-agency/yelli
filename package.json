@@ -10,7 +10,7 @@
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.4.4",
     "@babel/plugin-proposal-optional-chaining": "^7.6.0",
     "@codechecks/lighthouse-keeper": "^0.1.2",
-    "@loadable/component": "^5.10.3",
+    "@loadable/component": "5.15.2",
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "@material-ui/lab": "^4.0.0-alpha.28",
