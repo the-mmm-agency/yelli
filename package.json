@@ -54,7 +54,7 @@
     "gatsby": "^2.15.34",
     "gatsby-awesome-pagination": "^0.3.4",
     "gatsby-image": "^2.2.25",
-    "gatsby-plugin-algolia": "^0.3.4",
+    "gatsby-plugin-algolia": "^0.26.0",
     "gatsby-plugin-fastclick": "^1.0.1",
     "gatsby-plugin-favicon": "^3.1.6",
     "gatsby-plugin-manifest": "^2.2.21",
